@@ -1,0 +1,12 @@
+  <get-config>
+	<target>
+      <{{target}}/>
+    </target>
+    <filter>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{vpn_name}}</name>
+        </network-instance>
+      </network-instances>
+    </filter>
+  </get-config>

@@ -1,0 +1,26 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+         <name>{{vpn_name}}</name>
+         <interfaces>
+            {% for int in interfaces %}
+            <interface>
+              <id>{{int.id}}</id>
+              <config>
+                <id>{{int.id}}</id>
+                <interface>{{int.name}}</interface>
+				{% if int.sub_id is defined %}
+                <subinterface>{{int.sub_id}}</subinterface>
+				{% endif %}
+              </config>
+            </interface>
+            {% endfor %}
+           </interfaces>
+        </network-instance>
+      </network-instances>
+    </config>
+</edit-config>

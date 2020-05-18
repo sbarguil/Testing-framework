@@ -1,0 +1,17 @@
+<edit-config>
+  <target>
+    <{{target}}/>
+  </target>
+  <config>
+    <components xmlns="http://openconfig.net/yang/platform">
+      <component>
+        <name>{{transceiver_cmpnt_name}}</name>
+        <transceiver xmlns="http://openconfig.net/yang/platform/transceiver">
+          <config>
+            <enabled>{{transceiver_state | string}}</enabled>
+          </config>
+        </transceiver>
+      </component>
+    </components>
+  </config>
+</edit-config>

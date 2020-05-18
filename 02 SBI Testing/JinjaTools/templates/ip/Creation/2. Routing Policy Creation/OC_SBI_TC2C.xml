@@ -1,0 +1,20 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{vpn_name}}</name>
+          <inter-instance-policies>
+            <apply-policy>
+              <config>
+                <import-policy>{{import_policy_name}}</import-policy>
+                <export-policy>{{export_policy_name}}</export-policy>
+              </config>
+            </apply-policy>
+          </inter-instance-policies>
+        </network-instance>
+      </network-instances>
+    </config>
+</edit-config>

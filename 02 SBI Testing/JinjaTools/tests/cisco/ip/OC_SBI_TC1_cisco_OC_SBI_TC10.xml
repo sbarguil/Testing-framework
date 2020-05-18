@@ -1,0 +1,26 @@
+<edit-config>
+    <target>
+      <running/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>VPN_SERVICE_TEST_A21</name>
+          <config>
+            <name>VPN_SERVICE_TEST_A21</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:L3VRF</type>
+            <enabled>true</enabled>
+            <description>VPN service test for Cisco</description>
+            <router-id>172.16.1.1</router-id>
+            <route-distinguisher>65000:100</route-distinguisher>
+            <enabled-address-families xmlns:oc-types="http://openconfig.net/yang/openconfig-types">oc-types:IPV4</enabled-address-families>
+          </config>
+          <encapsulation>
+            <config>
+              <label-allocation-mode xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:INSTANCE_LABEL</label-allocation-mode>
+            </config>
+          </encapsulation>        
+        </network-instance>
+      </network-instances>
+    </config>
+</edit-config>

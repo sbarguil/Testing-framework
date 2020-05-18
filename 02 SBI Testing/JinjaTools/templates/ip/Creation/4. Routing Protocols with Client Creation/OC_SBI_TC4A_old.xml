@@ -1,0 +1,150 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{vpn_name}}</name>
+           <protocols>
+		    {% if is_bgp_enabled == 'true' %}
+            <protocol>
+              <identifier>BGP</identifier>
+			  <name>BGP</name>
+              <config>
+                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:BGP</identifier>
+				<name>BGP</name>
+				<enabled>true</enabled>
+              </config>
+              <bgp>
+                <global>
+                  <config>
+                    <as>{{bgp_autonomous_system}}</as>
+                    <router-id>{{bgp_router_id}}</router-id>
+                  </config>
+                </global>
+				{% if bgp_neighbors is defined %}
+				<neighbors>
+				  {% for n in bgp_neighbors %}
+                  <neighbor>
+                    <neighbor-address>{{n.address}}</neighbor-address>
+                    <config>
+                      <neighbor-address>{{n.address}}</neighbor-address>
+                      <enabled>true</enabled>
+                      <peer-as>{{n.autonomous_system}}</peer-as>
+                      <local-as>{{n.local_autonomous_system}}</local-as>
+                      <peer-type>{{n.type}}</peer-type>
+                      <remove-private-as>true</remove-private-as>
+                      <description>{{n.description}}</description>
+                    </config>
+					{% if n.is_multihop_enabled == 'true' %}
+					<ebgp-multihop>
+                      <config>
+                        <enabled>true</enabled>
+                        <multihop-ttl>{{n.bgp_multihop_ttl}}</multihop-ttl>
+                      </config>
+                    </ebgp-multihop>
+					{% endif %}		
+                  </neighbor>
+				  {% endfor %}
+                </neighbors>
+				{% endif %}
+				{% if bgp_static_routes is defined %}
+				<static-routes>
+					{% for sr in bgp_static_routes %}
+					<static>
+						<prefix>{{sr.prefix}}</prefix>
+						<config>
+							<prefix>{{sr.prefix}}</prefix>
+							<tag>{{sr.tag}}</prefix>
+						</config>
+						<next-hops>
+							{% for nh in sr.next_hops %}
+							<next-hop>
+								<index>{{nh.index}}</index>
+								<config>
+									<index>{{nh.index}}</index>
+									<next-hop>{{nh.next-hop}}</next-hop>
+								<config>
+							</next-hop>
+							{% endfor %}
+						</next-hops>
+					</static>
+					{% endfor %}
+				</static-routes>
+			  {% endif %}
+              </bgp>
+            </protocol>
+			{% endif %}
+			{% if is_ospf_enabled == 'true' %}
+			<protocol>
+				<identifier>OSPF</identifier>
+				<name>OSPF</name>
+				<config>
+					<identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:OSPF</identifier>
+					<name>OSPF</name>
+					<enabled>true</enabled>
+				</config>
+				<ospfv2>
+					<global>
+					<config>
+						<router-id>{{ospf_router_id}}</router-id>
+					<config>
+					</global>
+					<areas>
+						{% for area in ospf_areas %}
+						<area>
+							<config>
+								<identifier>{{area.identifier}}</identifier>
+							</config>
+							<interfaces>
+								{% for int in area.interfaces %}
+								<interface>
+									<id>{{int.id}}</id>
+									<config>
+										<id>{{int.id}}</id>
+										<network-type xmlns:oc-ospf-types="http://openconfig.net/yang/ospf-types">oc-ospf-types:{{int.network_type}}</network-type>
+										<passive>{{int.is_passive}}</passive>
+									</config>
+									<interface-ref>
+										<config>
+											<interface>{{int.name}}</interface>
+											<subinterface>{{int.sub_id}}</subinterface>
+										</config>
+									</interface-ref>
+								</interface>
+								{% endfor %}
+							</interfaces>
+						</area>
+						{% endfor %}
+					</areas>
+				</ospfv2>
+			</protocol>
+			{% endif %}
+			{% if is_static_enabled == 'true' %}
+			<protocol>
+              <identifier>STATIC</identifier>
+			  <name>STATIC</name>
+              <config>
+                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:STATIC</identifier>
+				<name>STATIC</name>
+				<enabled>true</enabled>
+              </config>
+			</protocol>
+			{% endif %}
+			{% if is_directly_connected_enable == 'true' %}
+			<protocol>
+              <identifier>DIRECTLY_CONNECTED</identifier>
+			  <name>DIRECTLY_CONNECTED</name>
+              <config>
+                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:DIRECTLY_CONNECTED</identifier>
+				<name>DIRECTLY_CONNECTED</name>
+				<enabled>true</enabled>
+              </config>
+			</protocol>
+			{% endif %}
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </config>
+</edit-config>

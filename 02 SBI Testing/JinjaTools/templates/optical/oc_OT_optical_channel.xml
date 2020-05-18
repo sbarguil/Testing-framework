@@ -1,0 +1,21 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <components xmlns="http://openconfig.net/yang/platform">
+        <component>
+          <name>{{och_component_name}}</name>
+          <optical-channel xmlns="http://openconfig.net/yang/terminal-device">
+            <config>
+              <frequency>{{freq_value}}</frequency>
+              <target-output-power>{{target_output_power}}</target-output-power>
+              <operational-mode>{{operational_mode_id}}</operational-mode>
+            </config>
+          </optical-channel>
+        </component>
+      </components>
+    </config>
+  </edit-config>
+</rpc>

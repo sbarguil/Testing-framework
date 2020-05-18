@@ -1,0 +1,24 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+         <name>{{vpn_name}}</name>
+		    <tables>
+			{% for table in tables %}
+            <table>
+              <protocol>{{table.protocol}}</protocol>
+              <address-family>{{table.address_family}}</address-family>
+              <config>
+                <protocol>{{table.protocol}}</protocol>
+                <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">oc-types:{{table.address_family}}</address-family>
+              </config>
+            </table>
+			{% endfor %}
+          </tables>
+		</network-instance>
+      </network-instances>
+    </config>
+</edit-config>

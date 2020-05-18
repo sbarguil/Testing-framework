@@ -1,0 +1,63 @@
+<edit-config>
+  <target>
+    <{{target}}/>
+  </target>
+  <config>
+    <qos xmlns="http://openconfig.net/yang/qos">
+      <interfaces>
+        {% for iface in interfaces %}
+        <interface>
+          <interface-id>{{iface.id}}</interface-id>
+          <config>
+            <interface-id>{{iface.id}}</interface-id>
+          </config>
+          <interface-ref>
+            <config>
+              <interface>{{iface.interface}}</interface>
+              <subinterface>{{iface.subinterface}}</subinterface>
+            </config>
+          </interface-ref>
+          {% if input_queues is defined %}
+          <input>
+            <queues>
+              {% for in_queue in input_queues %}
+              <queue>
+                <name>{{in_queue.name}}</name>
+                <config>
+                  <name>{{in_queue.name}}</name>
+                </config>
+              </queue>
+              {% endfor %}
+            </queues>
+            <scheduler-policy>
+              <config>
+                <name>{{iface.in_scheduler}}</name>
+              </config>
+            </scheduler-policy>
+          </input>
+          {% endif %}
+          {% if output_queues is defined %}
+          <output>
+              <queues>
+                {% for out_queue in output_queues %}
+                <queue>
+                  <name>{{out_queue.name}}</name>
+                  <config>
+                    <name>{{out_queue.name}}</name>
+                  </config>
+                </queue>
+                {% endfor %}
+              </queues>
+              <scheduler-policy>
+                <config>
+                  <name>{{iface.out_scheduler}}</name>
+                </config>
+              </scheduler-policy>
+            </output>
+            {% endif %}
+        </interface>
+        {% endfor %}
+      </interfaces>
+    </qos>
+  </config>
+</edit-config>

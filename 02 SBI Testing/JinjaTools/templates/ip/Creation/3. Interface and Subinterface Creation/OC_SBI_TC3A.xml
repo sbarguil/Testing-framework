@@ -1,0 +1,44 @@
+<edit-config>
+      <target>
+         <{{target}}/>
+      </target>
+      <config>
+         <interfaces xmlns="http://openconfig.net/yang/interfaces">
+            <interface>
+               <name>{{interface_name}}</name>
+               <config>
+                   <name>{{interface_name}}</name>
+                   <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:{{interface_type}}</type>
+				   <mtu>{{interface_mtu}}</mtu>
+				   <description>{{description}}</description>
+				   <enabled>{{enabled}}</enabled>
+				   <loopback-mode>{{is_loopback}}</loopback-mode>
+				   {% if is_vlan == 'true' %}
+				   <tpid xmlns:oc-vlan-types="http://openconfig.net/yang/vlan-types" xmlns="http://openconfig.net/yang/vlan">oc-vlan-types:{{vlan_tpid}}</tpid>
+				   {% endif %}
+               </config>
+			   {% if subinterfaces is defined %}
+               <subinterfaces>
+                   {% for sub in subinterfaces %} 
+                   <subinterface>
+                        <index>{{sub.id}}</index>
+					    <config>
+    			           <index>{{sub.id}}</index>
+                           <description>{{sub.description}}</description>
+                           <enabled>{{sub.enabled}}</enabled>
+                        </config>
+						{% if is_vlan == 'true' %}
+                        <vlan xmlns="http://openconfig.net/yang/vlan">
+                           <config>
+                               <vlan-id>{{sub.id}}</vlan-id>
+                           </config>
+                        </vlan>
+						{% endif %}
+                   </subinterface>
+                   {% endfor %}
+               </subinterfaces>
+			   {% endif %}
+          </interface>
+    </interfaces>
+  </config>
+</edit-config>

@@ -1,0 +1,9 @@
+<get-config>
+  <source>
+    <running/>
+  </source>
+  <filter>
+    {{filter}}
+  </filter>
+</get-config>
+

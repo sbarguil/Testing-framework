@@ -1,0 +1,71 @@
+<edit-config>
+  <target>
+    <{{target}}/>
+  </target>
+  <config>
+    <qos xmlns="http://openconfig.net/yang/qos">
+      <scheduler-policies>
+        {% for sch_policy in scheduler_policies %}
+        <scheduler-policy>
+          <name>{{sch_policy.name}}</name>
+          <config>
+            <name>{{sch_policy.name}}</name>
+          </config>
+          <schedulers>
+            {% for sch in schedulers %}
+            <scheduler>
+              <sequence>{{sch.sequence}}</sequence>
+              <config>
+                <sequence>{{sch.sequence}}</sequence>
+                <type xmlns:oc-qos-types="http://openconfig.net/yang/qos-types">oc-qos-types:{{sch.type}}</type>
+                <priority>{{sch.priority}}</priority>
+              </config>
+              <schs>
+                {% for sch in schs %}
+                <sch>
+                  <id>{{sch.id}}</id>
+                  <config>
+                    <id>{{sch.id}}</id>
+                    <sch-type>{{sch.type}}</sch-type>
+                    <queue>{{sch.queue}}</queue>
+                    <weight>{{sch.weight}}</weight>
+                  </config>
+                </sch>
+                {% endfor %}
+              </schs>
+              {% if sch.type == "ONE_RATE_TWO_COLOR" %}
+              <one-rate-two-color>
+                <config>
+                  <cir>{{sch.cir}}</cir>
+                  <bc>{{sch.bc}}</bc>
+                  <queuing-behavior>{{sch.behavior}}</queuing-behavior>
+                  <max-queue-depth-bytes>{{sch.queue_max}}</max-queue-depth-bytes>
+                </config>
+              </one-rate-two-color>
+              {% endif %}
+              {% if sch.type == "TWO_RATE_THREE_COLOR" %}
+              <two-rate-three-color>
+                <config>
+                  <cir>{{sch.cir}}</cir>
+                  <pir>{{sch.pir}}</pir>
+                  <bc>{{sch.bc}}</bc>
+                  <be>{{sch.be}}</be>
+                </config>
+                <exceed-action>
+                  <config>
+                    <set-dscp>{{sch.set_dscp}}</set-dscp>
+                    <set-dot1p>{{sch.set_dot1p}}</set-dot1p>
+                    <drop>{{sch.drop}}</drop>
+                  </config>
+                </exceed-action>
+              </two-rate-three-color>
+              {% endif %}
+            </scheduler>
+            {% endfor %}
+          </schedulers>
+        </scheduler-policy>
+        {% endfor %}
+      </scheduler-policies>
+    </qos>
+  </config>
+</edit-config>

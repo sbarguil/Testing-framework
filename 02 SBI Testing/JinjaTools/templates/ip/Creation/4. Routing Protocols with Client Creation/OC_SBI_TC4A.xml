@@ -1,0 +1,25 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{vpn_name}}</name>
+          <protocols>
+			{% for protocol in protocols %}
+            <protocol>
+              <identifier>{{protocol.id}}</identifier>
+              <name>{{protocol.name}}</name>
+              <config>
+                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{protocol.id}}</identifier>
+                <name>{{protocol.name}}</name>
+                <enabled>{{protocol.enabled}}</enabled>
+              </config>
+            </protocol>
+			{% endfor %}
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </config>
+</edit-config>

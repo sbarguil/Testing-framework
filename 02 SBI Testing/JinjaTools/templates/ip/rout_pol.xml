@@ -1,0 +1,55 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <edit-config>
+    <target>
+      <running/>
+    </target>
+    <config>
+      <routing-policy xmlns="http://openconfig.net/yang/routing-policy">
+        <defined-sets>
+          <bgp-defined-sets xmlns="http://openconfig.net/yang/bgp-policy">
+            <ext-community-sets>
+              <ext-community-set>
+                <ext-community-set-name>{{policy}}_set</ext-community-set-name>
+                <config>
+                  <ext-community-set-name>{{policy}}_set</ext-community-set-name>
+                  <ext-community-member>{{rt}}</ext-community-member>
+                </config>
+              </ext-community-set>
+            </ext-community-sets>
+          </bgp-defined-sets>
+        </defined-sets>
+        <policy-definitions>
+          <policy-definition>
+            <name>{{policy}}</name>
+            <config>
+              <name>{{policy}}</name>
+            </config>
+            <statements>
+              <statement>
+                <name>{{policy}}_state</name>
+                <config>
+                  <name>{{policy}}_state</name>
+                </config>
+                <conditions>
+                  <bgp-conditions xmlns="http://openconfig.net/yang/bgp-policy">
+                    <match-ext-community-set>
+                      <config>
+                        <ext-community-set>{{policy}}_set</ext-community-set>
+                        <match-set-options>ALL</match-set-options>
+                      </config>
+                    </match-ext-community-set>
+                  </bgp-conditions>
+                </conditions>
+                <actions>
+                  <config>
+                    <policy-result>ACCEPT_ROUTE</policy-result>
+                  </config>
+                </actions>
+              </statement>
+            </statements>
+          </policy-definition>
+        </policy-definitions>
+      </routing-policy>
+    </config>
+  </edit-config>
+</rpc>

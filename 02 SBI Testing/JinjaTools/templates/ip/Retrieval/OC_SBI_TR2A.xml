@@ -1,0 +1,11 @@
+  <get>
+    <filter>
+      <routing-policy xmlns="http://openconfig.net/yang/routing-policy">
+        <defined-sets>
+          <bgp-defined-sets xmlns="http://openconfig.net/yang/bgp-policy">
+            <ext-community-sets/>
+          </bgp-defined-sets>
+        </defined-sets>
+      </routing-policy>
+    </filter>
+  </get>

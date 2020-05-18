@@ -1,0 +1,30 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{vpn_name}}</name>
+		  {% if table_connections is defined %}
+		  <table-connections>
+		    {% for tc in table_connections %}
+			<table-connection>
+              <src-protocol>{{tc.source_protocol}}</src-protocol>
+              <dst-protocol>{{tc.dst_protocol}}</dst-protocol>
+              <address-family>IPV4</address-family>
+              <config>
+                <src-protocol>{{tc.source_protocol}}</src-protocol>
+                <address-family>IPV4</address-family>
+                <dst-protocol>{{tc.dst_protocol}}</dst-protocol>
+                <import-policy>{{tc.import_policy}}</import-policy>
+                <default-import-policy>ACCEPT_ROUTE</default-import-policy>
+              </config>
+            </table-connection>
+			{% endfor %}
+     	  </table-connections>
+		  {% endif %}
+		</network-instance>
+      </network-instances>
+    </config>
+</edit-config>

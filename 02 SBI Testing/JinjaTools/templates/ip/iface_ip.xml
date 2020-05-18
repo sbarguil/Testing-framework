@@ -1,0 +1,38 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{interface}}</name>
+          <config>
+            <name>{{interface}}</name>
+            <enabled>true</enabled>
+          </config>
+          <subinterfaces>
+            <subinterface>
+              <index>{{subinterface}}</index>
+              <config>
+                <index>{{subinterface}}</index>
+                <enabled>true</enabled>
+              </config>
+              <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip">
+                <addresses>
+                  <address>
+                    <ip>{{ip}}</ip>
+                    <config>
+                      <ip>{{ip}}</ip>
+                      <prefix-length>{{prefix}}</prefix-length>
+                    </config>
+                  </address>
+                </addresses>
+              </ipv4>
+            </subinterface>
+          </subinterfaces>
+        </interface>
+      </interfaces>
+    </config>
+  </edit-config>
+</rpc>

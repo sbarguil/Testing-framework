@@ -1,0 +1,66 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <edit-config>
+    <target>
+      <running/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>vrf_test</name>
+          <config>
+            <name>vrf_test</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:L3VRF</type>
+            <enabled>true</enabled>
+            <route-distinguisher>6500:100</route-distinguisher>
+          </config>
+          <encapsulation>
+            <config>
+              <encapsulation-type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:MPLS</encapsulation-type>
+              <label-allocation-mode xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:INSTANCE_LABEL</label-allocation-mode>
+            </config>
+          </encapsulation>
+          <inter-instance-policies>
+            <apply-policy>
+              <config>
+                <import-policy>vrf_test_rt</import-policy>
+                <default-import-policy>REJECT_ROUTE</default-import-policy>
+                <export-policy>vrf_test_rt</export-policy>
+                <default-export-policy>REJECT_ROUTE</default-export-policy>
+              </config>
+            </apply-policy>
+          </inter-instance-policies>
+          <interfaces>
+            <interface>
+              <id>ge-0/0/0.0</id>
+              <config>
+                <id>ge-0/0/0.0</id>
+                <interface>ge-0/0/0</interface>
+                <subinterface>0</subinterface>
+              </config>
+            </interface>
+          </interfaces><interfaces>
+            <interface>
+              <id>ge-0/0/1.0</id>
+              <config>
+                <id>ge-0/0/1.0</id>
+                <interface>ge-0/0/1</interface>
+                <subinterface>0</subinterface>
+              </config>
+            </interface>
+          </interfaces>
+          <!-- Table-connections, tables and protocols are out of this template.
+          <table-connections>
+              ...
+          </table-connections>
+          <tables>
+              ...
+          </tables>
+          <protocols>
+              ...
+          </protocols>
+          -->
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>
+</rpc>

@@ -1,0 +1,52 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{vpn_name}}</name>
+           <protocols>
+            <protocol>
+              <identifier>BGP</identifier>
+			  <name>BGP</name>
+              <bgp>
+                <global>
+                  <config>
+                    <as>{{bgp_autonomous_system}}</as>
+                    <router-id>{{bgp_router_id}}</router-id>
+                  </config>
+                </global>
+				{% if bgp_neighbors is defined %}
+				<neighbors>
+				  {% for n in bgp_neighbors %}
+                  <neighbor>
+                    <neighbor-address>{{n.address}}</neighbor-address>
+                    <config>
+                      <neighbor-address>{{n.address}}</neighbor-address>
+                      <peer-as>{{n.peer_as}}</peer-as>
+                      <local-as>{{n.local_as}}</local-as>
+                      <peer-type>{{n.type}}</peer-type>
+                      <remove-private-as>{{n.remove_private_as}}</remove-private-as>
+                      <description>{{n.description}}</description>
+                    </config>
+					{% if n.multihop_enabled == 'true' %}
+					<ebgp-multihop>
+                      <config>
+                        <enabled>{{n.multihop_enabled}}</enabled>
+                        <multihop-ttl>{{n.bgp_multihop_ttl}}</multihop-ttl>
+                      </config>
+                    </ebgp-multihop>
+					{% endif %}		
+                  </neighbor>
+				  {% endfor %}
+                </neighbors>
+				{% endif %}
+				</global>
+              </bgp>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </config>
+</edit-config>

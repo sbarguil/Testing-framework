@@ -1,0 +1,51 @@
+<edit-config>
+  <target>
+    <{{target}}/>
+  </target>
+  <config>
+    <qos xmlns="http://openconfig.net/yang/qos">
+      <classifiers>
+        {% for classifier in classifiers %}
+        <classifier>
+          <name>{{classifier.name}}</name>
+          <config>
+            <name>{{classifier.name}}</name>
+            <type>{{classifier.type}}</type>
+          </config>
+          {% if terms is defined %}
+          <terms>
+            {% for term in terms%}
+            <term>
+              <id>{{term.id}}</id>
+              <config>
+                <id>{{term.id}}</id>
+              </config>
+              <conditions>
+                <ipv4>
+                  <config>
+                    <dscp>{{term.dscp_condition}}</dscp>
+                  </config>
+                </ipv4>
+              </conditions>
+              <actions>
+                <config>
+                  <target-group>{{term.fwclass}}</target-group>
+                </config>
+				{% if remark == "true" %}
+				<remark>
+                  <config>
+                    <set-dscp>{{term.remark_dscp}}</set-dscp>
+                  </config>
+                </remark>
+				{% endif %}
+              </actions>
+            </term>
+            {% endfor %}
+          </terms>
+          {% endif %}
+        </classifier>
+        {% endfor %}
+      </classifiers>
+    </qos>
+  </config>
+</edit-config>

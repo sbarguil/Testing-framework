@@ -1,0 +1,17 @@
+<edit-config>
+  <target>
+    <{{target}}/>
+  </target>
+  <config>
+    <components xmlns="http://openconfig.net/yang/platform">
+      <component>
+        <name>{{och_component_name}}</name>
+        <optical-channel xmlns="http://openconfig.net/yang/terminal-device">
+          <config>
+            <frequency>{{freq_value}}</frequency>
+          </config>
+        </optical-channel>
+      </component>
+    </components>
+  </config>
+</edit-config>

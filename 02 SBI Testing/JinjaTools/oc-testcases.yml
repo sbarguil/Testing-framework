@@ -1,0 +1,326 @@
+---
+- hosts:
+      - host:
+          ip: 10.95.86.164
+          port: 830
+          username: root
+          password: Changeme_123
+          testcases:
+            - name: oc_OT_t111
+            - name: oc_OT_t112
+            - name: oc_OT_t121
+            - name: oc_OT_t122
+
+- testcase:
+      name: oc_OT_t111
+      id: 1
+      description: >
+          Objective: Retrieve configuration data store of Open Terminal Devices
+          before any service has been created. Test implementation capability to
+          apply Subtree Filter type: "Namespace Selection".
+          Expected result: <rpc-reply> message MUST be OpenConfig compliant.
+          Body message content will contain all configuration information
+          corresponding to openconfig-platform.yang  data model, installed in the
+           running datastore of the device.
+      rpcs:
+          - template: oc_OT_t111.xml
+            operation: get-config
+            target: running
+            params:
+
+- testcase:
+      name: oc_OT_t112
+      id: 1
+      description: >
+          Objective: Retrieve configuration data store of Open Terminal Devices
+          before any service has been created. Test implementation capability to
+          apply Subtree Filter type: "Namespace Selection".
+          Expected result: <rpc-reply> message MUST be OpenConfig compliant.
+          Body message content will contain all configuration information
+          corresponding to openconfig-terminal-device.yang  data model, installed in the
+           running datastore of the device.
+      rpcs:
+          - template: oc_OT_t112.xml
+            operation: get-config
+            target: running
+            params:
+
+- testcase:
+      name: oc_OT_t113
+      id: 1
+      description: >
+          Objective: Retrieve filtered configuration data store of Open Terminal
+           Devices. Test implementation capability to apply Subtree Filter type:
+           "Containment Nodes".
+           Expected result: <rpc-reply> message MUST be OpenConfig compliant.
+           Body message content will contain the configuration information
+           corresponding to all the logical channels configured in the Open
+           Terminal within the openconfig-terminal-device.yang configuration datastore.
+      rpcs:
+          - template: oc_OT_t113.xml
+            operation: get-config
+            target: running
+            params:
+- testcase:
+      name: oc_OT_t114
+      id: 1
+      description: >
+          Objective: Retrieve configuration data store of Open Terminal Devices
+          before any service has been created. Test implementation capability to
+          apply Subtree Filter type: "Namespace Selection".
+          Expected result: <rpc-reply> message MUST be OpenConfig compliant.
+          Body message content will contain all configuration information
+          corresponding to openconfig-platform.yang  data model, installed in the
+          running datastore of the device.
+      rpcs:
+          - template: oc_OT_t114.xml
+            operation: get-config
+            target: running
+            params:
+
+- testcase:
+      name: oc_OT_t121
+      id: 1
+      description: >
+          Objective: Retrieve filtered configuration data store of Open Terminal
+          Devices. Test implementation capability to apply Subtree Filter type:
+          "Selection Nodes".
+          Expected result: <rpc-reply> message MUST be OpenConfig compliant.
+          Body message content will contain the configuration and state information corresponding
+          to the target optical channel within the openconfig-platform.yang adata model.
+      rpcs:
+          - template: oc_OT_t121.xml
+            operation: get
+            params:
+
+- testcase:
+      name: oc_OT_t122
+      id: 1
+      description: >
+          Objective: Retrieve configuration data store of Open Terminal Devices
+          before any service has been created. Test implementation capability to
+          apply Subtree Filter type: "Namespace Selection".
+          Expected result: <rpc-reply> message MUST be OpenConfig compliant.
+          Body message content will contain all configuration and states information
+          corresponding to openconfig-terminal-device.yang  data model, installed in the
+           running datastore of the device.
+      rpcs:
+          - template: oc_OT_t122.xml
+            operation: get
+            params:
+
+- testcase:
+      name: oc_OT_t123
+      id: 1
+      description: >
+          Objective: Retrieve filtered configuration data store of Open Terminal
+           Devices. Test implementation capability to apply Subtree Filter type:
+           "Containment Nodes".
+           Expected result: <rpc-reply> message MUST be OpenConfig compliant.
+           Body message content will contain the configuration and state information
+           corresponding to all the logical channels configured in the Open
+           Terminal within the openconfig-terminal-device.yang configuration datastore.
+      rpcs:
+          - template: oc_OT_t123.xml
+            operation: get
+            params:
+
+- testcase:
+      name: oc_OT_t124
+      id: 1
+      description: >
+          Objective: Retrieve configuration data store of Open Terminal Devices
+          before any service has been created. Test implementation capability to
+          apply Subtree Filter type: "Namespace Selection".
+          Expected result: <rpc-reply> message MUST be OpenConfig compliant.
+          Body message content will contain all configuration and state information
+          corresponding to openconfig-platform.yang  data model, installed in the
+          running datastore of the device.
+      rpcs:
+          - template: oc_OT_t124.xml
+            operation: get
+            params:
+
+- testcase:
+      name: oc_OT_t211
+      id: 1
+      description: >
+          This test is defined to configure the <oc-opt-term:frequency> parameter
+          of a given optical channel.
+          Expected result: If the configuration is succesfully stored
+          in the Open Terminals configuration data store and the  laser corresponding
+          to the line port is succesfully transmiting at the target frequency once
+          it is activated. <oc-opt-term:frequency> value MUST be an 64b integer
+          value and values should value units MUST be expressed in MHz.
+      rpcs:
+          - template: oc_OT_t211.xml
+            operation: edit-config
+            target: running
+            params:
+                och_component_name: OCH-1-4-L1
+                freq_value: 196050000
+
+- testcase:
+      name: oc_OT_t212
+      id: 1
+      description: >
+          This test is defined to configure the <oc-opt-term:target-output-power>
+          parameter of a given optical channel.
+          Expected result: If the configuration of <oc-opt-term:target-output-power>
+          is succesfully stored in the Open Terminals configuration data store
+          and the laser corresponding to the line port is succesfully transmiting
+          at the target output power.
+      rpcs:
+          - template: oc_OT_t212.xml
+            operation: edit-config
+            target: running
+            params:
+                och_component_name: OCH-1-4-L1
+                target_output_power: -2.5
+
+- testcase:
+      name: oc_OT_t213
+      id: 1
+      description: >
+          This test is defined to configure the <oc-opt-term:operational-mode>
+          parameter of a given optical channel.
+          Expected result: If the configuration is succesfully stored in the
+          Open Terminals configuration data store and the optical transmission
+          format is adapted according to the description
+          of the target operational mode.
+      rpcs:
+          - template: oc_OT_t213.xml
+            operation: edit-config
+            target: running
+            params:
+                och_component_name: OCH-1-4-L1
+                operational_mode_id: -2.5
+- testcase:
+      name: oc_OT_t214
+      id: 1
+      description: >
+          This test is defined to configure the administrative state of the
+          optical line port, to which the optical channel is a subcomponent,
+          as ENABLED/DISABLED according to the openconfig-platform data model,
+          to switch ON/OFF the line port transmission.
+          Expected result: If the onfiguration is succesfully stored in the Open
+          Terminals configuration data store and the optical line port
+          transmission is switched ON/OFF according to the administrative state.
+      rpcs:
+          - template: oc_OT_t214.xml
+            operation: edit-config
+            target: running
+            params:
+                port_component_name: PORT-1-4-L1
+
+- testcase:
+      name: oc_OT_t221
+      id: 1
+      description: >
+          This test is defined to create a new PROT_10GE_WAN/PROT_100GE_WAN logical channel.
+          Expected result: A new logical channel construct is succesfully stored
+          in the Open Terminal data store with the following attributes (example for 10GE):
+            <rate-class>TRIB_RATE_10G</rate-class>
+            <trib-protocol>PROT_10GE_WAN</trib-protocol>
+            <logical-channel-type>PROT_ETHERNET</logical-channel-type>
+      rpcs:
+          - template: oc_OT_t221.xml
+            operation: edit-config
+            target: running
+            params:
+                log_ch_index: 10GE-1-4-C1
+                log_ch_rate: TRIB_RATE_10G
+                log_ch_trib_protocol: PROT_10GE_WAN
+                log_ch_type: PROT_ETHERNET
+
+- testcase:
+      name: oc_OT_t222
+      id: 1
+      description: >
+          This test is defined to configure input port for a
+          PROT_10GE_WAN/PROT_100GE_WAN logical channel.
+          Expected result: If the configuration is succesfully stored in the
+          Open Terminals configuration data store, the logical channel is
+          succesfully attached to a trasceiver attached to a client input port.
+      rpcs:
+          - template: oc_OT_t222.xml
+            operation: edit-config
+            target: running
+            params:
+                log_ch_index: 100GE-1-4-C1
+                transceiver_cmpnt_name: TRANSCEIVER-1-4-C1
+
+- testcase:
+      name: oc_OT_t223
+      id: 1
+      description: >
+          This test is defined to create a new PROT_ODU2 logical channel.
+          Expected result: A new logical channel construct is succesfully stored
+          in the Open Terminal data store with the following attributes (example for 10GE):
+            <rate-class>TRIB_RATE_10G</rate-class>
+            <trib-protocol>PROT_ODU2</trib-protocol>
+            <logical-channel-type>PROT_OTN</logical-channel-type>
+      rpcs:
+          - template: oc_OT_t221.xml
+            operation: edit-config
+            target: running
+            params:
+                log_ch_index: ODU2-1-4-C1
+                log_ch_rate: TRIB_RATE_10G
+                log_ch_trib_protocol: PROT_ODU2
+                log_ch_type: PROT_OTN
+
+- testcase:
+      name: oc_OT_t224
+      id: 1
+      description: >
+          This test is defined to create a new PROT_ODU2 logical channel.
+          Expected result: A new logical channel construct is succesfully stored
+          in the Open Terminal data store with the following attributes (example for 10GE):
+            <rate-class>TRIB_RATE_10G</rate-class>
+            <trib-protocol>PROT_ODU2</trib-protocol>
+            <logical-channel-type>PROT_OTN</logical-channel-type>
+      rpcs:
+          - template: oc_OT_t224.xml
+            operation: edit-config
+            target: running
+            params:
+                log_ch_index: 10GE-1-4-C1
+                log_ch_assgmnt_index: 1
+                ref_log_ch_index: ODU2-1-4-C1
+
+- testcase:
+      name: oc_OT_t227
+      id: 1
+      description: >
+          This test is defined to create a new PROT_ODU2 logical channel.
+          Expected result: A new logical channel construct is succesfully stored
+          in the Open Terminal data store with the following attributes (example for 10GE):
+            <rate-class>TRIB_RATE_10G</rate-class>
+            <trib-protocol>PROT_ODU2</trib-protocol>
+            <logical-channel-type>PROT_OTN</logical-channel-type>
+      rpcs:
+          - template: oc_OT_t227.xml
+            operation: edit-config
+            target: running
+            params:
+                log_ch_index: 10GE-1-4-C1
+                log_ch_assgmnt_index: 2
+                ref_och_cmmpt_name: OCH-1-4-L1
+
+- testcase:
+      name: oc_OT_t228
+      id: 1
+      description: >
+          This test is defined to create a new PROT_ODU2 logical channel.
+          Expected result: A new logical channel construct is succesfully stored
+          in the Open Terminal data store with the following attributes (example for 10GE):
+            <rate-class>TRIB_RATE_10G</rate-class>
+            <trib-protocol>PROT_ODU2</trib-protocol>
+            <logical-channel-type>PROT_OTN</logical-channel-type>
+      rpcs:
+          - template: oc_OT_t228.xml
+            operation: edit-config
+            target: running
+            params:
+                transceiver_cmpnt_name: 10GE-1-4-C1

@@ -1,0 +1,32 @@
+<edit-config>
+      <target>
+         <{{target}}/>
+      </target>
+      <config>
+         <interfaces xmlns="http://openconfig.net/yang/interfaces">
+            <interface>
+               <name>{{interface_name}}</name>
+			   {% if subinterfaces is defined %}
+               <subinterfaces>
+                   {% for sub in subinterfaces %} 
+                   <subinterface>
+                        <index>{{sub.id}}</index>
+                        <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip">
+                          <addresses>
+                            <address>
+                               <ip>{{sub.address}}</ip>
+                               <config>
+                                  <ip>{{sub.address}}</ip>
+                                  <prefix-length>{{sub.prefix}}</prefix-length>
+                               </config>
+                             </address>
+                          </addresses>
+                        </ipv4>
+                   </subinterface>
+                   {% endfor %}
+               </subinterfaces>
+			   {% endif %}
+          </interface>
+    </interfaces>
+  </config>
+</edit-config>

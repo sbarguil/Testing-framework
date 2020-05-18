@@ -1,0 +1,36 @@
+###########################################
+##--------YAML for testing UC A.1--------##
+###########################################
+- hosts:
+     - host:
+        ip: 10.95.86.212
+        port: 830
+        username: tid 
+        password: c22/pass
+        testcases:
+            - name: OC_SBI_TC2A
+    #- host:
+    #    ip: 10.95.86.135
+    #    port: 830
+    #    username: tid 
+    #    password: j21-pass
+    #    testcases:
+    #        - name: OC_SBI_TC2A
+
+- testcase:
+      name: OC_SBI_TC2A
+      id: 2
+      description: >
+            This test is defined to create the BGP community for the routing policies.
+      rpcs:
+          - template: OC_SBI_TC2A.xml
+            operation: edit-config
+            target: candidate
+            commit: true
+            params:
+                communities:
+                  - community_name: RT_import_sb13
+                    community_value: 1:130
+                  - community_name: RT_export_sb13
+                    community_value: 1:130
+###------- End of test set-------###

@@ -1,0 +1,309 @@
+###########################################
+##--------YAML for testing UC A.1--------##
+###########################################
+- hosts:
+     - host:
+        ip: 10.95.86.212
+        port: 830
+        username: tid 
+        password: c22/pass
+        testcases:
+            - id: 1
+            - id: 2
+            - id: 3
+            - id: 4
+            - id: 5
+            - id: 6
+            - id: 7
+            - id: 8
+            - id: 9
+            - id: 10
+            - id: 11
+            - id: 12
+            - id: 13
+            - id: 14
+
+- testcase:
+      name: OC_SBI_TC1
+      id: 1
+      description: >
+          This test is defined to create a L3VPN service.
+      rpcs:
+          - template: OC_SBI_TC1.xml
+            operation: edit-config
+            target: running
+            params:
+              vpn_name: VPN_SERVICE_TEST_A21
+              vpn_type: L3VRF
+              is_enabled: true
+              description: VPN service test for Cisco
+              router_id: 172.16.1.1
+              route_distinguisher: 65000:100
+              address_family: IPV4
+              allocation_mode: INSTANCE_LABEL
+
+- testcase:
+      name: OC_SBI_TC2A
+      id: 2
+      description: >
+            This test is defined to create the BGP community for the routing policies.
+      rpcs:
+          - template: OC_SBI_TC2A.xml
+            operation: edit-config
+            target: running
+            params:
+                communities:
+                  - community_name: RT_import_comm
+                    community_value: 65000:100
+                
+                  - community_name: RT_export_comm
+                    community_value: 65000:200
+        
+- testcase:
+      name: OC_SBI_TC2B
+      id: 3
+      description: >
+            This test is defined to create the VPN import/export routing policy.
+      rpcs:
+          - template: OC_SBI_TC2B.xml
+            operation: edit-config
+            target: running
+            params:
+                policy_name: RT_import_policy
+                policy_statement: RT_import_policy_stm
+                install_protocol: BGP
+                community_name: RT_import_comm
+                match_set: ANY  
+                policy_result: ACCEPT_ROUTE
+                
+          - template: OC_SBI_TC2B.xml
+            operation: edit-config
+            target: running
+            params:
+                policy_name: RT_export_policy
+                policy_statement: RT_export_policy_stm
+                install_protocol: BGP
+                community_name: RT_export_comm
+                match_set: ANY  
+                policy_result: ACCEPT_ROUTE
+
+          - template: OC_SBI_TC2B.xml
+            operation: edit-config
+            target: running
+            params:
+                policy_name: FROM_CPE_BGP_ROUTES_FILTER
+
+          - template: OC_SBI_TC2B.xml
+            operation: edit-config
+            target: running
+            params:
+                policy_name: TO_CPE_BGP_ROUTES_FILTER
+   
+- testcase:
+      name: OC_SBI_TC2C
+      id: 4
+      description: >
+            This test is defined to associate routing policies to the VPN service.
+      rpcs:
+          - template: OC_SBI_TC2C.xml
+            operation: edit-config
+            target: running
+            params:
+                vpn_name: VPN_SERVICE_TEST_A21
+                import_policy_name: RT_import_policy
+                export_policy_name: RT_export_policy
+                
+- testcase:
+       name: OC_SBI_TC3A
+       id: 5
+       description: >
+            This test is defined to create an interface and its subinterfaces in the device.
+       rpcs:
+           - template: OC_SBI_TC3A.xml
+             operation: edit-config
+             target: running
+             params:
+                interface_name: GigabitEthernet0/0/0/0
+                interface_type: ethernetCsmacd
+                interface_mtu: 1500
+                description: INF_INTERFACE
+                enabled: true
+                is_loopback: false
+                is_vlan: true
+                vlan_tpid: TPID_0X8100
+                subinterfaces:
+                    - id: 101
+                      description: INF_100_INTERFACE
+                      enabled: true
+
+- testcase:
+       name: OC_SBI_TC3B
+       id: 6
+       description: >
+            This test is defined to create an interface and its subinterfaces in the device.
+       rpcs:
+           - template: OC_SBI_TC3B.xml
+             operation: edit-config
+             target: running
+             params:
+                interface_name: GigabitEthernet0/0/0/0
+                subinterfaces:
+                    - id: 101
+                      address: 192.168.100.1
+                      prefix: 30
+                      
+- testcase:
+       name: OC_SBI_TC3C    
+       id: 7
+       description: >
+            This test is defined to associate the subinterfaces to the VPN service.
+       rpcs:
+           - template: OC_SBI_TC3C.xml
+             operation: edit-config
+             target: running
+             params:
+                vpn_name: VPN_SERVICE_TEST_A21
+                interfaces:
+                    - id: GigabitEthernet0/0/0/0.101
+                      name: GigabitEthernet0/0/0/0
+                      sub_id: 101
+
+- testcase:
+      name: OC_SBI_TC4A
+      id: 8
+      description: >
+            This test is defined to create routing protocols on the VPN instance                    
+      rpcs:
+          - template: OC_SBI_TC4A.xml
+            operation: edit-config
+            target: running
+            params:
+                vpn_name: VPN_SERVICE_TEST_A21
+                protocols:
+                    - id: BGP
+                      name: BGP
+                      enabled: true
+
+- testcase:
+      name: OC_SBI_TC4A_bgp
+      id: 9
+      description: >
+            This test is defined to create all the routing protocol instances.
+      rpcs:
+          - template: OC_SBI_TC4A_bgp.xml
+            operation: edit-config
+            target: running
+            params:
+                vpn_name: VPN_SERVICE_TEST_A21
+                bgp_as: 65000
+                bgp_router_id: 172.16.1.1
+                bgp_neighbors:
+                    - address: 172.16.31.1
+                      peer_as: 12345
+                      local_as: 65000
+                      type: EXTERNAL
+                      remove_private_as: PRIVATE_AS_REMOVE_ALL
+                      description: BGP NEIGHBOR
+                      import_policy: FROM_CPE_BGP_ROUTES_FILTER
+                      export_policy: TO_CPE_BGP_ROUTES_FILTER
+                      is_multihop_enabled: false
+                    
+- testcase:
+      name: OC_SBI_TC4B
+      id: 10
+      description: >
+            This test is defined to create all the routing protocol tables.
+      rpcs:
+          - template: OC_SBI_TC4B.xml
+            operation: edit-config
+            target: running
+            params:
+                vpn_name: VPN_SERVICE_TEST_A21
+                tables:
+                  - protocol: BGP
+                    address_family: IPV4
+
+- testcase:
+      name: OC_SBI_TC5A
+      id: 11
+      description: >
+            This test is defined to create QoS queues and forwardinf classes.
+      rpcs:
+          - template: OC_SBI_TC5B.xml
+            operation: edit-config
+            target: running
+            params:
+                queues:
+                  - name: AF1
+                    type: DROP_TRAIL
+                fw_groups:
+                  - name: FORWARDING_CLASS_AF1
+                    out_queue: AF1
+
+
+- testcase:
+      name: OC_SBI_TC5B
+      id: 12
+      description: >
+            This test is defined to create QoS classifiers.
+      rpcs:
+          - template: OC_SBI_TC5B.xml
+            operation: edit-config
+            target: running
+            params:
+                classifiers:
+                  - name: CLASSIFIER_INPUT
+                    type: IPV4
+                    terms:
+                      - id: CLASS_AF1
+                        dscp_condition: 1
+                        fwclass: FORWARDING_CLASS_AF1
+                        remark: false
+
+- testcase:
+      name: OC_SBI_TC5C
+      id: 13
+      description: >
+            This test is defined to create QoS schedulers.
+      rpcs:
+          - template: OC_SBI_TC5C.xml
+            operation: edit-config
+            target: running
+            params:
+                scheduler_policies:
+                  - name: SCHEDULER_POLICY_1
+                    schedulers:
+                      - sequence: 10
+                        type: TWO_RATE_THREE_COLOR
+                        priority: STRICT
+                        inputs:
+                          - id: STRICT 
+                            type: QUEUE
+                            queue: AF1
+                            weight: 5
+                        cir: 1024
+                        pir: 2048
+                        drop: true
+
+- testcase:
+      name: OC_SBI_TC5D
+      id: 14
+      description: >
+            This test is defined to assign input/ouput queues 
+            and schedulers to an interface.
+      rpcs:
+          - template: OC_SBI_TC5D.xml
+            operation: edit-config
+            target: running
+            params:
+              interfaces:
+                - id: 
+                  interaface: GigabitEthernet0/0/0/0
+                  subinterface: 101
+                  input_queues:
+                    - name: AF1
+                      in_scheduler: SCHEDULER_POLICY_1
+
+
+
+###------- End of test set-------###

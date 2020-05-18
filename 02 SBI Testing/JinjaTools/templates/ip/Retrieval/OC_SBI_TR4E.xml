@@ -1,0 +1,10 @@
+  <get>
+    <filter>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{vpn_name}}</name>
+          <table-connections/>
+        </network-instance>
+      </network-instances>
+    </filter>
+  </get>

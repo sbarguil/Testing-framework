@@ -1,0 +1,17 @@
+<edit-config>
+  <target>
+    <{{target}}/>
+  </target>
+  <config>
+    <components xmlns="http://openconfig.net/yang/platform">
+      <component>
+        <name>{{port_component_name}}</name>
+        <optical-port xmlns="http://openconfig.net/yang/transport-line-common">
+          <config>
+            <admin-state>{{port_state}}</admin-state>
+          </config>
+        </optical-port>
+      </component>
+    </components>
+  </config>
+</edit-config>

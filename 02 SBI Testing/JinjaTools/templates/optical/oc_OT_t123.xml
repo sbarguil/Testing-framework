@@ -1,0 +1,7 @@
+<get>
+  <filter>
+    <terminal-device xmlns="http://openconfig.net/yang/terminal-device">
+      <logical-channels/>
+    </terminal-device>
+  </filter>
+</get>

@@ -1,0 +1,34 @@
+<edit-config>
+    <target>
+      <candidate/>
+    </target>
+    <config>
+      <routing-policy xmlns="http://openconfig.net/yang/routing-policy">
+        <defined-sets>
+          <bgp-defined-sets xmlns="http://openconfig.net/yang/bgp-policy">
+		  	
+            <ext-community-sets>
+			   
+              <ext-community-set>
+				<ext-community-set-name>RT_import_sb</ext-community-set-name>
+                <config>
+					<ext-community-set-name>RT_import_sb</ext-community-set-name>
+					<ext-community-member>1:300</ext-community-member>
+                </config>
+              </ext-community-set>
+			   
+              <ext-community-set>
+				<ext-community-set-name>RT_export_sb</ext-community-set-name>
+                <config>
+					<ext-community-set-name>RT_export_sb</ext-community-set-name>
+					<ext-community-member>1:300</ext-community-member>
+                </config>
+              </ext-community-set>
+			  
+            </ext-community-sets>
+			
+          </bgp-defined-sets>
+        </defined-sets>
+      </routing-policy>
+    </config>
+</edit-config>

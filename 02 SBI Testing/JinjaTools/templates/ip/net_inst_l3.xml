@@ -1,0 +1,57 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <edit-config>
+    <target>
+      <running/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:L3VRF</type>
+            <enabled>true</enabled>
+            <route-distinguisher>{{rd}}</route-distinguisher>
+          </config>
+          <encapsulation>
+            <config>
+              <encapsulation-type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:MPLS</encapsulation-type>
+              <label-allocation-mode xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:INSTANCE_LABEL</label-allocation-mode>
+            </config>
+          </encapsulation>
+          <inter-instance-policies>
+            <apply-policy>
+              <config>
+                <import-policy>{{policy}}</import-policy>
+                <default-import-policy>REJECT_ROUTE</default-import-policy>
+                <export-policy>{{policy}}</export-policy>
+                <default-export-policy>REJECT_ROUTE</default-export-policy>
+              </config>
+            </apply-policy>
+          </inter-instance-policies>
+          {% for i in interfaces %}<interfaces>
+            <interface>
+              <id>{{i.id}}</id>
+              <config>
+                <id>{{i.id}}</id>
+                <interface>{{i.interface}}</interface>
+                <subinterface>{{i.subinterface}}</subinterface>
+              </config>
+            </interface>
+          </interfaces>{% endfor %}
+          <!-- Table-connections, tables and protocols are out of this template.
+          <table-connections>
+              ...
+          </table-connections>
+          <tables>
+              ...
+          </tables>
+          <protocols>
+              ...
+          </protocols>
+          -->
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>
+</rpc>

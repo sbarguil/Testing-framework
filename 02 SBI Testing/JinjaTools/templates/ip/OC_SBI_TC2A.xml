@@ -1,0 +1,26 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <routing-policy xmlns="http://openconfig.net/yang/routing-policy">
+        <defined-sets>
+          <bgp-defined-sets xmlns="http://openconfig.net/yang/bgp-policy">
+		  	{% if communities is defined %}
+            <ext-community-sets>
+			  {% for comm in communities %} 
+              <ext-community-set>
+				<ext-community-set-name>{{comm.community_name}}</ext-community-set-name>
+                <config>
+					<ext-community-set-name>{{comm.community_name}}</ext-community-set-name>
+					<ext-community-member>{{comm.community_value}}</ext-community-member>
+                </config>
+              </ext-community-set>
+			  {% endfor %}
+            </ext-community-sets>
+			{% endif %}
+          </bgp-defined-sets>
+        </defined-sets>
+      </routing-policy>
+    </config>
+</edit-config>

@@ -1,0 +1,23 @@
+<edit-config>
+  <target>
+    <{{target}}/>
+  </target>
+  <config>
+    <terminal-device xmlns="http://openconfig.net/yang/terminal-device">
+      <logical-channels>
+        <channel>
+          <index>{{log_ch_index}}</index>
+          <config>
+            <index>{{log_ch_index}}</index>
+            <admin-state/>
+            <rate-class xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:{{log_ch_rate}}</rate-class>
+            <trib-protocol xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:{{log_ch_trib_protocol}}</trib-protocol>
+            <logical-channel-type xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:{{log_ch_type}}</logical-channel-type>
+            <loopback-mode>NONE</loopback-mode>
+            <test-signal/>
+          </config>
+        </channel>
+      </logical-channels>
+    </terminal-device>
+  </config>
+</edit-config>

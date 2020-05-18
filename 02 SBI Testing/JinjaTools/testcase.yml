@@ -1,0 +1,75 @@
+---
+- testcase:
+      name: ifaceConfig
+      id: 1
+      description: >
+          This test is defined to enable an interface
+          and configure an IPv4 in a subinterface.
+      rpcs:
+          - template: iface_ip.xml
+            target: running
+            params:
+                interface: ge-0/0/0
+                subinterface: 0
+                ip: 10.0.0.1
+                prefix: 30
+- testcase:
+      name: l3vpn
+      id: 1
+      description: >
+          This test is defined to enable an interface
+          and configure an IPv4 in a subinterface.
+      rpcs:
+          - template: iface_ip.xml
+            target: running
+            params: &iface1
+                id: ge-0/0/0.0
+                interface: ge-0/0/0
+                subinterface: 0
+                ip: 10.0.0.1
+                prefix: 30
+          - template: iface_ip.xml
+            target: running
+            params: &iface2
+                id: ge-0/0/1.0
+                interface: ge-0/0/1
+                subinterface: 0
+                ip: 10.0.0.5
+                prefix: 30
+          - template: rout_pol.xml
+            target: running
+            params:
+                <<: &pol_name
+                  policy: vrf_test_rt
+                rt: 6500:101
+          - template: net_inst_l3.xml
+            target: running
+            params:
+                <<: *pol_name
+                name: vrf_test
+                rd: 6500:100
+                interfaces:
+                    - << : *iface1
+                    - << : *iface2
+- testcase:
+      name: l2_p2p
+      id: 1
+      description: >
+          This test is defined to enable an interface
+          and configure an IPv4 in a subinterface.
+      rpcs:
+          - template: iface_vlan.xml
+            target: running
+            params:
+                <<: &iface_vlan
+                  id: ge-0/0/1.10
+                  interface: ge-0/0/1
+                  subinterface: 10
+                vlan: 10
+          - template: net_inst_pw.xml
+            target: running
+            params:
+                <<: *iface_vlan
+                name: pw_demo
+                vcid: 100
+                remote_ip: 10.0.0.5

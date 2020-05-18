@@ -1,0 +1,55 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <edit-config>
+    <target>
+      <running/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>pw_demo</name>
+          <config>
+            <name>pw_demo</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:L2P2P</type>
+            <enabled>true</enabled>
+          </config>
+          <connection-points>
+            <connection-point>
+              <connection-point-id>pw_demo_100</connection-point-id>
+              <config>
+                <connection-point-id>pw_demo_100</connection-point-id>
+              </config>
+              <endpoints>
+                <endpoint>
+                  <endpoint-id>ge-0/0/1.10</endpoint-id>
+                  <config>
+                    <endpoint-id>ge-0/0/1.10</endpoint-id>
+                    <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:LOCAL</type>
+                  </config>
+                  <local>
+                    <config>
+                      <interface>ge-0/0/1</interface>
+                      <subinterface>10</subinterface>
+                    </config>
+                  </local>
+                </endpoint>
+                <endpoint>
+                  <endpoint-id>10.0.0.5_100</endpoint-id>
+                  <config>
+                    <endpoint-id>10.0.0.5_100</endpoint-id>
+                    <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:REMOTE</type>
+                  </config>
+                  <remote>
+                    <config>
+                      <remote-system>10.0.0.5</remote-system>
+                      <virtual-circuit-identifier>100</virtual-circuit-identifier>
+                    </config>
+                  </remote>
+                </endpoint>
+              </endpoints>
+            </connection-point>
+          </connection-points>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>
+</rpc>

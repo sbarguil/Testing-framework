@@ -1,0 +1,54 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+         <name>{{vpn_name}}</name>
+		    <tables>
+		    {% if is_bgp_enabled == 'true' %}
+            <table>
+              <protocol>BGP</protocol>
+              <address-family>IPV4</address-family>
+              <config>
+                <protocol>BGP</protocol>
+                <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">oc-types:IPV4</address-family>
+              </config>
+            </table>
+			{% endif %}
+			{% if is_ospf_enabled == 'true' %}
+			<table>
+              <protocol>OSPF</protocol>
+              <address-family>IPV4</address-family>
+              <config>
+                <protocol>OSPF</protocol>
+                <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">oc-types:IPV4</address-family>
+              </config>
+     		</table>
+			{% endif %}
+			{% if is_static_enabled == 'true' %}
+			<table>
+              <protocol>STATIC</protocol>
+              <address-family>IPV4</address-family>
+              <config>
+                <protocol>STATIC</protocol>
+                <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">oc-types:IPV4</address-family>
+              </config>
+     		</table>
+			{% endif %}
+			{% if is_directly_connected_enabled == 'true' %}
+			<table>
+              <protocol>DIRECTLY_CONNECTED</protocol>
+              <address-family>IPV4</address-family>
+              <config>
+                <protocol>DIRECTLY_CONNECTED</protocol>
+                <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">oc-types:IPV4</address-family>
+              </config>
+     		</table>
+			{% endif %}
+          </tables
+		</network-instance>
+      </network-instances>
+    </config>
+</edit-config>

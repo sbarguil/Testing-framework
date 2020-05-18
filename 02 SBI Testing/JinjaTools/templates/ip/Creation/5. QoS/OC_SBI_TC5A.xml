@@ -1,0 +1,39 @@
+<edit-config>
+  <target>
+    <{{target}}/>
+  </target>
+  <config>
+    <qos xmlns="http://openconfig.net/yang/qos">
+      <queues>
+        {% for queue in queues %}
+        <queue>
+          <name>{{queue.name}}</name>
+          <config>
+            <name>{{queue.name}}</name>
+            <queue-type xmlns:oc-qos-types="http://openconfig.net/yang/qos-types">oc-qos-types:{{queue.type}}</queue-type>
+          </config>
+          {% if queue.type == "RED" %}
+          <red>
+            <config xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" nc:operation="merge">
+              <minth>{{queue.min_th}}</minth>
+              <maxth>{{queue.max_th}}</maxth>
+            </config>
+          </red>
+          {% endif %}
+        </queue>
+        {% endfor %}
+      </queues>
+      <forwarding-groups>
+        {% for fw_gr in fw_groups %}
+        <forwarding-group>
+          <name>{{fw_gr.name}}</name>
+          <config>
+            <name>{{fw_gr.name}}</name>
+            <output-queue>{{fw_gr.out_queue}}</output-queue>
+          </config>
+        </forwarding-group>
+        {% endfor %}
+      </forwarding-groups>
+    </qos>
+  </config>
+</edit-config>

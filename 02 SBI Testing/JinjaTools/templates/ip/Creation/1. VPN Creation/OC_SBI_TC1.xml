@@ -1,0 +1,26 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{vpn_name}}</name>
+          <config>
+            <name>{{vpn_name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:{{vpn_type}}</type>
+            <enabled>true</enabled>
+            <description>{{description}}</description>
+            <router-id>{{router_id}}</router-id>
+            <route-distinguisher>{{route_distinguisher}}</route-distinguisher>
+            <enabled-address-families xmlns:oc-types="http://openconfig.net/yang/openconfig-types">oc-types:{{address_family}}</enabled-address-families>
+          </config>
+          <encapsulation>
+            <config>
+              <label-allocation-mode xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:{{allocation_mode}}</label-allocation-mode>
+            </config>
+          </encapsulation>        
+        </network-instance>
+      </network-instances>
+    </config>
+</edit-config>

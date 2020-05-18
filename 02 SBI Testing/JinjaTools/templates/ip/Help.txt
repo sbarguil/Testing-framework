@@ -1,0 +1,11 @@
+1: Creación del servicio VPN / Obtención de parámetros de configuración del servicio VPN.
+2A: Creación de la comunidad BGP (necesario para 2B) / Obtención de parámetros de la comunidad BGP creada.
+2B: Creación de las políticas de enrutamiento (una para import, otra para export) / Obtención de parámetros de las políticas de enrutamiento.
+2C: Asociar las políticas al servicio VPN / Obtención de parámetros de las políticas asociadas al servicio VPN.
+3A: Creación de las interfaces y subinterfaces / Obtención de parámetros de las interfaces y subinterfaces creadas.
+3B: Asociar las interfaces al servicio VPN / Obtención de parámetros de las interfaces asociadas al servicio VPN.
+4A: Creación de comunidad BGP (necesario para 4B) / Obtención de parámetros de la comunidad BGP creada.
+4B: Creación de políticas de enrutamiento para los distintos protocolos / Obtención de parámetros de las políticas de enrutamiento.
+4C: Definición de los protocolos de enrutamiento (BGP, OSPF, STATIC, ...) / Obtención de parámetros de los protocolos de enrutamiento.
+4D: Creación de las tablas de enrutamiento de cada protocolo / Obtención de parámetros de las tablas de enrutamiento.
+4E: Creación de las conexiones entre las diferentes tablas de enrutamiento / Obtención de parámetros de las conexiones entre tablas de enrutamiento.

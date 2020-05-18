@@ -1,0 +1,19 @@
+<edit-config>
+  <target>
+    <{{target}}/>
+  </target>
+  <config>
+    <terminal-device xmlns="http://openconfig.net/yang/terminal-device">
+      <logical-channels>
+        <channel>
+          <index>{{log_ch_index}}</index>
+          <ingress>
+            <config>
+              <transceiver>{{transceiver_cmpnt_name}}</transceiver>
+            </config>
+          </ingress>
+        </channel>
+      </logical-channels>
+    </terminal-device>
+  </config>
+</edit-config>
