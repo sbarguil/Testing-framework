@@ -21,7 +21,7 @@ for linha in error_file:
         if log: print(linha.split(" ")[3])
         apagar = apagar + linha.split(" ")[3].rstrip('\n') + "d;"
 
-comando = "sed \"" + apagar + "\" " + arq_orig + " > " + arq_dest
+comando = "sed \"" + apagar + "\" " +"\""+ arq_orig +"\""+ " > " +"\""+ arq_dest +"\""
 if log: print(comando)
 
 os.system(comando)
