@@ -1,0 +1,3137 @@
+{
+	"info": {
+		"_postman_id": "93db2414-9395-40de-b630-bf50e3229710",
+		"name": "Telefonica IP NBIs copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "L2SM - OSM",
+			"item": [
+				{
+					"name": "Create L2VPN Service",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0254dc67-9477-4ef0-ab88-eac407fec00d",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"ietf-l2vpn-svc:vpn-service\": [{\r\n\"svc-topo\": \"any-to-any\",\r\n\"vpn-scv-type\": \"vpws\",\r\n\"customer-name\": \"osm\",\r\n\"vpn-id\": \"servicio1\"\r\n}]\r\n} "
+						},
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/vpn-services",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l2vpn-svc:l2vpn-svc",
+								"vpn-services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Endpoint to existing L2VPN Service without encapsulation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"ietf-l2vpn-svc:site-network-access\": [{\r\n\t\"vpn-attachment\": {\r\n\t\t\"vpn-id\": \"38f4d364-6f0a-4124-9ea4-be4a76be3d36\",\r\n\t\t\"site-role\": \"any-to-any-role\"\r\n\t\t},\r\n\t\"network-access-id\": \"514ea69b-0ee3-4a57-85ec-0a5492c31977\",\r\n\t\"bearer\":{\r\n      \t\"bearer-reference\":\"1a\"\r\n      },\r\n\t\"connection\": {}\r\n\t}]\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/sites/site={{site}}/site-network-accesses/",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l2vpn-svc:l2vpn-svc",
+								"sites",
+								"site={{site}}",
+								"site-network-accesses",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Endpoint to existing L2VPN Service with encapsulation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ietf-l2vpn-svc:site-network-access\": [\r\n    {\r\n      \"vpn-attachment\": {\r\n        \"vpn-id\": \"38f4d364-6f0a-4124-9ea4-be4a76be3d36\",\r\n        \"site-role\": \"any-to-any-role\"\r\n      },\r\n      \"network-access-id\": \"514ea69b-0ee3-4a57-85ec-0a5492c31977\",\r\n      \"bearer\":{\r\n      \t\"bearer-reference\":\"1a\"\r\n      },\r\n      \"connection\": {\r\n        \"encapsulation-type\": \"dot1q-vlan-tagged\",\r\n        \"tagged-interface\": {\r\n          \"dot1q-vlan-tagged\": {\r\n            \"cvlan-id\": 22\r\n          }\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/sites/site={{site}}/site-network-accesses/",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l2vpn-svc:l2vpn-svc",
+								"sites",
+								"site={{site}}",
+								"site-network-accesses",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete L2VPN Service",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/vpn-services/vpn-service={{l2vpnservice}}/",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l2vpn-svc:l2vpn-svc",
+								"vpn-services",
+								"vpn-service={{l2vpnservice}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clear all L2VPN Services",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/vpn-services",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l2vpn-svc:l2vpn-svc",
+								"vpn-services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get L2VPN Service Status",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/vpn-services/vpn-service={{l2vpnservice}}/",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l2vpn-svc:l2vpn-svc",
+								"vpn-services",
+								"vpn-service={{l2vpnservice}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all L2VPN Services",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/vpn-services",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l2vpn-svc:l2vpn-svc",
+								"vpn-services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit L2VPN Service",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"ietf-l2vpn-svc:site-network-access\": [{\r\n\t\"vpn-attachment\": {\r\n\t\t\"vpn-id\": \"38f4d364-6f0a-4124-9ea4-be4a76be3d36\",\r\n\t\t\"site-role\": \"any-to-any-role\"\r\n\t\t},\r\n\t\"network-access-id\": \"514ea69b-0ee3-4a57-85ec-0a5492c31977\",\r\n\t\"connection\": {}\r\n\t}]\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/sites/site={{site}}/site-network-accesses/",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l2vpn-svc:l2vpn-svc",
+								"sites",
+								"site={{site}}",
+								"site-network-accesses",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "A.1 L3VPN for 3G/4G Fusion Services",
+			"item": [
+				{
+					"name": "Create Site  (VPN.L3.Site.Add)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/yang-data+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ietf-l3vpn-ntw:site\": [\r\n        {\r\n            \"locations\": {\r\n                \"location\": [\r\n                    {\r\n                        \"location-id\": \"GUATEQUE-CENTRO\"\r\n                    }\r\n                ]\r\n            },\r\n            \"site-id\": \"MLB0832-GUATEQUE-CENTRO\"\r\n        }\r\n    ]\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l3vpn-ntw:l3vpn-ntw",
+								"sites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Bearer (VPN.L3.Bearer.Add)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ietf-l3vpn-ntw:bearer\": [\r\n        {\r\n            \"bearer-id\": \"S1-MLB0832-GUATEQUE-CENTRO\",\r\n            \"ne-id\": \"10.226.0.23\",\r\n            \"port-id\": \"1.4.6\"\r\n        }\r\n    ]\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-bearers",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l3vpn-ntw:l3vpn-ntw",
+								"sites",
+								"site={{site}}",
+								"site-bearers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create VPN  (VPN.L3.Add) - 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/yang-data+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-service\": [\r\n        {\r\n            \"customer-name\": \"4G_Movistar\",\r\n            \"description\": \"4G _Movistar\",\r\n            \"vpn-id\": \"550087400\",\r\n            \"vpn-service-topology\": \"any-to-any\"\r\n        }\r\n    ]\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l3vpn-ntw:l3vpn-ntw",
+								"vpn-services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create VPN  (VPN.L3.Add) - 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/yang-data+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ietf-l3vpn-ntw:ie-profile\": [\r\n        {\r\n            \"ie-profile-id\": \"ie_00\",\r\n            \"rd\": \"65100:87400023\",\r\n            \"vpn-targets\": {\r\n                \"vpn-target\": [\r\n                    {\r\n                        \"route-target\": \"65010:17400\",\r\n                        \"route-target-type\": \"both\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    ]\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/ie-profiles",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l3vpn-ntw:l3vpn-ntw",
+								"vpn-services",
+								"vpn-service={{l3vpnservice}}",
+								"ie-profiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create VPN  (VPN.L3.Add) - 3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/yang-data+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-node\": [\r\n        {\r\n        \t\"autonomous-system\": \"65001\",\r\n            \"description\": \"4G_MOVISTAR\",\r\n            \"ne-id\": \"10.226.0.23\",\r\n            \"node-ie-profile\": \"ie_00\",\r\n            \"node-role\": \"any-to-any\",\r\n            \"router-id\": \"10.226.0.23\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"true\"\r\n            },\r\n            \"vpn-node-id\": \"550087400_10.226.0.23\"\r\n        }\r\n    ]\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/vpn-nodes",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l3vpn-ntw:l3vpn-ntw",
+								"vpn-services",
+								"vpn-service={{l3vpnservice}}",
+								"vpn-nodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Access (VPN.L3.Access.Add)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/yang-data+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ietf-l3vpn-ntw:site-network-access\": [\r\n        {\r\n            \"bearer\": {\r\n                \"bearer-reference\": \"S1-MLB0832-GUATEQUE CENTRO\",\r\n                \"connection\": {\r\n                    \"encapsulation-type\": \"vlan\",\r\n                    \"tagged-interface\": {\r\n                        \"dot1q-vlan-tagged\": {\r\n                            \"cvlan-id\": \"1017\",\r\n                            \"tg-type\": \"c-vlan\"\r\n                        },\r\n                        \"type\": \"dot1q\"\r\n                    }\r\n                }\r\n            },\r\n            \"ip-connection\": {\r\n                \"ipv4\": {\r\n                    \"address-allocation-type\": \"static-address\",\r\n                    \"addresses\": {\r\n                        \"prefix-length\": \"30\",\r\n                        \"provider-address\": \"10.99.84.69\"\r\n                    }\r\n                }\r\n            },\r\n            \"routing-protocols\": {\r\n                \"routing-protocol\": [\r\n                    {\r\n                        \"type\": \"direct\"\r\n                    }\r\n                ]\r\n            },\r\n            \"site-network-access-id\": \"PKI-MLB0832-550087400\",\r\n            \"site-network-access-type\": \"point-to-point\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            }\r\n        }\r\n    ]\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-network-accesses",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l3vpn-ntw:l3vpn-ntw",
+								"sites",
+								"site={{site}}",
+								"site-network-accesses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Attach Access  (VPN.L3.Acess.Attach)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/yang-data+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ietf-l3vpn-ntw:site-attachment\": [\r\n        {\r\n            \"site-id\": \"MLB0832-GUATEQUE-CENTRO\",\r\n            \"site-network-access-id\": [\r\n                \"PKI-MLB0832-550087400\"\r\n            ]\r\n        }\r\n    ]\r\n}\r\n\r\n"
+						},
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/vpn-nodes/vpn-node={{l3vpn_node}}/site-attachments",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-l3vpn-ntw:l3vpn-ntw",
+								"sites",
+								"site={{site}}",
+								"vpn-nodes",
+								"vpn-node={{l3vpn_node}}",
+								"site-attachments"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "A.2 L3VPN for Enterprises",
+			"item": [
+				{
+					"name": "A.2.1 L3VPN for Enterprises (1)",
+					"item": [
+						{
+							"name": "Create Site  (VPN.L3.Site.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site\": [\r\n        {\r\n            \"locations\": {\r\n                \"location\": [\r\n                    {\r\n                        \"location-id\": \"BCO_01_S8137\"\r\n                    }\r\n                ]\r\n            },\r\n            \"site-id\": \"S8137\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Bearer (VPN.L3.Bearer.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:bearer\": [\r\n        {\r\n            \"bearer-id\": \"BCO_02_S8137_01\",\r\n            \"ne-id\": \"10.250.3.38\",\r\n            \"port-id\": \"1.10.2\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-bearers",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-bearers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-service\": [\r\n        {\r\n            \"customer-name\": \"10009\",\r\n            \"description\": \"BANCO_XX\",\r\n            \"vpn-id\": \"500100090\",\r\n            \"vpn-service-topology\": \"hub-spoke\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:ie-profile\": [\r\n        {\r\n            \"ie-profile-id\": \"ie_01\",\r\n            \"rd\": \"3816:100090690\",\r\n            \"vpn-targets\": {\r\n                \"vpn-target\": [\r\n                    {\r\n                        \"route-target\": \"3816:100090000\",\r\n                        \"route-target-type\": \"both\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/ie_profiles",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"ie_profiles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 3",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-node\": [\r\n        {\r\n        \t\"autonomous-system\": \"3816\",\r\n            \"description\": \"BANCO_XX\",\r\n            \"ne-id\": \"10.250.3.38\",\r\n            \"node-ie-profile\": \"ie_00\",\r\n            \"node-role\": \"spoke\",\r\n            \"router-id\": \"10.250.3.38\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            },\r\n            \"vpn-node-id\": \"500100090_10.250.3.38\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/vpn-nodes",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"vpn-nodes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Access (VPN.L3.Access.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ietf-l3vpn-ntw:site-network-access\": [\n        {\n            \"bearer\": {\n                \"bearer-reference\": \"BCO_01_S8137_01\",\n                \"connection\": {\n                    \"encapsulation-type\": \"vlan\",\n                    \"tagged-interface\": {\n                        \"qinq\": {\n                            \"cvlan-id\": \"1514\",\n                            \"svlan-id\": \"2100\",\n                            \"tag-type\": \"c-s-vlan\"\n                        },\n                        \"type\": \"qinq\"\n                    }\n                }\n            },\n            \"description\": \"Access Banco_XX etc\",\n            \"ip-connection\": {\n                \"ipv4\": {\n                    \"address-allocation-type\": \"static-address\",\n                    \"addresses\": {\n                        \"prefix-length\": \"30\",\n                        \"provider-address\": \"10.91.243.65\"\n                    }\n                }\n            },\n            \"routing-protocols\": {\n                \"routing-protocol\": [\n                    {\n                        \"bgp\": {\n                            \"address-family\": [\n                                \"ipv4\"\n                            ],\n                            \"autonomous-system\": \"65009\",\n                            \"neighbor\": \"10.91.243.64\"\n                        },\n                        \"type\": \"bgp\"\n                    }\n                ]\n            },\n            \"service\": {\n                \"svc-input-bandwidth\": \"2048\",\n                \"svc-output-bandwidth\": \"2048\"\n            },\n            \"site-network-access-id\": \"SNA_500100090_01\",\n            \"site-network-access-type\": \"point-to-point\",\n            \"status\": {\n                \"admin-enabled\": \"True\"\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-network-accesses",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-network-accesses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Attach Access  (VPN.L3.Acess.Attach)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site-attachment\": [\r\n        {\r\n            \"site-id\": \"500100090_10.250.3.38\",\r\n            \"site-network-access-id\": [\r\n                \"SNA_500100090_01\"\r\n            ]\r\n        }\r\n    ]\r\n}\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/vpn-nodes/vpn-node={{l3vpn_node}}/site-attachments",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"vpn-nodes",
+										"vpn-node={{l3vpn_node}}",
+										"site-attachments"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "A.2.2 L3VPN for Enterprises (2)",
+					"item": [
+						{
+							"name": "Create Site  (VPN.L3.Site.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site\": [\r\n        {\r\n            \"locations\": {\r\n                \"location\": [\r\n                    {\r\n                        \"location-id\": \"S8137\"\r\n                    }\r\n                ]\r\n            },\r\n            \"site-id\": \"BCO_02_S8137\"\r\n        }\r\n    ]\r\n}\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Bearer (VPN.L3.Bearer.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:bearer\": [\r\n        {\r\n            \"bearer-id\": \"BCO_02_S8137_01\",\r\n            \"ne-id\": \"10.250.3.38\",\r\n            \"port-id\": \"1.10.2\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-bearers",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-bearers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-service\": [\r\n        {\r\n            \"customer-name\": \"10132\",\r\n            \"description\": \"BANCO_XX_02\",\r\n            \"vpn-id\": \"500101323\",\r\n            \"vpn-service-topology\": \"HUB-SPOKE\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:ie-profile\": [\r\n        {\r\n            \"ie-profile-id\": \"ie_02\",\r\n            \"rd\": \"3816:101322013\",\r\n            \"vpn-targets\": {\r\n                \"vpn-target\": [\r\n                    {\r\n                        \"route-target\": \"3816:101320003\",\r\n                        \"route-target-type\": \"both\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    ]\r\n}\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/ie_profiles",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"ie_profiles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 3",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-node\": [\r\n        {\r\n            \"autonomous-system\": \"3816\",\r\n            \"description\": \"BANCO_02\",\r\n            \"ne-id\": \"10.250.3.38\",\r\n            \"node-ie-profile\": \"ie_02\",\r\n            \"node-role\": \"SPOKE\",\r\n            \"router-id\": \"10.250.3.38\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            },\r\n            \"vpn-node-id\": \"500101323_10.250.3.38\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/vpn-nodes",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"vpn-nodes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Access (VPN.L3.Access.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site-network-access\": [\r\n        {\r\n            \"bearer\": {\r\n                \"bearer-reference\": \"BCO_02_S8137_01\",\r\n                \"connection\": {\r\n                    \"encapsulation-type\": \"vlan\",\r\n                    \"tagged-interface\": {\r\n                        \"dot1q-vlan-tagged\": {\r\n                            \"cvlan-id\": \"2100\",\r\n                            \"tg-type\": \"c-vlan\"\r\n                        },\r\n                        \"type\": \"dot1q\"\r\n                    }\r\n                }\r\n            },\r\n            \"description\": \"BANCO_BELEN\",\r\n            \"routing-protocols\": {\r\n                \"routing-protocol\": [\r\n                    {\r\n                        \"bgp\": {\r\n                            \"autonomous-system\": \"65000\",\r\n                            \"multihop\": \"5\",\r\n                            \"neighbor\": \"10.4.101.186\"\r\n                        },\r\n                        \"routing-profiles\": [\r\n                            {\r\n                                \"id\": \"To_CE_Datos_BGP\",\r\n                                \"type\": \"export\"\r\n                            },\r\n                            {\r\n                                \"id\": \"non-default-route\",\r\n                                \"type\": \"import\"\r\n                            }\r\n                        ],\r\n                        \"type\": \"bgp\"\r\n                    },\r\n                    {\r\n                        \"static\": {\r\n                            \"cascaded-lan-prefixes\": {\r\n                                \"ipv4-lan-prefixes\": [\r\n                                    {\r\n                                        \"lan\": \"10.4.101.186\",\r\n                                        \"next-hop\": \"10.250.2.141\"\r\n                                    }\r\n                                ]\r\n                            }\r\n                        },\r\n                        \"type\": \"static\"\r\n                    }\r\n                ]\r\n            },\r\n            \"service\": {\r\n                \"qos\": {\r\n                    \"qos-profile\": {\r\n                        \"profile\": \"S-P TELEFONICA TELECOM\"\r\n                    }\r\n                }\r\n            },\r\n            \"site-network-access-id\": \"SNA_500101323_01\",\r\n            \"site-network-access-type\": \"point-to-point\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            }\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-network-accesses",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-network-accesses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Attach Access  (VPN.L3.Acess.Attach)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site-attachment\": [\r\n        {\r\n            \"site-id\": \"BCO_02_S8137\",\r\n            \"site-network-access-id\": [\r\n                \"SNA_500101323_01\"\r\n            ]\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/vpn-nodes/vpn-node={{l3vpn_node}}3/site-attachments",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"vpn-nodes",
+										"vpn-node={{l3vpn_node}}3",
+										"site-attachments"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "A.2.3 L3VPN for Enterprises (3) – VRF Lite",
+					"item": [
+						{
+							"name": "Create Site  (VPN.L3.Site.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site\": [\r\n        {\r\n            \"locations\": {\r\n                \"location\": [\r\n                    {\r\n                        \"location-id\": \"S8137\"\r\n                    }\r\n                ]\r\n            },\r\n            \"site-id\": \"TEST_04_S8137\"\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-service\": [\r\n        {\r\n            \"customer-name\": \"134\",\r\n            \"description\": \"TEST\",\r\n            \"vpn-id\": \"134\",\r\n            \"vpn-service-topology\": \"HUB-SPOKE\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:ie-profile\": [\r\n        {\r\n            \"ie-profile-id\": \"ie_03\",\r\n            \"rd\": \"3816:134\"\r\n        }\r\n    ]\r\n}\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/ie_profiles",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"ie_profiles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 3",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-node\": [\r\n        {\r\n            \"autonomous-system\": \"3816\",\r\n            \"description\": \"TEST\",\r\n            \"ne-id\": \"10.250.3.38\",\r\n            \"node-ie-profile\": \"ie_03\",\r\n            \"node-role\": \"SPOKE\",\r\n            \"router-id\": \"10.250.3.38\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            },\r\n            \"vpn-node-id\": \"134_10.250.3.38\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/vpn-nodes",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"vpn-nodes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Access (VPN.L3.Access.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site-network-access\": [\r\n        {\r\n            \"description\": \"TEST\",\r\n            \"ip-connection\": {\r\n                \"ipv4\": {\r\n                    \"address-allocation-type\": \"static-address\",\r\n                    \"addresses\": {\r\n                        \"prefix-length\": \"31\",\r\n                        \"provider-address\": \"10.10.10.225\"\r\n                    }\r\n                }\r\n            },\r\n            \"routing-protocols\": {\r\n                \"routing-protocol\": [\r\n                    {\r\n                        \"type\": \"direct\"\r\n                    }\r\n                ]\r\n            },\r\n            \"site-network-access-id\": \"SNA_134_10.250.3.38_01\",\r\n            \"site-network-access-type\": \"loopback\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            }\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-network-accesses",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-network-accesses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Attach Access  (VPN.L3.Acess.Attach)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site-attachment\": [\r\n        {\r\n            \"site-id\": \"TEST_04_S8137\",\r\n            \"site-network-access-id\": [\r\n                \"SNA_134_10.250.3.38_01\"\r\n            ]\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/vpn-nodes/vpn-node={{l3vpn_node}}/site-attachments",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"vpn-nodes",
+										"vpn-node={{l3vpn_node}}",
+										"site-attachments"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "A.2.4 L3VPN for Enterprises (4)",
+					"item": [
+						{
+							"name": "Create Site  (VPN.L3.Site.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site\": [\r\n        {\r\n            \"locations\": {\r\n                \"location\": [\r\n                    {\r\n                        \"location-id\": \"S8137\"\r\n                    }\r\n                ]\r\n            },\r\n            \"site-id\": \"BCO_03_S8137\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Bearer (VPN.L3.Bearer.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:bearer\": [\r\n        {\r\n            \"bearer-id\": \"BCO_03_S8137_01\",\r\n            \"ne-id\": \"10.250.7.6\",\r\n            \"port-id\": \"1.3.1\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-bearers",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-bearers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-service\": [\r\n        {\r\n            \"customer-name\": \"10009\",\r\n            \"description\": \"BANCO_RIOHACHA\",\r\n            \"vpn-id\": \"500100090\",\r\n            \"vpn-service-topology\": \"HUB-SPOKE\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:ie-profile\": [\r\n        {\r\n            \"ie-profile-id\": \"ie_03\",\r\n            \"rd\": \"3816:100090690\",\r\n            \"vpn-targets\": {\r\n                \"vpn-target\": [\r\n                    {\r\n                        \"route-target\": \"3816:100090000\",\r\n                        \"route-target-type\": \"both\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    ]\r\n}\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/ie_profiles",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"ie_profiles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 3",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-node\": [\r\n        {\r\n            \"autonomous-system\": \"3816\",\r\n            \"description\": \"BANCO_RIOHACHA\",\r\n            \"ne-id\": \"10.250.3.38\",\r\n            \"node-ie-profile\": \"ie_03\",\r\n            \"node-role\": \"SPOKE\",\r\n            \"router-id\": \"10.250.3.38\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            },\r\n            \"vpn-node-id\": \"500100090_10.250.3.38\"\r\n        }\r\n    ]\r\n}\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/vpn-nodes",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"vpn-nodes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Access (VPN.L3.Access.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site-network-access\": [\r\n        {\r\n            \"bearer\": {\r\n                \"bearer-reference\": \"BCO_03_S8137_01\",\r\n                \"connection\": {\r\n                    \"encapsulation-type\": \"vlan\",\r\n                    \"tagged-interface\": {\r\n                        \"dot1q-vlan-tagged\": {\r\n                            \"cvlan-id\": \"16\",\r\n                            \"tg-type\": \"c-vlan\"\r\n                        },\r\n                        \"type\": \"dot1q\"\r\n                    }\r\n                },\r\n                \"pseudowire\": {\r\n                    \"vcid\": \"300300501\"\r\n                }\r\n            },\r\n            \"ip-connection\": {\r\n                \"ipv4\": {\r\n                    \"address-allocation-type\": \"static-address\",\r\n                    \"addresses\": {\r\n                        \"prefix-length\": \"30\",\r\n                        \"provider-address\": \"10.91.237.225\"\r\n                    }\r\n                }\r\n            },\r\n            \"routing-protocols\": {\r\n                \"routing-protocol\": [\r\n                    {\r\n                        \"bgp\": {\r\n                            \"autonomous-system\": \"65009\",\r\n                            \"neighbor\": \"10.91.237.226\"\r\n                        },\r\n                        \"type\": \"bgp\"\r\n                    }\r\n                ]\r\n            },\r\n            \"service\": {\r\n                \"svc-input-bandwidth\": \"2048\",\r\n                \"svc-output-bandwidth\": \"2048\"\r\n            },\r\n            \"site-network-access-id\": \"SNA_500100090_10.250.3.38_01\",\r\n            \"site-network-access-type\": \"pseudowire\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            }\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-network-accesses",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-network-accesses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Attach Access  (VPN.L3.Acess.Attach)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"l3vpn-ntw:site-attachment\": [\r\n        {\r\n            \"site-id\": \"BCO_03_S8137\",\r\n            \"site-network-access-id\": [\r\n                \"SNA_500100090_10.250.3.38_01\"\r\n            ]\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/vpn-nodes/vpn-node={{l3vpn_node}}/site-attachments",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"vpn-nodes",
+										"vpn-node={{l3vpn_node}}",
+										"site-attachments"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "A.2.5 L3VPN for Enterprises (5)",
+					"item": [
+						{
+							"name": "Create Site  (VPN.L3.Site.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site\": [\r\n        {\r\n            \"locations\": {\r\n                \"location\": [\r\n                    {\r\n                        \"location-id\": \"S8137\"\r\n                    }\r\n                ]\r\n            },\r\n            \"site-id\": \"IE_01_S8137\"\r\n        }\r\n    ]\r\n}\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Bearer (VPN.L3.Bearer.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:bearer\": [\r\n        {\r\n            \"bearer-id\": \"IE_01_S8137_01\",\r\n            \"ne-id\": \"10.250.3.38\",\r\n            \"port-id\": \"1.2.26\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-bearers",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-bearers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-service\": [\r\n        {\r\n            \"customer-name\": \"10016\",\r\n            \"description\": \"IE_FONSECA\",\r\n            \"vpn-id\": \"500100160\",\r\n            \"vpn-service-topology\": \"HUB-SPOKE\"\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:ie-profile\": [\r\n        {\r\n            \"ie-profile-id\": \"ie_05\",\r\n            \"rd\": \"3816:100160380\",\r\n            \"vpn-targets\": {\r\n                \"vpn-target\": [\r\n                    {\r\n                        \"route-target\": \"3816:100160000\",\r\n                        \"route-target-type\": \"both\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    ]\r\n}\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/ie_profiles",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"ie_profiles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 3",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-node\": [\r\n        {\r\n            \"autonomous-system\": \"3816\",\r\n            \"description\": \"IE_FONSECA\",\r\n            \"ne-id\": \"10.250.3.38\",\r\n            \"node-ie-profile\": \"ie_05\",\r\n            \"node-role\": \"SPOKE\",\r\n            \"router-id\": \"10.250.3.38\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            },\r\n            \"vpn-node-id\": \"500100160_10.250.3.38\"\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/vpn-nodes",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"vpn-nodes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Access (VPN.L3.Access.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site-network-access\": [\r\n        {\r\n            \"bearer\": {\r\n                \"bearer-reference\": \"IE_01_S8137_01\",\r\n                \"connection\": {\r\n                    \"encapsulation-type\": \"vlan\",\r\n                    \"tagged-interface\": {\r\n                        \"dot1q-vlan-tagged\": {\r\n                            \"cvlan-id\": \"1100\",\r\n                            \"tg-type\": \"c-vlan\"\r\n                        },\r\n                        \"type\": \"dot1q\"\r\n                    }\r\n                }\r\n            },\r\n            \"ip-connection\": {\r\n                \"ipv4\": {\r\n                    \"address-allocation-type\": \"static-address\",\r\n                    \"addresses\": {\r\n                        \"prefix-length\": \"30\",\r\n                        \"provider-address\": \"192.168.10.190\"\r\n                    }\r\n                }\r\n            },\r\n            \"routing-protocols\": {\r\n                \"routing-protocol\": [\r\n                    {\r\n                        \"ospf\": {\r\n                            \"area-address\": \"0.0.0.1\",\r\n                            \"mtu\": \"1500\"\r\n                        },\r\n                        \"routing-profiles\": [\r\n                            {\r\n                                \"id\": \"ce-valledupar\",\r\n                                \"type\": \"export\"\r\n                            }\r\n                        ],\r\n                        \"type\": \"ospf\"\r\n                    }\r\n                ]\r\n            },\r\n            \"service\": {\r\n                \"qos\": {\r\n                    \"qos-profile\": {\r\n                        \"profile\": \"S-P TELEFONICA TELECOM\"\r\n                    }\r\n                },\r\n                \"svc-input-bandwidth\": \"4000\",\r\n                \"svc-output-bandwidth\": \"4000\"\r\n            },\r\n            \"site-network-access-id\": \"SNA_500100160_01\",\r\n            \"site-network-access-type\": \"point-to-point\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            }\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-network-accesses",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-network-accesses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Attach Access  (VPN.L3.Acess.Attach)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site-attachment\": [\r\n        {\r\n            \"site-id\": \"IE_01_S8137\",\r\n            \"site-network-access-id\": [\r\n                \"SNA_500100160_01\"\r\n            ]\r\n        }\r\n    ]\r\n}\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/vpn-nodes/vpn-node={{l3vpn_node}}/site-attachments",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"vpn-nodes",
+										"vpn-node={{l3vpn_node}}",
+										"site-attachments"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "A.2.6 L3VPN for Enterprises (6)",
+					"item": [
+						{
+							"name": "Create Site  (VPN.L3.Site.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site\": [\r\n        {\r\n            \"locations\": {\r\n                \"location\": [\r\n                    {\r\n                        \"location-id\": \"S8137\"\r\n                    }\r\n                ]\r\n            },\r\n            \"site-id\": \"WH_01_S8137\"\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Bearer (VPN.L3.Bearer.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:bearer\": [\r\n        {\r\n            \"bearer-id\": \"WH_01_S8137_01\",\r\n            \"ne-id\": \"10.250.3.38\",\r\n            \"port-id\": \"1.2.13\"\r\n        }\r\n    ]\r\n}\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-bearers",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-bearers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-service\": [\r\n        {\r\n            \"customer-name\": \"150000\",\r\n            \"description\": \"ETICOS_VALLEDUPAR\",\r\n            \"vpn-id\": \"500150000\",\r\n            \"vpn-service-topology\": \"HUB-SPOKE\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:ie-profile\": [\r\n        {\r\n            \"ie-profile-id\": \"ie_06\",\r\n            \"rd\": \"3816:150000520\",\r\n            \"vpn-targets\": {\r\n                \"vpn-target\": [\r\n                    {\r\n                        \"route-target\": \"3816:150000000\",\r\n                        \"route-target-type\": \"both\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/ie_profiles",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"ie_profiles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 3",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-node\": [\r\n        {\r\n            \"autonomous-system\": \"3816\",\r\n            \"description\": \"ETICOS_VALLEDUPAR\",\r\n            \"ne-id\": \"10.250.3.38\",\r\n            \"node-ie-profile\": \"ie_06\",\r\n            \"node-role\": \"SPOKE\",\r\n            \"router-id\": \"10.250.3.38\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            },\r\n            \"vpn-node-id\": \"500100160_10.250.3.38\"\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/vpn-nodes",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"vpn-nodes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Access (VPN.L3.Access.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site-network-access\": [\r\n        {\r\n            \"bearer\": {\r\n                \"bearer-reference\": \"WH_01_S8137_01\",\r\n                \"connection\": {\r\n                    \"encapsulation-type\": \"vlan\",\r\n                    \"tagged-interface\": {\r\n                        \"dot1q-vlan-tagged\": {\r\n                            \"cvlan-id\": \"3696\",\r\n                            \"tg-type\": null\r\n                        },\r\n                        \"type\": \"dot1q\"\r\n                    }\r\n                }\r\n            },\r\n            \"ip-connection\": {\r\n                \"ipv4\": {\r\n                    \"address-allocation-type\": \"static-address\",\r\n                    \"addresses\": {\r\n                        \"prefix-length\": \"30\",\r\n                        \"provider-address\": \"192.168.0.9\"\r\n                    }\r\n                }\r\n            },\r\n            \"routing-protocols\": {\r\n                \"routing-protocol\": [\r\n                    {\r\n                        \"type\": \"direct\"\r\n                    }\r\n                ]\r\n            },\r\n            \"service\": {\r\n                \"qos\": {\r\n                    \"qos-profile\": {\r\n                        \"profile\": \"S-P TELEFONICA TELECOM\"\r\n                    }\r\n                },\r\n                \"svc-input-bandwidth\": \"507\",\r\n                \"svc-output-bandwidth\": \"507\"\r\n            },\r\n            \"site-network-access-id\": \"SNA_500100160_01\",\r\n            \"site-network-access-type\": \"point-to-point\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            }\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-network-accesses",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-network-accesses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Attach Access  (VPN.L3.Acess.Attach)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site-attachment\": [\r\n        {\r\n            \"site-id\": null,\r\n            \"site-network-access-id\": [\r\n                \"SNA_500100160_01\"\r\n            ]\r\n        }\r\n    ]\r\n}\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/vpn-nodes/vpn-node={{l3vpn_node}}/site-attachments",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"vpn-nodes",
+										"vpn-node={{l3vpn_node}}",
+										"site-attachments"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "A.2.7 L3VPN for Enterprises (7)",
+					"item": [
+						{
+							"name": "Create Site  (VPN.L3.Site.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site\": [\r\n        {\r\n            \"locations\": {\r\n                \"location\": [\r\n                    {\r\n                        \"location-id\": \"S211\"\r\n                    }\r\n                ]\r\n            },\r\n            \"site-id\": \"MG_01_S211\"\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Bearer (VPN.L3.Bearer.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:bearer\": [\r\n        {\r\n            \"bearer-id\": \"MG_01_ S211_01\",\r\n            \"ne-id\": \"10.250.3.51\",\r\n            \"port-id\": \"1.2.11\"\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-bearers",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-bearers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-service\": [\r\n        {\r\n            \"customer-name\": \"500006000\",\r\n            \"description\": \"SAN-CEN\",\r\n            \"vpn-id\": \"500006000\",\r\n            \"vpn-service-topology\": \"HUB-SPOKE\"\r\n        }\r\n    ]\r\n}\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:ie-profile\": [\r\n        {\r\n            \"ie-profile-id\": \"ie_07\",\r\n            \"rd\": \"3816:60000147\",\r\n            \"vpn-targets\": {\r\n                \"vpn-target\": [\r\n                    {\r\n                        \"route-target\": \"3816:6000001\",\r\n                        \"route-target-type\": \"import\"\r\n                    },\r\n                    {\r\n                        \"route-target\": \"3816:6000002\",\r\n                        \"route-target-type\": \"export\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/ie_profiles",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"ie_profiles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 3",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-node\": [\r\n        {\r\n            \"autonomous-system\": \"3816\",\r\n            \"description\": \"GESTION\",\r\n            \"ne-id\": \"10.250.3.51\",\r\n            \"node-ie-profile\": \"ie_07\",\r\n            \"node-role\": \"SPOKE\",\r\n            \"router-id\": \"10.250.3.51\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            },\r\n            \"vpn-node-id\": \"500006000_10.250.3.51\"\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/vpn-nodes",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"vpn-nodes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Access (VPN.L3.Access.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site-network-access\": [\r\n        {\r\n            \"bearer\": {\r\n                \"bearer-reference\": \"MG_01_ S211_01\",\r\n                \"connection\": {\r\n                    \"encapsulation-type\": \"ethernet\"\r\n                }\r\n            },\r\n            \"ip-connection\": {\r\n                \"ipv4\": {\r\n                    \"address-allocation-type\": \"static-address\",\r\n                    \"addresses\": {\r\n                        \"prefix-length\": \"29\",\r\n                        \"provider-address\": \"10.34.6.217\"\r\n                    }\r\n                }\r\n            },\r\n            \"routing-protocols\": {\r\n                \"routing-protocol\": [\r\n                    {\r\n                        \"type\": \"direct\"\r\n                    }\r\n                ]\r\n            },\r\n            \"site-network-access-id\": \"SNA_500006000_01\",\r\n            \"site-network-access-type\": \"point-to-point\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            }\r\n        }\r\n    ]\r\n}\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-network-accesses",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-network-accesses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Attach Access  (VPN.L3.Acess.Attach)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site-attachment\": [\r\n        {\r\n            \"site-id\": \"MG_01_ S211\",\r\n            \"site-network-access-id\": [\r\n                \"MG_01_ S211_01\"\r\n            ]\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/vpn-nodes/vpn-node={{l3vpn_node}}/site-attachments",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"vpn-nodes",
+										"vpn-node={{l3vpn_node}}",
+										"site-attachments"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "A.2.8 L3VPN for Enterprises (9)",
+					"item": [
+						{
+							"name": "Create Site  (VPN.L3.Site.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site\": [\r\n        {\r\n            \"locations\": {\r\n                \"location\": [\r\n                    {\r\n                        \"location-id\": \"S8137\"\r\n                    }\r\n                ]\r\n            },\r\n            \"site-id\": \"BCO_03_S8137\"\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Bearer (VPN.L3.Bearer.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:bearer\": [\r\n        {\r\n            \"bearer-id\": \"BCO_03_S8137_01\",\r\n            \"ne-id\": \"10.250.7.6\",\r\n            \"port-id\": \"1.3.1\"\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-bearers",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-bearers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-service\": [\r\n        {\r\n            \"customer-name\": \"10009\",\r\n            \"description\": \"BANCO_RIOHACHA\",\r\n            \"vpn-id\": \"500100090\",\r\n            \"vpn-service-topology\": \"HUB-SPOKE\"\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:ie-profile\": [\r\n        {\r\n    \"l3vpn-ntw:ie-profile\": [\r\n        {\r\n            \"ie-profile-id\": \"ie_08\",\r\n            \"rd\": \"3816:100090690\",\r\n            \"vpn-targets\": {\r\n                \"vpn-target\": [\r\n                    {\r\n                        \"route-target\": \"3816:100090000\",\r\n                        \"route-target-type\": \"both\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/ie_profiles",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"ie_profiles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN  (VPN.L3.Add) - 3",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:vpn-node\": [\r\n        {\r\n            \"autonomous-system\": \"3816\",\r\n            \"description\": \"BANCO_RIOHACHA\",\r\n            \"ne-id\": \"10.250.3.38\",\r\n            \"node-ie-profile\": \"ie_08\",\r\n            \"node-role\": \"SPOKE\",\r\n            \"router-id\": \"10.250.3.38\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            },\r\n            \"vpn-node-id\": \"500100090_10.250.3.38\"\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/vpn-services/vpn-service={{l3vpnservice}}/vpn-nodes",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"vpn-services",
+										"vpn-service={{l3vpnservice}}",
+										"vpn-nodes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Access (VPN.L3.Access.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site-network-access\": [\r\n        {\r\n            \"bearer\": {\r\n                \"bearer-reference\": \"BCO_03_S8137_01\",\r\n                \"connection\": {\r\n                    \"encapsulation-type\": \"vlan\",\r\n                    \"tagged-interface\": {\r\n                        \"dot1q-vlan-tagged\": {\r\n                            \"cvlan-id\": \"16\",\r\n                            \"tg-type\": \"c-vlan\"\r\n                        },\r\n                        \"type\": \"dot1q\"\r\n                    }\r\n                },\r\n                \"pseudowire\": {\r\n                    \"vcid\": \"300300501\"\r\n                }\r\n            },\r\n            \"ip-connection\": {\r\n                \"ipv4\": {\r\n                    \"address-allocation-type\": \"static-address\",\r\n                    \"addresses\": {\r\n                        \"prefix-length\": \"30\",\r\n                        \"provider-address\": \"10.91.237.225\"\r\n                    }\r\n                }\r\n            },\r\n            \"routing-protocols\": {\r\n                \"routing-protocol\": [\r\n                    {\r\n                        \"bgp\": {\r\n                            \"autonomous-system\": \"65009\",\r\n                            \"neighbor\": \"10.91.237.226\"\r\n                        },\r\n                        \"type\": \"bgp\"\r\n                    }\r\n                ]\r\n            },\r\n            \"service\": {\r\n                \"svc-input-bandwidth\": \"2048\",\r\n                \"svc-output-bandwidth\": \"2048\"\r\n            },\r\n            \"site-network-access-id\": \"SNA_500100090_10.250.3.38_01\",\r\n            \"site-network-access-type\": \"pseudowire\",\r\n            \"status\": {\r\n                \"admin-enabled\": \"True\"\r\n            }\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/site-network-accesses",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"site-network-accesses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Attach Access  (VPN.L3.Acess.Attach)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l3vpn-ntw:site-attachment\": [\r\n        {\r\n            \"site-id\": \"BCO_03_S8137\",\r\n            \"site-network-access-id\": [\r\n                \"SNA_500100090_10.250.3.38_01\"\r\n            ]\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l3vpn-ntw:l3vpn-ntw/sites/site={{site}}/vpn-nodes/vpn-node={{l3vpn_node}}/site-attachments",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l3vpn-ntw:l3vpn-ntw",
+										"sites",
+										"site={{site}}",
+										"vpn-nodes",
+										"vpn-node={{l3vpn_node}}",
+										"site-attachments"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1aa3e1bf-435c-47db-8939-770845000273",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "0526f73f-65f0-4675-b093-bae55a93fe03",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "A.3 L2VPN for Enterprises",
+			"item": [
+				{
+					"name": "A.3.1 L2VPN for Enterprises (11)",
+					"item": [
+						{
+							"name": "Create Site  (VPN.L2.Site.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ietf-l2vpn-svc:site\": [\r\n    {\r\n      \"locations\": {\r\n        \"location\": [\r\n          {\r\n            \"location-id\": \"S211\"\r\n          }\r\n        ]\r\n      },\r\n      \"site-id\": \"VPLS_01_S211\"\r\n    }\r\n  ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/sites",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l2vpn-svc:l2vpn-svc",
+										"sites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create/add bearers to an existing Site (VPN.L2.Bearer.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l2vpn-svc-ext:bearer\": [\r\n        {\r\n            \"bearer-id\": \"VPLS_01_S211_01\",\r\n            \"ne-id\": \"10.250.3.51\",\r\n            \"port-id\": \"10.2.57\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/sites/site={{site}}/l2vpn-svc-ext:site-bearers",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l2vpn-svc:l2vpn-svc",
+										"sites",
+										"site={{site}}",
+										"l2vpn-svc-ext:site-bearers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN (VPN.L2.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"vpn-service\": [\r\n    {\r\n      \"svc-topo\": \"hub-spoke\",\r\n      \"vpn-scv-type\": \"bgp-vpls\",\r\n      \"ietf-l2vpn-svc-ext:description\": \"AZTECA_VALDPARCL16_DS01265236\",\r\n      \"customer-name\": \"16746\",\r\n      \"vpn-id\": \"100167463\"\r\n    }\r\n  ]\r\n}"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/vpn-services",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l2vpn-svc:l2vpn-svc",
+										"vpn-services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Site Network Access  (VPN.L2.Access.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"site-network-access\": [\r\n    {\r\n      \"vpn-attachment\": {\r\n        \"vpn-id\": \"100167463\",\r\n        \"site-role\": \"hub\"\r\n      },\r\n      \"type\": \"point-to-point\",\r\n      \"network-access-id\": \"SNA_100167463_S211_01\",\r\n      \"bearer\": {\r\n        \"bearer-reference\": \"VPLS_01_S211_01\"\r\n      },\r\n      \"ietf-l2vpn-svc-ext:status\": {\r\n        \"admin-enabled\": \"True\"\r\n      },\r\n      \"connection\": {\r\n        \"encapsulation-type\": \"vlan\",\r\n        \"tagged-interface\": {\r\n          \"dot1q-vlan-tagged\": {\r\n            \"cvlan-id\": 521,\r\n            \"tg-type\": \"c-vlan\"\r\n          },\r\n          \"type\": \"dot1q\"\r\n        }\r\n      },\r\n      \"service\": {\r\n        \"qos\": {\r\n          \"qos-profile\": {\r\n            \"profile\": \"TELEFONICA TELECOM\"\r\n          }\r\n        },\r\n        \"svc-bandwidth\": {\r\n          \"bandwidth\": [\r\n            {\r\n              \"cbs\": \"4096\",\r\n              \"cir\": \"32768\",\r\n              \"direction\": \"input-bw\",\r\n              \"type\": \"bw-per-port\"\r\n            },\r\n            {\r\n              \"cbs\": \"4096\",\r\n              \"cir\": \"32768\",\r\n              \"direction\": \"output-bw\",\r\n              \"type\": \"bw-per-port\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/sites/site={{site}}/site-network-accesses/",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l2vpn-svc:l2vpn-svc",
+										"sites",
+										"site={{site}}",
+										"site-network-accesses",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "A.3.2 L3VPN for Enterprises (12)",
+					"item": [
+						{
+							"name": "Create Site  (VPN.L2.Site.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ietf-l2vpn-svc:site\": [\r\n    {\r\n      \"locations\": {\r\n        \"location\": [\r\n          {\r\n            \"location-id\": \"S211\"\r\n          }\r\n        ]\r\n      },\r\n      \"site-id\": \"VPLS_01_S211\"\r\n    }\r\n  ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc:l2vpn-svc/sites",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l2vpn-svc:l2vpn-svc:l2vpn-svc",
+										"sites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create/add bearers to an existing Site (VPN.L2.Bearer.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ietf-l2vpn-svc-ext:bearer\": [\r\n        {\r\n            \"bearer-id\": \"VPLS_01_S211_01\",\r\n            \"ne-id\": \"10.250.3.51\",\r\n            \"port-id\": \"3.1.5\"\r\n        }\r\n    ]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/sites/site={{site}}/l2vpn-svc-ext:site-bearers",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l2vpn-svc:l2vpn-svc",
+										"sites",
+										"site={{site}}",
+										"l2vpn-svc-ext:site-bearers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create VPN (VPN.L2.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"vpn-service\": [\r\n    {\r\n      \"svc-topo\": \"hub-spoke\",\r\n      \"vpn-scv-type\": \"bgp-vpls\",\r\n      \"ietf-l2vpn-svc-ext:description\": \"SBC_BUC_La_Joya_Acceso_SIP_ALTAMIRA\",\r\n      \"customer-name\": \"17242\",\r\n      \"vpn-id\": \"200172420\"\r\n    }\r\n  ]\r\n}"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/vpn-services",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l2vpn-svc:l2vpn-svc",
+										"vpn-services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Site Network Access  (VPN.L2.Access.Add)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"site-network-access\": [\r\n    {\r\n      \"vpn-attachment\": {\r\n        \"vpn-id\": \"200172420\",\r\n        \"site-role\": \"spoke-role\"\r\n      },\r\n      \"type\": \"point-to-point\",\r\n      \"network-access-id\": \"SNA_200172420_S211_01\",\r\n      \"bearer\": {\r\n        \"bearer-reference\": \"VPLS_02_S211_01\"\r\n      },\r\n      \"ietf-l2vpn-svc-ext:status\": {\r\n        \"admin-enabled\": \"True\"\r\n      },\r\n      \"connection\": {\r\n        \"encapsulation-type\": \"vlan\",\r\n        \"tagged-interface\": {\r\n          \"dot1q-vlan-tagged\": {\r\n            \"cvlan-id\": 1302,\r\n            \"tg-type\": \"c-vlan\"\r\n          },\r\n          \"type\": \"dot1q\"\r\n        }\r\n      },\r\n      \"service\": {\r\n        \"qos\": {\r\n          \"qos-profile\": {\r\n            \"profile\": \"TELEFONICA TELECOM\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}"
+								},
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-l2vpn-svc:l2vpn-svc/sites/site={{site}}/site-network-accesses/",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-l2vpn-svc:l2vpn-svc",
+										"sites",
+										"site={{site}}",
+										"site-network-accesses",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Topology",
+			"item": [
+				{
+					"name": "UNI Topology",
+					"item": [
+						{
+							"name": "Retrieve all attachment points from a specific node",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-network:networks/network={network-id}/node={node-id}/service-attachment-points",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-network:networks",
+										"network={network-id}",
+										"node={node-id}",
+										"service-attachment-points"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve details from an attachment points",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-network:networks/network={network-id}/node={node-id}/service-attachment-point={attachment-id}/",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-network:networks",
+										"network={network-id}",
+										"node={node-id}",
+										"service-attachment-point={attachment-id}",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "L1 Topology",
+					"item": [
+						{
+							"name": "Retrieve supporting te information from a termination point ",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-network:networks/network={network-id}/node={node-id}/termination-point={tp-id}/te/",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-network:networks",
+										"network={network-id}",
+										"node={node-id}",
+										"termination-point={tp-id}",
+										"te",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "L2 Topology",
+					"item": [
+						{
+							"name": "Retrieve supporting L2 network attributes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-network:networks/network={network-id}/l2-network-attributes/",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-network:networks",
+										"network={network-id}",
+										"l2-network-attributes",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve supporting L2 link attributes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-network:networks/network={network-id}/link={link-id}/l2-link-attributes/",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-network:networks",
+										"network={network-id}",
+										"link={link-id}",
+										"l2-link-attributes",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve One Specific Termination Point with L2 Attributes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-network:networks/network={network-id}/node={node-id}/termination-point={tp-id}/l2-termination-point-attributes/",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-network:networks",
+										"network={network-id}",
+										"node={node-id}",
+										"termination-point={tp-id}",
+										"l2-termination-point-attributes",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "L3 & IGP Topology",
+					"item": [
+						{
+							"name": "Retrieve L3 unicast network attributes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-network:networks/network={network-id}/network-types/l3-unicast-topology/",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-network:networks",
+										"network={network-id}",
+										"network-types",
+										"l3-unicast-topology",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve supporting L3 network attributes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-network:networks/network={network-id}/l3-topology-attributes/",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-network:networks",
+										"network={network-id}",
+										"l3-topology-attributes",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve supporting L3 link attributes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-network:networks/network={network-id}/node={node-id}/termination-point={tp-id}/l3-termination-point-attributes/",
+									"protocol": "http",
+									"host": [
+										"{{controller}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"restconf",
+										"data",
+										"ietf-network:networks",
+										"network={network-id}",
+										"node={node-id}",
+										"termination-point={tp-id}",
+										"l3-termination-point-attributes",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve One Node with L3 attributes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve One Specific Termination Point with L3 attributes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "TE",
+			"item": [
+				{
+					"name": "D.1 Crete Simple LSP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"ietf-tunnels\": {\r\n   \"tunnel\": {\r\n      \"name\": \"Simple_LSP\",\r\n      \"identifier\": \"\",\r\n      \"encoding\": \"te-types:lsp-encoding-ethernet\",\r\n      \"switching-type\": \"\",\r\n      \"provisioning-state\": \"te-types:tunnel-state-up\",\r\n      \"preference\": \"\",\r\n      \"reoptimize-timer\": \"1\",\r\n      \"source\": \"10.0.0.1\",\r\n      \"destination\": \"10.0.0.2\",\r\n      \"bidirectional\": \"true\",\r\n      \"p2p-primary-paths\": {\r\n         \"p2p-primary-path\": {\r\n            \"name\": \"Simple_LSP_1\",\r\n            \"named-path-constraint\": \"path-metric-delay-minimum\"\r\n    \t\t}\r\n\t\t}\r\n\t}\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{controller}}:{{port}}/restconf/data/ietf-te/tunnels ",
+							"protocol": "http",
+							"host": [
+								"{{controller}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-te",
+								"tunnels "
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
