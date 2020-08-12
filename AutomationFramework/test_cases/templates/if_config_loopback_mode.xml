@@ -1,0 +1,15 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{name}}</name>
+          <config>
+           <loopback-mode>{{loopback-mode}}</loopback-mode>
+          </config>
+        </interface>
+      </interfaces>
+    </config>
+  </edit-config>

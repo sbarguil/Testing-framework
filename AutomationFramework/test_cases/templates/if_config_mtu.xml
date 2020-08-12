@@ -1,0 +1,19 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{name}}</name>
+          <config>
+            <mtu>{{mtu}}</mtu>
+          </config>
+        </interface>
+      </interfaces>
+    </config>
+  </edit-config>
+
+
+
+

@@ -1,0 +1,85 @@
+
+- testcase:
+      name: if_config_type
+      id: 1
+      description: >
+          This test is to set type of the interface.
+      rpcs:
+          - template: if_config_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/5"
+                   type: "ianaift:ethernetCsmacd"
+
+- testcase:
+      name: if_config_mtu
+      id: 2
+      description: >
+          This test is to define the mtu parameter.
+      rpcs:
+          - template: if_config_mtu.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/5"
+                   mtu: "1500"
+
+- testcase:
+      name: if_config_description
+      id: 3
+      description: >
+          This test is to set description on the interface.
+      rpcs:
+          - template: if_config_description.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/5"
+                   description: "Test1"
+
+- testcase:
+      name: if_config_enabled
+      id: 4
+      description: >
+          This test is to enabled the interface.
+      rpcs:
+          - template: if_config_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/5"
+                   enabled: 'true'
+
+- testcase:
+      name: if_config_tpid
+      id: 5
+      description: >
+          This test is to define the tag protocol on the VLAN.
+      rpcs:
+          - template: if_config_tpid.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/5"
+                   tpid: "oc-vlan-types:TPID_0X8100"
+
+- testcase:
+      name: if_config_loopback_mode
+      id: 6
+      description: >
+          This test is defined to enable an interface
+          loopback mode.
+      rpcs:
+          - template: if_config_loopback_mode.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  name: 'loopback0'
+                  loopback-mode: "true"

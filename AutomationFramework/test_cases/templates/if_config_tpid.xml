@@ -1,0 +1,15 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{name}}</name>
+          <config>
+            <tpid xmlns:oc-vlan-types="http://openconfig.net/yang/vlan-types" xmlns="http://openconfig.net/yang/vlan">{{tpid}}</tpid>
+          </config>
+        </interface>
+      </interfaces>
+    </config>
+  </edit-config>
