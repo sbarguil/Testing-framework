@@ -53,7 +53,7 @@
             commit: true
             params:
                    name: "GigabitEthernet0/0/0/5"
-                   enabled: 'true'
+                   enabled: "true"
 
 - testcase:
       name: if_config_tpid
