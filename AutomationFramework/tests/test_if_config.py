@@ -1,41 +1,53 @@
 import pytest
-
 from AutomationFramework.page_objects.interfaces.interfaces import Interfaces
+from AutomationFramework.tests.base_test import BaseTest
 
 
-class TestInterfacesConfig:
+class TestInterfacesConfig(BaseTest):
     test_case_file = 'if_config.yml'
 
-    def test_if_config_description(self):
-        interfaces_page = Interfaces(test_case_file=self.test_case_file, test_case_name='if_config_description')
-        interfaces_page.execute_edit_config_test_case()
-        assert interfaces_page.validate_test_case_params(), interfaces_page.get_test_case_description()
+    @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
+                                                         'test_case_name': 'if_config_description',
+                                                         'page_object_class': Interfaces}])
+    def test_if_config_description(self, create_page_object):
+        create_page_object.execute_interfaces_edit_config_test_case()
+        assert create_page_object.validate_test_case_params(), create_page_object.get_test_case_description()
 
-    def test_if_config_enabled(self):
-        interfaces_page = Interfaces(test_case_file=self.test_case_file, test_case_name='if_config_enabled')
-        interfaces_page.execute_edit_config_test_case()
-        assert interfaces_page.validate_test_case_params(), interfaces_page.get_test_case_description()
+    @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
+                                                         'test_case_name': 'if_config_enabled',
+                                                         'page_object_class': Interfaces}])
+    def test_if_config_enabled(self, create_page_object):
+        create_page_object.execute_interfaces_edit_config_test_case()
+        assert create_page_object.validate_test_case_params(), create_page_object.get_test_case_description()
 
-    @pytest.mark.skip(reason="Test not working, Interface not found")
-    def test_if_config_loopback_mode(self):
-        interfaces_page = Interfaces(test_case_file=self.test_case_file, test_case_name='if_config_loopback_mode')
-        interfaces_page.execute_edit_config_test_case()
-        assert interfaces_page.validate_test_case_params(), interfaces_page.get_test_case_description()
+    @pytest.mark.skip(reason="Execution not tested, lab routers cisco and juniper doesn't allow to change the param")
+    @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
+                                                         'test_case_name': 'if_config_loopback_mode',
+                                                         'page_object_class': Interfaces}])
+    def test_if_config_loopback_mode(self, create_page_object):
+        create_page_object.execute_interfaces_edit_config_test_case()
+        assert create_page_object.validate_test_case_params(), create_page_object.get_test_case_description()
 
-    def test_if_config_mtu(self):
-        interfaces_page = Interfaces(test_case_file=self.test_case_file, test_case_name='if_config_mtu')
-        interfaces_page.execute_edit_config_test_case()
-        assert interfaces_page.validate_test_case_params(), interfaces_page.get_test_case_description()
+    @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
+                                                         'test_case_name': 'if_config_mtu',
+                                                         'page_object_class': Interfaces}])
+    def test_if_config_mtu(self, create_page_object):
+        create_page_object.execute_interfaces_edit_config_test_case()
+        assert create_page_object.validate_test_case_params(), create_page_object.get_test_case_description()
 
-    @pytest.mark.skip(reason="Cisco doesn't have the param, test in juniper ")
-    def test_if_config_tpid(self):
-        interfaces_page = Interfaces(test_case_file=self.test_case_file, test_case_name='if_config_tpid')
-        interfaces_page.execute_edit_config_test_case()
-        assert interfaces_page.validate_test_case_params(), interfaces_page.get_test_case_description()
+    @pytest.mark.skip(reason="Execution not tested, lab routers cisco and juniper doesn't allow to change the param")
+    @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
+                                                         'test_case_name': 'if_config_tpid',
+                                                         'page_object_class': Interfaces}])
+    def test_if_config_tpid(self, create_page_object):
+        create_page_object.execute_interfaces_edit_config_test_case()
+        assert create_page_object.validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.skip(reason="Test not working, fix by getting the prefix from the first get config and change the yaml"
                              "by sending just the value without prefix")
-    def test_if_config_type(self):
-        interfaces_page = Interfaces(test_case_file=self.test_case_file, test_case_name='if_config_type')
-        interfaces_page.execute_edit_config_test_case()
-        assert interfaces_page.validate_test_case_params(), interfaces_page.get_test_case_description()
+    @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
+                                                         'test_case_name': 'if_config_type',
+                                                         'page_object_class': Interfaces}])
+    def test_if_config_type(self, create_page_object):
+        create_page_object.execute_interfaces_edit_config_test_case()
+        assert create_page_object.validate_test_case_params(), create_page_object.get_test_case_description()
