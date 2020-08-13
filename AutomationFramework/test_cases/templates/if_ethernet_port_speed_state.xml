@@ -1,0 +1,14 @@
+  <get>
+  <filter>
+    <interfaces xmlns="http://openconfig.net/yang/interfaces">
+      <interface>
+        <name>{{name}}</name>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <state>
+            <port-speed>{{port_speed_state}}</port-speed>
+          </state>
+        </ethernet>
+      </interface>
+    </interfaces>
+  </filter>
+</get>
