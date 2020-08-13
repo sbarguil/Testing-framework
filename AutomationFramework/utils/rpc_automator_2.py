@@ -1,3 +1,5 @@
+import time
+
 from ncclient import manager
 import yaml
 from lxml import etree as et
@@ -27,13 +29,15 @@ class RPCAutomator2:
                                        allow_agent=False
                                        )
 
-    def rpc_body_generator(self, test_case, rpc_index=0):
+    def rpc_body_generator(self, test_case, rpc_index=0, variables_in_template=None):
         template_file_name = test_case['testcase']['rpcs'][rpc_index]['template']
         jinja_template = self.jinja_env.get_template(template_file_name)
         rpc_list = test_case['testcase']['rpcs']
-        jinja_variables_dict = rpc_list[rpc_index]['params']
+        if variables_in_template:
+            jinja_variables_dict = variables_in_template
+        else:
+            jinja_variables_dict = rpc_list[rpc_index]['params']
         jinja_variables_dict['target'] = rpc_list[rpc_index]['target']
-
         return jinja_template.render(jinja_variables_dict)
 
     # TODO
@@ -46,8 +50,10 @@ class RPCAutomator2:
 
     def safe_dispatch(self, template):
         try:
-            self.manager.dispatch(et.fromstring(template))
-            self.manager.dispatch(et.fromstring("<commit/>"))
+            print('- Response of edit-config')
+            print(self.manager.dispatch(et.fromstring(template)))
+            print('- Response of commit')
+            print(self.manager.dispatch(et.fromstring("<commit/>")))
         except Exception as e:
             print("An exception has occurred when performing the edit_config operation.")
             raise e

@@ -33,7 +33,10 @@ class BasePageObject:
         self.variables_to_commit = dict(self.test_case['testcase']['rpcs'][rpc_idx]['params'])
 
     def execute_edit_config_test_case(self):
-        self.generate_filter_from_test_case()
+        if self.netconf_filter:
+            pass
+        else:
+            self.generate_filter_from_test_case()
         self.execute_edit_config_first_get_config_with_filter()
         self.get_rendered_template()
         self.execute_edit_config_with_template()
@@ -62,8 +65,11 @@ class BasePageObject:
         print(self.rendered_template)
         return self.rendered_template
 
-    def execute_edit_config_with_template(self):
-        self.rpc_automator.safe_dispatch(template=self.rendered_template)
+    def execute_edit_config_with_template(self, template=None):
+        if template:
+            self.rpc_automator.safe_dispatch(template=template)
+        else:
+            self.rpc_automator.safe_dispatch(template=self.rendered_template)
 
     def execute_edit_config_first_get_config_with_filter(self):
         print('---------------------------------------------------------------------------------------')
@@ -107,7 +113,63 @@ class BasePageObject:
     def get_test_case_description(self):
         return self.test_case['testcase']['description']
 
-    # TODO
     def verify_test_and_skip(self):
-        # pytest.skip('') if the initial values are the same as the expected values
-        pass
+        skip_test = True
+        for key, value in self.variables_to_commit.items():
+            if isinstance(self.values_before_commit[key], collections.abc.Mapping):
+                if self.values_before_commit[key]['#text'] != value:
+                    skip_test = False
+            else:
+                if self.values_before_commit[key] != value:
+                    skip_test = False
+        if skip_test:
+            pytest.skip('The actual value of the params tested is the same of the test´s expected value. '
+                        'For performing the test change either the actual value or the test´s expected value')
+
+    def get_rpc_reply_key_from_get_config(self):
+        if self.get_config_response:
+            response_dict = xmltodict.parse(self.get_config_response.xml)
+        else:
+            if self.edit_config_first_get_config_response:
+                response_dict = xmltodict.parse(self.edit_config_first_get_config_response.xml)
+            else:
+                return None
+        for keys in response_dict:
+            if 'rpc-reply' in keys:
+                return keys
+        return None
+
+    def get_data_key_from_get_config(self, rpc_reply_key):
+        if self.get_config_response:
+            response_dict = xmltodict.parse(self.get_config_response.xml)[rpc_reply_key]
+        else:
+            if self.edit_config_first_get_config_response:
+                response_dict = xmltodict.parse(self.edit_config_first_get_config_response.xml)[rpc_reply_key]
+            else:
+                return None
+        for keys in response_dict:
+            if 'data' in keys:
+                return keys
+        return None
+
+    def clean_after_test(self):
+        print('---------------------------------------------------------------------------------------')
+        print('Cleaning up')
+        initial_values = self.get_initial_values_of_params_changed()
+        # Conditional statement to see if the data needs to be deleted or wrote back
+        initial_values_template = self.rpc_automator.rpc_body_generator(test_case=self.test_case, rpc_index=0,
+                                                                        variables_in_template=initial_values)
+        print('- Template with initial values')
+        print(initial_values_template)
+        self.execute_edit_config_with_template(template=initial_values_template)
+        print('- Get-config after cleaning')
+        print(self.rpc_automator.safe_get_config(netconf_filter=self.netconf_filter, test_case=self.test_case))
+
+    def get_initial_values_of_params_changed(self):
+        initial_values = {}
+        for key in self.variables_to_commit:
+            if isinstance(self.values_before_commit[key], collections.abc.Mapping):
+                initial_values[key] = self.values_before_commit[key]['#text']
+            else:
+                initial_values[key] = self.values_before_commit[key]
+        return initial_values
