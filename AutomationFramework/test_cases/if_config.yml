@@ -39,7 +39,7 @@
             commit: true
             params:
                    name: "GigabitEthernet0/0/0/5"
-                   description: "Test1"
+                   description: "Test if_config_description"
 
 - testcase:
       name: if_config_enabled
@@ -53,7 +53,7 @@
             commit: true
             params:
                    name: "GigabitEthernet0/0/0/5"
-                   enabled: 'true'
+                   enabled: "false"
 
 - testcase:
       name: if_config_tpid
@@ -81,5 +81,5 @@
             operation: edit-config
             commit: true
             params:
-                  name: 'loopback0'
-                  loopback-mode: "true"
+                  name: "Loopback0"
+                  loopback_mode: "true"

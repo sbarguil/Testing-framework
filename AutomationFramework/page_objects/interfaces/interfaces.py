@@ -22,7 +22,7 @@ class Interfaces(BasePageObject):
         'tpid': None,
     }
 
-    def execute_edit_config_test_case(self):
+    def execute_interfaces_edit_config_test_case(self):
         filter_to_use = """
                     <filter>
                         <interfaces xmlns="http://openconfig.net/yang/interfaces">
@@ -34,16 +34,15 @@ class Interfaces(BasePageObject):
                     """
         interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='name')
         self.set_filter(filter_to_use.format(interface_name))
-        self.execute_edit_config_first_get_config_with_filter()
+        self.execute_edit_config_test_case()
         self.set_values_before_commit_dict()
-        self.get_rendered_template()
-        self.execute_edit_config_with_template()
-        self.execute_edit_config_second_get_config_with_filter()
         self.set_values_after_commit_dict()
 
     def set_values_before_commit_dict(self):
+        rpc_reply_key = self.get_rpc_reply_key_from_get_config()
+        data_key = self.get_data_key_from_get_config(rpc_reply_key=rpc_reply_key)
         parsed_dict = xmltodict.parse(
-            self.edit_config_first_get_config_response.xml)["rpc-reply"]["data"]['interfaces']['interface']['config']
+            self.edit_config_first_get_config_response.xml)[rpc_reply_key][data_key]['interfaces']['interface']['config']
         if 'name' in parsed_dict:
             self.values_before_commit['name'] = parsed_dict['name']
         if 'type' in parsed_dict:
@@ -60,8 +59,10 @@ class Interfaces(BasePageObject):
             self.values_before_commit['tpid'] = parsed_dict['tpid']
 
     def set_values_after_commit_dict(self):
+        rpc_reply_key = self.get_rpc_reply_key_from_get_config()
+        data_key = self.get_data_key_from_get_config(rpc_reply_key=rpc_reply_key)
         parsed_dict = xmltodict.parse(
-            self.edit_config_second_get_config_response.xml)["rpc-reply"]["data"]['interfaces']['interface']['config']
+            self.edit_config_second_get_config_response.xml)[rpc_reply_key][data_key]['interfaces']['interface']['config']
         if 'name' in parsed_dict:
             self.values_after_commit['name'] = parsed_dict['name']
         if 'type' in parsed_dict:
