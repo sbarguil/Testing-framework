@@ -3,7 +3,7 @@ from AutomationFramework.page_objects.interfaces.interfaces import Interfaces
 from AutomationFramework.tests.base_test import BaseTest
 
 
-class TestInterfacesConfig(BaseTest):
+class TestInterfacesEthernet(BaseTest):
     test_case_file = 'if_ethernet.yml'
 
     @pytest.mark.skip(reason="error in cisco: ncclient.operations.rpc.RPCError: 'GIRO' detected the 'warning' condition 'The configuration is not supported on this interface"
