@@ -1,0 +1,19 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <qos xmlns="http://openconfig.net/yang/qos">
+        <queues>
+          <queue>
+            <name>{{name}}</name>
+            <config>
+              <name>{{name}}</name>
+            </config>
+          </queue>
+        </queues>
+      </qos>
+    </config>
+  </edit-config>
+</rpc>
