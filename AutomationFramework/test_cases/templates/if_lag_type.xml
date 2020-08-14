@@ -1,0 +1,22 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{name}}</name>
+          <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+            <config>
+              <aggregate-id xmlns="http://openconfig.net/yang/interfaces/aggregate">{{aggregate_id}}</aggregate-id>
+            </config>
+          </ethernet>
+          <aggregation xmlns="http://openconfig.net/yang/interfaces/aggregate">
+            <config>
+              <lag-type>{{lag_type}}</lag-type>
+            </config>
+          </aggregation>
+        </interface>
+      </interfaces>
+    </config>
+  </edit-config>
