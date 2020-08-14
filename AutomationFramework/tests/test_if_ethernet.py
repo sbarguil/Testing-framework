@@ -41,4 +41,5 @@ class TestInterfacesEthernet(BaseTest):
                                                          'test_case_name': 'if_ethernet_port_speed_state',
                                                          'page_object_class': Interfaces}])
     def test_if_ethernet_port_speed_state(self, create_page_object):
-        pass
+        create_page_object.execute_interfaces_get_test_case()
+        #assert create_page_object.validate_test_case_params(), create_page_object.get_test_case_description()

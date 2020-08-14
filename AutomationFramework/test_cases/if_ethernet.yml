@@ -62,4 +62,4 @@
             operation: get
             params:
                    name: "ge-0/0/3"
-                   port_speed_state: "SPEED_1GB"
+                   port_speed: ""

@@ -20,7 +20,10 @@ class BasePageObject:
     variables_to_commit = {}
     values_before_commit = {}
     values_after_commit = {}
+    state_values_after_get = {}
     values_where_changed_after_test = False
+    get_response = None
+    values_after_get = {}
 
     def __init__(self, test_case_file=None, test_case_name=None, rpc_idx=0):
         self.rpc_automator = RPCAutomator2(HOSTS[0])
@@ -176,3 +179,54 @@ class BasePageObject:
             else:
                 initial_values[key] = self.values_before_commit[key]
         return initial_values
+
+    def execute_get_test_case(self):
+        self.get_rendered_template()
+        self.execute_get_with_template()
+        self.set_values_after_get()
+
+    def set_values_after_get(self):
+        rpc_reply_key = self.get_rpc_reply_key_from_get_response()
+        data_key = self.get_data_key_from_get_response(rpc_reply_key=rpc_reply_key)
+        parsed_dict = xmltodict.parse(self.get_response.xml)[rpc_reply_key][data_key]
+        keys_to_set = []
+        for key, item in self.variables_to_commit.items():
+            if not item:
+                if '_' in key:
+                    keys_to_set.append(key.replace('_', '-'))
+                else:
+                    keys_to_set.append(key)
+
+        for key_to_search in keys_to_set:
+            self.values_after_get[key_to_search] = self.get_tag_value_in_given_dict(tag_value=key_to_search,
+                                                                                    parsed_dict=parsed_dict)
+
+        # TODO: Continue
+
+    # TODO: COntinue
+    def get_tag_value_in_given_dict(self, tag_value, parsed_dict):
+        return 'None'
+
+    def get_rpc_reply_key_from_get_response(self):
+        response_dict = xmltodict.parse(self.get_response.xml)
+        for keys in response_dict:
+            if 'rpc-reply' in keys:
+                return keys
+        return None
+
+    def get_data_key_from_get_response(self, rpc_reply_key):
+        response_dict = xmltodict.parse(self.get_response.xml)[rpc_reply_key]
+        for keys in response_dict:
+            if 'data' in keys:
+                return keys
+        return None
+
+    def execute_get_with_template(self, template=None):
+        if template:
+            self.get_response = self.rpc_automator.safe_get(template=template)
+        else:
+            self.get_response = self.rpc_automator.safe_get(template=self.rendered_template)
+        print('---------------------------------------------------------------------------------------')
+        print('- get response')
+        print(self.get_response)
+        return self.get_response

@@ -30,6 +30,10 @@ class Interfaces(BasePageObject):
         'aggregate_id': None,
     }
 
+    def execute_interfaces_get_test_case(self):
+        self.execute_get_test_case()
+
+
     def execute_interfaces_edit_config_test_case(self):
         filter_to_use = """
                     <filter>
