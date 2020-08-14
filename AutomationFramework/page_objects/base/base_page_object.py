@@ -20,6 +20,7 @@ class BasePageObject:
     variables_to_commit = {}
     values_before_commit = {}
     values_after_commit = {}
+    values_where_changed_after_test = False
 
     def __init__(self, test_case_file=None, test_case_name=None, rpc_idx=0):
         self.rpc_automator = RPCAutomator2(HOSTS[0])
@@ -103,7 +104,7 @@ class BasePageObject:
         test_passes = True
         for key, value in self.variables_to_commit.items():
             if isinstance(self.values_after_commit[key], collections.abc.Mapping):
-                if self.values_after_commit[key]['#text'] != value:
+                if value not in self.values_after_commit[key]['#text']:
                     test_passes = False
             else:
                 if self.values_after_commit[key] != value:
@@ -114,15 +115,17 @@ class BasePageObject:
         return self.test_case['testcase']['description']
 
     def verify_test_and_skip(self):
+        self.values_where_changed_after_test = True
         skip_test = True
         for key, value in self.variables_to_commit.items():
             if isinstance(self.values_before_commit[key], collections.abc.Mapping):
-                if self.values_before_commit[key]['#text'] != value:
+                if value not in self.values_before_commit[key]['#text']:
                     skip_test = False
             else:
                 if self.values_before_commit[key] != value:
                     skip_test = False
         if skip_test:
+            self.values_where_changed_after_test = False
             pytest.skip('The actual value of the params tested is the same of the test´s expected value. '
                         'For performing the test change either the actual value or the test´s expected value')
 
@@ -169,7 +172,7 @@ class BasePageObject:
         initial_values = {}
         for key in self.variables_to_commit:
             if isinstance(self.values_before_commit[key], collections.abc.Mapping):
-                initial_values[key] = self.values_before_commit[key]['#text']
+                initial_values[key] = self.values_before_commit[key]['#text'].split(':')[-1]
             else:
                 initial_values[key] = self.values_before_commit[key]
         return initial_values

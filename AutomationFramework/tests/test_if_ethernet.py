@@ -6,8 +6,6 @@ from AutomationFramework.tests.base_test import BaseTest
 class TestInterfacesEthernet(BaseTest):
     test_case_file = 'if_ethernet.yml'
 
-    @pytest.mark.skip(reason="error in cisco: ncclient.operations.rpc.RPCError: 'GIRO' detected the 'warning' condition 'The configuration is not supported on this interface"
-                             "error in juniper: ncclient.operations.rpc.RPCError: error: invalid interface type: 1 - error: statement creation failed - error: load failure on translation changes")
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'if_ethernet_auto_negotiate',
                                                          'page_object_class': Interfaces}])
@@ -15,9 +13,6 @@ class TestInterfacesEthernet(BaseTest):
         create_page_object.execute_interfaces_edit_config_test_case()
         assert create_page_object.validate_test_case_params(), create_page_object.get_test_case_description()
 
-    @pytest.mark.skip(
-        reason="error in cisco: ncclient.operations.rpc.RPCError: 'GIRO' detected the 'warning' condition 'The configuration is not supported on this interface"
-               "error in juniper: ncclient.operations.rpc.RPCError: error: invalid interface type: 1 - error: statement creation failed - error: load failure on translation changes")
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'if_ethernet_duplex_mode',
                                                          'page_object_class': Interfaces}])
@@ -25,9 +20,6 @@ class TestInterfacesEthernet(BaseTest):
         create_page_object.execute_interfaces_edit_config_test_case()
         assert create_page_object.validate_test_case_params(), create_page_object.get_test_case_description()
 
-    @pytest.mark.skip(
-        reason="error in cisco: ncclient.operations.rpc.RPCError: 'GIRO' detected the 'warning' condition 'The configuration is not supported on this interface"
-               "error in juniper: ncclient.operations.rpc.RPCError: error: invalid interface type: 1 - error: statement creation failed - error: load failure on translation changes")
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'if_ethernet_port_speed',
                                                          'page_object_class': Interfaces}])
@@ -37,7 +29,7 @@ class TestInterfacesEthernet(BaseTest):
 
     @pytest.mark.skip(
         reason="error in cisco: Error in cisco: RPCError: The requested operation failed."
-               "error in juniper: ncclient.operations.rpc.RPCError: error: invalid interface type: 1 - error: statement creation failed - error: load failure on translation changes")
+               "error in juniper: ncclient.operations.rpc.RPCError: error: invalid interface type: 1 - error: load failure on translation changes")
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'if_ethernet_aggregate_id',
                                                          'page_object_class': Interfaces}])
