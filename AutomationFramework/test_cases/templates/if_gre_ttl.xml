@@ -1,0 +1,19 @@
+<edit-config>
+  <target>
+    <{{target}}/>
+  </target>
+  <config>
+    <interfaces xmlns="http://openconfig.net/yang/interfaces">
+      <interface>
+        <config>
+          <name>{{name}}</name>
+        </config>
+        <tunnel xmlns="http://openconfig.net/yang/interfaces/tunnel">
+          <config>
+            <ttl>{{ttl}}</ttl>
+          </config>
+        </tunnel>
+      </interface>
+    </interfaces>
+  </config>
+</edit-config>
