@@ -1,0 +1,44 @@
+
+- testcase:
+      name: if_status_admin_status
+      id: 1
+      description: >
+          This test is to get the admin status of the interface.
+      rpcs:
+          - template: if_status_admin_status.xml
+            operation: get
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+
+- testcase:
+      name: if_status_enabled
+      id: 1
+      description: >
+          This test is to get the enabled status of the interface.
+      rpcs:
+          - template: if_status_enabled.xml
+            operation: get
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+
+- testcase:
+      name: if_status_name
+      id: 1
+      description: >
+          This test is to get the name status of the interface.
+      rpcs:
+          - template: if_status_name.xml
+            operation: get
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+
+- testcase:
+      name: if_status_oper_status
+      id: 1
+      description: >
+          This test is to get the name status of the interface.
+      rpcs:
+          - template: if_status_oper_status.xml
+            operation: get
+            params:
+                   name: "GigabitEthernet0/0/0/4"
