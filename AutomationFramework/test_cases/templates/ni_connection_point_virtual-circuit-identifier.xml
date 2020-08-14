@@ -1,0 +1,37 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{instance_name}}</name>
+          <config>
+            <name>{{instance_name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+          </config>
+          <connection-points>
+            <connection-point>
+              <config>
+                <connection-point-id>{{connection_point_id}}</connection-point-id>
+              </config>
+              <endpoints>
+                <endpoint>
+                  <config>
+                    <endpoint-id>{{endpoint_id}}</endpoint-id>
+                  </config>
+                  <remote>
+                    <config>
+                      <virtual-circuit-identifier>{{virtual_circuit_identifier:}}</virtual-circuit-identifier>
+                    </config>
+                  </remote>
+                </endpoint>
+              </endpoints>
+            </connection-point>
+          </connection-points>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>
+</rpc>

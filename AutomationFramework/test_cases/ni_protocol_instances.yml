@@ -1,0 +1,30 @@
+
+- testcase:
+      name: ni_protocol_instances_creation
+      id: 1
+      description: >
+          This test is to create an instance of a protocol (BGP, OSPF or STATIC) within a L3 network-instance.
+      rpcs:
+          - template: ni_protocol_instances_creation.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   instance_name: "Prueba_LxVPN"
+                   identifier: "oc-pol-types:BGP"
+                   name: "BGP_65000"            
+- testcase:
+      name: ni_protocol_instances_enabled
+      id: 2
+      description: >
+          This test is to enable an instance of a protocol (BGP, OSPF or STATIC) within a L3 network-instance.
+      rpcs:
+          - template: ni_protocol_instances_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   instance_name: "Prueba_LxVPN"
+                   identifier: "oc-pol-types:BGP"
+                   name: "BGP_65000"
+                   enabled: "true"    

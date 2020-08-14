@@ -1,0 +1,22 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{instance_name}}</name>
+          <config>
+            <name>{{instance_name}}</name>
+          </config>
+          <encapsulation>
+            <config>
+              <encapsulation-type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{encapsulation_type}}</encapsulation-type>
+            </config>
+          </encapsulation>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>
+</rpc>

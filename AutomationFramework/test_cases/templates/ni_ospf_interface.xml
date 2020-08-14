@@ -1,0 +1,53 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <config>
+            <name>{{interface}}</name>
+          </config>
+        </interface>
+      </interfaces>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{instance_name}}</name>
+          <config>
+            <name>{{instance_name}}</name>
+          </config>
+          <protocols>
+            <protocol>
+              <identifier>{{identifier}}</identifier>
+              <name>{{name}}</name>
+              <config>
+                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier}}</identifier>
+                <name>{{name}}</name>
+              </config>
+              <ospfv2>
+                <areas>
+                  <area>
+                    <interfaces>
+                      <interface>
+                        <id/>
+                        <config>
+                          <id>{{id}}</id>
+                        </config>
+                        <interface-ref>
+                          <config>
+                            <interface>{{interfaces}}</interface>
+                          </config>
+                        </interface-ref>
+                      </interface>
+                    </interfaces>
+                  </area>
+                </areas>
+              </ospfv2>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>
+</rpc>

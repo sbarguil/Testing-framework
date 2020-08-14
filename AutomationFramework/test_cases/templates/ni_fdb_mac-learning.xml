@@ -1,0 +1,23 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{instance_name}}</name>
+          <fdb>
+            <config>
+              <mac-learning>{{mac_learning}}</mac-learning>
+            </config>
+          </fdb>
+          <config>
+            <name>{{instance_name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+          </config>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>
+</rpc
