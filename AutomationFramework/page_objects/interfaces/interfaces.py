@@ -11,6 +11,10 @@ class Interfaces(BasePageObject):
         'mtu': None,
         'loopback-mode': None,
         'tpid': None,
+        'auto-negotiate': None,
+        'duplex-mode': None,
+        'port-speed': None,
+        'aggregate-id': None,
     }
     values_after_commit = {
         'name': None,
@@ -20,6 +24,10 @@ class Interfaces(BasePageObject):
         'mtu': None,
         'loopback-mode': None,
         'tpid': None,
+        'auto-negotiate': None,
+        'duplex-mode': None,
+        'port-speed': None,
+        'aggregate-id': None,
     }
 
     def execute_interfaces_edit_config_test_case(self):
@@ -42,38 +50,54 @@ class Interfaces(BasePageObject):
         rpc_reply_key = self.get_rpc_reply_key_from_get_config()
         data_key = self.get_data_key_from_get_config(rpc_reply_key=rpc_reply_key)
         parsed_dict = xmltodict.parse(
-            self.edit_config_first_get_config_response.xml)[rpc_reply_key][data_key]['interfaces']['interface']['config']
+            self.edit_config_first_get_config_response.xml)[rpc_reply_key][data_key]['interfaces']['interface']
         if 'name' in parsed_dict:
-            self.values_before_commit['name'] = parsed_dict['name']
+            self.values_before_commit['name'] = parsed_dict['config']['name']
         if 'type' in parsed_dict:
-            self.values_before_commit['type'] = parsed_dict['type']
+            self.values_before_commit['type'] = parsed_dict['config']['type']
         if 'enabled' in parsed_dict:
-            self.values_before_commit['enabled'] = parsed_dict['enabled']
+            self.values_before_commit['enabled'] = parsed_dict['config']['enabled']
         if 'description' in parsed_dict:
-            self.values_before_commit['description'] = parsed_dict['description']
+            self.values_before_commit['description'] = parsed_dict['config']['description']
         if 'mtu' in parsed_dict:
-            self.values_before_commit['mtu'] = parsed_dict['mtu']
+            self.values_before_commit['mtu'] = parsed_dict['config']['mtu']
         if 'loopback-mode' in parsed_dict:
-            self.values_before_commit['loopback-mode'] = parsed_dict['loopback-mode']
+            self.values_before_commit['loopback-mode'] = parsed_dict['config']['loopback-mode']
         if 'tpid' in parsed_dict:
-            self.values_before_commit['tpid'] = parsed_dict['tpid']
+            self.values_before_commit['tpid'] = parsed_dict['config']['tpid']
+        if 'auto-negotiate' in parsed_dict:
+            self.values_before_commit['auto-negotiate'] = parsed_dict['ethernet']['config']['auto-negotiate']
+        if 'duplex-mode' in parsed_dict:
+            self.values_before_commit['duplex-mode'] = parsed_dict['ethernet']['config']['duplex-mode']
+        if 'port-speed' in parsed_dict:
+            self.values_before_commit['port-speed'] = parsed_dict['ethernet']['config']['port-speed']
+        if 'aggregate-id' in parsed_dict:
+            self.values_before_commit['aggregate-id'] = parsed_dict['ethernet']['config']['aggregate-id']
 
     def set_values_after_commit_dict(self):
         rpc_reply_key = self.get_rpc_reply_key_from_get_config()
         data_key = self.get_data_key_from_get_config(rpc_reply_key=rpc_reply_key)
         parsed_dict = xmltodict.parse(
-            self.edit_config_second_get_config_response.xml)[rpc_reply_key][data_key]['interfaces']['interface']['config']
+            self.edit_config_second_get_config_response.xml)[rpc_reply_key][data_key]['interfaces']['interface']
         if 'name' in parsed_dict:
-            self.values_after_commit['name'] = parsed_dict['name']
+            self.values_after_commit['name'] = parsed_dict['config']['name']
         if 'type' in parsed_dict:
-            self.values_after_commit['type'] = parsed_dict['type']
+            self.values_after_commit['type'] = parsed_dict['config']['type']
         if 'enabled' in parsed_dict:
-            self.values_after_commit['enabled'] = parsed_dict['enabled']
+            self.values_after_commit['enabled'] = parsed_dict['config']['enabled']
         if 'description' in parsed_dict:
-            self.values_after_commit['description'] = parsed_dict['description']
+            self.values_after_commit['description'] = parsed_dict['config']['description']
         if 'mtu' in parsed_dict:
-            self.values_after_commit['mtu'] = parsed_dict['mtu']
+            self.values_after_commit['mtu'] = parsed_dict['config']['mtu']
         if 'loopback-mode' in parsed_dict:
-            self.values_after_commit['loopback-mode'] = parsed_dict['loopback-mode']
+            self.values_after_commit['loopback-mode'] = parsed_dict['config']['loopback-mode']
         if 'tpid' in parsed_dict:
-            self.values_after_commit['tpid'] = parsed_dict['tpid']
+            self.values_after_commit['tpid'] = parsed_dict['config']['tpid']
+        if 'auto-negotiate' in parsed_dict:
+            self.values_after_commit['auto-negotiate'] = parsed_dict['ethernet']['config']['auto-negotiate']
+        if 'duplex-mode' in parsed_dict:
+            self.values_after_commit['duplex-mode'] = parsed_dict['ethernet']['config']['duplex-mode']
+        if 'port-speed' in parsed_dict:
+            self.values_after_commit['port-speed'] = parsed_dict['ethernet']['config']['port-speed']
+        if 'aggregate-id' in parsed_dict:
+            self.values_after_commit['aggregate-id'] = parsed_dict['ethernet']['config']['aggregate-id']

@@ -11,8 +11,8 @@
             commit: true
             params:
                    name: "GigabitEthernet0/0/0/4"
-
                    auto_negotiate: "true"
+
 - testcase:
       name: if_ethernet_duplex_mode
       id: 2
