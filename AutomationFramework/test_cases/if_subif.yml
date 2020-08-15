@@ -1,0 +1,159 @@
+
+- testcase:
+      name: if_subif_type
+      id: 1
+      description: >
+          This test is to set type of the interface.
+      rpcs:
+          - template: if_subif_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+                   type: "ianaift:ethernetCsmacd"
+
+- testcase:
+      name: if_subif_description
+      id: 2
+      description: >
+          This test is to set description of the subinterface.
+      rpcs:
+          - template: if_subif_description.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+                   index: "100"
+                   description: "Testing1"
+
+- testcase:
+      name: if_subif_enabled
+      id: 3
+      description: >
+          This test is to set status of the subinterface.
+      rpcs:
+          - template: if_subif_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+                   index: "100"
+                   enabled: "true"
+
+- testcase:
+      name: if_subif_ip_prefix_length
+      id: 4
+      description: >
+          This test is to set the ip address and mask of the subinterface.
+      rpcs:
+          - template: if_subif_ip_prefix_length.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+                   index: "100"
+                   ip: "192.168.30.1"
+                   prefix_length: "24"
+
+- testcase:
+      name: if_subif_ip_state
+      id: 5
+      description: >
+          This test is to get the state IP of a subinterface.
+      rpcs:
+          - template: if_subif_ip_state.xml
+            operation: get
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+                   index: "100"
+
+- testcase:
+      name: if_subif_origin
+      id: 6
+      description: >
+          This this is to get the origin of the address.
+      rpcs:
+          - template: if_subif_origin.xml
+            operation: get
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+                   index: "100"
+
+- testcase:
+      name: if_subif_dhcp_client
+      id: 7
+      description: >
+          This test is to set dhcp client state.
+      rpcs:
+          - template: if_subif_dhcp_client.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+                   index: "100"
+                   dhcp_client: "true"
+- testcase:
+      name: if_subif_mtu
+      id: 8
+      description: >
+          This test is to set mtu value on subinterface.
+      rpcs:
+          - template: if_subif_mtu.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+                   index: "100"
+                   mtu: "1500"
+
+- testcase:
+      name: if_subif_vlan_id
+      id: 9
+      description: >
+          This test is to set the vlan id for a subinterface.
+      rpcs:
+          - template: if_subif_vlan_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+                   index: "100"
+                   vlan_id: "100"
+
+- testcase:
+      name: if_subif_inner_outer_vlan_id
+      id: 10
+      description: >
+          This test is to set the inner and outer vlan id.
+      rpcs:
+          - template: if_subif_inner_outer_vlan_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+                   index: "1030"
+                   inner_vlan_id: "100"
+                   outer_vlan_id: "30"
+
+- testcase:
+      name: if_subif_match_vlan_id
+      id: 11
+      description: >
+          This test is to set the match single vlan id on subinterface.
+      rpcs:
+          - template: if_subif_match_vlan_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+                   index: "150"
+                   vlan_id: "150"
