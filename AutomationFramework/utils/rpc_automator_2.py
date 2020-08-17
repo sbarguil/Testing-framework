@@ -26,7 +26,8 @@ class RPCAutomator2:
                                        password=self.password,
                                        hostkey_verify=False,
                                        look_for_keys=False,
-                                       allow_agent=False
+                                       allow_agent=False,
+                                       # device_params={'name': 'huawei'},
                                        )
 
     def rpc_body_generator(self, test_case, rpc_index=0, variables_in_template=None):
@@ -37,7 +38,10 @@ class RPCAutomator2:
             jinja_variables_dict = variables_in_template
         else:
             jinja_variables_dict = rpc_list[rpc_index]['params']
-        jinja_variables_dict['target'] = rpc_list[rpc_index]['target']
+
+        if 'target' in rpc_list[rpc_index]:
+            jinja_variables_dict['target'] = rpc_list[rpc_index]['target']
+
         return jinja_template.render(jinja_variables_dict)
 
     # TODO
@@ -56,6 +60,13 @@ class RPCAutomator2:
             print(self.manager.dispatch(et.fromstring("<commit/>")))
         except Exception as e:
             print("An exception has occurred when performing the edit_config operation.")
+            raise e
+
+    def safe_get(self, template):
+        try:
+            return self.manager.get(("subtree", template))
+        except Exception as e:
+            print("An exception has occurred when performing the get operation.")
             raise e
 
     def safe_get_config(self, netconf_filter, test_case):
