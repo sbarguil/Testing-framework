@@ -15,6 +15,12 @@ class Interfaces(BasePageObject):
         'duplex_mode': None,
         'port_speed': None,
         'aggregate_id': None,
+        'dst': None,
+        'src': None,
+        'ttl': None,
+        'tunnel:ipv4:addresses:address:config:ip': None,
+        'tunnel:ipv4:addresses:address:config:prefix_length': None,
+        'tunnel:ipv4::config:mtu': None,
     }
     values_after_commit = {
         'name': None,
@@ -28,6 +34,12 @@ class Interfaces(BasePageObject):
         'duplex_mode': None,
         'port_speed': None,
         'aggregate_id': None,
+        'dst': None,
+        'src': None,
+        'ttl': None,
+        'tunnel:ipv4:addresses:address:config:ip': None,
+        'tunnel:ipv4:addresses:address:config:prefix_length': None,
+        'tunnel:ipv4::config:mtu': None,
     }
 
     def execute_interfaces_edit_config_test_case(self):
@@ -68,15 +80,31 @@ class Interfaces(BasePageObject):
             if 'tpid' in parsed_dict['config']:
                 self.values_before_commit['tpid'] = parsed_dict['config']['tpid']
 
-            if 'ethernet' in parsed_dict['config']:
-                if 'auto-negotiate' in parsed_dict['ethernet']['config']:
-                    self.values_before_commit['auto_negotiate'] = parsed_dict['ethernet']['config']['auto-negotiate']
-                if 'duplex-mode' in parsed_dict['ethernet']['config']:
-                    self.values_before_commit['duplex_mode'] = parsed_dict['ethernet']['config']['duplex-mode']
-                if 'port-speed' in parsed_dict['ethernet']['config']:
-                    self.values_before_commit['port_speed'] = parsed_dict['ethernet']['config']['port-speed']
-                if 'aggregate-id' in parsed_dict['ethernet']['config']:
-                    self.values_before_commit['aggregate_id'] = parsed_dict['ethernet']['config']['aggregate-id']
+        if 'ethernet' in parsed_dict:
+            if 'auto-negotiate' in parsed_dict['ethernet']['config']:
+                self.values_before_commit['auto_negotiate'] = parsed_dict['ethernet']['config']['auto-negotiate']
+            if 'duplex-mode' in parsed_dict['ethernet']['config']:
+                self.values_before_commit['duplex_mode'] = parsed_dict['ethernet']['config']['duplex-mode']
+            if 'port-speed' in parsed_dict['ethernet']['config']:
+                self.values_before_commit['port_speed'] = parsed_dict['ethernet']['config']['port-speed']
+            if 'aggregate-id' in parsed_dict['ethernet']['config']:
+                self.values_before_commit['aggregate_id'] = parsed_dict['ethernet']['config']['aggregate-id']
+
+        if 'tunnel' in parsed_dict:
+            if 'dst' in parsed_dict['tunnel']['config']:
+                self.values_before_commit['dst'] = parsed_dict['tunnel']['config']['dst']
+            if 'src' in parsed_dict['tunnel']['config']:
+                self.values_before_commit['src'] = parsed_dict['tunnel']['config']['src']
+            if 'ttl' in parsed_dict['tunnel']['config']:
+                self.values_before_commit['ttl'] = parsed_dict['tunnel']['config']['ttl']
+            if 'ip' in parsed_dict['tunnel']['ipv4']['addresses']['address']['config']:
+                self.values_before_commit['tunnel:ipv4:addresses:address:config:ip'] = \
+                    parsed_dict['tunnel']['ipv4']['addresses']['address']['config']['ip']
+            if 'prefix-length' in parsed_dict['tunnel']['ipv4']['addresses']['address']['config']:
+                self.values_before_commit['tunnel:ipv4:addresses:address:config:prefix_length'] = \
+                    parsed_dict['tunnel']['ipv4']['addresses']['address']['config']['prefix-length']
+            if 'mtu' in parsed_dict['tunnel']['ipv4']['config']:
+                self.values_before_commit['tunnel:ipv4::config:mtu'] = parsed_dict['tunnel']['ipv4']['config']['mtu']
 
     def set_values_after_commit_dict(self):
         rpc_reply_key = self.get_rpc_reply_key_from_get_config()
@@ -99,12 +127,28 @@ class Interfaces(BasePageObject):
             if 'tpid' in parsed_dict['config']:
                 self.values_after_commit['tpid'] = parsed_dict['config']['tpid']
 
-            if 'ethernet' in parsed_dict['config']:
-                if 'auto-negotiate' in parsed_dict['ethernet']['config']:
-                    self.values_after_commit['auto_negotiate'] = parsed_dict['ethernet']['config']['auto-negotiate']
-                if 'duplex-mode' in parsed_dict['ethernet']['config']:
-                    self.values_after_commit['duplex_mode'] = parsed_dict['ethernet']['config']['duplex-mode']
-                if 'port-speed' in parsed_dict['ethernet']['config']:
-                    self.values_after_commit['port_speed'] = parsed_dict['ethernet']['config']['port-speed']
-                if 'aggregate-id' in parsed_dict['ethernet']['config']:
-                    self.values_after_commit['aggregate_id'] = parsed_dict['ethernet']['config']['aggregate-id']
+        if 'ethernet' in parsed_dict:
+            if 'auto-negotiate' in parsed_dict['ethernet']['config']:
+                self.values_after_commit['auto_negotiate'] = parsed_dict['ethernet']['config']['auto-negotiate']
+            if 'duplex-mode' in parsed_dict['ethernet']['config']:
+                self.values_after_commit['duplex_mode'] = parsed_dict['ethernet']['config']['duplex-mode']
+            if 'port-speed' in parsed_dict['ethernet']['config']:
+                self.values_after_commit['port_speed'] = parsed_dict['ethernet']['config']['port-speed']
+            if 'aggregate-id' in parsed_dict['ethernet']['config']:
+                self.values_after_commit['aggregate_id'] = parsed_dict['ethernet']['config']['aggregate-id']
+
+        if 'tunnel' in parsed_dict:
+            if 'dst' in parsed_dict['tunnel']['config']:
+                self.values_after_commit['dst'] = parsed_dict['tunnel']['config']['dst']
+            if 'src' in parsed_dict['tunnel']['config']:
+                self.values_after_commit['src'] = parsed_dict['tunnel']['config']['src']
+            if 'ttl' in parsed_dict['tunnel']['config']:
+                self.values_after_commit['ttl'] = parsed_dict['tunnel']['config']['ttl']
+            if 'ip' in parsed_dict['tunnel']['ipv4']['addresses']['address']['config']:
+                self.values_after_commit['tunnel:ipv4:addresses:address:config:ip'] = \
+                    parsed_dict['tunnel']['ipv4']['addresses']['address']['config']['ip']
+            if 'prefix-length' in parsed_dict['tunnel']['ipv4']['addresses']['address']['config']:
+                self.values_after_commit['tunnel:ipv4:addresses:address:config:prefix_length'] = \
+                    parsed_dict['tunnel']['ipv4']['addresses']['address']['config']['prefix-length']
+            if 'mtu' in parsed_dict['tunnel']['ipv4']['config']:
+                self.values_after_commit['tunnel:ipv4::config:mtu'] = parsed_dict['tunnel']['ipv4']['config']['mtu']
