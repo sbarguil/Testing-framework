@@ -17,11 +17,12 @@
                 <config>
                   <name>{{statement_name}}</name>
                 </config>
-                <actions>
+                <conditions>
                   <config>
-                    <policy-result>{{policy_result}}</policy-result>
+                    <call-policy>{{statement_name}}</call-policy>
+                    <install-protocol-eq xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{install_protocol_eq}}</install-protocol-eq>
                   </config>
-                </actions>
+                </conditions>
               </statement>
             </statements>
           </policy-definition>

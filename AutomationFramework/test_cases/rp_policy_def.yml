@@ -26,4 +26,18 @@
                    policy_name: "ROUTING_POLICY_EXPORT"
                    statement_name: "1"
                    policy_result: "ACCEPT_ROUTE"
-                   
+
+- testcase:
+      name: rp_policy_def_install_protocol_eq
+      id: 3
+      description: >
+          This test is to define routing protocol to apply in the policy.
+      rpcs:
+          - template: rp_policy_def_install_protocol_eq.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   policy_name: "ROUTING_POLICY_EXPORT"
+                   statement_name: "1"
+                   install_protocol_eq: "oc-pol-types:BGP"
