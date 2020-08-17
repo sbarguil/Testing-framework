@@ -10,9 +10,9 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/4"
+                   name: "ge-0/0/3"
+                   auto_negotiate: "false"
 
-                   auto_negotiate: "true"
 - testcase:
       name: if_ethernet_duplex_mode
       id: 2
@@ -24,7 +24,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/4"
+                   name: "ge-0/0/3"
                    duplex_mode: "FULL"
       rpcs:
           - template: if_ethernet_duplex_mode.xml
@@ -45,8 +45,8 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/4"
-                   port_speed: "SPEED_1GB"
+                   name: "ge-0/0/3"
+                   port_speed: "SPEED_100MB"
 - testcase:
       name: if_ethernet_aggregate_id
       id: 4
@@ -58,16 +58,16 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/4"
-                   aggregate_id: "10"
+                   name: "ge-0/0/3"
+                   aggregate_id: "1"
 - testcase:
       name: if_ethernet_port_speed_state
       id: 5
       description: >
-          This test is to create an lag id of this interface.
+          This test is to get the port-speed of this interface.
       rpcs:
           - template: if_ethernet_port_speed_state.xml
             operation: get
             params:
-                   name: "GigabitEthernet0/0/0/4"
-                   port_speed_state: "SPEED_1GB"
+                   name: "ge-0/0/3"
+                   port_speed: ""
