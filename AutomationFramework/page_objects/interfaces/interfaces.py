@@ -15,6 +15,8 @@ class Interfaces(BasePageObject):
         'duplex_mode': None,
         'port_speed': None,
         'aggregate_id': None,
+        'aggregation:config:lag_type': None,
+        'aggregation:config:min_links': None,
     }
     values_after_commit = {
         'name': None,
@@ -28,6 +30,8 @@ class Interfaces(BasePageObject):
         'duplex_mode': None,
         'port_speed': None,
         'aggregate_id': None,
+        'aggregation:config:lag_type': None,
+        'aggregation:config:min_links': None,
     }
 
     def execute_interfaces_edit_config_test_case(self):
@@ -68,15 +72,21 @@ class Interfaces(BasePageObject):
             if 'tpid' in parsed_dict['config']:
                 self.values_before_commit['tpid'] = parsed_dict['config']['tpid']
 
-            if 'ethernet' in parsed_dict['config']:
-                if 'auto-negotiate' in parsed_dict['ethernet']['config']:
-                    self.values_before_commit['auto_negotiate'] = parsed_dict['ethernet']['config']['auto-negotiate']
-                if 'duplex-mode' in parsed_dict['ethernet']['config']:
-                    self.values_before_commit['duplex_mode'] = parsed_dict['ethernet']['config']['duplex-mode']
-                if 'port-speed' in parsed_dict['ethernet']['config']:
-                    self.values_before_commit['port_speed'] = parsed_dict['ethernet']['config']['port-speed']
-                if 'aggregate-id' in parsed_dict['ethernet']['config']:
-                    self.values_before_commit['aggregate_id'] = parsed_dict['ethernet']['config']['aggregate-id']
+        if 'ethernet' in parsed_dict:
+            if 'auto-negotiate' in parsed_dict['ethernet']['config']:
+                self.values_before_commit['auto_negotiate'] = parsed_dict['ethernet']['config']['auto-negotiate']
+            if 'duplex-mode' in parsed_dict['ethernet']['config']:
+                self.values_before_commit['duplex_mode'] = parsed_dict['ethernet']['config']['duplex-mode']
+            if 'port-speed' in parsed_dict['ethernet']['config']:
+                self.values_before_commit['port_speed'] = parsed_dict['ethernet']['config']['port-speed']
+            if 'aggregate-id' in parsed_dict['ethernet']['config']:
+                self.values_before_commit['aggregate_id'] = parsed_dict['ethernet']['config']['aggregate-id']
+
+        if 'aggregation' in parsed_dict:
+            if 'lag-type' in parsed_dict['aggregation']['config']:
+                self.values_before_commit['aggregation:config:lag_type'] = parsed_dict['aggregation']['config']['lag-type']
+            if 'min-links' in parsed_dict['aggregation']['config']:
+                self.values_before_commit['aggregation:config:min_links'] = parsed_dict['aggregation']['config']['min-links']
 
     def set_values_after_commit_dict(self):
         rpc_reply_key = self.get_rpc_reply_key_from_get_config()
@@ -99,12 +109,18 @@ class Interfaces(BasePageObject):
             if 'tpid' in parsed_dict['config']:
                 self.values_after_commit['tpid'] = parsed_dict['config']['tpid']
 
-            if 'ethernet' in parsed_dict['config']:
-                if 'auto-negotiate' in parsed_dict['ethernet']['config']:
-                    self.values_after_commit['auto_negotiate'] = parsed_dict['ethernet']['config']['auto-negotiate']
-                if 'duplex-mode' in parsed_dict['ethernet']['config']:
-                    self.values_after_commit['duplex_mode'] = parsed_dict['ethernet']['config']['duplex-mode']
-                if 'port-speed' in parsed_dict['ethernet']['config']:
-                    self.values_after_commit['port_speed'] = parsed_dict['ethernet']['config']['port-speed']
-                if 'aggregate-id' in parsed_dict['ethernet']['config']:
-                    self.values_after_commit['aggregate_id'] = parsed_dict['ethernet']['config']['aggregate-id']
+        if 'ethernet' in parsed_dict:
+            if 'auto-negotiate' in parsed_dict['ethernet']['config']:
+                self.values_after_commit['auto_negotiate'] = parsed_dict['ethernet']['config']['auto-negotiate']
+            if 'duplex-mode' in parsed_dict['ethernet']['config']:
+                self.values_after_commit['duplex_mode'] = parsed_dict['ethernet']['config']['duplex-mode']
+            if 'port-speed' in parsed_dict['ethernet']['config']:
+                self.values_after_commit['port_speed'] = parsed_dict['ethernet']['config']['port-speed']
+            if 'aggregate-id' in parsed_dict['ethernet']['config']:
+                self.values_after_commit['aggregate_id'] = parsed_dict['ethernet']['config']['aggregate-id']
+
+        if 'aggregation' in parsed_dict:
+            if 'lag-type' in parsed_dict['aggregation']['config']:
+                self.values_after_commit['aggregation:config:lag_type'] = parsed_dict['aggregation']['config']['lag-type']
+            if 'min-links' in parsed_dict['aggregation']['config']:
+                self.values_after_commit['aggregation:config:min_links'] = parsed_dict['aggregation']['config']['min-links']
