@@ -56,7 +56,7 @@
       name: if_ethernet_port_speed_state
       id: 5
       description: >
-          This test is to create an lag id of this interface.
+          This test is to get the port-speed of this interface.
       rpcs:
           - template: if_ethernet_port_speed_state.xml
             operation: get

@@ -22,7 +22,7 @@ HOSTS = [
 """HOSTS = [
     {
         'host': '10.95.86.216',
-        'port': '830',
+        'port': '12022',
         'username': 'admin',
         'password': 'admin',
     },

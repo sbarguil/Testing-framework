@@ -114,6 +114,17 @@ class BasePageObject:
                     test_passes = False
         return test_passes
 
+    def validate_get_test_case(self):
+        print('---------------------------------------------------------------------------------------')
+        print('Validation')
+        print('- Values after get')
+        print(self.values_after_get)
+        test_passes = True
+        for key, value in self.values_after_get.items():
+            if not self.values_after_get[key]:
+                test_passes = False
+        return test_passes
+
     def get_test_case_description(self):
         return self.test_case['testcase']['description']
 
@@ -201,11 +212,18 @@ class BasePageObject:
             self.values_after_get[key_to_search] = self.get_tag_value_in_given_dict(tag_value=key_to_search,
                                                                                     parsed_dict=parsed_dict)
 
-        # TODO: Continue
-
-    # TODO: COntinue
     def get_tag_value_in_given_dict(self, tag_value, parsed_dict):
-        return 'None'
+        recursive_return = None
+        for key, item in parsed_dict.items():
+            if key == tag_value:
+                return parsed_dict[key]
+            else:
+                if isinstance(parsed_dict[key], collections.abc.Mapping):
+                    recursive_return = self.get_tag_value_in_given_dict(tag_value=tag_value,
+                                                                        parsed_dict=parsed_dict[key])
+            if recursive_return:
+                break
+        return recursive_return
 
     def get_rpc_reply_key_from_get_response(self):
         response_dict = xmltodict.parse(self.get_response.xml)
