@@ -5,6 +5,7 @@
   <config>
     <interfaces xmlns="http://openconfig.net/yang/interfaces">
       <interface>
+        <name>{{name}}</name>
         <config>
           <name>{{name}}</name>
         </config>
@@ -12,6 +13,7 @@
           <ipv4>
             <addresses>
               <address>
+                <ip>{{ip}}</ip>                
                 <config>
                   <ip>{{ip}}</ip>
                   <prefix-length>{{prefix_length}}</prefix-length>
