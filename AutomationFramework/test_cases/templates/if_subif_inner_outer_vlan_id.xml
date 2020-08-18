@@ -9,6 +9,9 @@
         <subinterfaces>
           <subinterface>
             <index>{{index}}</index>
+            <config>
+              <index>{{index}}</index>
+            </config>
             <vlan xmlns="http://openconfig.net/yang/vlan">
               <match>
                 <double-tagged>

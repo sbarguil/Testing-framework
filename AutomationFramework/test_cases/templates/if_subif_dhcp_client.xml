@@ -12,6 +12,7 @@
               <index>{{index}}</index>
               <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip">
                 <config>
+                <index>{{index}}</index>
                   <dhcp-client>{{dhcp_client}}</dhcp-client>
                 </config>
               </ipv4>
