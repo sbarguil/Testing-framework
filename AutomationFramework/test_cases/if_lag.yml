@@ -10,9 +10,11 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/4"
-                   aggregate_id: "10"
+                   name: "300"
+                   type: "ianaift:ieee8023adLag"
+                   enabled: "true"
                    lag_type:  "LACP"
+
 - testcase:
       name: if_lag_min_links
       id: 2
@@ -24,6 +26,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/4"
-                   aggregate_id: "10"
+                   name: "300"
+                   type: "ianaift:ieee8023adLag"
+                   enabled: "true"
                    min_links:  "5"
