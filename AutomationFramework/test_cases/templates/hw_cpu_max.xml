@@ -1,0 +1,20 @@
+
+<get>
+  <filter>
+    <components xmlns="http://openconfig.net/yang/platform">
+      <component>
+        <name/>
+        <config>
+          <name/>
+        </config>
+        <cpu>
+          <utilization xmlns="http://openconfig.net/yang/platform/cpu">
+            <state>
+              <max/>
+            </state>
+          </utilization>
+        </cpu>
+      </component>
+    </components>
+  </filter>
+</get>
