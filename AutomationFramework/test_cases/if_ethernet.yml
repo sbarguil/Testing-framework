@@ -39,19 +39,30 @@
             params:
                    name: "GigabitEthernet0/0/0/4"
                    port_speed: "SPEED_1GB"
+
 - testcase:
       name: if_ethernet_aggregate_id
       id: 4
       description: >
-          This test is to create an lag id of this interface.
+          This test is to associate a interface member to LACP id.
       rpcs:
+          - template: if_ethernet_lag_create.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "300"
+                   type: "ianaift:ieee8023adLag"
+                   enabled: "true"
+
           - template: if_ethernet_aggregate_id.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
                    name: "GigabitEthernet0/0/0/4"
-                   aggregate_id: "10"
+                   aggregate_id: "300"
+
 - testcase:
       name: if_ethernet_port_speed_state
       id: 5
