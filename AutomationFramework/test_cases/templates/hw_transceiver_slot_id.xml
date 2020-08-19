@@ -1,0 +1,17 @@
+<get>
+  <filter>
+    <components xmlns="http://openconfig.net/yang/platform">
+      <component>
+        <name/>
+        <config>
+          <name/>
+        </config>
+        <linecard xmlns="http://openconfig.net/yang/platform/linecard">
+          <state>
+            <slot-id/>
+          </state>
+        </linecard>
+      </component>
+    </components>
+  </filter>
+</get>

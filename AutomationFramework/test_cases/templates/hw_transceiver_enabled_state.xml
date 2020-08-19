@@ -1,0 +1,17 @@
+<get>
+  <filter>
+    <components xmlns="http://openconfig.net/yang/platform">
+      <component>
+        <name/>
+        <config>
+          <name/>
+        </config>
+        <transceiver xmlns="http://openconfig.net/yang/platform/transceiver">
+          <state>
+            <enabled/>
+          </state>
+        </transceiver>
+      </component>
+    </components>
+  </filter>
+</get>
