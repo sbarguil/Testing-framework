@@ -11,7 +11,7 @@
             commit: true
             params:
                    name: "1"
-                   type: "ethernetCsmacd"
+                   type: "ieee8023adLag"
 
 - testcase:
       name: if_subif_description
