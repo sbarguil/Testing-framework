@@ -1,0 +1,20 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <components xmlns="http://openconfig.net/yang/platform">
+        <component>
+          <name>{{name}}</name>
+          <subcomponents>
+            <subcomponent>
+              <name>{{name}}</name>
+              <config>
+                <name>{{name}}</name>
+              </config>
+            </subcomponent>
+          </subcomponents>
+        </component>
+      </components>
+    </config>
+  </edit-config>

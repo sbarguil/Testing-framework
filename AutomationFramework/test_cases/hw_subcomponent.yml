@@ -1,0 +1,15 @@
+
+- testcase:
+      name: hw_subcomponent_name
+      id: 1
+      description: >
+          This test is to set the name subcomponent.
+      rpcs:
+          - template: hw_subcomponent_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "300"
+          - template: hw_subcomponent_name_state.xml
+            operation: get
