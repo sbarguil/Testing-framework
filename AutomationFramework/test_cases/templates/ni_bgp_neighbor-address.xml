@@ -1,5 +1,4 @@
-<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
-  <edit-config>
+<edit-config>
     <target>
       <{{target}}/>
     </target>
@@ -34,4 +33,3 @@
       </network-instances>
     </config>
   </edit-config>
-</rpc>
