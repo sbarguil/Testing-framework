@@ -10,8 +10,8 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/4"
-                   type: "ianaift:ethernetCsmacd"
+                   name: "1"
+                   type: "ethernetCsmacd"
 
 - testcase:
       name: if_subif_description
@@ -24,7 +24,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/4"
+                   name: "1"
                    index: "100"
                    description: "Testing1"
 
@@ -39,9 +39,9 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/4"
+                   name: "1"
                    index: "100"
-                   enabled: "true"
+                   enabled: "false"
 
 - testcase:
       name: if_subif_ip_prefix_length
@@ -54,7 +54,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/4"
+                   name: "1"
                    index: "100"
                    ip: "192.168.30.1"
                    prefix_length: "24"
