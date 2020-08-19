@@ -1,9 +1,9 @@
-import time
-
+import xmltodict
 from ncclient import manager
 import yaml
 from lxml import etree as et
 from jinja2 import Environment, PackageLoader, select_autoescape
+from collections import OrderedDict
 
 
 class RPCAutomator2:
@@ -27,7 +27,7 @@ class RPCAutomator2:
                                        hostkey_verify=False,
                                        look_for_keys=False,
                                        allow_agent=False,
-                                       # device_params={'name': 'huawei'},
+                                       device_params={'name': 'huawei'},
                                        )
 
     def rpc_body_generator(self, test_case, rpc_index=0, variables_in_template=None):
@@ -45,8 +45,18 @@ class RPCAutomator2:
         return jinja_template.render(jinja_variables_dict)
 
     # TODO
-    def generate_filter_from_test_case(self):
-        pass
+    def get_occurrences_of_variable_in_not_rendered_template(self, test_case, rpc_index, variable_in_test_case):
+        return 2
+
+    def generate_filter_from_test_case(self, test_case, rpc_index):
+        template_file_name = test_case['testcase']['rpcs'][rpc_index]['template']
+        jinja_template = self.jinja_env.get_template(template_file_name)
+        empty_template = jinja_template.render({'target': 'None'})
+        parsed_dict = xmltodict.parse(empty_template)
+        full_filter_dict = OrderedDict()
+        full_filter_dict['filter'] = parsed_dict['edit-config']['config']
+        full_filter = xmltodict.unparse(full_filter_dict)
+        return full_filter
 
     def get_rpc_target_from_test_case(self, test_case, rpc_index=0):
         rpc_list = test_case['testcase']['rpcs']
