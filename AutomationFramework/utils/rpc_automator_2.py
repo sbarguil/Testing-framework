@@ -5,6 +5,7 @@ from lxml import etree as et
 from jinja2 import Environment, PackageLoader, select_autoescape
 from collections import OrderedDict
 
+
 class RPCAutomator2:
     def __init__(self, connection):
         self.host = connection['host']
@@ -42,6 +43,10 @@ class RPCAutomator2:
             jinja_variables_dict['target'] = rpc_list[rpc_index]['target']
 
         return jinja_template.render(jinja_variables_dict)
+
+    # TODO
+    def get_occurrences_of_variable_in_not_rendered_template(self, test_case, rpc_index, variable_in_test_case):
+        return 2
 
     def generate_filter_from_test_case(self, test_case, rpc_index):
         template_file_name = test_case['testcase']['rpcs'][rpc_index]['template']

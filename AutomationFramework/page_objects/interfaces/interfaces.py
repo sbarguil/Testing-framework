@@ -32,9 +32,42 @@ class Interfaces(BasePageObject):
                 'prefix_length': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/prefix-length',
             }
         ],
-
-
-
+        'if_subif_dhcp_client': [
+            {
+                'name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'dhcp_client': 'interfaces/interface/subinterfaces/subinterface/ipv4/config/dhcp-client',
+            }
+        ],
+        'if_subif_mtu': [
+            {
+                'name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'mtu': 'interfaces/interface/subinterfaces/subinterface/ipv4/config/mtu',
+            }
+        ],
+        'if_subif_vlan_id': [
+            {
+                'name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'vlan_id': 'interfaces/interface/subinterfaces/subinterface/vlan/config/vlan-id',
+            }
+        ],
+        'if_subif_inner_outer_vlan_id': [
+            {
+                'name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'inner_vlan_id': 'interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged/config/inner-vlan-id',
+                'outer_vlan_id': 'interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged/config/outer-vlan-id',
+            }
+        ],
+        'if_subif_match_vlan_id': [
+            {
+                'name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'vlan_id': 'interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged/config/vlan-id',
+            }
+        ],
     }
 
     values_before_commit = {

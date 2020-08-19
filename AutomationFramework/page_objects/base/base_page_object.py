@@ -1,7 +1,6 @@
 import collections
-
+from collections import OrderedDict
 import pytest
-import yaml
 from AutomationFramework.utils.rpc_automator_2 import RPCAutomator2
 from AutomationFramework.capabilities import HOSTS
 import xmltodict
@@ -43,6 +42,7 @@ class BasePageObject:
         self.init_generic_variables_to_commit()
 
     def init_generic_variables_to_commit(self):
+        self.generic_variables_to_commit = []
         for variable, value in self.rpcs_list[self.current_rpc_index_being_executed]['params'].items():
             new_variable = {'test_case_key': variable, 'value_to_commit': value}
             self.generic_variables_to_commit.append(new_variable)
@@ -72,29 +72,34 @@ class BasePageObject:
         self.set_generic_values_after_commit()
 
     def set_generic_values_after_commit(self):
+        self.generic_values_after_commit = []
         rpc_reply_key = self.get_rpc_reply_key_from_get_config()
         data_key = self.get_data_key_from_get_config(rpc_reply_key=rpc_reply_key)
         parsed_dict = xmltodict.parse(
             self.edit_config_second_get_config_response.xml)[rpc_reply_key][data_key]
         for variable in self.generic_variables_to_commit:
             new_variable = {'test_case_key': variable['test_case_key'],
+                            'value_after_commit': self.get_tag_value_in_given_dict_by_path(parsed_dict=parsed_dict,
+                                                                                           path=variable['path_list']),
                             'path_string': variable['path_string'],
                             'path_list': variable['path_list'],
-                            'value_after_commit': self.get_tag_value_in_given_dict_by_path(parsed_dict=parsed_dict,
-                                                                                            path=variable['path_list'])}
+                            }
+
             self.generic_values_after_commit.append(new_variable)
 
     def set_generic_values_before_commit(self):
+        self.generic_values_before_commit = []
         rpc_reply_key = self.get_rpc_reply_key_from_get_config()
         data_key = self.get_data_key_from_get_config(rpc_reply_key=rpc_reply_key)
         parsed_dict = xmltodict.parse(
             self.edit_config_first_get_config_response.xml)[rpc_reply_key][data_key]
         for variable in self.generic_variables_to_commit:
             new_variable = {'test_case_key': variable['test_case_key'],
+                            'value_before_commit': self.get_tag_value_in_given_dict_by_path(parsed_dict=parsed_dict,
+                                                                                            path=variable['path_list']),
                             'path_string': variable['path_string'],
                             'path_list': variable['path_list'],
-                            'value_before_commit': self.get_tag_value_in_given_dict_by_path(parsed_dict=parsed_dict,
-                                                                                            path=variable['path_list'])}
+                            }
             self.generic_values_before_commit.append(new_variable)
 
     def get_tag_value_in_given_dict_by_path(self, path, parsed_dict):
@@ -277,18 +282,74 @@ class BasePageObject:
     def clean_after_test(self):
         print('---------------------------------------------------------------------------------------')
         print('- Clean after test')
-        if self.test_created_something:
+        if self.test_created_something():
             self.delete_creation()
         else:
             self.soft_clean()
 
-    # TODO
     def test_created_something(self):
-        pass
+        created_something = False
+        for value in self.generic_values_before_commit:
+            if not value['value_before_commit']:
+                created_something = True
+                break
+        return created_something
 
-    # TODO
+    def container_created(self, variable):
+        number_of_occurrences_for_variable_in_empty_template = \
+            self.rpc_automator.get_occurrences_of_variable_in_not_rendered_template(
+                test_case=self.test_case, rpc_index=self.current_rpc_index_being_executed,
+                variable_in_test_case=variable['test_case_key'])
+        if number_of_occurrences_for_variable_in_empty_template > 1:
+            return True
+        else:
+            return False
+
     def delete_creation(self):
-        pass
+        print('- Deleting the items created in the test by deleting the parent container')
+        print(xmltodict.parse(self.rendered_template))
+        parsed_edit_config_template = xmltodict.parse(self.rendered_template)['edit-config']['config']
+        parsed_edit_config_template_with_delete = {}
+        for variable in self.generic_values_before_commit:
+            if not variable['value_before_commit']:
+                if self.container_created(variable=variable):
+                    parsed_edit_config_template_with_delete = self.insert_delete_operation_to_dict_in_parent_container(
+                        parsed_dict=parsed_edit_config_template, created_item_path_list=variable['path_list'])
+                    break
+                else:
+                    #TODO
+                    pass
+
+        target_value_dict = OrderedDict()
+        target_value_dict['candidate'] = None
+
+        target_tag_dict = OrderedDict()
+        target_tag_dict['target'] = target_value_dict
+        target_tag_dict['config'] = parsed_edit_config_template_with_delete
+
+        full_parsed_edit_config_template_with_delete = OrderedDict()
+        full_parsed_edit_config_template_with_delete['edit-config'] = target_tag_dict
+
+        edit_config_template_with_delete = xmltodict.unparse(full_parsed_edit_config_template_with_delete,
+                                                             full_document=False)
+        print('- Template with the delete operation for the root of the item created')
+        print(edit_config_template_with_delete)
+        if edit_config_template_with_delete:
+            self.execute_edit_config_with_template(template=edit_config_template_with_delete)
+
+    def insert_delete_operation_to_dict_in_parent_container(self, created_item_path_list, parsed_dict):
+        recursive_return = None
+        if len(created_item_path_list) == 1:
+            return True
+        else:
+            recursive_return = self.insert_delete_operation_to_dict_in_parent_container(
+                created_item_path_list=created_item_path_list[1:], parsed_dict=parsed_dict[created_item_path_list[0]])
+            if recursive_return == True:
+                parsed_dict[created_item_path_list[0]]['@operation'] = 'delete'
+                return parsed_dict
+
+            parsed_dict[created_item_path_list[0]] = recursive_return
+            return parsed_dict
 
     def soft_clean(self):
         print('- Placing the same values from before the test')
