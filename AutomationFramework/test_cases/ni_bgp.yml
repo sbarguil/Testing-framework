@@ -178,7 +178,7 @@
       description: >
           This test is to set a neighbor multihop-ttl parameter for a BGP instance within a L3 network-instance.
       rpcs:
-          - template: ni_ni_bgp_multihop-ttl.xml
+          - template: ni_bgp_multihop-ttl.xml
             target: candidate
             operation: edit-config
             commit: true
