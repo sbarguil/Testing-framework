@@ -1,0 +1,16 @@
+<get>
+  <filter>
+    <components xmlns="http://openconfig.net/yang/platform">
+      <component>
+        <name/>
+        <properties>
+          <property>
+            <state>
+              <value/>
+            </state>
+          </property>
+        </properties>
+      </component>
+    </components>
+  </filter>
+</get>
