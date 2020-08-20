@@ -5,8 +5,7 @@
           <interface>
             <name>{{name}}</name>
             <state>
-              <name>{{name}}</name>
-              <oper-status/>
+              <oper-status>{{oper_status}}</oper-status>
             </state>
           </interface>
         </interfaces>

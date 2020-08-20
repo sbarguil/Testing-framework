@@ -5,8 +5,7 @@
           <interface>
             <name>{{name}}</name>
             <state>
-              <name>{{name}}</name>
-              <admin-status/>
+              <admin-status>{{admin_status}}</admin-status>
             </state>
           </interface>
         </interfaces>

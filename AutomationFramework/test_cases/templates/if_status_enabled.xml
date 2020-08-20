@@ -5,8 +5,7 @@
           <interface>
             <name>{{name}}</name>
             <state>
-              <name>{{name}}</name>
-              <enabled/>
+              <enabled>{{enabled}}</enabled>
             </state>
           </interface>
         </interfaces>

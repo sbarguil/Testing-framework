@@ -108,7 +108,11 @@ class BasePageObject:
             return parsed_dict[path[0]]
         else:
             try:
-                recursive_return = self.get_tag_value_in_given_dict_by_path(path=path[1:], parsed_dict=parsed_dict[path[0]])
+                if path[0] in parsed_dict:
+                    recursive_return = self.get_tag_value_in_given_dict_by_path(path=path[1:],
+                                                                                parsed_dict=parsed_dict[path[0]])
+                else:
+                    raise Exception('The path specified for the param doesnt exists in the response')
             except:
                 recursive_return = None
         return recursive_return
@@ -383,6 +387,25 @@ class BasePageObject:
         self.execute_get_with_template()
         self.set_values_after_get()
 
+    def execute_get_test_case_with_dispatch(self):
+        self.set_generic_variables_to_commit()
+        self.get_rendered_template()
+        self.execute_get_with_dispatch_with_template()
+        self.set_values_after_get_from_generic_variables()
+
+    def set_values_after_get_from_generic_variables(self):
+        rpc_reply_key = self.get_rpc_reply_key_from_get_response()
+        data_key = self.get_data_key_from_get_response(rpc_reply_key=rpc_reply_key)
+        parsed_dict = xmltodict.parse(self.get_response.xml)[rpc_reply_key][data_key]
+        variables_to_search = []
+        for variable in self.generic_variables_to_commit:
+            if not variable['value_to_commit']:
+                variables_to_search.append(variable)
+
+        for variable in variables_to_search:
+            self.values_after_get[variable['test_case_key']] = self.get_tag_value_in_given_dict_by_path(
+                path=variable['path_list'], parsed_dict=parsed_dict)
+
     def set_values_after_get(self):
         rpc_reply_key = self.get_rpc_reply_key_from_get_response()
         data_key = self.get_data_key_from_get_response(rpc_reply_key=rpc_reply_key)
@@ -433,5 +456,15 @@ class BasePageObject:
             self.get_response = self.rpc_automator.safe_get(template=self.rendered_template)
         print('---------------------------------------------------------------------------------------')
         print('- get response')
+        print(self.get_response)
+        return self.get_response
+
+    def execute_get_with_dispatch_with_template(self, template=None):
+        if template:
+            self.get_response = self.rpc_automator.safe_dispatch_no_commit(template=template)
+        else:
+            self.get_response = self.rpc_automator.safe_dispatch_no_commit(template=self.rendered_template)
+        print('---------------------------------------------------------------------------------------')
+        print('- Get response')
         print(self.get_response)
         return self.get_response

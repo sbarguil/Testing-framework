@@ -68,6 +68,30 @@ class Interfaces(BasePageObject):
                 'vlan_id': 'interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged/config/vlan-id',
             }
         ],
+        'if_status_admin_status': [
+            {
+                'name': 'interfaces/interface/name',
+                'admin_status': 'interfaces/interface/state/admin-status',
+            }
+        ],
+        'if_status_enabled': [
+            {
+                'name': 'interfaces/interface/name',
+                'enabled': 'interfaces/interface/state/enabled',
+            }
+        ],
+        'if_status_name': [
+            {
+                'name': 'interfaces/interface/name',
+                'empty_name': 'interfaces/interface/state/name',
+            }
+        ],
+        'if_status_oper_status': [
+            {
+                'name': 'interfaces/interface/name',
+                'oper_status': 'interfaces/interface/state/oper-status',
+            }
+        ],
     }
 
     values_before_commit = {
