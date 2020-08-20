@@ -1,0 +1,17 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{name}}</name>
+          <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+            <config>
+              <port-speed>{{port_speed}}</port-speed>
+            </config>
+          </ethernet>
+        </interface>
+      </interfaces>
+    </config>
+  </edit-config>
