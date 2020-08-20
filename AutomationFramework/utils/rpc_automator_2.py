@@ -27,7 +27,7 @@ class RPCAutomator2:
                                        hostkey_verify=False,
                                        look_for_keys=False,
                                        allow_agent=False,
-                                       device_params={'name': 'huawei'},
+                                       #device_params={'name': 'huawei'},
                                        )
 
     def rpc_body_generator(self, test_case, rpc_index=0, variables_in_template=None):
@@ -68,6 +68,16 @@ class RPCAutomator2:
             print(self.manager.dispatch(et.fromstring(template)))
             print('- Response of commit')
             print(self.manager.dispatch(et.fromstring("<commit/>")))
+        except Exception as e:
+            print("An exception has occurred when performing the edit_config operation.")
+            raise e
+
+    def safe_dispatch_no_commit(self, template):
+        try:
+            print('- Response of dispatch without commit')
+            response = self.manager.dispatch(et.fromstring(template))
+            print(response)
+            return response
         except Exception as e:
             print("An exception has occurred when performing the edit_config operation.")
             raise e
