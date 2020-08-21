@@ -151,6 +151,12 @@ class NetworkInstance(BasePageObject):
                 'maximum_entries': 'network-instances/network-instance/fdb/config/maximum-entries',
             }
         ],
+        'ni_interface_id': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'id': 'network-instances/network-instance/interfaces/interface/id',
+            }
+        ],
     }
 
     def execute_network_instance_edit_config_test_case(self):
