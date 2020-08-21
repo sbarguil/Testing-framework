@@ -1,16 +1,8 @@
-<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
-  <edit-config>
+<edit-config>
     <target>
       <{{target}}/>
     </target>
     <config>
-      <interfaces xmlns="http://openconfig.net/yang/interfaces">
-        <interface>
-          <config>
-            <name>{{interface}}</name>
-          </config>
-        </interface>
-      </interfaces>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
           <name>{{instance_name}}</name>
@@ -28,9 +20,13 @@
               <ospfv2>
                 <areas>
                   <area>
+                    <identifier>{{area_identifier}}</identifier>
+                    <config>
+                      <identifier>{{area_identifier}}</identifier>
+                    </config>
                     <interfaces>
                       <interface>
-                        <id/>
+                        <id>{{id}}</id>
                         <config>
                           <id>{{id}}</id>
                         </config>
@@ -38,7 +34,7 @@
                           <config>
                             <interface>{{interfaces}}</interface>
                           </config>
-                        </interface-ref>
+                        </interface-ref>					
                       </interface>
                     </interfaces>
                   </area>
@@ -49,5 +45,4 @@
         </network-instance>
       </network-instances>
     </config>
-  </edit-config>
-</rpc>
+</edit-config>
