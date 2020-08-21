@@ -130,6 +130,27 @@ class NetworkInstance(BasePageObject):
                 'label_allocation_mode': 'network-instances/network-instance/encapsulation/config/label-allocation-mode',
             }
         ],
+        'ni_fdb_mac_aging_time': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
+                'mac_aging_time': 'network-instances/network-instance/fdb/config/mac-aging-time',
+            }
+        ],
+        'ni_fdb_mac_learning': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
+                'mac_learning': 'network-instances/network-instance/fdb/config/mac-learning',
+            }
+        ],
+        'ni_fdb_maximum_entries': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
+                'maximum_entries': 'network-instances/network-instance/fdb/config/maximum-entries',
+            }
+        ],
     }
 
     def execute_network_instance_edit_config_test_case(self):
