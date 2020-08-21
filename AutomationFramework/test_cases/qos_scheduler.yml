@@ -54,7 +54,7 @@
                    id: "scheduler_AF1"
                    queue: "queue_AF1"
 -- testcase:
-      name: qos_scheduler_weigth
+      name: qos_scheduler_weight
       id: 5
       description: >
           This test is to set weight value to a scheduler.
