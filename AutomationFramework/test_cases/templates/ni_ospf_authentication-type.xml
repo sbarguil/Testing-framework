@@ -1,7 +1,6 @@
-<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
-  <edit-config>
+<edit-config>
     <target>
-     <{{target}}/>
+      <{{target}}/>
     </target>
     <config>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
@@ -21,9 +20,13 @@
               <ospfv2>
                 <areas>
                   <area>
+                    <identifier>{{area_identifier}}</identifier>
+                    <config>
+                      <identifier>{{area_identifier}}</identifier>
+                    </config>
                     <interfaces>
                       <interface>
-                        <id/>
+                        <id>{{id}}</id>
                         <config>
                           <id>{{id}}</id>
                           <authentication-type>{{authentication_type}}</authentication-type>
@@ -38,5 +41,4 @@
         </network-instance>
       </network-instances>
     </config>
-  </edit-config>
-</rpc>
+</edit-config>
