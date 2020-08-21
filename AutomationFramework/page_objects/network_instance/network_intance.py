@@ -53,6 +53,69 @@ class NetworkInstance(BasePageObject):
                 'mtu': 'network-instances/network-instance/config/mtu',
             }
         ],
+        'ni_connection_point_connection_point_id': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
+                'connection_point_id': 'network-instances/network-instance/connection-points/connection-point/connection-point-id',
+            }
+        ],
+        'ni_connection_point_endpoint_id': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
+                'connection_point_id': 'network-instances/network-instance/connection-points/connection-point/connection-point-id',
+                'endpoint_id': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/endpoint-id',
+            }
+        ],
+        'ni_connection_point_precedence': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
+                'connection_point_id': 'network-instances/network-instance/connection-points/connection-point/connection-point-id',
+                'endpoint_id': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/endpoint-id',
+                'precedence': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/config/precedence',
+            }
+        ],
+        'ni_connection_point_type': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
+                'connection_point_id': 'network-instances/network-instance/connection-points/connection-point/connection-point-id',
+                'endpoint_id': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/endpoint-id',
+                'cp_type': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/config/type',
+            }
+        ],
+        'ni_connection_point_remote_system': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
+                'connection_point_id': 'network-instances/network-instance/connection-points/connection-point/connection-point-id',
+                'endpoint_id': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/endpoint-id',
+                'cp_type': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/config/type',
+                'remote_system': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/remote/config/remote-system',
+            }
+        ],
+        'ni_connection_point_site_id': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
+                'connection_point_id': 'network-instances/network-instance/connection-points/connection-point/connection-point-id',
+                'endpoint_id': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/endpoint-id',
+                'cp_type': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/config/type',
+                'site_id': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/remote/config/site-id',
+            }
+        ],
+        'ni_connection_point_virtual_circuit_identifier': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
+                'connection_point_id': 'network-instances/network-instance/connection-points/connection-point/connection-point-id',
+                'endpoint_id': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/endpoint-id',
+                'cp_type': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/config/type',
+                'virtual_circuit_identifier': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/remote/config/virtual-circuit-identifier',
+            }
+        ],
     }
 
     def execute_network_instance_edit_config_test_case(self):

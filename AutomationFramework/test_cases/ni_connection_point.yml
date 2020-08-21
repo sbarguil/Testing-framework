@@ -1,32 +1,34 @@
 - testcase:
-      name: ni_connection_point_connection-point-id
+      name: ni_connection_point_connection_point_id
       id: 1
       description: >
           This test is to set connection-point-id for a PW within a L2 network-instance.
       rpcs:
-          - template: ni_connection_point_connection-point-id.xml
+          - template: ni_connection_point_connection_point_id.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   type: "oc-ni-types:L2P2P"
+                   name: "Prueba_LxVPN"
+                   type: "L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
+
 - testcase:
-      name: ni_connection_point_endpoint-id
+      name: ni_connection_point_endpoint_id
       id: 2
       description: >
           This test is to set an endpoint for a PW within a L2 network-instance.
       rpcs:
-          - template: ni_connection_point_endpoint-id.xml
+          - template: ni_connection_point_endpoint_id.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   type: "oc-ni-types:L2P2P"
+                   name: "Prueba_LxVPN"
+                   type: "L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
-                   endpoint_id: "PW_Active"                                
+                   endpoint_id: "PW_Active"
+
 - testcase:
       name: ni_connection_point_precedence
       id: 3
@@ -38,11 +40,12 @@
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   type: "oc-ni-types:L2P2P"
+                   name: "Prueba_LxVPN"
+                   type: "L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
                    precedence: "100"
+
 - testcase:
       name: ni_connection_point_type
       id: 4
@@ -54,56 +57,62 @@
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   type: "oc-ni-types:L2P2P"
+                   name: "Prueba_LxVPN"
+                   type: "L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
                    cp_type: "REMOTE"
+
 - testcase:
-      name: ni_connection_point_remote-system
+      name: ni_connection_point_remote_system
       id: 5
       description: >
           This test is to set a remote-system for an endpoint for a PW within a L2 network-instance.
       rpcs:
-          - template: ni_connection_point_remote-system.xml
+          - template: ni_connection_point_remote_system.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   type: "oc-ni-types:L2P2P"
+                   name: "Prueba_LxVPN"
+                   type: "L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
+                   cp_type: "REMOTE"
                    remote_system: "172.16.200.2"
+
 - testcase:
-      name: ni_connection_point_site-id
+      name: ni_connection_point_site_id
       id: 6
       description: >
           This test is to set a site-id for an endpoint for a PW within a L2 network-instance.
       rpcs:
-          - template: ni_connection_point_site-id.xml
+          - template: ni_connection_point_site_id.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   type: "oc-ni-types:L2P2P"
+                   name: "Prueba_LxVPN"
+                   type: "L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
+                   cp_type: "REMOTE"
                    site_id: "1001"
+
 - testcase:
-      name: ni_connection_point_virtual-circuit-identifier
+      name: ni_connection_point_virtual_circuit_identifier
       id: 7
       description: >
           his test is to set a virtual-circuit-identifier for an endpoint for a PW within a L2 network-instance.
       rpcs:
-          - template: ni_connection_point_virtual-circuit-identifier.xml
+          - template: ni_connection_point_virtual_circuit_identifier.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   type: "oc-ni-types:L2P2P"
+                   name: "Prueba_LxVPN"
+                   type: "L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
+                   cp_type: "REMOTE"
                    virtual_circuit_identifier: "1001001"

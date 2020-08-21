@@ -5,18 +5,20 @@
     <config>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
-          <name>{{instance_name}}</name>
+          <name>{{name}}</name>
           <config>
-            <name>{{instance_name}}</name>
+            <name>{{name}}</name>
             <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
           </config>
           <connection-points>
             <connection-point>
+              <connection-point-id>{{connection_point_id}}</connection-point-id>
               <config>
                 <connection-point-id>{{connection_point_id}}</connection-point-id>
               </config>
               <endpoints>
                 <endpoint>
+                  <endpoint-id>{{endpoint_id}}</endpoint-id>
                   <config>
                     <endpoint-id>{{endpoint_id}}</endpoint-id>
                     <precedence>{{precedence}}</precedence>
