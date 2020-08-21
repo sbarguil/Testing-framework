@@ -5,16 +5,16 @@
     <config>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
-          <name>{{instance_name}}</name>
-          <fdb>
+          <name>{{name}}</name>
             <config>
-              <maximum-entries>{{maximum_entries}}</maximum-entries>
+                <name>{{name}}</name>
+                <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+            </config>
+            <fdb>
+              <config>
+                <maximum-entries>{{maximum_entries}}</maximum-entries>
             </config>
           </fdb>
-          <config>
-            <name>{{instance_name}}</name>
-            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
-          </config>
         </network-instance>
       </network-instances>
     </config>
