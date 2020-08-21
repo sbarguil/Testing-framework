@@ -116,6 +116,20 @@ class NetworkInstance(BasePageObject):
                 'virtual_circuit_identifier': 'network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/remote/config/virtual-circuit-identifier',
             }
         ],
+        'ni_encapsulation_encapsulation_type': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
+                'encapsulation_type': 'network-instances/network-instance/encapsulation/config/encapsulation-type',
+            }
+        ],
+        'ni_encapsulation_label_allocation_mode': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
+                'label_allocation_mode': 'network-instances/network-instance/encapsulation/config/label-allocation-mode',
+            }
+        ],
     }
 
     def execute_network_instance_edit_config_test_case(self):
