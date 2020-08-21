@@ -3,7 +3,7 @@ from AutomationFramework.page_objects.network_instance.network_intance import Ne
 from AutomationFramework.tests.base_test import BaseTest
 
 
-class TestNetworkInstanceConfig(BaseTest):
+class TestNetworkInstanceConnectionPoint(BaseTest):
     test_case_file = 'ni_connection_point.yml'
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
