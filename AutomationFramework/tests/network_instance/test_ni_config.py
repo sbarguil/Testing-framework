@@ -48,7 +48,7 @@ class TestNetworkInstanceConfig(BaseTest):
         create_page_object.execute_network_instance_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
-    #ncclient.operations.rpc.RPCError: /network-instances/network-instance[name='Prueba_LxVPN']/config/enabled-address-families[.='oc-types:IPV4']: the 'when' expression "./type = 'oc-ni-types:L3VRF' or ./type = 'oc-ni-types:L2L3'" failed
+    # I added the type param, if not added an error raises. ncclient.operations.rpc.RPCError: /network-instances/network-instance[name='Prueba_LxVPN']/config/enabled-address-families[.='oc-types:IPV4']: the 'when' expression "./type = 'oc-ni-types:L3VRF' or ./type = 'oc-ni-types:L2L3'" failed
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'ni_config_enabled_address_families',
                                                          'page_object_class': NetworkInstance}])
@@ -56,7 +56,7 @@ class TestNetworkInstanceConfig(BaseTest):
         create_page_object.execute_network_instance_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
-    #ncclient.operations.rpc.RPCError: /network-instances/network-instance[name='Prueba_LxVPN']/config/mtu: the 'when' expression "./type = 'oc-ni-types:L2VSI' or ./type = 'oc-ni-types:L2P2P' or ./type = 'oc-ni-types:L2L3'" failed
+    # I added the type param, if not added an error raises. ncclient.operations.rpc.RPCError: /network-instances/network-instance[name='Prueba_LxVPN']/config/mtu: the 'when' expression "./type = 'oc-ni-types:L2VSI' or ./type = 'oc-ni-types:L2P2P' or ./type = 'oc-ni-types:L2L3'" failed
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'ni_config_mtu',
                                                          'page_object_class': NetworkInstance}])
