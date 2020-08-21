@@ -5,10 +5,10 @@
     <config>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
-          <name>{{instance_name}}</name>
+          <name>{{name}}</name>
           <config>
-            <name>{{instance_name}}</name>
-            <router-id>{{router_id}}</router-id>
+            <name>{{name}}</name>
+            <route-distinguisher>{{route_distinguisher}}</route-distinguisher>
           </config>
         </network-instance>
       </network-instances>
