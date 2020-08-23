@@ -180,6 +180,93 @@ class NetworkInstance(BasePageObject):
                 'enabled': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/config/enabled',
             }
         ],
+        'ni_bgp_as': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
+            }
+        ],
+        'ni_bgp_router_id': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'router_id': 'network-instances/network-instance/protocols/protocol/bgp/global/config/router-id',
+            }
+        ],
+        'ni_bgp_neighbor_address': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+            }
+        ],
+        'ni_bgp_peer_as': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'peer_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/peer-as',
+            }
+        ],
+        'ni_bgp_local_as': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'local_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/local-as',
+            }
+        ],
+        'ni_bgp_peer_type': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'peer_type': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/peer-type',
+            }
+        ],
+        'ni_bgp_remove_private_as': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'remove_private_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/remove-private-as',
+            }
+        ],
+        'ni_bgp_description': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'description': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/description',
+            }
+        ],
+        'ni_bgp_enabled': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'enabled': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/ebgp-multihop/config/enabled',
+            }
+        ],
+        'ni_bgp_multihop_ttl': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'multihop_ttl': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/ebgp-multihop/config/multihop-ttl',
+            }
+        ],
     }
 
     def execute_network_instance_edit_config_test_case(self):

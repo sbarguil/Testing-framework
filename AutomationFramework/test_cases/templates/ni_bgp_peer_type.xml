@@ -5,17 +5,17 @@
     <config>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
-          <name>{{instance_name}}</name>
+          <name>{{name}}</name>
           <config>
-            <name>{{instance_name}}</name>
+            <name>{{name}}</name>
           </config>
           <protocols>
             <protocol>
               <identifier>{{identifier}}</identifier>
-              <name>{{name}}</name>
+              <name>{{protocol_name}}</name>
               <config>
                 <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier}}</identifier>
-                <name>{{name}}</name>
+                <name>{{protocol_name}}</name>
               </config>
               <bgp>
                 <neighbors>
@@ -23,7 +23,7 @@
                     <neighbor-address>{{neighbor_address}}</neighbor-address>
                     <config>
                       <neighbor-address>{{neighbor_address}}</neighbor-address>
-                      <remove-private-as>{{remove_private_as}}</remove-private-as>
+                      <peer-type>{{peer_type}}</peer-type>
                     </config>
                   </neighbor>
                 </neighbors>
