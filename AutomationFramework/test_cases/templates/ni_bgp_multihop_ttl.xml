@@ -1,31 +1,21 @@
   <edit-config>
     <target>
-      <{{target}}/>
+     <{{target}}/>
     </target>
     <config>
-      <routing-policy xmlns="http://openconfig.net/yang/routing-policy">
-        <policy-definitions>
-          <policy-definition>
-            <name>{{import_export_bgp_policy}}</name>
-            <config>
-              <name>{{import_export_bgp_policy}}</name>
-            </config>
-          </policy-definition>
-        </policy-definitions>
-      </routing-policy>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
-          <name>{{instance_name}}</name>
+          <name>{{name}}</name>
           <config>
-            <name>{{instance_name}}</name>
+            <name>{{name}}</name>
           </config>
           <protocols>
             <protocol>
               <identifier>{{identifier}}</identifier>
-              <name>{{name}}</name>
+              <name>{{protocol_name}}</name>
               <config>
-                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier}</identifier>
-                <name>{{name}}</name>
+                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier}}</identifier>
+                <name>{{protocol_name}}</name>
               </config>
               <bgp>
                 <neighbors>
@@ -34,11 +24,11 @@
                     <config>
                       <neighbor-address>{{neighbor_address}}</neighbor-address>
                     </config>
-                    <apply-policy>
+                    <ebgp-multihop>
                       <config>
-                        <import-policy>{{import_export_bgp_policy}}</import-policy>
+                        <multihop-ttl>{{multihop_ttl}}</multihop-ttl>
                       </config>
-                    </apply-policy>
+                    </ebgp-multihop>
                   </neighbor>
                 </neighbors>
               </bgp>
