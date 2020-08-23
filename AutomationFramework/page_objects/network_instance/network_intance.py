@@ -267,6 +267,21 @@ class NetworkInstance(BasePageObject):
                 'multihop_ttl': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/ebgp-multihop/config/multihop-ttl',
             }
         ],
+        'ni_protocol_instances_creation': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+            }
+        ],
+        'ni_protocol_instances_enabled': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'enabled': 'network-instances/network-instance/protocols/protocol/config/enabled',
+            }
+        ],
     }
 
     def execute_network_instance_edit_config_test_case(self):
