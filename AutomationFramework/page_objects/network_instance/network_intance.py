@@ -386,6 +386,31 @@ class NetworkInstance(BasePageObject):
                 'metric': 'network-instances/network-instance/protocols/protocol/static-routes/static/next-hops/next-hop/config/metric',
             }
         ],
+        'ni_protocols_tables_creation': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'address_family': 'network-instances/network-instance/tables/table/address-family',
+            }
+        ],
+        'ni_protocol_tables_connection': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier_dst_protocol': 'network-instances/network-instance/table-connections/table-connection/dst-protocol',
+                'identifier_src_protocol': 'network-instances/network-instance/table-connections/table-connection/src-protocol',
+                'address_family': 'network-instances/network-instance/table-connections/table-connection/address-family',
+            }
+        ],
+        'ni_protocol_tables_connection_default_import_policy': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier_dst_protocol': 'network-instances/network-instance/table-connections/table-connection/dst-protocol',
+                'identifier_src_protocol': 'network-instances/network-instance/table-connections/table-connection/src-protocol',
+                'address_family': 'network-instances/network-instance/table-connections/table-connection/address-family',
+                'default_import_policy': 'network-instances/network-instance/table-connections/table-connection/config/default-import-policy',
+            }
+        ],
     }
 
     def execute_network_instance_edit_config_test_case(self):

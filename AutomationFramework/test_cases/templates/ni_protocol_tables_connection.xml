@@ -5,9 +5,9 @@
     <config>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
-          <name>{{instance_name}}</name>
+          <name>{{name}}</name>
           <config>
-            <name>{{instance_name}}</name>
+            <name>{{name}}</name>
           </config>
           <table-connections>
             <table-connection>
@@ -42,18 +42,18 @@
           <protocols>
             <protocol>
               <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_src_protocol}}</identifier>
-              <name>{{name_src_protocol}}</name>
+              <name>OSPF_1</name>
               <config>
                 <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_src_protocol}}</identifier>
-                <name>{{name_src_protocol}}</name>
+                <name>OSPF_1</name>
               </config>
             </protocol>
             <protocol>
                 <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_dst_protocol}}</identifier>
-                <name>{{name_dst_protocol}}</name>
+                <name>BGP_6500</name>
               <config>
               <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_dst_protocol}}</identifier>
-              <name>{{name_dst_protocol}}</name>
+              <name>BGP_6500</name>
               </config>
             </protocol>
           </protocols>
