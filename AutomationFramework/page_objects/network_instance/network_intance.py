@@ -151,6 +151,35 @@ class NetworkInstance(BasePageObject):
                 'maximum_entries': 'network-instances/network-instance/fdb/config/maximum-entries',
             }
         ],
+        'ni_t_ldp_afi_name': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'afi_name': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/afi-name',
+            }
+        ],
+        'ni_t_ldp_remote_address': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'afi_name': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/afi-name',
+                'remote_address': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/remote-address',
+            }
+        ],
+        'ni_t_ldp_local_address': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'afi_name': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/afi-name',
+                'remote_address': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/remote-address',
+                'local_address': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/config/local-address',
+            }
+        ],
+        'ni_t_ldp_enabled': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'afi_name': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/afi-name',
+                'remote_address': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/remote-address',
+                'enabled': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/config/enabled',
+            }
+        ],
     }
 
     def execute_network_instance_edit_config_test_case(self):
