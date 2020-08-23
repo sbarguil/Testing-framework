@@ -282,6 +282,82 @@ class NetworkInstance(BasePageObject):
                 'enabled': 'network-instances/network-instance/protocols/protocol/config/enabled',
             }
         ],
+        'ni_ospf_router_id': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'router_id': 'network-instances/network-instance/protocols/protocol/ospfv2/global/config/router-id',
+            }
+        ],
+        'ni_ospf_identifier': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'area_identifier': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/identifier',
+            }
+        ],
+        'ni_ospf_id': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'area_identifier': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/identifier',
+                'id': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/id',
+            }
+        ],
+        'ni_ospf_network_type': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'area_identifier': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/identifier',
+                'id': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/id',
+                'network_type': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/network-type',
+            }
+        ],
+        'ni_ospf_authentication_type': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'area_identifier': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/identifier',
+                'id': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/id',
+                'authentication_type': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/authentication-type',
+            }
+        ],
+        'ni_ospf_passive': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'area_identifier': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/identifier',
+                'id': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/id',
+                'passive': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/config/passive',
+            }
+        ],
+        'ni_ospf_interface': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'area_identifier': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/identifier',
+                'id': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/id',
+                'interface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/interface',
+            }
+        ],
+        'ni_ospf_subinterface': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'area_identifier': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/identifier',
+                'id': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/id',
+                'interface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/interface',
+                'subinterface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/subinterface',
+            }
+        ],
     }
 
     def execute_network_instance_edit_config_test_case(self):

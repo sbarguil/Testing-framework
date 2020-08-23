@@ -5,17 +5,17 @@
     <config>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
-          <name>{{instance_name}}</name>
+          <name>{{name}}</name>
           <config>
-            <name>{{instance_name}}</name>
+            <name>{{name}}</name>
           </config>
           <protocols>
             <protocol>
               <identifier>{{identifier}}</identifier>
-              <name>{{name}}</name>
+              <name>{{protocol_name}}</name>
               <config>
                 <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier}}</identifier>
-                <name>{{name}}</name>
+                <name>{{protocol_name}}</name>
               </config>
               <ospfv2>
                 <areas>
@@ -32,7 +32,7 @@
                         </config>
                         <interface-ref>
                           <config>
-                            <interface>{{interfaces}}</interface>
+                            <interface>{{interface}}</interface>
                           </config>
                         </interface-ref>					
                       </interface>

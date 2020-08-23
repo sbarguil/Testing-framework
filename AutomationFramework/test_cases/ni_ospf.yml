@@ -1,18 +1,19 @@
 - testcase:
-      name: ni_ospf_router-id
+      name: ni_ospf_router_id
       id: 1
       description: >
           This test is to set router-id for a OSPF instance within a L3 network-instance.
       rpcs:
-          - template: ni_ospf_router-id.xml
+          - template: ni_ospf_router_id.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   identifier: "oc-pol-types:OSPF"
-                   name: "OSPF_1"
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
                    router_id: "172.16.1.3"
+
 - testcase:
       name: ni_ospf_identifier
       id: 2
@@ -24,10 +25,11 @@
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
+                   name: "Prueba_LxVPN"
                    identifier: "oc-pol-types:OSPF"
-                   name: "OSPF_1"
-                   area_identifier: "0.0.0.0"                                
+                   protocol_name: "OSPF_1"
+                   area_identifier: "0.0.0.0"
+
 - testcase:
       name: ni_ospf_id
       id: 3
@@ -39,45 +41,48 @@
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   identifier: "oc-pol-types:OSPF"
-                   name: "OSPF_1"
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
                    area_identifier: "0.0.0.0" 
-                   id: "GigabitEthernet0/0/1"
+                   id: "1"
+
 - testcase:
-      name: ni_ospf_network-type
+      name: ni_ospf_network_type
       id: 4
       description: >
           This test is to set network-type in an interface for a OSPF instance within a L3 network-instance..
       rpcs:
-          - template: ni_ospf_network-type.xml
+          - template: ni_ospf_network_type.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   identifier: "oc-pol-types:OSPF"
-                   name: "OSPF_1"
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
                    area_identifier: "0.0.0.0" 
-                   id: "GigabitEthernet0/0/1"
+                   id: "1"
                    network_type: "BROADCAST_NETWORK"
+
 - testcase:
-      name: ni_ospf_authentication-type
+      name: ni_ospf_authentication_type
       id: 5
       description: >
           This test is to set authentication-type in an interface for a OSPF instance within a L3 network-instance.
       rpcs:
-          - template: ni_ospf_authentication-type.xml
+          - template: ni_ospf_authentication_type.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   identifier: "oc-pol-types:OSPF"
-                   name: "OSPF_1"
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
                    area_identifier: "0.0.0.0" 
-                   id: "GigabitEthernet0/0/1"
-                   authentication_type: "MD5"                
+                   id: "1"
+                   authentication_type: "MD5"
+
 - testcase:
       name: ni_ospf_passive
       id: 6
@@ -89,12 +94,13 @@
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   identifier: "oc-pol-types:OSPF"
-                   name: "OSPF_1"
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
                    area_identifier: "0.0.0.0" 
-                   id: "GigabitEthernet0/0/1"
-                   passive: "true" 
+                   id: "1"
+                   passive: "true"
+
 - testcase:
       name: ni_ospf_interface
       id: 7
@@ -106,12 +112,13 @@
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   identifier: "oc-pol-types:OSPF"
-                   name: "OSPF_1"
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
                    area_identifier: "0.0.0.0" 
-                   id: "GigabitEthernet0/0/1"
-                   interface: ""GigabitEthernet0/0/1"
+                   id: "1"
+                   interface: "1"
+
 - testcase:
       name: ni_ospf_subinterface
       id: 8
@@ -123,9 +130,10 @@
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   identifier: "oc-pol-types:OSPF"
-                   name: "OSPF_1"
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
                    area_identifier: "0.0.0.0" 
-                   id: "GigabitEthernet0/0/1"
+                   id: "1"
+                   interface: "1"
                    subinterface: "100"
