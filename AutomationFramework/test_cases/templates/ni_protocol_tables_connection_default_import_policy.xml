@@ -3,21 +3,11 @@
       <{{target}}/>
     </target>
     <config>
-      <routing-policy xmlns="http://openconfig.net/yang/routing-policy">
-        <policy-definitions>
-          <policy-definition>
-            <name>{{import_policy}}</name>
-            <config>
-              <name>{{import_policy}}</name>
-            </config>
-          </policy-definition>
-        </policy-definitions>
-      </routing-policy>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
-          <name>{{instance_name}}</name>
+          <name>{{name}}</name>
           <config>
-            <name>{{instance_name}}</name>
+            <name>{{name}}</name>
           </config>
           <table-connections>
             <table-connection>
@@ -28,7 +18,7 @@
                 <src-protocol xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_src_protocol}}</src-protocol>
                 <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">{{address_family}}</address-family>
                 <dst-protocol xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_dst_protocol}}</dst-protocol>
-                <import-policy>{{import_policy}}</import-policy>
+                <default-import-policy>{{default_import_policy}}</default-import-policy>
               </config>
             </table-connection>
           </table-connections>
@@ -53,18 +43,18 @@
           <protocols>
             <protocol>
               <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_src_protocol}}</identifier>
-              <name>{{name_src_protocol}}</name>
+              <name>OSPF_1</name>
               <config>
                 <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_src_protocol}}</identifier>
-                <name>{{name_src_protocol}}</name>
+                <name>OSPF_1</name>
               </config>
             </protocol>
             <protocol>
                 <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_dst_protocol}}</identifier>
-                <name>{{name_dst_protocol}}</name>
+                <name>BGP_6500</name>
               <config>
               <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_dst_protocol}}</identifier>
-              <name>{{name_dst_protocol}}</name>
+              <name>BGP_6500</name>
               </config>
             </protocol>
           </protocols>
