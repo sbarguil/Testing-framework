@@ -5,9 +5,9 @@
     <config>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
-          <name>{{instance_name}}</name>
+          <name>{{name}}</name>
           <config>
-            <name>{{instance_name}}</name>
+            <name>{{name}}</name>
           </config>
           <mpls>
             <signaling-protocols>
@@ -21,7 +21,7 @@
                       </config>
                       <targets>
                         <target>
-                          <remote-address>{{remote_address}</remote-address>
+                          <remote-address>{{remote_address}}</remote-address>
                           <config>
                             <remote-address>{{remote_address}}</remote-address>
                             <local-address>{{local_address}}</local-address>
