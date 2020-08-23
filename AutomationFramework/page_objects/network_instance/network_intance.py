@@ -358,6 +358,34 @@ class NetworkInstance(BasePageObject):
                 'subinterface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/subinterface',
             }
         ],
+        'ni_static_prefix': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'prefix': 'network-instances/network-instance/protocols/protocol/static-routes/static/prefix',
+            }
+        ],
+        'ni_next_hop': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'prefix': 'network-instances/network-instance/protocols/protocol/static-routes/static/prefix',
+                'index': 'network-instances/network-instance/protocols/protocol/static-routes/static/next-hops/next-hop/index',
+                'next_hop': 'network-instances/network-instance/protocols/protocol/static-routes/static/next-hops/next-hop/config/next-hop',
+            }
+        ],
+        'ni_metric': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'prefix': 'network-instances/network-instance/protocols/protocol/static-routes/static/prefix',
+                'index': 'network-instances/network-instance/protocols/protocol/static-routes/static/next-hops/next-hop/index',
+                'metric': 'network-instances/network-instance/protocols/protocol/static-routes/static/next-hops/next-hop/config/metric',
+            }
+        ],
     }
 
     def execute_network_instance_edit_config_test_case(self):
