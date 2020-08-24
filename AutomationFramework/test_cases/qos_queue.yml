@@ -1,5 +1,5 @@
 
--- testcase:
+- testcase:
       name: qos_queue_name
       id: 1
       description: >
@@ -11,8 +11,8 @@
             commit: true
             params:
                    name: "queue_AF1"
-                   
--- testcase:
+
+- testcase:
       name: qos_queue_minth
       id: 2
       description: >
@@ -24,8 +24,10 @@
             commit: true
             params:
                    name: "queue_AF1"
-                   minth: "1024"                   
--- testcase:
+                   minth: "1024"
+                   queue_type: "RED"
+
+- testcase:
       name: qos_queue_maxth
       id: 3
       description: >
@@ -38,4 +40,4 @@
             params:
                    name: "queue_AF1"
                    maxth: "2048" 
-        
+                   queue_type: "RED"

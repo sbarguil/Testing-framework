@@ -1,0 +1,30 @@
+<edit-config>
+  <target>
+    <{{target}}/>
+  </target>
+  <config>
+    <interfaces xmlns="http://openconfig.net/yang/interfaces">
+      <interface>
+        <name>{{name}}</name>
+        <subinterfaces>
+          <subinterface>
+            <index>{{index}}</index>
+            <config>
+                <index>{{index}}</index>
+            </config>
+            <vlan xmlns="http://openconfig.net/yang/vlan">
+              <match>
+                <double-tagged>
+                  <config>
+                    <inner-vlan-id>{{inner_vlan_id}}</inner-vlan-id>
+                    <outer-vlan-id>{{outer_vlan_id}}</outer-vlan-id>
+                  </config>
+                </double-tagged>
+              </match>
+            </vlan>
+          </subinterface>
+        </subinterfaces>
+      </interface>
+    </interfaces>
+  </config>
+</edit-config>

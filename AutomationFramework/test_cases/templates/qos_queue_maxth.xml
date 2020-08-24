@@ -9,7 +9,7 @@
             <name>{{name}}</name>
             <config>
               <name>{{name}}</name>
-              <queue-type/>
+              <queue-type>{{queue_type}}</queue-type>
             </config>
             <red>
               <config>
