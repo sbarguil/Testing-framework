@@ -23,7 +23,7 @@
             operation: edit-config
             commit: true
             params:
-                   policy_name: "ROUTING_POLICY_EXPORT"
+                   name: "ROUTING_POLICY_EXPORT"
                    statement_name: "1"
                    policy_result: "ACCEPT_ROUTE"
 
@@ -38,9 +38,9 @@
             operation: edit-config
             commit: true
             params:
-                   policy_name: "ROUTING_POLICY_EXPORT"
+                   name: "ROUTING_POLICY_EXPORT"
                    statement_name: "1"
-                   install_protocol_eq: "oc-pol-types:BGP"
+                   install_protocol_eq: "BGP"
 
 - testcase:
       name: rp_policy_def_ext_community_set
@@ -65,10 +65,8 @@
                    statement_name: "1"
                    ext_community_set: "RT_IMPORT_POLICIES"
 
-
-
 - testcase:
-      name: rp_policy_def_match_set_options.xml
+      name: rp_policy_def_match_set_options
       id: 5
       description: >
           This test is to define the behaviour options match operation. 
@@ -78,6 +76,6 @@
             operation: edit-config
             commit: true
             params:
-                   policy_name: "ROUTING_POLICY_EXPORT"
+                   name: "ROUTING_POLICY_EXPORT"
                    statement_name: "1"
                    match_set_options: "ANY"

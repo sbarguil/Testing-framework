@@ -1,0 +1,73 @@
+
+- testcase:
+      name: if_ethernet_auto_negotiate
+      id: 1
+      description: >
+          This test is to define if the interface is auto negotiate enable.
+      rpcs:
+          - template: if_ethernet_auto_negotiate.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "ge-0/0/3"
+                   auto_negotiate: "false"
+
+- testcase:
+      name: if_ethernet_duplex_mode
+      id: 2
+      description: >
+          This test is to define the duplex mode in an interface.
+      rpcs:
+          - template: if_ethernet_duplex_mode.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "ge-0/0/3"
+                   duplex_mode: "FULL"
+
+          - template: if_ethernet_duplex_mode.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/0/4"
+                   duplex_mode: "HALF"
+- testcase:
+      name: if_ethernet_port_speed
+      id: 3
+      description: >
+          This test is to define the port speed in an interface.
+      rpcs:
+          - template: if_ethernet_port_speed.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "ge-0/0/3"
+                   port_speed: "SPEED_100MB"
+- testcase:
+      name: if_ethernet_aggregate_id
+      id: 4
+      description: >
+          This test is to create an lag id of this interface.
+      rpcs:
+          - template: if_ethernet_aggregate_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "ge-0/0/3"
+                   aggregate_id: "1"
+- testcase:
+      name: if_ethernet_port_speed_state
+      id: 5
+      description: >
+          This test is to get the port-speed of this interface.
+      rpcs:
+          - template: if_ethernet_port_speed_state.xml
+            operation: get
+            params:
+                   name: "ge-0/0/3"
+                   port_speed: ""
