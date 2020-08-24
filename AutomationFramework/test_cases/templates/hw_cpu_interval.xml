@@ -9,7 +9,7 @@
         <cpu>
           <utilization xmlns="http://openconfig.net/yang/platform/cpu">
             <state>
-              <interval/>
+              <interval>{{interval}}</interval>
             </state>
           </utilization>
         </cpu>

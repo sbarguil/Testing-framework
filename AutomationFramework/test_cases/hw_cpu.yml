@@ -7,6 +7,8 @@
       rpcs:
           - template: hw_cpu_avg.xml
             operation: get
+            params:
+                   avg: ""
 
 - testcase:
       name: hw_cpu_instant
@@ -16,6 +18,8 @@
       rpcs:
           - template: hw_cpu_instant.xml
             operation: get
+            params:
+                   instant: ""
 
 - testcase:
         name: hw_cpu_interval
@@ -25,6 +29,8 @@
         rpcs:
             - template: hw_cpu_interval.xml
               operation: get
+              params:
+                     interval: ""
 
 - testcase:
         name: hw_cpu_max
@@ -34,6 +40,8 @@
         rpcs:
             - template: hw_cpu_max.xml
               operation: get
+              params:
+                     max: ""
 
 - testcase:
         name: hw_cpu_max_time
@@ -43,6 +51,9 @@
         rpcs:
             - template: hw_cpu_max_time.xml
               operation: get
+              params:
+                     max_time: ""
+
 
 - testcase:
         name: hw_cpu_min
@@ -52,6 +63,8 @@
         rpcs:
             - template: hw_cpu_min.xml
               operation: get
+              params:
+                     min: ""
 
 - testcase:
         name: hw_cpu_min_time
@@ -61,3 +74,5 @@
         rpcs:
             - template: hw_cpu_min_time.xml
               operation: get
+              params:
+                     min_time: ""

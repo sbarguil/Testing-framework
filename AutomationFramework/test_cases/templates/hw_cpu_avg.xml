@@ -9,7 +9,7 @@
         <cpu>
           <utilization xmlns="http://openconfig.net/yang/platform/cpu">
             <state>
-              <avg/>
+              <avg>{{avg}}</avg>
             </state>
           </utilization>
         </cpu>

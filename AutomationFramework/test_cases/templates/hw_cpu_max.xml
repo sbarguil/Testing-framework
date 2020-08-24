@@ -10,7 +10,7 @@
         <cpu>
           <utilization xmlns="http://openconfig.net/yang/platform/cpu">
             <state>
-              <max/>
+              <max>{{max}}</max>
             </state>
           </utilization>
         </cpu>
