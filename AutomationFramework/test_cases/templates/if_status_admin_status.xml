@@ -1,0 +1,13 @@
+
+    <get>
+      <filter>
+        <interfaces xmlns="http://openconfig.net/yang/interfaces">
+          <interface>
+            <name>{{name}}</name>
+            <state>
+              <admin-status>{{admin_status}}</admin-status>
+            </state>
+          </interface>
+        </interfaces>
+      </filter>
+    </get>
