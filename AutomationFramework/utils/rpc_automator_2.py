@@ -1,9 +1,9 @@
-import time
-
+import xmltodict
 from ncclient import manager
 import yaml
 from lxml import etree as et
 from jinja2 import Environment, PackageLoader, select_autoescape
+from collections import OrderedDict
 
 
 class RPCAutomator2:
@@ -26,7 +26,8 @@ class RPCAutomator2:
                                        password=self.password,
                                        hostkey_verify=False,
                                        look_for_keys=False,
-                                       allow_agent=False
+                                       allow_agent=False,
+                                       device_params={'name': 'huawei'},
                                        )
 
     def rpc_body_generator(self, test_case, rpc_index=0, variables_in_template=None):
@@ -37,12 +38,25 @@ class RPCAutomator2:
             jinja_variables_dict = variables_in_template
         else:
             jinja_variables_dict = rpc_list[rpc_index]['params']
-        jinja_variables_dict['target'] = rpc_list[rpc_index]['target']
+
+        if 'target' in rpc_list[rpc_index]:
+            jinja_variables_dict['target'] = rpc_list[rpc_index]['target']
+
         return jinja_template.render(jinja_variables_dict)
 
     # TODO
-    def generate_filter_from_test_case(self):
-        pass
+    def get_occurrences_of_variable_in_not_rendered_template(self, test_case, rpc_index, variable_in_test_case):
+        return 2
+
+    def generate_filter_from_test_case(self, test_case, rpc_index):
+        template_file_name = test_case['testcase']['rpcs'][rpc_index]['template']
+        jinja_template = self.jinja_env.get_template(template_file_name)
+        empty_template = jinja_template.render({'target': 'None'})
+        parsed_dict = xmltodict.parse(empty_template)
+        full_filter_dict = OrderedDict()
+        full_filter_dict['filter'] = parsed_dict['edit-config']['config']
+        full_filter = xmltodict.unparse(full_filter_dict)
+        return full_filter
 
     def get_rpc_target_from_test_case(self, test_case, rpc_index=0):
         rpc_list = test_case['testcase']['rpcs']
@@ -56,6 +70,23 @@ class RPCAutomator2:
             print(self.manager.dispatch(et.fromstring("<commit/>")))
         except Exception as e:
             print("An exception has occurred when performing the edit_config operation.")
+            raise e
+
+    def safe_dispatch_no_commit(self, template):
+        try:
+            print('- Response of dispatch without commit')
+            response = self.manager.dispatch(et.fromstring(template))
+            print(response)
+            return response
+        except Exception as e:
+            print("An exception has occurred when performing the edit_config operation.")
+            raise e
+
+    def safe_get(self, template):
+        try:
+            return self.manager.get(("subtree", template))
+        except Exception as e:
+            print("An exception has occurred when performing the get operation.")
             raise e
 
     def safe_get_config(self, netconf_filter, test_case):
