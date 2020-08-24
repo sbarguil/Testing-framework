@@ -8,3 +8,4 @@
           - template: hw_fan_speed.xml
             operation: get
             params:
+                   speed: ""
