@@ -6,17 +6,17 @@
       <qos xmlns="http://openconfig.net/yang/qos">
         <queues>
           <queue>
-            <name>{{queue_name}}</name>
+            <name>{{name}}</name>
             <config>
-              <name>{{queue_name}}</name>
+              <name>{{name}}</name>
             </config>
           </queue>
         </queues>
         <scheduler-policies>
           <scheduler-policy>
-            <name>{{name}}</name>
+            <name>{{scheduler_name}}</name>
             <config>
-              <name>{{name}}</name>
+              <name>{{scheduler_name}}</name>
             </config>
             <schedulers>
               <scheduler>
@@ -29,7 +29,7 @@
                     <id>{{id}}</id>
                     <config>
                       <id>{{id}}</id>
-                      <queue>{{queue}}</queue>
+                      <queue>{{name}}</queue>
                     </config>
                   </input>
                 </inputs>
