@@ -1,5 +1,5 @@
 
--- testcase:
+- testcase:
       name: qos_scheduler_policy_name
       id: 1
       description: >
@@ -11,7 +11,8 @@
             commit: true
             params:
                    name: "scheduler_policy_AF1"
--- testcase:
+
+- testcase:
       name: qos_scheduler_sequence
       id: 2
       description: >
@@ -23,8 +24,9 @@
             commit: true
             params:
                    name: "scheduler_policy_AF1"
-                   sequence: "1"                   
--- testcase:
+                   sequence: "1"
+
+- testcase:
       name: qos_scheduler_id
       id: 3
       description: >
@@ -37,8 +39,9 @@
             params:
                    name: "scheduler_policy_AF1"
                    sequence: "1" 
-                   id: "scheduler_AF1"                   
--- testcase:
+                   id: "scheduler_AF1"
+
+- testcase:
       name: qos_scheduler_queue
       id: 4
       description: >
@@ -49,11 +52,12 @@
             operation: edit-config
             commit: true
             params:
-                   name: "scheduler_policy_AF1"
+                   name: "queue_AF1"
+                   scheduler_name: "scheduler_policy_AF1"
                    sequence: "1" 
                    id: "scheduler_AF1"
-                   queue: "queue_AF1"
--- testcase:
+
+- testcase:
       name: qos_scheduler_weight
       id: 5
       description: >
@@ -67,8 +71,9 @@
                    name: "scheduler_policy_AF1"
                    sequence: "1" 
                    id: "scheduler_AF1" 
-                   weight: "5"                   
--- testcase:
+                   weight: "5"
+
+- testcase:
       name: qos_scheduler_cir
       id: 6
       description: >
@@ -81,8 +86,9 @@
             params:
                    name: "scheduler_policy_AF1"
                    sequence: "1" 
-                   cir: "4096"       
--- testcase:
+                   cir: "4096"
+
+- testcase:
       name: qos_scheduler_bc
       id: 7
       description: >
@@ -96,13 +102,14 @@
                    name: "scheduler_policy_AF1"
                    sequence: "1"
                    bc: "256"
--- testcase:
-      name: qos_scheduler_max-queue-depth-bytes
+
+- testcase:
+      name: qos_scheduler_max_queue_depth_bytes
       id: 8
       description: >
           This test is to set max-queue-depth-bytes value to a scheduler.
       rpcs:
-          - template: qos_scheduler_max-queue-depth-bytes.xml
+          - template: qos_scheduler_max_queue_depth_bytes.xml
             target: candidate
             operation: edit-config
             commit: true
