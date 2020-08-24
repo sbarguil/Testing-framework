@@ -1,0 +1,31 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{name}}</name>
+          <subinterfaces>
+            <subinterface>
+              <index>{{index}}</index>
+              <config>
+                <index>{{index}}</index>
+              </config>
+              <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip">
+                <addresses>
+                  <address>
+                    <ip>{{ip}}</ip>
+                    <config>
+                      <ip>{{ip}}</ip>
+                      <prefix-length>{{prefix_length}}</prefix-length>
+                    </config>
+                  </address>
+                </addresses>
+              </ipv4>
+            </subinterface>
+          </subinterfaces>
+        </interface>
+      </interfaces>
+    </config>
+  </edit-config>
