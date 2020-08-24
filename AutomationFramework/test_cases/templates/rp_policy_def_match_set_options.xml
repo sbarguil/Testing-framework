@@ -1,0 +1,37 @@
+<edit-config>
+  <target>
+    <{{target}}/>
+  </target>
+  <config>
+    <routing-policy xmlns="http://openconfig.net/yang/routing-policy">
+      <policy-definitions>
+        <policy-definition>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+          </config>
+          <statements>
+            <statement>
+              <name>{{statement_name}}</name>
+              <config>
+                <name>{{statement_name}}</name>
+              </config>
+              <conditions>
+                <config>
+                  <call-policy>{{statement_name}}</call-policy>
+                </config>
+                <bgp-conditions xmlns="http://openconfig.net/yang/bgp-policy">
+                  <match-ext-community-set>
+                    <config>
+                      <match-set-options>{{match_set_options}}</match-set-options>
+                    </config>
+                  </match-ext-community-set>
+                </bgp-conditions>
+              </conditions>
+            </statement>
+          </statements>
+        </policy-definition>
+      </policy-definitions>
+    </routing-policy>
+  </config>
+</edit-config>
