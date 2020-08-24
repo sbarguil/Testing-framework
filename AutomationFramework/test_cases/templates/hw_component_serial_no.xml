@@ -4,7 +4,7 @@
       <component>
         <name/>
         <state>
-          <serial-no/>
+          <serial-no>{{serial_no}}</serial-no>
         </state>
       </component>
     </components>

@@ -4,7 +4,7 @@
       <component>
         <name/>
         <state>
-          <location/>
+          <location>{{location}}</location>
         </state>
       </component>
     </components>

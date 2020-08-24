@@ -4,7 +4,7 @@
       <component>
         <name/>
         <state>
-          <hardware-version/>
+          <hardware-version>{{hardware_version}}</hardware-version>
         </state>
       </component>
     </components>

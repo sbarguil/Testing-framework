@@ -4,7 +4,7 @@
       <component>
         <name/>
         <state>
-          <oper-status/>
+          <oper-status>{{oper_status}}</oper-status>
         </state>
       </component>
     </components>

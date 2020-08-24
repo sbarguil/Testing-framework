@@ -7,6 +7,9 @@
       rpcs:
           - template: hw_component_description.xml
             operation: get
+            params:
+                   description: ""
+
 
 - testcase:
       name: hw_component_hardware_version
@@ -16,6 +19,9 @@
       rpcs:
           - template: hw_component_hardware_version.xml
             operation: get
+            params:
+                   hardware_version: ""
+
 
 - testcase:
       name: hw_component_id
@@ -25,6 +31,8 @@
       rpcs:
           - template: hw_component_id.xml
             operation: get
+            params:
+                   id: ""
 
 - testcase:
       name: hw_component_location
@@ -34,6 +42,8 @@
       rpcs:
           - template: hw_component_location.xml
             operation: get
+            params:
+                   location: ""
 
 - testcase:
       name: hw_component_mfg_date
@@ -43,6 +53,8 @@
       rpcs:
           - template: hw_component_mfg_date.xml
             operation: get
+            params:
+                   mfg_date: ""
 
 - testcase:
       name: hw_component_oper_status
@@ -52,6 +64,8 @@
       rpcs:
           - template: hw_component_oper_status.xml
             operation: get
+            params:
+                   oper_status: ""
 
 - testcase:
       name: hw_component_parent
@@ -61,6 +75,8 @@
       rpcs:
           - template: hw_component_parent.xml
             operation: get
+            params:
+                   parent: ""
 
 - testcase:
       name: hw_component_serial_no
@@ -70,6 +86,8 @@
       rpcs:
           - template: hw_component_serial_no.xml
             operation: get
+            params:
+                   serial_no: ""
 
 - testcase:
       name: hw_component_type
@@ -79,3 +97,5 @@
       rpcs:
           - template: hw_component_type.xml
             operation: get
+            params:
+                   type: ""

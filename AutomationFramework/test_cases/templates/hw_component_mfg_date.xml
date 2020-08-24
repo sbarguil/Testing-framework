@@ -4,7 +4,7 @@
       <component>
         <name/>
         <state>
-          <mfg-date/>
+          <mfg-date>{{mfg_date}}</mfg-date>
         </state>
       </component>
     </components>

@@ -4,7 +4,7 @@
       <component>
         <name/>
         <state>
-          <type/>
+          <type>{{type}}</type>
         </state>
       </component>
     </components>
