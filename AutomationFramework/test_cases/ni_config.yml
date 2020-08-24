@@ -1,0 +1,114 @@
+
+- testcase:
+      name: ni_config_name
+      id: 1
+      description: >
+          This test is to create a Lx network-instance.
+      rpcs:
+          - template: ni_config_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   instance_name: "Prueba_LxVPN"
+
+- testcase:
+      name: ni_config_type
+      id: 2
+      description: >
+          This test is to set type of a Lx network-instance to L3VRF.
+      rpcs:
+          - template: ni_config_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   type: "L3VRF"
+
+- testcase:
+      name: ni_config_enabled
+      id: 3
+      description: >
+          This test is to enabled a Lx network-instance.
+      rpcs:
+          - template: ni_config_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   enabled: "true"
+
+- testcase:
+      name: ni_config_description
+      id: 4
+      description: >
+          This test is to set description on a Lx network-instance.
+      rpcs:
+          - template: ni_config_description.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   description: "VPN de prueba para L3 y L2"
+
+- testcase:
+      name: ni_config_router_id
+      id: 5
+      description: >
+          This test is to define the router-id parameter applicable to L3 network-instance.
+      rpcs:
+          - template: ni_config_router_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   router_id: "172.16.1.2"
+
+- testcase:
+      name: ni_config_route_distinguisher
+      id: 6
+      description: >
+          This test is to define the route-distinguisher parameter applicable to L3 network-instance.
+      rpcs:
+          - template: ni_config_route_distinguisher.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   route_distinguisher: "65000:100"
+
+- testcase:
+      name: ni_config_enabled_address_families
+      id: 7
+      description: >
+          This test is to enable IPV4 address-family applicable to L3 network-instance.
+      rpcs:
+          - template: ni_config_enabled_address_families.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   type: "L3VRF"
+                   enabled_address_families: "IPV4"
+
+- testcase:
+      name: ni_config_mtu
+      id: 8
+      description: >
+          This test is to define the mtu parameter applicable to L2 network-instance.
+      rpcs:
+          - template: ni_config_mtu.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   type: "L2VSI"
+                   mtu: "1450"
