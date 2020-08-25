@@ -21,6 +21,8 @@
       rpcs:
           - template: hw_psu_capacity.xml
             operation: get
+            params:
+                   capacity: ""
 
 - testcase:
       name: hw_psu_enabled_state
@@ -30,6 +32,8 @@
       rpcs:
           - template: hw_psu_enabled_state.xml
             operation: get
+            params:
+                   enabled: ""
 
 - testcase:
       name: hw_psu_input_voltage
@@ -39,6 +43,8 @@
       rpcs:
           - template: hw_psu_input_voltage.xml
             operation: get
+            params:
+                   input_voltage: ""
 
 - testcase:
       name: hw_psu_output_current
@@ -48,6 +54,8 @@
       rpcs:
           - template: hw_psu_output_current.xml
             operation: get
+            params:
+                   output_current: ""
 
 - testcase:
       name: hw_psu_output_power
@@ -57,6 +65,8 @@
       rpcs:
           - template: hw_psu_output_power.xml
             operation: get
+            params:
+                   output_power: ""
 
 - testcase:
       name: hw_psu_output_voltage
@@ -66,6 +76,8 @@
       rpcs:
           - template: hw_psu_output_voltage.xml
             operation: get
+            params:
+                   output_voltage: ""
 
 - testcase:
       name: hw_psu_input_current
@@ -75,3 +87,5 @@
       rpcs:
           - template: hw_psu_input_current.xml
             operation: get
+            params:
+                   input_current: ""

@@ -5,7 +5,7 @@
         <name/>
         <power-supply>
           <state>
-            <input-current xmlns="http://openconfig.net/yang/platform/psu"/>
+            <input-current xmlns="http://openconfig.net/yang/platform/psu">{{input_current}}</input-current xmlns="http://openconfig.net/yang/platform/psu">
           </state>
         </power-supply>
       </component>

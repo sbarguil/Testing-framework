@@ -5,7 +5,7 @@
         <name/>
         <power-supply>
           <state>
-            <enabled xmlns="http://openconfig.net/yang/platform/psu"/>
+            <enabled xmlns="http://openconfig.net/yang/platform/psu">{{enabled}}</enabled xmlns="http://openconfig.net/yang/platform/psu">
           </state>
         </power-supply>
       </component>
