@@ -45,4 +45,66 @@ class Hardware(BasePageObject):
                 'min_time': 'components/component/cpu/utilization/state/min-time',
             }
         ],
+        'hw_psu_enabled': [
+            {
+                'name': 'components/component/name',
+                'enabled': 'components/component/power-supply/config/enabled',
+            }
+        ],
+        'hw_psu_capacity': [
+            {
+                'name': 'components/component/name',
+                'capacity': 'components/component/power-supply/state/capacity',
+            }
+        ],
+        'hw_psu_enabled_state': [
+            {
+                'name': 'components/component/name',
+                'enabled': 'components/component/power-supply/state/enabled',
+            }
+        ],
+        'hw_psu_input_voltage': [
+            {
+                'name': 'components/component/name',
+                'input_voltage': 'components/component/power-supply/state/input-voltage',
+            }
+        ],
+        'hw_psu_output_current': [
+            {
+                'name': 'components/component/name',
+                'output_current': 'components/component/power-supply/state/output-current',
+            }
+        ],
+        'hw_psu_output_power': [
+            {
+                'name': 'components/component/name',
+                'output_power': 'components/component/power-supply/state/output-power',
+            }
+        ],
+        'hw_psu_output_voltage': [
+            {
+                'name': 'components/component/name',
+                'output_voltage': 'components/component/power-supply/state/output-voltage',
+            }
+        ],
+        'hw_psu_input_current': [
+            {
+                'name': 'components/component/name',
+                'input_current': 'components/component/power-supply/state/input-current',
+            }
+        ],
     }
+
+    def execute_hardware_component_edit_config_test_case(self):
+        filter_to_use = """
+                    <filter>
+                        <components xmlns="http://openconfig.net/yang/platform">
+                            <component>
+                              <name>{}</name>
+                            </component>
+                          </components>
+                    </filter>
+                    """
+        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='name')
+        self.set_filter(filter_to_use.format(interface_name))
+        self.execute_generic_edit_config_test_case()
