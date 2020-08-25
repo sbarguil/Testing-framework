@@ -5,7 +5,7 @@
         <name/>
         <power-supply>
           <state>
-            <input-voltage xmlns="http://openconfig.net/yang/platform/psu">{{input_voltage}}</input-voltage xmlns="http://openconfig.net/yang/platform/psu">
+            <input-voltage xmlns="http://openconfig.net/yang/platform/psu">{{input_voltage}}</input-voltage>
           </state>
         </power-supply>
       </component>
