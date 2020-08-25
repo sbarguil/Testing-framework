@@ -8,7 +8,7 @@
         </config>
         <transceiver xmlns="http://openconfig.net/yang/platform/transceiver">
           <state>
-            <enabled/>
+            <enabled>{{enabled}}</enabled>
           </state>
         </transceiver>
       </component>
