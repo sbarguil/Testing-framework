@@ -6,7 +6,7 @@
         <properties>
           <property>
             <state>
-              <name/>
+              <name>{{name}}</name>
             </state>
           </property>
         </properties>

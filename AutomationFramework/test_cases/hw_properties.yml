@@ -7,6 +7,8 @@
       rpcs:
           - template: hw_properties_name.xml
             operation: get
+            params:
+                   name: ""
 - testcase:
       name: hw_properties_value
       id: 2
@@ -15,3 +17,5 @@
       rpcs:
           - template: hw_properties_value.xml
             operation: get
+            params:
+                   value: ""
