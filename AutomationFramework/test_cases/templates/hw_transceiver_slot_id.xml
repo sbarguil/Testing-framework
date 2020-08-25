@@ -8,7 +8,7 @@
         </config>
         <linecard xmlns="http://openconfig.net/yang/platform/linecard">
           <state>
-            <slot-id/>
+            <slot-id>{{slot_id}}</slot-id>
           </state>
         </linecard>
       </component>
