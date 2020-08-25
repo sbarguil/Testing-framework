@@ -8,7 +8,7 @@
         </config>
         <fan>
           <state>
-            <speed xmlns="http://openconfig.net/yang/platform/fan">{{speed}}</speed xmlns="http://openconfig.net/yang/platform/fan">
+            <speed xmlns="http://openconfig.net/yang/platform/fan">{{speed}}</speed>
           </state>
         </fan>
       </component>
