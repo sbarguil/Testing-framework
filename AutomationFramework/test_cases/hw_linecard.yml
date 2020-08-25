@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Rack 0-Line Card Slot 0"
+                   name: "0/0/4"
                    power_admin_state: "POWER_DISABLED"
 
 - testcase:
@@ -22,4 +22,4 @@
           - template: hw_linecard_power_admin_state.xml
             operation: get
             params:
-                   name: "0/0/0/6"
+                   power_admin_state: ""
