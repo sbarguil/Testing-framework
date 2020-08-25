@@ -9,7 +9,7 @@
           <cpu>
             <utilization xmlns="http://openconfig.net/yang/platform/cpu">
               <state>
-                <instant/>
+                <instant>{{instant}}</instant>
               </state>
             </utilization>
           </cpu>

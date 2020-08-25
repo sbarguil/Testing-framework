@@ -9,7 +9,7 @@
         <cpu>
           <utilization xmlns="http://openconfig.net/yang/platform/cpu">
             <state>
-              <min-time/>
+              <min-time>{{min_time}}</min-time>
             </state>
           </utilization>
         </cpu>
