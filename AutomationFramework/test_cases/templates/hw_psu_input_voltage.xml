@@ -2,7 +2,7 @@
   <filter>
     <components xmlns="http://openconfig.net/yang/platform">
       <component>
-        <name/>
+        <name>{{name}}</name>
         <power-supply>
           <state>
             <input-voltage xmlns="http://openconfig.net/yang/platform/psu">{{input_voltage}}</input-voltage>
