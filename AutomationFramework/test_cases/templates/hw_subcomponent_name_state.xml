@@ -7,7 +7,7 @@
           <subcomponent>
             <name/>
             <config>
-              <name/>
+              <name>{{name}}</name>
             </config>
           </subcomponent>
         </subcomponents>

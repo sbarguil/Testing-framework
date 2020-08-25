@@ -13,3 +13,5 @@
                    name: "300"
           - template: hw_subcomponent_name_state.xml
             operation: get
+            params:
+                   name: ""
