@@ -8,6 +8,7 @@
           - template: hw_cpu_avg.xml
             operation: get
             params:
+                   name: "CHASIS"
                    avg: ""
 
 - testcase:
@@ -19,6 +20,7 @@
           - template: hw_cpu_instant.xml
             operation: get
             params:
+                   name: "CHASIS"
                    instant: ""
 
 - testcase:
@@ -30,6 +32,7 @@
             - template: hw_cpu_interval.xml
               operation: get
               params:
+                     name: "CHASIS"
                      interval: ""
 
 - testcase:
@@ -41,6 +44,7 @@
             - template: hw_cpu_max.xml
               operation: get
               params:
+                     name: "CHASIS"
                      max: ""
 
 - testcase:
@@ -52,8 +56,8 @@
             - template: hw_cpu_max_time.xml
               operation: get
               params:
+                     name: "CHASIS"
                      max_time: ""
-
 
 - testcase:
         name: hw_cpu_min
@@ -64,6 +68,7 @@
             - template: hw_cpu_min.xml
               operation: get
               params:
+                     name: "CHASIS"
                      min: ""
 
 - testcase:
@@ -75,4 +80,5 @@
             - template: hw_cpu_min_time.xml
               operation: get
               params:
+                     name: "CHASIS"
                      min_time: ""
