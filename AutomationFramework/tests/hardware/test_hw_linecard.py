@@ -3,7 +3,7 @@ from AutomationFramework.page_objects.hardware.hardware import Hardware
 from AutomationFramework.tests.base_test import BaseTest
 
 
-class TestHardwareCPU(BaseTest):
+class TestHardwareLinecard(BaseTest):
     test_case_file = 'hw_linecard.yml'
 
     @pytest.mark.skip(reason="ROC error. ncclient.operations.rpc.RPCError: /components/component[name='0/0/4']/oc-linecard:linecard: the 'when' expression current()/oc-platform:state/oc-platform:type = 'LINECARD' failed")
