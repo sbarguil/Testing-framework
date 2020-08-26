@@ -190,6 +190,18 @@ class Hardware(BasePageObject):
                 'enabled': 'components/component/transceiver/state/enabled',
             }
         ],
+        'hw_linecard_power_admin': [
+            {
+                'name': 'components/component/name',
+                'power_admin_state': 'components/component/linecard/config/power-admin-state',
+            }
+        ],
+        'hw_linecard_power_admin_state': [
+            {
+                'name': 'components/component/name',
+                'power_admin_state': 'components/component/linecard/state/power-admin-state',
+            }
+        ],
     }
 
     def execute_hardware_component_edit_config_test_case(self):
