@@ -160,6 +160,18 @@ class Hardware(BasePageObject):
                 'empty_name': 'components/component/subcomponents/subcomponent/state/name',
             }
         ],
+        'hw_properties_name': [
+            {
+                'name': 'components/component/name',
+                'empty_name': 'components/component/properties/property/state/name',
+            }
+        ],
+        'hw_properties_value': [
+            {
+                'name': 'components/component/name',
+                'value': 'components/component/properties/property/state/value',
+            }
+        ],
     }
 
     def execute_hardware_component_edit_config_test_case(self):
