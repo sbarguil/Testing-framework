@@ -147,6 +147,19 @@ class Hardware(BasePageObject):
                 'type': 'components/component/state/type',
             }
         ],
+        'hw_subcomponent_name': [
+            {
+                'name': 'components/component/name',
+                'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
+            }
+        ],
+        'hw_subcomponent_name_state': [
+            {
+                'name': 'components/component/name',
+                'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
+                'empty_name': 'components/component/subcomponents/subcomponent/state/name',
+            }
+        ],
     }
 
     def execute_hardware_component_edit_config_test_case(self):

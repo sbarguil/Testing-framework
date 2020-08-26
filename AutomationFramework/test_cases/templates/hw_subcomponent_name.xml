@@ -8,9 +8,9 @@
           <name>{{name}}</name>
           <subcomponents>
             <subcomponent>
-              <name>{{name}}</name>
+              <name>{{subcomponent_name}}</name>
               <config>
-                <name>{{name}}</name>
+                <name>{{subcomponent_name}}</name>
               </config>
             </subcomponent>
           </subcomponents>
