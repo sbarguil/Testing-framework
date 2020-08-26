@@ -2,7 +2,7 @@
   <filter>
     <components xmlns="http://openconfig.net/yang/platform">
       <component>
-        <name/>
+        <name>{{name}}</name>
         <state>
           <serial-no>{{serial_no}}</serial-no>
         </state>
