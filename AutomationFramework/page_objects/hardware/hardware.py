@@ -172,6 +172,24 @@ class Hardware(BasePageObject):
                 'value': 'components/component/properties/property/state/value',
             }
         ],
+        'hw_transceiver_enabled': [
+            {
+                'name': 'components/component/name',
+                'enabled': 'components/component/transceiver/config/enabled',
+            }
+        ],
+        'hw_transceiver_slot_id': [
+            {
+                'name': 'components/component/name',
+                'slot_id': 'components/component/linecard/state/slot-id',
+            }
+        ],
+        'hw_transceiver_enabled_state': [
+            {
+                'name': 'components/component/name',
+                'enabled': 'components/component/transceiver/state/enabled',
+            }
+        ],
     }
 
     def execute_hardware_component_edit_config_test_case(self):

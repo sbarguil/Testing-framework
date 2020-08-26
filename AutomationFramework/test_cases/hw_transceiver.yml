@@ -7,7 +7,8 @@
       rpcs:
           - template: hw_transceiver_slot_id.xml
             operation: get
-            params: 
+            params:
+                   name: "CHASIS"
                    slot_id: ""
 
 - testcase:
@@ -33,5 +34,6 @@
           - template: hw_transceiver_enabled_state.xml
             operation: get
             params:
+                   name: "CHASIS"
                    enabled: ""
 
