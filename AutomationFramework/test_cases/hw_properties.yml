@@ -8,7 +8,9 @@
           - template: hw_properties_name.xml
             operation: get
             params:
-                   name: ""
+                   name: "CHASIS"
+                   empty_name: ""
+
 - testcase:
       name: hw_properties_value
       id: 2
@@ -18,4 +20,5 @@
           - template: hw_properties_value.xml
             operation: get
             params:
+                   name: "CHASIS"
                    value: ""

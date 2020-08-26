@@ -40,6 +40,7 @@ class BasePageObject:
         self.rpcs_list = self.test_case['testcase']['rpcs']
         self.set_variables_to_commit(rpc_idx)
         self.init_generic_variables_to_commit()
+        self.values_after_get = {}
 
     def init_generic_variables_to_commit(self):
         self.generic_variables_to_commit = []
