@@ -92,6 +92,22 @@ class Interfaces(BasePageObject):
                 'oper_status': 'interfaces/interface/state/oper-status',
             }
         ],
+        'if_lag_type': [
+            {
+                'name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'enabled': 'interfaces/interface/config/enabled',
+                'lag_type': 'interfaces/interface/aggregation/config/lag-type',
+            }
+        ],
+        'if_lag_min_links': [
+            {
+                'name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'enabled': 'interfaces/interface/config/enabled',
+                'min_links': 'interfaces/interface/aggregation/config/min-links',
+            }
+        ],
     }
 
     values_before_commit = {
