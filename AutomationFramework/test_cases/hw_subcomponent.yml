@@ -1,10 +1,17 @@
 
 - testcase:
-      name: hw_subcomponent_name
+      name: hw_component_name
       id: 1
       description: >
-          This test is to set the name subcomponent.
+          This test is to set the name component.
       rpcs:
+          - template: hw_component_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "CHASIS"
+
           - template: hw_subcomponent_name.xml
             target: candidate
             operation: edit-config
