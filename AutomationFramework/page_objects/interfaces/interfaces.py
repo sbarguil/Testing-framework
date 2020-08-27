@@ -3,6 +3,97 @@ from AutomationFramework.page_objects.base.base_page_object import BasePageObjec
 
 
 class Interfaces(BasePageObject):
+    variables_paths = {
+        'if_subif_type': [
+            {
+                'name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type'
+            }
+        ],
+        'if_subif_description': [
+            {
+                'name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'description': 'interfaces/interface/subinterfaces/subinterface/config/description',
+            }
+        ],
+        'if_subif_enabled': [
+            {
+                'name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'enabled': 'interfaces/interface/subinterfaces/subinterface/config/enabled',
+            }
+        ],
+        'if_subif_ip_prefix_length': [
+            {
+                'name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'ip': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/ip',
+                'prefix_length': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/prefix-length',
+            }
+        ],
+        'if_subif_dhcp_client': [
+            {
+                'name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'dhcp_client': 'interfaces/interface/subinterfaces/subinterface/ipv4/config/dhcp-client',
+            }
+        ],
+        'if_subif_mtu': [
+            {
+                'name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'mtu': 'interfaces/interface/subinterfaces/subinterface/ipv4/config/mtu',
+            }
+        ],
+        'if_subif_vlan_id': [
+            {
+                'name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'vlan_id': 'interfaces/interface/subinterfaces/subinterface/vlan/config/vlan-id',
+            }
+        ],
+        'if_subif_inner_outer_vlan_id': [
+            {
+                'name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'inner_vlan_id': 'interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged/config/inner-vlan-id',
+                'outer_vlan_id': 'interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged/config/outer-vlan-id',
+            }
+        ],
+        'if_subif_match_vlan_id': [
+            {
+                'name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'vlan_id': 'interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged/config/vlan-id',
+            }
+        ],
+        'if_status_admin_status': [
+            {
+                'name': 'interfaces/interface/name',
+                'admin_status': 'interfaces/interface/state/admin-status',
+            }
+        ],
+        'if_status_enabled': [
+            {
+                'name': 'interfaces/interface/name',
+                'enabled': 'interfaces/interface/state/enabled',
+            }
+        ],
+        'if_status_name': [
+            {
+                'name': 'interfaces/interface/name',
+                'empty_name': 'interfaces/interface/state/name',
+            }
+        ],
+        'if_status_oper_status': [
+            {
+                'name': 'interfaces/interface/name',
+                'oper_status': 'interfaces/interface/state/oper-status',
+            }
+        ],
+    }
+
     values_before_commit = {
         'name': None,
         'type': None,
@@ -49,6 +140,20 @@ class Interfaces(BasePageObject):
         self.execute_edit_config_test_case()
         self.set_values_before_commit_dict()
         self.set_values_after_commit_dict()
+
+    def execute_generic_interfaces_edit_config_test_case(self):
+        filter_to_use = """
+                    <filter>
+                        <interfaces xmlns="http://openconfig.net/yang/interfaces">
+                        <interface>
+                        <name>{}</name>
+                        </interface>
+                        </interfaces>
+                    </filter>
+                    """
+        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='name')
+        self.set_filter(filter_to_use.format(interface_name))
+        self.execute_generic_edit_config_test_case()
 
     def set_values_before_commit_dict(self):
         rpc_reply_key = self.get_rpc_reply_key_from_get_config()

@@ -6,11 +6,11 @@
       <interfaces xmlns="http://openconfig.net/yang/interfaces">
         <interface>
           <name>{{name}}</name>
-          <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
-            <config>
-              <aggregate-id xmlns="http://openconfig.net/yang/interfaces/aggregate">{{aggregate_id}}</aggregate-id>
-            </config>
-          </ethernet>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">{{type}}</type>
+            <enabled>{{enabled}}</enabled>
+          </config>
           <aggregation xmlns="http://openconfig.net/yang/interfaces/aggregate">
             <config>
               <lag-type>{{lag_type}}</lag-type>
