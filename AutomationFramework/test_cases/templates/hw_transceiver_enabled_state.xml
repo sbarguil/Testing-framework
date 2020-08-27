@@ -3,11 +3,11 @@
     <components xmlns="http://openconfig.net/yang/platform">
       <component>
         <name>{{name}}</name>
-        <fan>
+        <transceiver xmlns="http://openconfig.net/yang/platform/transceiver">
           <state>
-            <speed xmlns="http://openconfig.net/yang/platform/fan">{{speed}}</speed>
+            <enabled>{{enabled}}</enabled>
           </state>
-        </fan>
+        </transceiver>
       </component>
     </components>
   </filter>

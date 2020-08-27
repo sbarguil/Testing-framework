@@ -3,11 +3,9 @@
     <components xmlns="http://openconfig.net/yang/platform">
       <component>
         <name>{{name}}</name>
-        <fan>
-          <state>
-            <speed xmlns="http://openconfig.net/yang/platform/fan">{{speed}}</speed>
-          </state>
-        </fan>
+        <state>
+          <description>{{description}}</description>
+        </state>
       </component>
     </components>
   </filter>

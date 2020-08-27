@@ -3,11 +3,11 @@
     <components xmlns="http://openconfig.net/yang/platform">
       <component>
         <name>{{name}}</name>
-        <fan>
+        <linecard xmlns="http://openconfig.net/yang/platform/linecard">
           <state>
-            <speed xmlns="http://openconfig.net/yang/platform/fan">{{speed}}</speed>
+            <slot-id>{{slot_id}}</slot-id>
           </state>
-        </fan>
+        </linecard>
       </component>
     </components>
   </filter>
