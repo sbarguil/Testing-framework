@@ -1,0 +1,31 @@
+
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <routing-policy xmlns="http://openconfig.net/yang/routing-policy">
+        <policy-definitions>
+          <policy-definition>
+            <name>{{name}}</name>
+            <config>
+              <name>{{name}}</name>
+            </config>
+            <statements>
+              <statement>
+                <name>{{statement_name}}</name>
+                <config>
+                  <name>{{statement_name}}</name>
+                </config>
+                <conditions>
+                  <config>
+                    <install-protocol-eq xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{install_protocol_eq}}</install-protocol-eq>
+                  </config>
+                </conditions>
+              </statement>
+            </statements>
+          </policy-definition>
+        </policy-definitions>
+      </routing-policy>
+    </config>
+  </edit-config>
