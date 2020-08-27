@@ -10,8 +10,8 @@
             operation: edit-config
             commit: true
             params:
-                   name: "300"
-                   type: "ianaift:ieee8023adLag"
+                   name: "test_300"
+                   type: "ieee8023adLag"
                    enabled: "true"
                    lag_type:  "LACP"
 
@@ -26,7 +26,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "300"
-                   type: "ianaift:ieee8023adLag"
+                   name: "test_300"
+                   type: "ieee8023adLag"
                    enabled: "true"
                    min_links:  "5"
