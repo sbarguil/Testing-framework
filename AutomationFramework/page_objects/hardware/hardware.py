@@ -202,6 +202,12 @@ class Hardware(BasePageObject):
                 'power_admin_state': 'components/component/linecard/state/power-admin-state',
             }
         ],
+        'hw_fan_speed': [
+            {
+                'name': 'components/component/name',
+                'speed': 'components/component/fan/state/speed',
+            }
+        ],
     }
 
     def execute_hardware_component_edit_config_test_case(self):
