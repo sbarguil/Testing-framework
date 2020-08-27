@@ -208,6 +208,11 @@ class Hardware(BasePageObject):
                 'speed': 'components/component/fan/state/speed',
             }
         ],
+        'hw_config_name': [
+            {
+                'name': 'components/component/name',
+            }
+        ],
     }
 
     def execute_hardware_component_edit_config_test_case(self):
