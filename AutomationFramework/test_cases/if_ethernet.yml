@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "ge-0/0/3"
+                   name: "1"
                    auto_negotiate: "false"
 
 - testcase:
@@ -24,7 +24,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "ge-0/0/3"
+                   name: "1"
                    duplex_mode: "FULL"
 
           - template: if_ethernet_duplex_mode.xml
@@ -32,8 +32,9 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/4"
+                   name: "2"
                    duplex_mode: "HALF"
+
 - testcase:
       name: if_ethernet_port_speed
       id: 3
@@ -45,8 +46,9 @@
             operation: edit-config
             commit: true
             params:
-                   name: "ge-0/0/3"
+                   name: "1"
                    port_speed: "SPEED_100MB"
+
 - testcase:
       name: if_ethernet_aggregate_id
       id: 4
@@ -58,8 +60,9 @@
             operation: edit-config
             commit: true
             params:
-                   name: "ge-0/0/3"
+                   name: "1"
                    aggregate_id: "1"
+
 - testcase:
       name: if_ethernet_port_speed_state
       id: 5
@@ -69,5 +72,5 @@
           - template: if_ethernet_port_speed_state.xml
             operation: get
             params:
-                   name: "ge-0/0/3"
+                   name: "1"
                    port_speed: ""
