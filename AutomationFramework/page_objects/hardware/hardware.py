@@ -93,6 +93,126 @@ class Hardware(BasePageObject):
                 'input_current': 'components/component/power-supply/state/input-current',
             }
         ],
+        'hw_component_description': [
+            {
+                'name': 'components/component/name',
+                'description': 'components/component/state/description',
+            }
+        ],
+        'hw_component_hardware_version': [
+            {
+                'name': 'components/component/name',
+                'hardware_version': 'components/component/state/hardware-version',
+            }
+        ],
+        'hw_component_id': [
+            {
+                'name': 'components/component/name',
+                'id': 'components/component/state/id',
+            }
+        ],
+        'hw_component_location': [
+            {
+                'name': 'components/component/name',
+                'location': 'components/component/state/location',
+            }
+        ],
+        'hw_component_mfg_date': [
+            {
+                'name': 'components/component/name',
+                'mfg_date': 'components/component/state/mfg-date',
+            }
+        ],
+        'hw_component_oper_status': [
+            {
+                'name': 'components/component/name',
+                'oper_status': 'components/component/state/oper-status',
+            }
+        ],
+        'hw_component_parent': [
+            {
+                'name': 'components/component/name',
+                'parent': 'components/component/state/parent',
+            }
+        ],
+        'hw_component_serial_no': [
+            {
+                'name': 'components/component/name',
+                'serial_no': 'components/component/state/serial-no',
+            }
+        ],
+        'hw_component_type': [
+            {
+                'name': 'components/component/name',
+                'type': 'components/component/state/type',
+            }
+        ],
+        'hw_subcomponent_name': [
+            {
+                'name': 'components/component/name',
+                'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
+            }
+        ],
+        'hw_subcomponent_name_state': [
+            {
+                'name': 'components/component/name',
+                'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
+                'empty_name': 'components/component/subcomponents/subcomponent/state/name',
+            }
+        ],
+        'hw_properties_name': [
+            {
+                'name': 'components/component/name',
+                'empty_name': 'components/component/properties/property/state/name',
+            }
+        ],
+        'hw_properties_value': [
+            {
+                'name': 'components/component/name',
+                'value': 'components/component/properties/property/state/value',
+            }
+        ],
+        'hw_transceiver_enabled': [
+            {
+                'name': 'components/component/name',
+                'enabled': 'components/component/transceiver/config/enabled',
+            }
+        ],
+        'hw_transceiver_slot_id': [
+            {
+                'name': 'components/component/name',
+                'slot_id': 'components/component/linecard/state/slot-id',
+            }
+        ],
+        'hw_transceiver_enabled_state': [
+            {
+                'name': 'components/component/name',
+                'enabled': 'components/component/transceiver/state/enabled',
+            }
+        ],
+        'hw_linecard_power_admin': [
+            {
+                'name': 'components/component/name',
+                'power_admin_state': 'components/component/linecard/config/power-admin-state',
+            }
+        ],
+        'hw_linecard_power_admin_state': [
+            {
+                'name': 'components/component/name',
+                'power_admin_state': 'components/component/linecard/state/power-admin-state',
+            }
+        ],
+        'hw_fan_speed': [
+            {
+                'name': 'components/component/name',
+                'speed': 'components/component/fan/state/speed',
+            }
+        ],
+        'hw_config_name': [
+            {
+                'name': 'components/component/name',
+            }
+        ],
     }
 
     def execute_hardware_component_edit_config_test_case(self):
