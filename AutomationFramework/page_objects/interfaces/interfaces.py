@@ -120,6 +120,12 @@ class Interfaces(BasePageObject):
                 'port_speed': 'interfaces/interface/ethernet/config/port-speed',
             }
         ],
+        'if_ethernet_duplex_mode': [
+            {
+                'name': 'interfaces/interface/name',
+                'duplex_mode': 'interfaces/interface/ethernet/config/duplex-mode',
+            }
+        ],
     }
 
     values_before_commit = {

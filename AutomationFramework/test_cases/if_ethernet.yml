@@ -27,14 +27,6 @@
                    name: "1"
                    duplex_mode: "FULL"
 
-          - template: if_ethernet_duplex_mode.xml
-            target: candidate
-            operation: edit-config
-            commit: true
-            params:
-                   name: "2"
-                   duplex_mode: "HALF"
-
 - testcase:
       name: if_ethernet_port_speed
       id: 3
