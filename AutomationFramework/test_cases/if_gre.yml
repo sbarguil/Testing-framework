@@ -11,6 +11,7 @@
             commit: true
             params:
                    name: "100"
+                   type: "ianaift:tunnel"
                    dst: "10.10.10.1"
 
 - testcase:
@@ -25,6 +26,7 @@
             commit: true
             params:
                    name: "100"
+                   type: "ianaift:tunnel"                   
                    src: "11.11.11.1"
 
 - testcase:
@@ -39,6 +41,7 @@
             commit: true
             params:
                    name: "100"
+                   type: "ianaift:tunnel"                   
                    ttl: "30"
 
 - testcase:
@@ -47,6 +50,16 @@
       description: >
           This test is to set the IPV4 address and mask on the interface.
       rpcs:
+      
+          - template: if_gre_dst.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "100"
+                   type: "ianaift:tunnel"
+                   dst: "10.10.10.1"
+      
           - template: if_gre_ip_prefix_length.xml
             target: candidate
             operation: edit-config
@@ -62,6 +75,15 @@
       description: >
           This test is to set the size of MTU packets IPV4.
       rpcs:
+          - template: if_gre_dst.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "100"
+                   type: "ianaift:tunnel"
+                   dst: "10.10.10.1"
+                   
           - template: if_gre_mtu.xml
             target: candidate
             operation: edit-config
