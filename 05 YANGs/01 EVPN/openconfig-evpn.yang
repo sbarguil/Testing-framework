@@ -17,8 +17,8 @@ module openconfig-evpn {
   namespace "urn:ietf:params:xml:ns:yang:ietf-evpn";
   prefix "evpn";
 
-  import ietf-inet-types {
-    prefix "inet";
+  import openconfig-inet-types {
+    prefix "oc-inet";
   }
 
   import ietf-yang-types {
