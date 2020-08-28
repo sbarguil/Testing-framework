@@ -82,4 +82,5 @@
             commit: true
             params:
                   name: "Loopback0"
+                  type: "ianaift:softwareLoopback"
                   loopback_mode: "true"
