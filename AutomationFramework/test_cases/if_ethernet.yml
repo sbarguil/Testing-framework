@@ -11,7 +11,7 @@
             commit: true
             params:
                    name: "1"
-                   auto_negotiate: "false"
+                   auto_negotiate: "true"
 
 - testcase:
       name: if_ethernet_duplex_mode

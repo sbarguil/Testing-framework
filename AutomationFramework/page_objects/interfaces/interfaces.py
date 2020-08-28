@@ -108,6 +108,18 @@ class Interfaces(BasePageObject):
                 'min_links': 'interfaces/interface/aggregation/config/min-links',
             }
         ],
+        'if_ethernet_auto_negotiate': [
+            {
+                'name': 'interfaces/interface/name',
+                'auto_negotiate': 'interfaces/interface/ethernet/config/auto-negotiate',
+            }
+        ],
+        'if_ethernet_port_speed': [
+            {
+                'name': 'interfaces/interface/name',
+                'port_speed': 'interfaces/interface/ethernet/config/port-speed',
+            }
+        ],
     }
 
     values_before_commit = {
