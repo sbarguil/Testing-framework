@@ -3,14 +3,6 @@
       <{{target}}/>
     </target>
     <config>
-      <interfaces xmlns="http://openconfig.net/yang/interfaces">
-        <interface>
-          <name>{{interface}}</name>
-          <config>
-            <name>{{interface}}</name>
-          </config>
-        </interface>
-      </interfaces>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
           <name>{{instance_name}}</name>

@@ -12,6 +12,7 @@
             params:
                    instance_name: "Prueba_LxVPN"
                    id: "GigabitEthernet0/0/1"
+
 - testcase:
       name: ni_interface_interface
       id: 2
@@ -26,12 +27,23 @@
                    instance_name: "Prueba_LxVPN"
                    id: "GigabitEthernet0/0/1"
                    interface: ""GigabitEthernet0/0/1"
-- testcase:
+-
+   testcase:
       name: ni_interface_subinterface
       id: 3
       description: >
           This test is to set a reference to an existing subinterface (IMPORTANT!: create it before test by means of CLI) to be bound to Lx network-instance.
+
       rpcs:
+          - template: ni_interface_subif.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "GigabitEthernet0/0/1"
+                   index: "100"
+
+
           - template: ni_interface_subinterface.xml
             target: candidate
             operation: edit-config
@@ -39,4 +51,5 @@
             params:
                    instance_name: "Prueba_LxVPN"
                    id: "GigabitEthernet0/0/1"
+                   interface: ""GigabitEthernet0/0/1"
                    subinterface: "100"
