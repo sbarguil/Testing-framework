@@ -6,27 +6,27 @@ class Interfaces(BasePageObject):
     variables_paths = {
         'if_subif_type': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'type': 'interfaces/interface/config/type'
             }
         ],
         'if_subif_description': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'index': 'interfaces/interface/subinterfaces/subinterface/index',
                 'description': 'interfaces/interface/subinterfaces/subinterface/config/description',
             }
         ],
         'if_subif_enabled': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'index': 'interfaces/interface/subinterfaces/subinterface/index',
                 'enabled': 'interfaces/interface/subinterfaces/subinterface/config/enabled',
             }
         ],
         'if_subif_ip_prefix_length': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'index': 'interfaces/interface/subinterfaces/subinterface/index',
                 'ip': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/ip',
                 'prefix_length': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/prefix-length',
@@ -34,28 +34,28 @@ class Interfaces(BasePageObject):
         ],
         'if_subif_dhcp_client': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'index': 'interfaces/interface/subinterfaces/subinterface/index',
                 'dhcp_client': 'interfaces/interface/subinterfaces/subinterface/ipv4/config/dhcp-client',
             }
         ],
         'if_subif_mtu': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'index': 'interfaces/interface/subinterfaces/subinterface/index',
                 'mtu': 'interfaces/interface/subinterfaces/subinterface/ipv4/config/mtu',
             }
         ],
         'if_subif_vlan_id': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'index': 'interfaces/interface/subinterfaces/subinterface/index',
                 'vlan_id': 'interfaces/interface/subinterfaces/subinterface/vlan/config/vlan-id',
             }
         ],
         'if_subif_inner_outer_vlan_id': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'index': 'interfaces/interface/subinterfaces/subinterface/index',
                 'inner_vlan_id': 'interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged/config/inner-vlan-id',
                 'outer_vlan_id': 'interfaces/interface/subinterfaces/subinterface/vlan/match/double-tagged/config/outer-vlan-id',
@@ -63,32 +63,32 @@ class Interfaces(BasePageObject):
         ],
         'if_subif_match_vlan_id': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'index': 'interfaces/interface/subinterfaces/subinterface/index',
                 'vlan_id': 'interfaces/interface/subinterfaces/subinterface/vlan/match/single-tagged/config/vlan-id',
             }
         ],
         'if_status_admin_status': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'admin_status': 'interfaces/interface/state/admin-status',
             }
         ],
         'if_status_enabled': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'enabled': 'interfaces/interface/state/enabled',
             }
         ],
         'if_status_name': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'empty_name': 'interfaces/interface/state/name',
             }
         ],
         'if_status_oper_status': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'oper_status': 'interfaces/interface/state/oper-status',
             }
         ],
@@ -111,7 +111,7 @@ class Interfaces(BasePageObject):
     }
 
     values_before_commit = {
-        'name': None,
+        'interface_name': None,
         'type': None,
         'enabled': None,
         'description': None,
@@ -126,7 +126,7 @@ class Interfaces(BasePageObject):
         'aggregation:config:min_links': None,
     }
     values_after_commit = {
-        'name': None,
+        'interface_name': None,
         'type': None,
         'enabled': None,
         'description': None,
@@ -151,7 +151,7 @@ class Interfaces(BasePageObject):
                         </interfaces>
                     </filter>
                     """
-        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='name')
+        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='interface_name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_edit_config_test_case()
         self.set_values_before_commit_dict()
@@ -167,7 +167,7 @@ class Interfaces(BasePageObject):
                         </interfaces>
                     </filter>
                     """
-        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='name')
+        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='interface_name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()
 
@@ -179,7 +179,7 @@ class Interfaces(BasePageObject):
 
         if 'config' in parsed_dict:
             if 'name' in parsed_dict['config']:
-                self.values_before_commit['name'] = parsed_dict['config']['name']
+                self.values_before_commit['interface_name'] = parsed_dict['config']['name']
             if 'type' in parsed_dict['config']:
                 self.values_before_commit['type'] = parsed_dict['config']['type']
             if 'enabled' in parsed_dict['config']:
@@ -216,7 +216,7 @@ class Interfaces(BasePageObject):
             self.edit_config_second_get_config_response.xml)[rpc_reply_key][data_key]['interfaces']['interface']
         if 'config' in parsed_dict:
             if 'name' in parsed_dict['config']:
-                self.values_after_commit['name'] = parsed_dict['config']['name']
+                self.values_after_commit['interface_name'] = parsed_dict['config']['name']
             if 'type' in parsed_dict['config']:
                 self.values_after_commit['type'] = parsed_dict['config']['type']
             if 'enabled' in parsed_dict['config']:
