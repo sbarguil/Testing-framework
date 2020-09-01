@@ -5,7 +5,7 @@
           <name>{{name}}</name>
           <subinterfaces>
             <subinterface>
-              <index>{{index}}</index>
+              <index>{{interface_name}}</index>
               <config>
                 <index>{{index}}</index>
               </config>

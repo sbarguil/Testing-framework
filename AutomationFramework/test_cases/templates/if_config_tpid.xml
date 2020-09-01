@@ -5,7 +5,7 @@
     <config>
       <interfaces xmlns="http://openconfig.net/yang/interfaces">
         <interface>
-          <name>{{name}}</name>
+          <name>{{interface_name}}</name>
           <config>
             <tpid xmlns:oc-vlan-types="http://openconfig.net/yang/vlan-types" xmlns="http://openconfig.net/yang/vlan">{{tpid}}</tpid>
           </config>
