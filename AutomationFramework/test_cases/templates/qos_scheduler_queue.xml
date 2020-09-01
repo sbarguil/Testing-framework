@@ -29,6 +29,7 @@
                     <id>{{id}}</id>
                     <config>
                       <id>{{id}}</id>
+                      <input-type>{{input_type}}</input-type>
                       <queue>{{name}}</queue>
                     </config>
                   </input>

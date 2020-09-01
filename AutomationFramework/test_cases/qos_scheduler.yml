@@ -38,7 +38,7 @@
             commit: true
             params:
                    name: "scheduler_policy_AF1"
-                   sequence: "1" 
+                   sequence: "1"
                    id: "scheduler_AF1"
 
 - testcase:
@@ -54,8 +54,9 @@
             params:
                    name: "queue_AF1"
                    scheduler_name: "scheduler_policy_AF1"
-                   sequence: "1" 
+                   sequence: "1"
                    id: "scheduler_AF1"
+                   input_type: "QUEUE"
 
 - testcase:
       name: qos_scheduler_weight
@@ -69,8 +70,8 @@
             commit: true
             params:
                    name: "scheduler_policy_AF1"
-                   sequence: "1" 
-                   id: "scheduler_AF1" 
+                   sequence: "1"
+                   id: "scheduler_AF1"
                    weight: "5"
 
 - testcase:
@@ -85,7 +86,7 @@
             commit: true
             params:
                    name: "scheduler_policy_AF1"
-                   sequence: "1" 
+                   sequence: "1"
                    cir: "4096"
 
 - testcase:
@@ -115,5 +116,5 @@
             commit: true
             params:
                   name: "scheduler_policy_AF1"
-                  sequence: "1"   
+                  sequence: "1"
                   max_queue_depth_bytes: "512"
