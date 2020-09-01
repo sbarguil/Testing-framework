@@ -36,6 +36,14 @@
       description: >
           This test is to set an import-policy to a table connection between protocols (BGP, OSPF or STATIC) to redistribute routes within a L3 network-instance.
       rpcs:
+
+          - template: ni_protocol_policy_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   import_policy: "REDISTRIBUTION_POLICY"
+
           - template: ni_protocol_tables_connection_import_policy.xml
             target: candidate
             operation: edit-config
@@ -46,6 +54,7 @@
                    identifier_src_protocol: "OSPF"
                    address_family: "IPV4"
                    import_policy: "REDISTRIBUTION_POLICY"
+
 
 - testcase:
       name: ni_protocol_tables_connection_default_import_policy
