@@ -1,5 +1,4 @@
-/*   <CODE BEGINS> file "ietf-evpn@2019-03-09.yang" */
-   module openconfig-evpn {
+module openconfig-evpn {
 
   // namespace
   namespace "http://openconfig.net/yang/evpn";
@@ -7,35 +6,13 @@
   prefix "oc-evpn";
 
 
-     import openconfig-inet-types {
-       prefix "inet";
-     }
-
-     import openconfig-yang-types {
-       prefix "yang";
-     }
-
-     import ietf-routing-types {
-       prefix "rt-types";
-     }
-
-     import ietf-network-instance {
-       prefix "ni";
-     }
-
-     import ietf-l2vpn {
-       prefix "l2vpn";
-     }
-
-     import ietf-pseudowires {
-       prefix "pw";
-     }
-
-     import ietf-ethernet-segment {
-       prefix "es";
-     }
-
-
+  import openconfig-inet-types {prefix "inet";}
+  import openconfig-yang-types {prefix "yang";}
+  import ietf-routing-types {prefix "rt-types";}
+  import ietf-network-instance {prefix "ni";}
+  import ietf-l2vpn {prefix "l2vpn";}
+  import ietf-pseudowires {prefix "pw";}
+  import ietf-ethernet-segment {prefix "es";}
 
   // meta
   organization
@@ -485,4 +462,3 @@
        }
      }
    }
-/* <CODE ENDS> */
