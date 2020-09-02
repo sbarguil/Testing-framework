@@ -1,3 +1,4 @@
+/*<CODE BEGINS> file "ietf-l2vpn@2019-05-28.yang" */
 module ietf-l2vpn {
   namespace "urn:ietf:params:xml:ns:yang:ietf-l2vpn";
   prefix "l2vpn";
@@ -285,6 +286,7 @@ module ietf-l2vpn {
     base "l2vpn-notification-state";
     description "MAC limit is reached";
   }
+
   identity MAC-limit-cleared {
     base "l2vpn-notification-state";
     description "MAC limit is cleared";
@@ -331,7 +333,6 @@ module ietf-l2vpn {
   }
 
   /* typedefs */
-
   typedef l2vpn-service-type {
     type identityref {
       base "l2vpn-service";
@@ -1117,3 +1118,4 @@ module ietf-l2vpn {
     }
   }
 }
+/*<CODE ENDS> */
