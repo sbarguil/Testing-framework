@@ -8,8 +8,8 @@ module openconfig-evpn {
 
   import openconfig-inet-types {prefix "inet";}
   import openconfig-yang-types {prefix "yang";}
-  import ietf-routing-types {prefix "rt-types";}
-  import ietf-network-instance {prefix "ni";}
+  import ietf-routing-types {prefix "rt-types";} /* module does not exists in OC */
+  import openconfig-network-instance {prefix "ni";}
   import ietf-l2vpn {prefix "l2vpn";}
   import ietf-pseudowires {prefix "pw";}
   import ietf-ethernet-segment {prefix "es";}
@@ -400,7 +400,7 @@ module openconfig-evpn {
        }
      }
 
-     augment "/ni:network-instances/ni:network-instance/ni:ni-type" +
+     augment "/ni:network-instances/ni:network-instance/ni:config/ni:type" +
              "/l2vpn:l2vpn" {
        description "Augment for an L2VPN instance and EVPN association";
        leaf evpn-instance {
@@ -409,7 +409,7 @@ module openconfig-evpn {
        }
      }
 
-     augment "/ni:network-instances/ni:network-instance/ni:ni-type" +
+     augment "/ni:network-instances/ni:network-instance/ni:config/ni:type" +
              "/l2vpn:l2vpn" {
        when "l2vpn:type = 'l2vpn:vpls-instance-type'" {
          description "Constraints only for VPLS pseudowires";
