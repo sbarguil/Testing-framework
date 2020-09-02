@@ -11,6 +11,9 @@ module ietf-l2vpn {
   }
 
   import ietf-routing-types {
+    prefix "rt-types";
+  }
+
   import ietf-interfaces {
     prefix "if";
   }
