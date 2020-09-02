@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   ext_community_set_name: "IMPORT_EXAMPLE"
+                   ext_community_set_name: "IMPORT_EXAMPLE1"
                    ext_community_member: "65000:103"
 
 - testcase:
@@ -24,4 +24,4 @@
             operation: edit-config
             commit: true
             params:
-                   ext_community_set_name: "IMPORT_EXAMPLE"
+                   ext_community_set_name: "IMPORT_EXAMPLE2"

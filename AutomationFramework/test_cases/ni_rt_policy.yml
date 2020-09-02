@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
+                   instance_name: "Prueba_LxVPN50"
                    import_policy: "route_target_import"
 - testcase:
       name: ni_rt_policy_export-policy
@@ -23,6 +23,6 @@
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
+                   instance_name: "Prueba_LxVPN51"
                    export_policy: "route_target_export"
         

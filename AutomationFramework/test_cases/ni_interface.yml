@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
+                   instance_name: "Prueba_LxVPN33"
                    id: "GigabitEthernet0/0/1"
 - testcase:
       name: ni_interface_interface
@@ -23,9 +23,9 @@
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
+                   instance_name: "Prueba_LxVPN34"
                    id: "GigabitEthernet0/0/1"
-                   interface: ""GigabitEthernet0/0/1"
+                   interface: "GigabitEthernet0/0/1"
 - testcase:
       name: ni_interface_subinterface
       id: 3
@@ -37,6 +37,6 @@
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
+                   instance_name: "Prueba_LxVPN35"
                    id: "GigabitEthernet0/0/1"
                    subinterface: "100"

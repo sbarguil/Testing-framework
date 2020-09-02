@@ -10,8 +10,8 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
-                   instance_name: "Prueba_LxVPN"
+                   name: "Prueba_LxVPN13"
+                   instance_name: "Prueba_LxVPN13"
 
 - testcase:
       name: ni_config_type
@@ -24,7 +24,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Prueba_LxVPN14"
                    type: "L3VRF"
 
 - testcase:
@@ -38,7 +38,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Prueba_LxVPN15"
                    enabled: "true"
 
 - testcase:
@@ -52,7 +52,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Prueba_LxVPN16"
                    description: "VPN de prueba para L3 y L2"
 
 - testcase:
@@ -66,7 +66,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Prueba_LxVPN17"
                    router_id: "172.16.1.2"
 
 - testcase:
@@ -80,7 +80,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Prueba_LxVPN18"
                    route_distinguisher: "65000:100"
 
 - testcase:
@@ -94,7 +94,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Prueba_LxVPN19"
                    type: "L3VRF"
                    enabled_address_families: "IPV4"
 
@@ -109,6 +109,6 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Prueba_LxVPN20"
                    type: "L2VSI"
                    mtu: "1450"

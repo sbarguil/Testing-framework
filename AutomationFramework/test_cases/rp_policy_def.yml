@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "ROUTING_POLICY_EXPORT"
+                   name: "ROUTING_POLICY_EXPORT1"
 
 - testcase:
       name: rp_policy_def_policy_result
@@ -23,7 +23,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "ROUTING_POLICY_EXPORT"
+                   name: "ROUTING_POLICY_EXPORT2"
                    statement_name: "1"
                    policy_result: "ACCEPT_ROUTE"
 
@@ -38,7 +38,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "ROUTING_POLICY_EXPORT"
+                   name: "ROUTING_POLICY_EXPORT3"
                    statement_name: "1"
                    install_protocol_eq: "BGP"
 
@@ -76,6 +76,6 @@
             operation: edit-config
             commit: true
             params:
-                   name: "ROUTING_POLICY_EXPORT"
+                   name: "ROUTING_POLICY_EXPORT5"
                    statement_name: "1"
                    match_set_options: "ANY"

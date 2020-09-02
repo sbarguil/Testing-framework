@@ -27,7 +27,7 @@ class RPCAutomator2:
                                        hostkey_verify=False,
                                        look_for_keys=False,
                                        allow_agent=False,
-                                       device_params={'name': 'huawei'},
+                                       #device_params={'name': 'huawei'},
                                        )
 
     def rpc_body_generator(self, test_case, rpc_index=0, variables_in_template=None):
