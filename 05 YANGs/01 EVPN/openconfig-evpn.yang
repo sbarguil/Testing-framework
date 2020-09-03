@@ -10,6 +10,7 @@ module openconfig-evpn {
   import openconfig-yang-types {prefix "yang";}
   import ietf-routing-types {prefix "rt-types";} /* module does not exists in OC */
   import openconfig-network-instance {prefix "ni";}
+  import openconfig-network-instance-types {prefix "ni-types";}
   import ietf-l2vpn {prefix "l2vpn";}
   import ietf-pseudowires {prefix "pw";}
   import ietf-ethernet-segment {prefix "es";}
@@ -41,7 +42,7 @@ module openconfig-evpn {
      /* Identities */
 
     identity evpn-instance {
-      base "ni:NETWORK_INSTANCE_TYPE";
+      base "ni-types:NETWORK_INSTANCE_TYPE";
       description "Reference to an EVPN instance";
     }
 
@@ -405,7 +406,7 @@ module openconfig-evpn {
        }
      }
 
-     augment "/ni:network-instances/ni:network-instance/ni:config/ni:type {
+     augment "/ni:network-instances/ni:network-instance/ni:config/ni:type" {
        when "l2vpn:type = 'l2vpn:vpls-instance-type'" {
          description "Constraints only for VPLS pseudowires";
        }
