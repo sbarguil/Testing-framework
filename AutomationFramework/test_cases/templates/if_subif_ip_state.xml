@@ -6,14 +6,11 @@
           <subinterfaces>
             <subinterface>
               <index>{{index}}</index>
-              <config>
-                <index>{{index}}</index>
-              </config>
               <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip">
                 <addresses>
                   <address>
                     <state>
-                      <ip/>
+                      <ip>{{ip}}</ip>
                     </state>
                   </address>
                 </addresses>
