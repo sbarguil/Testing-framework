@@ -29,9 +29,11 @@ class BasePageObject:
     current_rpc_index_being_executed = None
     rpcs_list = []
     variables_paths = {}
+    rpc_idx_in_test_case = 0
 
     def __init__(self, test_case_file=None, test_case_name=None, rpc_idx=0):
         self.rpc_automator = RPCAutomator2(HOSTS[0])
+        self.rpc_idx_in_test_case = rpc_idx
         self.test_case_file = test_case_file
         self.test_case_name = test_case_name
         self.test_case = self.rpc_automator.get_test_case_by_name_from_file(file=self.test_case_file,
@@ -44,7 +46,7 @@ class BasePageObject:
 
     def init_generic_variables_to_commit(self):
         self.generic_variables_to_commit = []
-        for variable, value in self.rpcs_list[self.current_rpc_index_being_executed]['params'].items():
+        for variable, value in self.rpcs_list[self.rpc_idx_in_test_case]['params'].items():
             new_variable = {'test_case_key': variable, 'value_to_commit': value}
             self.generic_variables_to_commit.append(new_variable)
 
@@ -121,7 +123,7 @@ class BasePageObject:
     def set_generic_variables_to_commit(self):
         for variable in self.generic_variables_to_commit:
             variable['path_string'] = \
-                self.variables_paths[self.test_case_name][self.current_rpc_index_being_executed][variable[
+                self.variables_paths[self.test_case_name][self.rpc_idx_in_test_case][variable[
                     'test_case_key']]
             variable['path_list'] = variable['path_string'].split('/')
 
@@ -131,17 +133,19 @@ class BasePageObject:
     def generate_filter_from_test_case(self):
         self.netconf_filter = \
             self.rpc_automator.generate_filter_from_test_case(test_case=self.test_case,
-                                                              rpc_index=self.current_rpc_index_being_executed)
+                                                              rpc_index=self.rpc_idx_in_test_case)
 
     def execute_get_config_with_filter(self):
         self.get_config_response = self.rpc_automator.safe_get_config(netconf_filter=self.netconf_filter,
-                                                                      test_case=self.test_case)
+                                                                      test_case=self.test_case,
+                                                                      rpc_index=self.rpc_idx_in_test_case)
         return self.get_config_response
 
     def get_rendered_template(self):
         print('---------------------------------------------------------------------------------------')
         print('Rendered template')
-        self.rendered_template = self.rpc_automator.rpc_body_generator(test_case=self.test_case, rpc_index=0)
+        self.rendered_template = self.rpc_automator.rpc_body_generator(test_case=self.test_case,
+                                                                       rpc_index=self.rpc_idx_in_test_case)
         print(self.rendered_template)
         return self.rendered_template
 
@@ -155,7 +159,7 @@ class BasePageObject:
         print('---------------------------------------------------------------------------------------')
         print('First get_config response')
         self.edit_config_first_get_config_response = self.rpc_automator.safe_get_config(
-            netconf_filter=self.netconf_filter, test_case=self.test_case)
+            netconf_filter=self.netconf_filter, test_case=self.test_case, rpc_index=self.rpc_idx_in_test_case)
         print(self.edit_config_first_get_config_response)
         return self.edit_config_first_get_config_response
 
@@ -163,7 +167,7 @@ class BasePageObject:
         print('---------------------------------------------------------------------------------------')
         print('Second get_config response')
         self.edit_config_second_get_config_response = self.rpc_automator.safe_get_config(
-            netconf_filter=self.netconf_filter, test_case=self.test_case)
+            netconf_filter=self.netconf_filter, test_case=self.test_case, rpc_index=self.rpc_idx_in_test_case)
         print(self.edit_config_second_get_config_response)
         return self.edit_config_second_get_config_response
 
@@ -303,7 +307,7 @@ class BasePageObject:
     def container_created(self, variable):
         number_of_occurrences_for_variable_in_empty_template = \
             self.rpc_automator.get_occurrences_of_variable_in_not_rendered_template(
-                test_case=self.test_case, rpc_index=self.current_rpc_index_being_executed,
+                test_case=self.test_case, rpc_index=self.rpc_idx_in_test_case,
                 variable_in_test_case=variable['test_case_key'])
         if number_of_occurrences_for_variable_in_empty_template > 1:
             return True
@@ -366,7 +370,8 @@ class BasePageObject:
         print(initial_values_template)
         self.execute_edit_config_with_template(template=initial_values_template)
         print('- Get-config after cleaning')
-        print(self.rpc_automator.safe_get_config(netconf_filter=self.netconf_filter, test_case=self.test_case))
+        print(self.rpc_automator.safe_get_config(netconf_filter=self.netconf_filter, test_case=self.test_case,
+                                                 rpc_index=self.rpc_idx_in_test_case))
 
     def get_initial_values_of_params_changed(self):
         initial_values = {}
@@ -470,3 +475,9 @@ class BasePageObject:
         print('- Get response')
         print(self.get_response)
         return self.get_response
+
+    def validate_rpc(self):
+        if self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'edit-config':
+            return self.generic_validate_test_case_params()
+        elif self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'get':
+            return self.validate_get_test_case()

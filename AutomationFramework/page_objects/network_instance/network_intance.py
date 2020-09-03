@@ -154,12 +154,14 @@ class NetworkInstance(BasePageObject):
         'ni_t_ldp_afi_name': [
             {
                 'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
                 'afi_name': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/afi-name',
             }
         ],
         'ni_t_ldp_remote_address': [
             {
                 'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
                 'afi_name': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/afi-name',
                 'remote_address': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/remote-address',
             }
@@ -167,6 +169,7 @@ class NetworkInstance(BasePageObject):
         'ni_t_ldp_local_address': [
             {
                 'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
                 'afi_name': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/afi-name',
                 'remote_address': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/remote-address',
                 'local_address': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/config/local-address',
@@ -175,6 +178,7 @@ class NetworkInstance(BasePageObject):
         'ni_t_ldp_enabled': [
             {
                 'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
                 'afi_name': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/afi-name',
                 'remote_address': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/remote-address',
                 'enabled': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/config/enabled',

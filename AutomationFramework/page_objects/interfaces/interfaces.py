@@ -32,6 +32,32 @@ class Interfaces(BasePageObject):
                 'prefix_length': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/prefix-length',
             }
         ],
+        'if_subif_ip_state': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'ip': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/ip',
+                'prefix_length': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/prefix-length',
+            },
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'ip': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/state/ip',
+            }
+        ],
+        'if_subif_origin': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'ip': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/ip',
+                'prefix_length': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/prefix-length',
+            },
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'origin': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/state/origin',
+            }
+        ],
         'if_subif_dhcp_client': [
             {
                 'interface_name': 'interfaces/interface/name',
@@ -108,6 +134,41 @@ class Interfaces(BasePageObject):
                 'min_links': 'interfaces/interface/aggregation/config/min-links',
             }
         ],
+        'if_ethernet_auto_negotiate': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'auto_negotiate': 'interfaces/interface/ethernet/config/auto-negotiate',
+            }
+        ],
+        'if_ethernet_port_speed': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'port_speed': 'interfaces/interface/ethernet/config/port-speed',
+            }
+        ],
+        'if_ethernet_duplex_mode': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'duplex_mode': 'interfaces/interface/ethernet/config/duplex-mode',
+            }
+        ],
+        'if_ethernet_port_speed_state': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'port_speed': 'interfaces/interface/ethernet/state/port-speed',
+            }
+        ],
+        'if_ethernet_aggregate_id': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'enabled': 'interfaces/interface/config/enabled',
+            },
+            {
+                'interface_name': 'interfaces/interface/name',
+                'aggregate_id': 'interfaces/interface/ethernet/config/aggregate-id',
+            }
+        ],
     }
 
     values_before_commit = {
@@ -167,9 +228,16 @@ class Interfaces(BasePageObject):
                         </interfaces>
                     </filter>
                     """
-        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='interface_name')
+        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=self.rpc_idx_in_test_case,
+                                                                      variable='interface_name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()
+
+    def execute_interface_rpc(self):
+        if self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'edit-config':
+            self.execute_generic_interfaces_edit_config_test_case()
+        elif self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'get':
+            self.execute_get_test_case_with_dispatch()
 
     def set_values_before_commit_dict(self):
         rpc_reply_key = self.get_rpc_reply_key_from_get_config()

@@ -9,6 +9,9 @@
           <subinterfaces>
             <subinterface>
               <index>{{index}}</index>
+              <config>
+                <index>{{index}}</index>
+              </config>
               <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip">
                 <config>
                   <dhcp-client>{{dhcp_client}}</dhcp-client>
@@ -20,4 +23,3 @@
       </interfaces>
     </config>
   </edit-config>
-</rpc>

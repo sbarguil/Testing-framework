@@ -96,8 +96,8 @@ class RPCAutomator2:
             print("An exception has occurred when performing the get operation.")
             raise e
 
-    def safe_get_config(self, netconf_filter, test_case):
-        target = self.get_rpc_target_from_test_case(test_case=test_case, rpc_index=0)
+    def safe_get_config(self, netconf_filter, test_case, rpc_index=0):
+        target = self.get_rpc_target_from_test_case(test_case=test_case, rpc_index=rpc_index)
         try:
             return self.manager.get_config(source=target, filter=netconf_filter)
         except Exception as e:
