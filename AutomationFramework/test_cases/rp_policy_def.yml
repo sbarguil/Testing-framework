@@ -24,7 +24,7 @@
             commit: true
             params:
                    name: "ROUTING_POLICY_EXPORT"
-                   statement_name: "1"
+                   statement_name: "id-1"
                    policy_result: "ACCEPT_ROUTE"
 
 - testcase:
@@ -39,7 +39,7 @@
             commit: true
             params:
                    name: "ROUTING_POLICY_EXPORT"
-                   statement_name: "1"
+                   statement_name: "id-1"
                    install_protocol_eq: "BGP"
 
 - testcase:
@@ -62,7 +62,7 @@
             commit: true
             params:
                    policy_name: "ROUTING_POLICY_EXPORT"
-                   statement_name: "1"
+                   statement_name: "id-1"
                    ext_community_set: "RT_IMPORT_POLICIES"
 
 - testcase:
@@ -77,5 +77,5 @@
             commit: true
             params:
                    name: "ROUTING_POLICY_EXPORT"
-                   statement_name: "1"
+                   statement_name: "id-1"
                    match_set_options: "ANY"
