@@ -32,6 +32,32 @@ class Interfaces(BasePageObject):
                 'prefix_length': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/prefix-length',
             }
         ],
+        'if_subif_ip_state': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'ip': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/ip',
+                'prefix_length': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/prefix-length',
+            },
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'ip': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/state/ip',
+            }
+        ],
+        'if_subif_origin': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'ip': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/ip',
+                'prefix_length': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/prefix-length',
+            },
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'origin': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/state/origin',
+            }
+        ],
         'if_subif_dhcp_client': [
             {
                 'interface_name': 'interfaces/interface/name',

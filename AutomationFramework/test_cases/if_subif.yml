@@ -56,7 +56,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "1"
+                   interface_name: "1"
                    index: "100"
                    ip: "192.168.30.1"
                    prefix_length: "24"
@@ -79,7 +79,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "1"
+                   interface_name: "1"
                    index: "100"
                    ip: "192.168.30.1"
                    prefix_length: "24"
@@ -105,6 +105,7 @@
                    interface_name: "1"
                    index: "100"
                    dhcp_client: "true"
+
 - testcase:
       name: if_subif_mtu
       id: 8
