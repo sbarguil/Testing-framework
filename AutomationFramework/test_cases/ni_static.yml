@@ -9,7 +9,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN52"
+                   name: "Prueba_LxVPN"
                    identifier: "STATIC"
                    protocol_name: "STATIC_ROUTES_1"
                    prefix: "192.168.100.0/24"
@@ -25,7 +25,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN53"
+                   name: "Prueba_LxVPN"
                    identifier: "STATIC"
                    protocol_name: "STATIC_ROUTES_1"
                    prefix: "192.168.100.0/24"
@@ -43,7 +43,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN54"
+                   name: "Prueba_LxVPN"
                    identifier: "STATIC"
                    protocol_name: "STATIC_ROUTES_1"
                    prefix: "192.168.100.0/24"

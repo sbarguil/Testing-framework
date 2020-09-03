@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "scheduler_policy_AF11"
+                   name: "scheduler_policy_AF"
 
 - testcase:
       name: qos_scheduler_sequence
@@ -23,7 +23,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "scheduler_policy_AF12"
+                   name: "scheduler_policy_AF"
                    sequence: "1"
 
 - testcase:
@@ -37,9 +37,9 @@
             operation: edit-config
             commit: true
             params:
-                   name: "scheduler_policy_AF13"
+                   name: "scheduler_policy_AF"
                    sequence: "1" 
-                   id: "scheduler_AF1"
+                   id: "scheduler_AF"
 
 - testcase:
       name: qos_scheduler_queue
@@ -52,10 +52,10 @@
             operation: edit-config
             commit: true
             params:
-                   name: "queue_AF1"
-                   scheduler_name: "scheduler_policy_AF14"
+                   name: "queue_AF"
+                   scheduler_name: "scheduler_policy_AF"
                    sequence: "1" 
-                   id: "scheduler_AF1"
+                   id: "scheduler_AF"
 
 - testcase:
       name: qos_scheduler_weight
@@ -68,9 +68,9 @@
             operation: edit-config
             commit: true
             params:
-                   name: "scheduler_policy_AF15"
+                   name: "scheduler_policy_AF"
                    sequence: "1" 
-                   id: "scheduler_AF1" 
+                   id: "scheduler_AF"
                    weight: "5"
 
 - testcase:
@@ -84,7 +84,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "scheduler_policy_AF16"
+                   name: "scheduler_policy_AF"
                    sequence: "1" 
                    cir: "4096"
 
@@ -99,7 +99,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "scheduler_policy_AF17"
+                   name: "scheduler_policy_AF"
                    sequence: "1"
                    bc: "256"
 
@@ -114,6 +114,6 @@
             operation: edit-config
             commit: true
             params:
-                  name: "scheduler_policy_AF18"
+                  name: "scheduler_policy_AF"
                   sequence: "1"   
                   max_queue_depth_bytes: "512"

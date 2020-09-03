@@ -10,4 +10,4 @@
             operation: edit-config
             commit: true
             params:
-                   name: "test_100"
+                   name: "test_200"

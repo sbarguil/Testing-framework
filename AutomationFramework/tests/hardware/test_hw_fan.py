@@ -6,6 +6,7 @@ from AutomationFramework.tests.base_test import BaseTest
 class TestHardwareFan(BaseTest):
     test_case_file = 'hw_fan.yml'
 
+    @pytest.mark.skip(reason='Not tested. There are no fans to test')
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'hw_fan_speed',
                                                          'page_object_class': Hardware}])

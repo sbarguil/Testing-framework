@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN44"
+                   name: "Prueba_LxVPN"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
 
@@ -25,7 +25,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN45"
+                   name: "Prueba_LxVPN"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    enabled: "true"    

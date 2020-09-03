@@ -10,10 +10,10 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN1B"
+                   name: "Prueba_LxVPN"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
-                   as: "65000"
+                   protocol_name: "BGP_65500"
+                   as: "65500"
 
 - testcase:
       name: ni_bgp_router_id
@@ -26,7 +26,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN2B"
+                   name: "Prueba_LxVPN"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    router_id: "172.16.1.2"
@@ -42,7 +42,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN3B"
+                   name: "Prueba_LxVPN"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2"
@@ -58,7 +58,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN4B"
+                   name: "Prueba_LxVPN"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2" 
@@ -75,7 +75,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN5B"
+                   name: "Prueba_LxVPN"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2" 
@@ -92,7 +92,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN6B"
+                   name: "Prueba_LxVPN"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2" 
@@ -109,7 +109,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN7B"
+                   name: "Prueba_LxVPN"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2" 
@@ -126,7 +126,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN8B"
+                   name: "Prueba_LxVPN"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2" 
@@ -143,7 +143,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN9B"
+                   name: "Prueba_LxVPN"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2" 
@@ -160,7 +160,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN10B"
+                   name: "Prueba_LxVPN"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2" 
@@ -177,7 +177,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN11B"
+                   name: "Prueba_LxVPN"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2" 
@@ -194,7 +194,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN12B"
+                   name: "Prueba_LxVPN"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2" 

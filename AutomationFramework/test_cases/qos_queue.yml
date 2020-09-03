@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "queue_AF10"
+                   name: "queue_AF"
 
 - testcase:
       name: qos_queue_minth
@@ -23,7 +23,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "queue_AF11"
+                   name: "queue_AF"
                    minth: "1024"
                    queue_type: "RED"
 
@@ -38,6 +38,6 @@
             operation: edit-config
             commit: true
             params:
-                   name: "queue_AF12"
+                   name: "queue_AF"
                    maxth: "2048" 
                    queue_type: "RED"

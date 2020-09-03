@@ -331,6 +331,7 @@ class BasePageObject:
         target_tag_dict = OrderedDict()
         target_tag_dict['target'] = target_value_dict
         target_tag_dict['config'] = parsed_edit_config_template_with_delete
+        target_tag_dict['config']['@xmlns:xc'] = 'urn:ietf:params:xml:ns:netconf:base:1.0'
 
         full_parsed_edit_config_template_with_delete = OrderedDict()
         full_parsed_edit_config_template_with_delete['edit-config'] = target_tag_dict
@@ -350,7 +351,7 @@ class BasePageObject:
             recursive_return = self.insert_delete_operation_to_dict_in_parent_container(
                 created_item_path_list=created_item_path_list[1:], parsed_dict=parsed_dict[created_item_path_list[0]])
             if recursive_return == True:
-                parsed_dict[created_item_path_list[0]]['@operation'] = 'delete'
+                parsed_dict[created_item_path_list[0]]['@xc:operation'] = 'delete'
                 return parsed_dict
 
             parsed_dict[created_item_path_list[0]] = recursive_return

@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "GigabitEthernet0/0/0/4"
+                   interface_name: "GigabitEthernet0/0/0/1"
                    auto_negotiate: "false"
 
 - testcase:
@@ -24,7 +24,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "GigabitEthernet0/0/0/4"
+                   interface_name: "GigabitEthernet0/0/0/1"
                    duplex_mode: "FULL"
 
           - template: if_ethernet_duplex_mode.xml
@@ -32,7 +32,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "2"
+                   interface_name: "GigabitEthernet0/0/0/2"
                    duplex_mode: "HALF"
 
 - testcase:
@@ -46,7 +46,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "GigabitEthernet0/0/0/4"
+                   interface_name: "GigabitEthernet0/0/0/1"
                    port_speed: "SPEED_100MB"
 
 - testcase:
@@ -69,7 +69,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "GigabitEthernet0/0/0/4"
+                   interface_name: "GigabitEthernet0/0/0/1"
                    aggregate_id: "300"
 
 - testcase:
@@ -81,5 +81,5 @@
           - template: if_ethernet_port_speed_state.xml
             operation: get
             params:
-                   interface_name: "GigabitEthernet0/0/0/4"
+                   interface_name: "GigabitEthernet0/0/0/1"
                    port_speed: ""

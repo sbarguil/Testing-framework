@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN28"
+                   name: "Prueba_LxVPN"
                    type: "L3VRF"
                    encapsulation_type: "MPLS"
 
@@ -25,6 +25,6 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN29"
+                   name: "Prueba_LxVPN"
                    type: "L3VRF"
                    label_allocation_mode: "PER_PREFIX"           
