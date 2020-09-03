@@ -40,6 +40,11 @@ module openconfig-evpn {
 
      /* Identities */
 
+    identity evpn-instance {
+      base "ni:NETWORK_INSTANCE_TYPE";
+      description "Reference to an EVPN instance";
+    }
+
      identity evpn-notification-state {
        description "The base identity on which EVPN notification " +
                    "states are based";
@@ -400,17 +405,7 @@ module openconfig-evpn {
        }
      }
 
-     augment "/ni:network-instances/ni:network-instance/ni:config/ni:type" +
-             "/l2vpn:l2vpn" {
-       description "Augment for an L2VPN instance and EVPN association";
-       leaf evpn-instance {
-         type evpn-instance-ref;
-         description "Reference to an EVPN instance";
-       }
-     }
-
-     augment "/ni:network-instances/ni:network-instance/ni:config/ni:type" +
-             "/l2vpn:l2vpn" {
+     augment "/ni:network-instances/ni:network-instance/ni:config/ni:type {
        when "l2vpn:type = 'l2vpn:vpls-instance-type'" {
          description "Constraints only for VPLS pseudowires";
        }
