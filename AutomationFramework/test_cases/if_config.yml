@@ -10,8 +10,8 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/5"
-                   type: "ianaift:ethernetCsmacd"
+                   interface_name: "1"
+                   type: "ethernetCsmacd"
 
 - testcase:
       name: if_config_mtu
@@ -24,7 +24,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/5"
+                   interface_name: "1"
                    mtu: "1500"
 
 - testcase:
@@ -38,7 +38,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/5"
+                   interface_name: "1"
                    description: "Test if_config_description"
 
 - testcase:
@@ -52,7 +52,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/5"
+                   interface_name: "1"
                    enabled: "false"
 
 - testcase:
@@ -66,8 +66,8 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/5"
-                   tpid: "oc-vlan-types:TPID_0X8100"
+                   interface_name: "1"
+                   tpid: "TPID_0X8100"
 
 - testcase:
       name: if_config_loopback_mode
@@ -81,5 +81,5 @@
             operation: edit-config
             commit: true
             params:
-                  name: "Loopback0"
+                  interface_name: "1"
                   loopback_mode: "true"
