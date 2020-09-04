@@ -1,0 +1,36 @@
+<edit-config>
+    <target>
+     <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+          </config>
+          <protocols>
+            <protocol>
+              <identifier>{{identifier}}</identifier>
+              <name>{{protocol_name}}</name>
+              <config>
+                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier}}</identifier>
+                <name>{{protocol_name}}</name>
+              </config>
+              <bgp>
+                <neighbors>
+                  <neighbor>
+                    <neighbor-address>{{neighbor_address}}</neighbor-address>
+                    <config>
+                      <neighbor-address>{{neighbor_address}}</neighbor-address>
+                      <description>{{description}}</description>
+                    </config>
+                  </neighbor>
+                </neighbors>
+              </bgp>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>

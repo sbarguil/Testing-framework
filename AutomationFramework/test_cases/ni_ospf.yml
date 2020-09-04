@@ -1,0 +1,139 @@
+- testcase:
+      name: ni_ospf_router_id
+      id: 1
+      description: >
+          This test is to set router-id for a OSPF instance within a L3 network-instance.
+      rpcs:
+          - template: ni_ospf_router_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
+                   router_id: "172.16.1.3"
+
+- testcase:
+      name: ni_ospf_identifier
+      id: 2
+      description: >
+          This test is to set area identifier for a OSPF instance within a L3 network-instance.
+      rpcs:
+          - template: ni_ospf_identifier.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
+                   area_identifier: "0.0.0.0"
+
+- testcase:
+      name: ni_ospf_id
+      id: 3
+      description: >
+          This test is to set an id of an interface for a OSPF instance within a L3 network-instance.
+      rpcs:
+          - template: ni_ospf_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
+                   area_identifier: "0.0.0.0" 
+                   id: "1"
+
+- testcase:
+      name: ni_ospf_network_type
+      id: 4
+      description: >
+          This test is to set network-type in an interface for a OSPF instance within a L3 network-instance..
+      rpcs:
+          - template: ni_ospf_network_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
+                   area_identifier: "0.0.0.0" 
+                   id: "1"
+                   network_type: "BROADCAST_NETWORK"
+
+- testcase:
+      name: ni_ospf_authentication_type
+      id: 5
+      description: >
+          This test is to set authentication-type in an interface for a OSPF instance within a L3 network-instance.
+      rpcs:
+          - template: ni_ospf_authentication_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
+                   area_identifier: "0.0.0.0" 
+                   id: "1"
+                   authentication_type: "MD5"
+
+- testcase:
+      name: ni_ospf_passive
+      id: 6
+      description: >
+          This test is to enable an interface as passive for a OSPF instance within a L3 network-instance.
+      rpcs:
+          - template: ni_ospf_passive.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
+                   area_identifier: "0.0.0.0" 
+                   id: "1"
+                   passive: "true"
+
+- testcase:
+      name: ni_ospf_interface
+      id: 7
+      description: >
+          This test is to set a reference to an interface for a OSPF instance within a L3 network-instance.
+      rpcs:
+          - template: ni_ospf_interface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
+                   area_identifier: "0.0.0.0" 
+                   id: "1"
+                   interface: "1"
+
+- testcase:
+      name: ni_ospf_subinterface
+      id: 8
+      description: >
+          This test is to set a reference to an subinterface for a OSPF instance within a L3 network-instance.
+      rpcs:
+          - template: ni_ospf_subinterface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier: "OSPF"
+                   protocol_name: "OSPF_1"
+                   area_identifier: "0.0.0.0" 
+                   id: "1"
+                   interface: "1"
+                   subinterface: "100"
