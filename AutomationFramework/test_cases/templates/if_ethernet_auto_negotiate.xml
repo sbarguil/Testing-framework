@@ -5,7 +5,7 @@
     <config>
       <interfaces xmlns="http://openconfig.net/yang/interfaces">
         <interface>
-          <name>{{name}}</name>
+          <name>{{interface_name}}</name>
           <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
             <config>
               <auto-negotiate>{{auto_negotiate}}</auto-negotiate>
