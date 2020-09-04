@@ -2,18 +2,15 @@
     <filter>
       <interfaces xmlns="http://openconfig.net/yang/interfaces">
         <interface>
-          <name>{{name}}</name>
+          <name>{{interface_name}}</name>
           <subinterfaces>
             <subinterface>
               <index>{{index}}</index>
-              <config>
-                <index>{{index}}</index>
-              </config>
               <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip">
                 <addresses>
                   <address>
                     <state>
-                      <origin/>
+                      <origin>{{origin}}</origin>
                     </state>
                   </address>
                 </addresses>
