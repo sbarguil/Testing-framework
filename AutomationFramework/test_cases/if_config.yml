@@ -11,7 +11,7 @@
             commit: true
             params:
                    interface_name: "1"
-                   type: "ethernetCsmacd"
+                   type: "ethernet3Mbit"
 
 - testcase:
       name: if_config_mtu
@@ -67,7 +67,7 @@
             commit: true
             params:
                    interface_name: "1"
-                   tpid: "TPID_0X8100"
+                   tpid: "TPID_0X9100"
 
 - testcase:
       name: if_config_loopback_mode
@@ -82,5 +82,5 @@
             commit: true
             params:
                   interface_name: "Loopback0"
-                  type: "ianaift:softwareLoopback"
+                  type: "softwareLoopback"
                   loopback_mode: "true"
