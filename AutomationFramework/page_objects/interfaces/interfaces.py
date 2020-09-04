@@ -120,7 +120,7 @@ class Interfaces(BasePageObject):
         ],
         'if_lag_type': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'type': 'interfaces/interface/config/type',
                 'enabled': 'interfaces/interface/config/enabled',
                 'lag_type': 'interfaces/interface/aggregation/config/lag-type',
@@ -128,7 +128,7 @@ class Interfaces(BasePageObject):
         ],
         'if_lag_min_links': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'type': 'interfaces/interface/config/type',
                 'enabled': 'interfaces/interface/config/enabled',
                 'min_links': 'interfaces/interface/aggregation/config/min-links',
