@@ -1,6 +1,6 @@
 
 - testcase:
-      name: hw_component_name
+      name: hw_subcomponent_name
       id: 1
       description: >
           This test is to set the name component.
@@ -10,15 +10,22 @@
             operation: edit-config
             commit: true
             params:
-                   name: "CHASIS"
+                   name: "PARENT_COMPONENT"
+
+          - template: hw_component_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  name: "CHILD_SUBCOMPONENT"
 
           - template: hw_subcomponent_name.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   name: "CHASIS"
-                   subcomponent_name: "NEW_SUBCOMPONENT"
+                   name: "PARENT_COMPONENT"
+                   subcomponent_name: "CHILD_SUBCOMPONENT"
 
 - testcase:
       name: hw_subcomponent_name_state
@@ -26,9 +33,31 @@
       description: >
           This test is to get the state of the subcomponent name.
       rpcs:
+          - template: hw_component_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "PARENT_COMPONENT"
+
+          - template: hw_component_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  name: "CHILD_SUBCOMPONENT"
+
+          - template: hw_subcomponent_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "PARENT_COMPONENT"
+                   subcomponent_name: "CHILD_SUBCOMPONENT"
+
           - template: hw_subcomponent_name_state.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   subcomponent_name: "NEW_SUBCOMPONENT"
+                   name: "PARENT_COMPONENT"
+                   subcomponent_name: "CHILD_SUBCOMPONENT"
                    empty_name: ""

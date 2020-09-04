@@ -150,10 +150,26 @@ class Hardware(BasePageObject):
         'hw_subcomponent_name': [
             {
                 'name': 'components/component/name',
+            },
+            {
+                'name': 'components/component/name',
+            },
+            {
+                'name': 'components/component/name',
                 'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
             }
         ],
         'hw_subcomponent_name_state': [
+            {
+                'name': 'components/component/name',
+            },
+            {
+                'name': 'components/component/name',
+            },
+            {
+                'name': 'components/component/name',
+                'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
+            },
             {
                 'name': 'components/component/name',
                 'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
@@ -202,6 +218,17 @@ class Hardware(BasePageObject):
                 'power_admin_state': 'components/component/linecard/state/power-admin-state',
             }
         ],
+        'hw_fan_speed': [
+            {
+                'name': 'components/component/name',
+                'speed': 'components/component/fan/state/speed',
+            }
+        ],
+        'hw_config_name': [
+            {
+                'name': 'components/component/name',
+            }
+        ],
     }
 
     def execute_hardware_component_edit_config_test_case(self):
@@ -214,6 +241,12 @@ class Hardware(BasePageObject):
                           </components>
                     </filter>
                     """
-        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='name')
+        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=self.rpc_idx_in_test_case, variable='name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()
+
+    def execute_hardware_rpc(self):
+        if self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'edit-config':
+            self.execute_hardware_component_edit_config_test_case()
+        elif self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'get':
+            self.execute_get_test_case_with_dispatch()
