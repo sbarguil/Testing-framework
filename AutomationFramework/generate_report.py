@@ -2,9 +2,21 @@
 
 import sys, os
 import pandas as pd
+from datetime import date
+
+today=date.today()
 
 directory =sys.argv[1]
 out=pd.DataFrame()
+
+if len(sys.argv) == 2:
+	vendor=""
+	print ("--------")
+	print ("No VENDOR especified.")
+	print ("--------")
+else:
+	vendor=sys.argv[2]
+
 
 print ("Step #1: Find files in:" + directory)
 print ("--------")
@@ -19,7 +31,7 @@ for file in os.listdir(directory):
             out = pd.concat([out, pd.read_excel(url)],ignore_index=True)
 
 out["TEST-ID (XML_FILE_NAME)"]=out["TEST NAME"].str.replace("test_","").str.split("[").str[0]+'.xml' 
-template=pd.DataFrame([],columns=['Vendor', 'OS Version','Hardware Version','Date'])
+template=pd.DataFrame({'VENDOR':[vendor], 'OS':[""],'OS VERSION':[""],'EQUIPMENT':[""],'EQUIPMENT FAMILY':[""],'IS VIRTUAL':[""],'DATE':[today]})
 
 with pd.ExcelWriter(directory+'total_output.xlsx') as writer:  
 	out.to_excel(writer, sheet_name='Results')
