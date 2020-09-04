@@ -1,0 +1,20 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <components xmlns="http://openconfig.net/yang/platform">
+        <component>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+          </config>
+          <linecard xmlns="http://openconfig.net/yang/platform/linecard">
+            <config>
+              <power-admin-state>{{power_admin_state}}</power-admin-state>
+            </config>
+          </linecard>
+        </component>
+      </components>
+    </config>
+  </edit-config>
