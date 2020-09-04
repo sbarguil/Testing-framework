@@ -205,6 +205,25 @@ class Interfaces(BasePageObject):
                 'mtu': 'interfaces/interface/tunnel/ipv4/config/mtu',
             }
         ],
+        'if_config_loopback_mode': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'loopback_mode': 'interfaces/interface/config/loopback-mode',
+            }
+        ],
+        'if_config_tpid': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'tpid': 'interfaces/interface/config/tpid',
+            }
+        ],
+        'if_config_type': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+            }
+        ],
     }
 
     values_before_commit = {
