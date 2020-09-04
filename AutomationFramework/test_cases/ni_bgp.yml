@@ -30,6 +30,7 @@
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    router_id: "172.16.1.2"
+                   as: "65000"
 
 - testcase:
       name: ni_bgp_neighbor_address
@@ -44,8 +45,9 @@
             params:
                    name: "Prueba_LxVPN"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "BGP_65100"
                    neighbor_address: "192.168.1.2"
+                   as: "65100"
 
 - testcase:
       name: ni_bgp_peer_as
@@ -63,6 +65,7 @@
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2"
                    peer_as: "65123"
+                   as: "65000"
 
 - testcase:
       name: ni_bgp_local_as
@@ -79,7 +82,9 @@
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2"
-                   local_as: "65000"
+                   local_as: "65001"
+                   peer_as: "65123"
+                   as: "65000"
 
 - testcase:
       name: ni_bgp_peer_type
@@ -131,6 +136,8 @@
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2"
                    description: "BGP Neighbor 65123 Description"
+                   peer_as: "65123"
+                   as: "65000"                
 
 - testcase:
       name: ni_bgp_import_policy
