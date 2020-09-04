@@ -11,7 +11,7 @@
             commit: true
             params:
                    interface_name: "GigabitEthernet0/0/0/1"
-                   type: "ethernetCsmacd"
+                   type: "ethernet3Mbit"
 
 - testcase:
       name: if_config_mtu
@@ -67,7 +67,7 @@
             commit: true
             params:
                    interface_name: "GigabitEthernet0/0/0/1"
-                   tpid: "TPID_0X8100"
+                   tpid: "TPID_0X9100"
 
 - testcase:
       name: if_config_loopback_mode
@@ -82,4 +82,5 @@
             commit: true
             params:
                   interface_name: "GigabitEthernet0/0/0/1"
+                  type: "softwareLoopback"
                   loopback_mode: "true"
