@@ -169,6 +169,42 @@ class Interfaces(BasePageObject):
                 'aggregate_id': 'interfaces/interface/ethernet/config/aggregate-id',
             }
         ],
+        'if_gre_dst': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'dst': 'interfaces/interface/tunnel/config/dst',
+            }
+        ],
+        'if_gre_src': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'src': 'interfaces/interface/tunnel/config/src',
+            }
+        ],
+        'if_gre_ttl': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'ttl': 'interfaces/interface/tunnel/config/ttl',
+            }
+        ],
+        'if_gre_ip_prefix_length': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'ip': 'interfaces/interface/tunnel/ipv4/addresses/address/ip',
+                'prefix_length': 'interfaces/interface/tunnel/ipv4/addresses/address/config/prefix-length',
+            }
+        ],
+        'if_gre_mtu': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'mtu': 'interfaces/interface/tunnel/ipv4/config/mtu',
+            }
+        ],
     }
 
     values_before_commit = {
