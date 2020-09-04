@@ -5,7 +5,6 @@ import pandas as pd
 from datetime import date
 
 today=date.today()
-
 directory =sys.argv[1]
 out=pd.DataFrame()
 
@@ -41,7 +40,7 @@ print ("Step #2: Composing Results")
 print ("--------")
 
 url1=directory+"total_output.xlsx"
-url2="Params/SBI_params_test_ Almagro_Sept_2020_v1.xlsx"
+url2="params/SBI_params_test_ Almagro_Sept_2020_v1.xlsx"
 #
 file1=pd.read_excel(url1,sheet_name="Results")
 file2=pd.read_excel(url2)
