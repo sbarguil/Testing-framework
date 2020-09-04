@@ -102,6 +102,7 @@
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2"
                    peer_type: "EXTERNAL"
+                   as: "65000"
 
 - testcase:
       name: ni_bgp_remove_private_as
@@ -118,6 +119,7 @@
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2"
+                   as: "65000"
                    remove_private_as: "PRIVATE_AS_REMOVE_ALL"
 
 - testcase:
@@ -146,12 +148,12 @@
           This test is to set a neighbor import-policy for a BGP instance within a L3 network-instance.
       rpcs:
 
-          - template: ni_bgp_policy_name.xml
+          - template: rp_policy_def_name.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   import_export_bgp_policy: "BGP_Policy_Import_Export"
+                   name: "BGP_Policy_Import_Export"
 
           - template: ni_bgp_import_policy.xml
             target: candidate
@@ -170,12 +172,12 @@
       description: >
           This test is to set a neighbor export-policy for a BGP instance within a L3 network-instance.
       rpcs:
-          - template: ni_bgp_policy_name.xml
+          - template: rp_policy_def_name.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   import_export_bgp_policy: "BGP_Policy_Export_Export"
+                   name: "BGP_Policy_Export_Export"
 
           - template: ni_bgp_export_policy.xml
             target: candidate
@@ -203,6 +205,7 @@
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2"
+                   as: "65000"
                    enabled: "true"
 
 - testcase:
@@ -221,3 +224,4 @@
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2"
                    multihop_ttl: "3"
+                   as: "65000"
