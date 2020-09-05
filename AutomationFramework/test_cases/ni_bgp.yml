@@ -12,8 +12,8 @@
             params:
                    name: "Prueba_LxVPN"
                    identifier: "BGP"
-                   protocol_name: "BGP_65500"
-                   as: "65500"
+                   protocol_name: "BGP_65000"
+                   as: "65000"
 
 - testcase:
       name: ni_bgp_router_id
@@ -45,9 +45,9 @@
             params:
                    name: "Prueba_LxVPN"
                    identifier: "BGP"
-                   protocol_name: "BGP_65100"
+                   protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2"
-                   as: "65100"
+                   as: "65000"
 
 - testcase:
       name: ni_bgp_peer_as
@@ -225,3 +225,4 @@
                    neighbor_address: "192.168.1.2"
                    multihop_ttl: "3"
                    as: "65000"
+                   peer_as: "65123"
