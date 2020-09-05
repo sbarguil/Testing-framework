@@ -11,7 +11,7 @@
             commit: true
             params:
                    name: "0/0"
-                   power_admin_state: "POWER_DISABLED"
+                   power_admin_state: "POWER_ENABLED"
 
 - testcase:
       name: hw_linecard_power_admin_state

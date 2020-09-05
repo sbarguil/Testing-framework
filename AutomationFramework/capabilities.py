@@ -1,7 +1,17 @@
 #Cisco
-HOSTS = [
+"""HOSTS = [
     {
         'host': '10.95.86.212',
+        'port': '830',
+        'username': 'cisco',
+        'password': 'cisco2020',
+    },
+]"""
+
+#Cisco XR 7.2.1
+HOSTS = [
+    {
+        'host': '10.95.86.101',
         'port': '830',
         'username': 'cisco',
         'password': 'cisco2020',

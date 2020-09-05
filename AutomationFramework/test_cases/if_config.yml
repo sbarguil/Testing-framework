@@ -25,7 +25,7 @@
             commit: true
             params:
                    interface_name: "GigabitEthernet0/0/0/1"
-                   mtu: "1400"
+                   mtu: "1450"
 
 - testcase:
       name: if_config_description
@@ -39,7 +39,7 @@
             commit: true
             params:
                    interface_name: "GigabitEthernet0/0/0/1"
-                   description: "Test 10 if_config_description"
+                   description: "Test 100 if_config_description"
 
 - testcase:
       name: if_config_enabled
@@ -53,7 +53,7 @@
             commit: true
             params:
                    interface_name: "GigabitEthernet0/0/0/1"
-                   enabled: "false"
+                   enabled: "true"
 
 - testcase:
       name: if_config_tpid
