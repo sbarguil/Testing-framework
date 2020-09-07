@@ -5,10 +5,13 @@
     <config>
       <interfaces xmlns="http://openconfig.net/yang/interfaces">
         <interface>
-          <name>{{name}}</name>
+          <name>{{interface_name}}</name>
           <subinterfaces>
             <subinterface>
               <index>{{index}}</index>
+              <config>
+                <index>{{index}}</index>
+              </config>
               <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip">
                 <config>
                   <mtu>{{mtu}}</mtu>
@@ -20,4 +23,3 @@
       </interfaces>
     </config>
   </edit-config>
-</rpc>
