@@ -53,7 +53,7 @@
             operation: edit-config
             commit: true
             params:
-                   ext_community_set_name: "RT_IMPORT_POLICIE"
+                   ext_community_set_name: "RT_IMPORT_POLICY"
                    ext_community_member: "65000:103"
 
           - template: rp_policy_def_ext_community_set.xml
@@ -61,7 +61,7 @@
             operation: edit-config
             commit: true
             params:
-                   policy_name: "ROUTING_POLICY_EXPORT"
+                   name: "ROUTING_POLICY_EXPORT"
                    statement_name: "1"
                    ext_community_set: "RT_IMPORT_POLICIES"
 
@@ -71,7 +71,7 @@
       description: >
           This test is to define the behaviour options match operation.
       rpcs:
-          - template: rp_policy_ext_community_set_name.xml
+          - template: rp_policy_def_create_ext_community_set.xml
             target: candidate
             operation: edit-config
             commit: true

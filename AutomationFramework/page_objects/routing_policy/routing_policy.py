@@ -33,13 +33,6 @@ class RoutingPolicy(BasePageObject):
                 'install_protocol_eq': 'routing-policy/policy-definitions/policy-definition/statements/statement/conditions/config/install-protocol-eq',
             }
         ],
-        'rp_policy_def_match_set_options': [
-            {
-                'name': 'routing-policy/policy-definitions/policy-definition/name',
-                'statement_name': 'routing-policy/policy-definitions/policy-definition/statements/statement/name',
-                'match_set_options': 'routing-policy/policy-definitions/policy-definition/statements/statement/conditions/bgp-conditions/match-ext-community-set/config/match-set-options',
-            }
-        ],
         'ni_bgp_import_policy': [
             {
                 'name': 'routing-policy/policy-definitions/policy-definition/name',
@@ -63,6 +56,29 @@ class RoutingPolicy(BasePageObject):
                 'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
                 'import_export_bgp_policy': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/apply-policy/config/export-policy',
             },
+        ],
+        'rp_policy_def_match_set_options': [
+            {
+                'ext_community_set_name': 'routing-policy/defined-sets/bgp-defined-sets/ext-community-sets/ext-community-set/ext-community-set-name',
+                'ext_community_member': 'routing-policy/defined-sets/bgp-defined-sets/ext-community-sets/ext-community-set/config/ext-community-member',
+            },
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+                'statement_name': 'routing-policy/policy-definitions/policy-definition/statements/statement/name',
+                'ext_community_set': 'routing-policy/policy-definitions/policy-definition/statements/statement/conditions/bgp-conditions/match-ext-community-set/config/ext-community-set',
+                'match_set_options': 'routing-policy/policy-definitions/policy-definition/statements/statement/conditions/bgp-conditions/match-ext-community-set/config/match-set-options',
+            }
+        ],
+        'rp_policy_def_ext_community_set': [
+            {
+                'ext_community_set_name': 'routing-policy/defined-sets/bgp-defined-sets/ext-community-sets/ext-community-set/ext-community-set-name',
+                'ext_community_member': 'routing-policy/defined-sets/bgp-defined-sets/ext-community-sets/ext-community-set/config/ext-community-member',
+            },
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+                'statement_name': 'routing-policy/policy-definitions/policy-definition/statements/statement/name',
+                'ext_community_set': 'routing-policy/policy-definitions/policy-definition/statements/statement/conditions/bgp-conditions/match-ext-community-set/config/ext-community-set',
+            }
         ],
     }
 
@@ -99,7 +115,7 @@ class RoutingPolicy(BasePageObject):
                         </routing-policy>
                     </filter>
                     """
-        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='name')
+        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=self.rpc_idx_in_test_case, variable='name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()
 
