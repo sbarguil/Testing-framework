@@ -224,6 +224,21 @@ class Interfaces(BasePageObject):
                 'type': 'interfaces/interface/config/type',
             }
         ],
+        'ni_ospf_subinterface': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'area_identifier': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/identifier',
+                'id': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/id',
+                'interface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/interface',
+                'subinterface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/subinterface',
+            }
+        ]
     }
 
     values_before_commit = {
