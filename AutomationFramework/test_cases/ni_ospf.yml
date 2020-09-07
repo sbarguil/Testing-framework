@@ -26,7 +26,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   identifier: "oc-pol-types:OSPF"
+                   identifier: "OSPF"
                    protocol_name: "OSPF_1"
                    area_identifier: "0.0.0.0"
 

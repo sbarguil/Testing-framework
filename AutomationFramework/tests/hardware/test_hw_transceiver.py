@@ -6,7 +6,6 @@ from AutomationFramework.tests.base_test import BaseTest
 class TestHardwareTransceiver(BaseTest):
     test_case_file = 'hw_transceiver.yml'
 
-    @pytest.mark.skip(reason="RPC error: ncclient.operations.rpc.RPCError: /components/component[name='0/0/5-SFP Socket']/oc-transceiver:transceiver: the 'when' expression current()/oc-platform:state/oc-platform:type = 'TRANSCEIVER' failed")
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'hw_transceiver_enabled',
                                                          'page_object_class': Hardware}])
