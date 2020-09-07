@@ -1,19 +1,5 @@
 
 - testcase:
-      name: if_subif_type
-      id: 1
-      description: >
-          This test is to set type of the interface.
-      rpcs:
-          - template: if_subif_type.xml
-            target: candidate
-            operation: edit-config
-            commit: true
-            params:
-                   name: "1"
-                   type: "ieee8023adLag"
-
-- testcase:
       name: if_subif_description
       id: 2
       description: >
@@ -24,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "1"
+                   interface_name: "1"
                    index: "100"
                    description: "Testing1"
 
@@ -39,7 +25,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "1"
+                   interface_name: "1"
                    index: "100"
                    enabled: "false"
 
@@ -54,7 +40,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "1"
+                   interface_name: "1"
                    index: "100"
                    ip: "192.168.30.1"
                    prefix_length: "24"
@@ -65,11 +51,22 @@
       description: >
           This test is to get the state IP of a subinterface.
       rpcs:
+          - template: if_subif_ip_prefix_length.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   index: "100"
+                   ip: "192.168.30.1"
+                   prefix_length: "24"
+
           - template: if_subif_ip_state.xml
             operation: get
             params:
-                   name: "1"
+                   interface_name: "1"
                    index: "100"
+                   ip: ""
 
 - testcase:
       name: if_subif_origin
@@ -77,11 +74,22 @@
       description: >
           This this is to get the origin of the address.
       rpcs:
+          - template: if_subif_ip_prefix_length.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   index: "100"
+                   ip: "192.168.30.1"
+                   prefix_length: "24"
+
           - template: if_subif_origin.xml
             operation: get
             params:
-                   name: "1"
+                   interface_name: "1"
                    index: "100"
+                   origin: ""
 
 - testcase:
       name: if_subif_dhcp_client
@@ -94,9 +102,10 @@
             operation: edit-config
             commit: true
             params:
-                   name: "1"
+                   interface_name: "1"
                    index: "100"
                    dhcp_client: "true"
+
 - testcase:
       name: if_subif_mtu
       id: 8
@@ -108,7 +117,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "1"
+                   interface_name: "1"
                    index: "100"
                    mtu: "1500"
 
@@ -123,7 +132,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "1"
+                   interface_name: "1"
                    index: "100"
                    vlan_id: "100"
 
@@ -138,7 +147,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "1"
+                   interface_name: "1"
                    index: "1030"
                    inner_vlan_id: "100"
                    outer_vlan_id: "30"
@@ -154,6 +163,6 @@
             operation: edit-config
             commit: true
             params:
-                   name: "1"
-                   index: "150"
-                   vlan_id: "150"
+                   interface_name: "1"
+                   index: "250"
+                   vlan_id: "250"
