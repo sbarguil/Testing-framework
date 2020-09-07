@@ -388,6 +388,10 @@ class NetworkInstance(BasePageObject):
         ],
         'ni_ospf_subinterface': [
             {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+            },
+            {
                 'name': 'network-instances/network-instance/name',
                 'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
                 'protocol_name': 'network-instances/network-instance/protocols/protocol/name',

@@ -130,9 +130,8 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/0/6"
+                   interface_name: "1"
                    index: "600"
-
 
           - template: ni_ospf_subinterface.xml
             target: candidate
@@ -144,5 +143,5 @@
                    protocol_name: "OSPF_1"
                    area_identifier: "0.0.0.0"
                    id: "1"
-                   interface: "GigabitEthernet0/0/0/6"
+                   interface: "1"
                    subinterface: "600"
