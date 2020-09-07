@@ -4,19 +4,11 @@
     </target>
     <config>
       <qos xmlns="http://openconfig.net/yang/qos">
-        <queues>
-          <queue>
+        <scheduler-policies>
+          <scheduler-policy>
             <name>{{name}}</name>
             <config>
               <name>{{name}}</name>
-            </config>
-          </queue>
-        </queues>
-        <scheduler-policies>
-          <scheduler-policy>
-            <name>{{scheduler_name}}</name>
-            <config>
-              <name>{{scheduler_name}}</name>
             </config>
             <schedulers>
               <scheduler>
@@ -30,7 +22,7 @@
                     <config>
                       <id>{{id}}</id>
                       <input-type>{{input_type}}</input-type>
-                      <queue>{{name}}</queue>
+                      <queue>{{queue_name}}</queue>
                     </config>
                   </input>
                 </inputs>
