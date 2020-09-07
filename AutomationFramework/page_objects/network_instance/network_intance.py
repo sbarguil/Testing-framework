@@ -401,6 +401,24 @@ class NetworkInstance(BasePageObject):
                 'subinterface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/subinterface',
             }
         ],
+        'ni_rt_policy_import_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'import_policy': 'network-instances/network-instance/inter-instance-policies/apply-policy/config/import-policy',
+            }
+        ],
+        'ni_rt_policy_export_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'export_policy': 'network-instances/network-instance/inter-instance-policies/apply-policy/config/export-policy',
+            }
+        ],
         'ni_static_prefix': [
             {
                 'name': 'network-instances/network-instance/name',
