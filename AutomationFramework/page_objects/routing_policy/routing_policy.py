@@ -64,6 +64,24 @@ class RoutingPolicy(BasePageObject):
                 'import_export_bgp_policy': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/apply-policy/config/export-policy',
             },
         ],
+        'ni_rt_policy_import_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'import_policy': 'network-instances/network-instance/inter-instance-policies/apply-policy/config/import-policy',
+            }
+        ],
+        'ni_rt_policy_export_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'export_policy': 'network-instances/network-instance/inter-instance-policies/apply-policy/config/export-policy',
+            }
+        ]
     }
 
     def execute_rp_community_def_edit_config_test_case(self):
