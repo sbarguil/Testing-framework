@@ -40,6 +40,48 @@ class RoutingPolicy(BasePageObject):
                 'match_set_options': 'routing-policy/policy-definitions/policy-definition/statements/statement/conditions/bgp-conditions/match-ext-community-set/config/match-set-options',
             }
         ],
+        'ni_bgp_import_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'import_export_bgp_policy': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/apply-policy/config/import-policy',
+            },
+        ],
+        'ni_bgp_export_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'import_export_bgp_policy': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/apply-policy/config/export-policy',
+            },
+        ],
+        'ni_rt_policy_import_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'import_policy': 'network-instances/network-instance/inter-instance-policies/apply-policy/config/import-policy',
+            }
+        ],
+        'ni_rt_policy_export_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'export_policy': 'network-instances/network-instance/inter-instance-policies/apply-policy/config/export-policy',
+            }
+        ]
     }
 
     def execute_rp_community_def_edit_config_test_case(self):
@@ -58,7 +100,8 @@ class RoutingPolicy(BasePageObject):
                           </routing-policy>
                     </filter>
                     """
-        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='ext_community_set_name')
+        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=self.rpc_idx_in_test_case,
+                                                                      variable='ext_community_set_name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()
 
@@ -77,3 +120,9 @@ class RoutingPolicy(BasePageObject):
         interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()
+
+    def execute_rpc(self):
+        if self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'edit-config':
+            self.execute_rp_policy_def_edit_config_test_case()
+        elif self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'get':
+            self.execute_get_test_case_with_dispatch()

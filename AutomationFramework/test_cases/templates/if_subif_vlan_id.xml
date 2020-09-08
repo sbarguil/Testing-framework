@@ -5,7 +5,7 @@
   <config>
     <interfaces xmlns="http://openconfig.net/yang/interfaces">
       <interface>
-        <name>{{name}}</name>
+        <name>{{interface_name}}</name>
         <subinterfaces>
           <subinterface>
             <index>{{index}}</index>
