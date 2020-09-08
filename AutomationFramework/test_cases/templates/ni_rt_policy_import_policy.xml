@@ -3,21 +3,11 @@
       <{{target}}/>
     </target>
     <config>
-      <routing-policy xmlns="http://openconfig.net/yang/routing-policy">
-        <policy-definitions>
-          <policy-definition>
-            <name>{{import_policy}}</name>
-            <config>
-              <name>{{import_policy}}</name>
-            </config>
-          </policy-definition>
-        </policy-definitions>
-      </routing-policy>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
-          <name>{{instance_name}}</name>
+          <name>{{name}}</name>
           <config>
-            <name>{{instance_name}}</name>
+            <name>{{name}}</name>
           </config>
           <inter-instance-policies>
             <apply-policy>

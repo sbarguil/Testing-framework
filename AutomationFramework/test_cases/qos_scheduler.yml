@@ -38,7 +38,7 @@
             commit: true
             params:
                    name: "scheduler_policy_AF1"
-                   sequence: "1" 
+                   sequence: "1"
                    id: "scheduler_AF1"
 
 - testcase:
@@ -47,15 +47,23 @@
       description: >
           This test is to assign a queue to the input of a scheduler.
       rpcs:
-          - template: qos_scheduler_queue.xml
+          - template: qos_queue_name.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
                    name: "queue_AF1"
-                   scheduler_name: "scheduler_policy_AF1"
-                   sequence: "1" 
+
+          - template: qos_scheduler_queue.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "scheduler_policy_AF1"
+                   sequence: "1"
                    id: "scheduler_AF1"
+                   input_type: "QUEUE"
+                   queue_name: "queue_AF1"
 
 - testcase:
       name: qos_scheduler_weight
@@ -69,8 +77,8 @@
             commit: true
             params:
                    name: "scheduler_policy_AF1"
-                   sequence: "1" 
-                   id: "scheduler_AF1" 
+                   sequence: "1"
+                   id: "scheduler_AF1"
                    weight: "5"
 
 - testcase:
@@ -85,7 +93,7 @@
             commit: true
             params:
                    name: "scheduler_policy_AF1"
-                   sequence: "1" 
+                   sequence: "1"
                    cir: "4096"
 
 - testcase:
@@ -115,5 +123,5 @@
             commit: true
             params:
                   name: "scheduler_policy_AF1"
-                  sequence: "1"   
+                  sequence: "1"
                   max_queue_depth_bytes: "512"

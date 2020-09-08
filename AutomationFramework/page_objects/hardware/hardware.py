@@ -147,6 +147,88 @@ class Hardware(BasePageObject):
                 'type': 'components/component/state/type',
             }
         ],
+        'hw_subcomponent_name': [
+            {
+                'name': 'components/component/name',
+            },
+            {
+                'name': 'components/component/name',
+            },
+            {
+                'name': 'components/component/name',
+                'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
+            }
+        ],
+        'hw_subcomponent_name_state': [
+            {
+                'name': 'components/component/name',
+            },
+            {
+                'name': 'components/component/name',
+            },
+            {
+                'name': 'components/component/name',
+                'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
+            },
+            {
+                'name': 'components/component/name',
+                'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
+                'empty_name': 'components/component/subcomponents/subcomponent/state/name',
+            }
+        ],
+        'hw_properties_name': [
+            {
+                'name': 'components/component/name',
+                'empty_name': 'components/component/properties/property/state/name',
+            }
+        ],
+        'hw_properties_value': [
+            {
+                'name': 'components/component/name',
+                'value': 'components/component/properties/property/state/value',
+            }
+        ],
+        'hw_transceiver_enabled': [
+            {
+                'name': 'components/component/name',
+                'enabled': 'components/component/transceiver/config/enabled',
+            }
+        ],
+        'hw_transceiver_slot_id': [
+            {
+                'name': 'components/component/name',
+                'slot_id': 'components/component/linecard/state/slot-id',
+            }
+        ],
+        'hw_transceiver_enabled_state': [
+            {
+                'name': 'components/component/name',
+                'enabled': 'components/component/transceiver/state/enabled',
+            }
+        ],
+        'hw_linecard_power_admin': [
+            {
+                'name': 'components/component/name',
+                'power_admin_state': 'components/component/linecard/config/power-admin-state',
+            }
+        ],
+        'hw_linecard_power_admin_state': [
+            {
+                'name': 'components/component/name',
+                'power_admin_state': 'components/component/linecard/state/power-admin-state',
+            }
+        ],
+        'hw_fan_speed': [
+            {
+                'name': 'components/component/name',
+                'speed': 'components/component/fan/state/speed',
+            }
+        ],
+        'hw_config_name': [
+            {
+                'name': 'components/component/name',
+            }
+        ],
     }
 
     def execute_hardware_component_edit_config_test_case(self):
@@ -159,6 +241,12 @@ class Hardware(BasePageObject):
                           </components>
                     </filter>
                     """
-        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='name')
+        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=self.rpc_idx_in_test_case, variable='name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()
+
+    def execute_hardware_rpc(self):
+        if self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'edit-config':
+            self.execute_hardware_component_edit_config_test_case()
+        elif self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'get':
+            self.execute_get_test_case_with_dispatch()
