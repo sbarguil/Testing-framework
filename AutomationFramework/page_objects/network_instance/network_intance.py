@@ -472,6 +472,31 @@ class NetworkInstance(BasePageObject):
                 'default_import_policy': 'network-instances/network-instance/table-connections/table-connection/config/default-import-policy',
             }
         ],
+        'ni_interface_id': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'id': 'network-instances/network-instance/interfaces/interface/id',
+            }
+        ],
+        'ni_interface_interface': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'id': 'network-instances/network-instance/interfaces/interface/id',
+                'interface': 'network-instances/network-instance/interfaces/interface/config/interface',
+            }
+        ],
+        'ni_interface_subinterface': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'id': 'network-instances/network-instance/interfaces/interface/id',
+                'interface': 'network-instances/network-instance/interfaces/interface/config/interface',
+                'subinterface': 'network-instances/network-instance/interfaces/interface/config/subinterface',
+            }
+        ],
     }
 
     def execute_network_instance_edit_config_test_case(self):
