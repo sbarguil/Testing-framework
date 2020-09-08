@@ -81,6 +81,18 @@ class RoutingPolicy(BasePageObject):
                 'name': 'network-instances/network-instance/name',
                 'export_policy': 'network-instances/network-instance/inter-instance-policies/apply-policy/config/export-policy',
             }
+        ],
+        'ni_protocol_tables_connection_import_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier_src_protocol': 'network-instances/network-instance/table-connections/table-connection/src-protocol',
+                'identifier_dst_protocol': 'network-instances/network-instance/table-connections/table-connection/dst-protocol',
+                'address_family': 'network-instances/network-instance/table-connections/table-connection/address-family',
+                'import_policy': 'network-instances/network-instance/table-connections/table-connection/config/import-policy',
+            }
         ]
     }
 

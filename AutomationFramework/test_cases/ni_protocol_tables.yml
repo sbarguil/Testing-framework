@@ -42,7 +42,7 @@
             operation: edit-config
             commit: true
             params:
-                   import_policy: "REDISTRIBUTION_POLICY"
+                   name: "REDISTRIBUTION_POLICY"
 
           - template: ni_protocol_tables_connection_import_policy.xml
             target: candidate

@@ -497,6 +497,18 @@ class NetworkInstance(BasePageObject):
                 'subinterface': 'network-instances/network-instance/interfaces/interface/config/subinterface',
             }
         ],
+        'ni_protocol_tables_connection_import_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier_src_protocol': 'network-instances/network-instance/table-connections/table-connection/src-protocol',
+                'identifier_dst_protocol': 'network-instances/network-instance/table-connections/table-connection/dst-protocol',
+                'address_family': 'network-instances/network-instance/table-connections/table-connection/address-family',
+                'import_policy': 'network-instances/network-instance/table-connections/table-connection/config/import-policy',
+            }
+        ]
     }
 
     def execute_network_instance_edit_config_test_case(self):
