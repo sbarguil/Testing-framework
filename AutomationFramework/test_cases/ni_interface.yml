@@ -1,5 +1,5 @@
 
--- testcase:
+- testcase:
       name: ni_interface_id
       id: 1
       description: >
@@ -10,8 +10,8 @@
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   id: "GigabitEthernet0/0/1"
+                   name: "Prueba_LxVPN"
+                   id: "1"
 
 - testcase:
       name: ni_interface_interface
@@ -24,11 +24,11 @@
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   id: "GigabitEthernet0/0/1"
-                   interface: ""GigabitEthernet0/0/1"
--
-   testcase:
+                   name: "Prueba_LxVPN"
+                   id: "1"
+                   interface: "1"
+
+- testcase:
       name: ni_interface_subinterface
       id: 3
       description: >
@@ -40,16 +40,15 @@
             operation: edit-config
             commit: true
             params:
-                   name: "GigabitEthernet0/0/1"
+                   interface_name: "1"
                    index: "100"
-
 
           - template: ni_interface_subinterface.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN"
-                   id: "GigabitEthernet0/0/1"
-                   interface: ""GigabitEthernet0/0/1"
+                   name: "Prueba_LxVPN"
+                   id: "1"
+                   interface: "1"
                    subinterface: "100"
