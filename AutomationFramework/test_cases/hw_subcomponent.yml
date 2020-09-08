@@ -1,24 +1,14 @@
 
 - testcase:
-      name: hw_component_name
+      name: hw_subcomponent_name
       id: 1
       description: >
-          This test is to set the name component.
+          This test is to get the name subcomponent.
       rpcs:
-          - template: hw_component_name.xml
-            target: candidate
-            operation: edit-config
-            commit: true
-            params:
-                   name: "CHASIS"
-
           - template: hw_subcomponent_name.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+            operation: get
             params:
-                   name: "CHASIS"
-                   subcomponent_name: "NEW_SUBCOMPONENT"
+                   subcomponent_name: "0/0/0"
 
 - testcase:
       name: hw_subcomponent_name_state
@@ -29,6 +19,5 @@
           - template: hw_subcomponent_name_state.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   subcomponent_name: "NEW_SUBCOMPONENT"
-                   empty_name: ""
+                   subcomponent_name: "0/0/0"
+                   name_state_subcomponent: ""
