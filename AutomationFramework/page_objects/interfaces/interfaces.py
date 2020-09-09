@@ -251,6 +251,58 @@ class Interfaces(BasePageObject):
                 'subinterface': 'network-instances/network-instance/interfaces/interface/config/subinterface',
             }
         ],
+        'hw_port_channel_speed': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'enabled': 'interfaces/interface/config/enabled',
+            },
+            {
+                'name': 'components/component/name',
+                'channel_speed': 'components/component/port/breakout-mode/config/channel-speed',
+            }
+        ],
+        'hw_port_channel_speed_state': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'enabled': 'interfaces/interface/config/enabled',
+            },
+            {
+                'name': 'components/component/name',
+                'channel_speed': 'components/component/port/breakout-mode/config/channel-speed',
+            },
+            {
+                'name': 'components/component/name',
+                'channel_speed': 'components/component/port/breakout-mode/state/channel-speed',
+            }
+        ],
+        'hw_port_num_channels': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'enabled': 'interfaces/interface/config/enabled',
+            },
+            {
+                'name': 'components/component/name',
+                'num_channels': 'components/component/port/breakout-mode/config/num-channels',
+            }
+        ],
+        'hw_port_num_channels_state': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'enabled': 'interfaces/interface/config/enabled',
+            },
+            {
+                'name': 'components/component/name',
+                'num_channels': 'components/component/port/breakout-mode/config/num-channels',
+            },
+            {
+                'name': 'components/component/name',
+                'num_channels': 'components/component/port/breakout-mode/state/num-channels',
+            }
+        ],
     }
 
     values_before_commit = {
@@ -314,6 +366,9 @@ class Interfaces(BasePageObject):
                                                                       variable='interface_name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()
+
+    def execute_rpc(self):
+        self.execute_interface_rpc()
 
     def execute_interface_rpc(self):
         if self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'edit-config':
