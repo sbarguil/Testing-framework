@@ -43,10 +43,14 @@ class QOS(BasePageObject):
         'qos_scheduler_queue': [
             {
                 'name': 'qos/queues/queue/name',
-                'scheduler_name': 'qos/scheduler-policies/scheduler-policy/name',
+            },
+            {
+                'name': 'qos/scheduler-policies/scheduler-policy/name',
                 'sequence': 'qos/scheduler-policies/scheduler-policy/schedulers/scheduler/sequence',
                 'id': 'qos/scheduler-policies/scheduler-policy/schedulers/scheduler/inputs/input/id',
-            }
+                'input_type': 'qos/scheduler-policies/scheduler-policy/schedulers/scheduler/inputs/input/config/input-type',
+                'queue_name': 'qos/scheduler-policies/scheduler-policy/schedulers/scheduler/inputs/input/config/queue',
+            },
         ],
         'qos_scheduler_weight': [
             {
@@ -91,7 +95,7 @@ class QOS(BasePageObject):
                       </qos>
                     </filter>
                     """
-        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='name')
+        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=self.rpc_idx_in_test_case, variable='name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()
 
@@ -107,6 +111,6 @@ class QOS(BasePageObject):
                       </qos>
                     </filter>
                     """
-        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='name')
+        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=self.rpc_idx_in_test_case, variable='name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()

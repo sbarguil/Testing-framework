@@ -71,10 +71,16 @@ class RPCAutomator2:
 
     def safe_dispatch(self, template):
         try:
+            full_response = '- Response of edit-config: '
             print('- Response of edit-config')
-            print(self.manager.dispatch(et.fromstring(template)))
+            response_edit_config = str(self.manager.dispatch(et.fromstring(template)))
+            print(response_edit_config)
+            full_response = full_response + response_edit_config + ' \n\n - Response of commit: '
             print('- Response of commit')
-            print(self.manager.dispatch(et.fromstring("<commit/>")))
+            response_commit = str(self.manager.dispatch(et.fromstring("<commit/>")))
+            print(response_commit)
+            full_response = full_response + response_commit
+            return full_response
         except Exception as e:
             print("An exception has occurred when performing the edit_config operation.")
             raise e
