@@ -11,7 +11,6 @@ class ExcelLogger:
     log_values = {}
     column_indexes = {}
 
-    # logger = ExcelLogger(workbook_name='/excel_logs/existe.xlsx', columns=['jaja', 'sapo perro'])
     def __init__(self, workbook_name, columns):
         self.log_values = {}
         self.column_indexes = {}
@@ -26,23 +25,14 @@ class ExcelLogger:
             self.workbook = openpyxl.Workbook()
             self.sheet = self.workbook.active
             self.sheet.title = 'logs'
+
             for column in range(0, len(self.workbook_columns)):
                 self.sheet.cell(row=1, column=column + 1, value=self.workbook_columns[column])
 
-            # Tiene que ser en el write_log ???
             self.workbook.save(filename=self.workbook_path)
 
         self.set_column_indexes()
         self.clean_log_values()
-
-        print('--------------------')
-        print(self.workbook_path)
-        print(self.workbook_name)
-        print(self.workbook_columns)
-        print(self.workbook)
-        print(self.sheet)
-        print(self.log_values)
-        print(self.column_indexes)
 
     def set_column_indexes(self):
         for column in range(0, len(self.workbook_columns)):
