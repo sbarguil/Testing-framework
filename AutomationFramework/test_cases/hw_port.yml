@@ -5,22 +5,13 @@
       description: >
           This test is to set channel speed.
       rpcs:
-          - template: hw_port_lag_create.xml
-            target: candidate
-            operation: edit-config
-            commit: true
-            params:
-                   interface_name: "400"
-                   type: "ieee8023adLag"
-                   enabled: "true"
-
           - template: hw_port_channel_speed.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   name: "400"
-                   channel_speed: "SPEED_1GB"
+                   name: "Eth1/1"
+                   channel_speed: "SPEED_40GB"
 
 - testcase:
       name: hw_port_num_channels
@@ -28,22 +19,13 @@
       description: >
           This test is to set channel numbers.
       rpcs:
-          - template: hw_port_lag_create.xml
-            target: candidate
-            operation: edit-config
-            commit: true
-            params:
-                   interface_name: "400"
-                   type: "ieee8023adLag"
-                   enabled: "true"
-
           - template: hw_port_num_channels.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   name: "400"
-                   num_channels: "10"
+                   name: "Eth1/1"
+                   num_channels: "4"
 
 - testcase:
       name: hw_port_channel_speed_state
@@ -51,28 +33,20 @@
       description: >
           This test is to get channel speed.
       rpcs:
-          - template: hw_port_lag_create.xml
-            target: candidate
-            operation: edit-config
-            commit: true
-            params:
-                  interface_name: "400"
-                  type: "ieee8023adLag"
-                  enabled: "true"
 
           - template: hw_port_channel_speed.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   name: "400"
-                   channel_speed: "SPEED_1GB"
+                   name: "Eth1/1"
+                   channel_speed: "SPEED_40GB"
 
           - template: hw_port_channel_speed_state.xml
             operation: get
             params:
-                   name: "400"
-                   channel_state: ""
+                   name: "Eth1/1"
+                   channel_speed_state: ""
 
 - testcase:
       name: hw_port_num_channels_state
@@ -80,25 +54,16 @@
       description: >
           This test is to get number channels.
       rpcs:
-          - template: hw_port_lag_create.xml
-            target: candidate
-            operation: edit-config
-            commit: true
-            params:
-                  interface_name: "400"
-                  type: "ieee8023adLag"
-                  enabled: "true"
-
           - template: hw_port_num_channels.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   name: "400"
-                   num_channels: "10"
+                   name: "Eth1/1"
+                   num_channels: "4"
 
           - template: hw_port_num_channels_state.xml
             operation: get
             params:
-                   name: "400"
+                   name: "Eth1/1"
                    num_channels: ""

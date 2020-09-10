@@ -6,9 +6,6 @@
       <components xmlns="http://openconfig.net/yang/platform">
         <component>
           <name>{{name}}</name>
-          <config>
-            <name>{{name}}</name>
-          </config>
           <port>
             <breakout-mode xmlns="http://openconfig.net/yang/platform/port">
               <config>
