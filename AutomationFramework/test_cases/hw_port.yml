@@ -10,8 +10,8 @@
             operation: edit-config
             commit: true
             params:
-                   name: "300"
-                   type: "ianaift:ieee8023adLag"
+                   interface_name: "400"
+                   type: "ieee8023adLag"
                    enabled: "true"
 
           - template: hw_port_channel_speed.xml
@@ -19,8 +19,8 @@
             operation: edit-config
             commit: true
             params:
-                   name: "300"
-                   channel_speed: "oc-eth:SPEED_1GB"
+                   name: "400"
+                   channel_speed: "SPEED_1GB"
 
 - testcase:
       name: hw_port_num_channels
@@ -33,8 +33,8 @@
             operation: edit-config
             commit: true
             params:
-                   name: "300"
-                   type: "ianaift:ieee8023adLag"
+                   interface_name: "400"
+                   type: "ieee8023adLag"
                    enabled: "true"
 
           - template: hw_port_num_channels.xml
@@ -42,7 +42,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "300"
+                   name: "400"
                    num_channels: "10"
 
 - testcase:
@@ -56,23 +56,23 @@
             operation: edit-config
             commit: true
             params:
-            name: "300"
-            type: "ianaift:ieee8023adLag"
-            enabled: "true"
+                  interface_name: "400"
+                  type: "ieee8023adLag"
+                  enabled: "true"
 
           - template: hw_port_channel_speed.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   name: "300"
-                   channel_speed: "oc-eth:SPEED_1GB"
-
+                   name: "400"
+                   channel_speed: "SPEED_1GB"
 
           - template: hw_port_channel_speed_state.xml
             operation: get
             params:
-                   name: "300"
+                   name: "400"
+                   channel_state: ""
 
 - testcase:
       name: hw_port_num_channels_state
@@ -85,19 +85,20 @@
             operation: edit-config
             commit: true
             params:
-            name: "300"
-            type: "ianaift:ieee8023adLag"
-            enabled: "true"
+                  interface_name: "400"
+                  type: "ieee8023adLag"
+                  enabled: "true"
 
           - template: hw_port_num_channels.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   name: "300"
+                   name: "400"
                    num_channels: "10"
 
           - template: hw_port_num_channels_state.xml
             operation: get
             params:
-                   name: "300"
+                   name: "400"
+                   num_channels: ""

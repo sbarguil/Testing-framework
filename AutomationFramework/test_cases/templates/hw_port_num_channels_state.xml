@@ -9,7 +9,7 @@
           <port>
             <breakout-mode xmlns="http://openconfig.net/yang/platform/port">
               <state>
-                <num-channels/>
+                <num-channels>{{num_channels}}</num-channels>
               </state>
             </breakout-mode>
           </port>
