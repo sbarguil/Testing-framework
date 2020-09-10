@@ -50,11 +50,16 @@ class ExcelLogger:
 
     def clean_log_values(self):
         for column in self.workbook_columns:
-            self.log_values[column] = None
+            self.log_values[column] = ''
 
     def add_value_to_log_column(self, value, column):
-        self.log_values[column] = value
+        self.log_values[column] = self.log_values[column] + value
 
-    # TODO
     def write_log(self):
+        list_row_data = []
+        for column in self.workbook_columns:
+            list_row_data.append(self.log_values[column])
+        row_data = tuple(list_row_data)
+        self.sheet.append(row_data)
+        self.workbook.save(filename=self.workbook_path)
         self.clean_log_values()
