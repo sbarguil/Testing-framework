@@ -48,11 +48,18 @@ class RPCAutomator2:
     def get_occurrences_of_variable_in_not_rendered_template(self, test_case, rpc_index, variable_in_test_case):
         return 2
 
-    def generate_filter_from_test_case(self, test_case, rpc_index):
+    def generate_filter_from_test_case(self, test_case, rpc_index=0):
         template_file_name = test_case['testcase']['rpcs'][rpc_index]['template']
         jinja_template = self.jinja_env.get_template(template_file_name)
-        empty_template = jinja_template.render({'target': 'None'})
-        parsed_dict = xmltodict.parse(empty_template)
+
+        rpc_list = test_case['testcase']['rpcs']
+        jinja_variables_dict = rpc_list[rpc_index]['params']
+        jinja_variables_dict['target'] = rpc_list[rpc_index]['target']
+        if 'target' in rpc_list[rpc_index]:
+            jinja_variables_dict['target'] = rpc_list[rpc_index]['target']
+
+        filled_template = jinja_template.render(jinja_variables_dict)
+        parsed_dict = xmltodict.parse(filled_template)
         full_filter_dict = OrderedDict()
         full_filter_dict['filter'] = parsed_dict['edit-config']['config']
         full_filter = xmltodict.unparse(full_filter_dict)
@@ -64,10 +71,16 @@ class RPCAutomator2:
 
     def safe_dispatch(self, template):
         try:
+            full_response = '- Response of edit-config: '
             print('- Response of edit-config')
-            print(self.manager.dispatch(et.fromstring(template)))
+            response_edit_config = str(self.manager.dispatch(et.fromstring(template)))
+            print(response_edit_config)
+            full_response = full_response + response_edit_config + ' \n\n - Response of commit: '
             print('- Response of commit')
-            print(self.manager.dispatch(et.fromstring("<commit/>")))
+            response_commit = str(self.manager.dispatch(et.fromstring("<commit/>")))
+            print(response_commit)
+            full_response = full_response + response_commit
+            return full_response
         except Exception as e:
             print("An exception has occurred when performing the edit_config operation.")
             raise e
@@ -89,8 +102,8 @@ class RPCAutomator2:
             print("An exception has occurred when performing the get operation.")
             raise e
 
-    def safe_get_config(self, netconf_filter, test_case):
-        target = self.get_rpc_target_from_test_case(test_case=test_case, rpc_index=0)
+    def safe_get_config(self, netconf_filter, test_case, rpc_index=0):
+        target = self.get_rpc_target_from_test_case(test_case=test_case, rpc_index=rpc_index)
         try:
             return self.manager.get_config(source=target, filter=netconf_filter)
         except Exception as e:

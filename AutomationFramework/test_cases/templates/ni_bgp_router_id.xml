@@ -21,6 +21,7 @@
                 <global>
                   <config>
                     <router-id>{{router_id}}</router-id>
+                    <as>{{as}}</as>                    
                   </config>
                 </global>
               </bgp>
