@@ -9,6 +9,7 @@
             operation: get
             params:
                    subcomponent_name: "0/0/0"
+                   subcomponent_name_state: ""
 
 - testcase:
       name: hw_subcomponent_name_state

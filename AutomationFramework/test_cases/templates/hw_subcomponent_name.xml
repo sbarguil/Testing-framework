@@ -6,7 +6,7 @@
             <subcomponent>
               <name>{{subcomponent_name}}</name>
               <config>
-                <name>{{subcomponent_name}}</name>
+                <name>{{subcomponent_name_state}}</name>
               </config>
             </subcomponent>
           </subcomponents>
