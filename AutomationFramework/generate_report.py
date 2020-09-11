@@ -47,7 +47,7 @@ file2=pd.read_excel(url2)
 #
 out=pd.merge(file1,file2,on="TEST-ID (XML_FILE_NAME)",how='left')
 out=out[['SUITE NAME','TEST NAME','TEST PARAM','OPENCONFIG PATH','TEST-ID (XML_FILE_NAME)','DESCRIPTION',
-         'RESULT','DURATION','TIMESTAMP','MESSAGE','FILE NAME','MARKERS',
+         'RESULT','DURATION','TIMESTAMP','MESSAGE','FILE NAME','MARKERS', 'RPC ID',	'POM instance',	'Test case name', 'Filter',	'First get config',	'RPC', 'Edit config and commit', 'Second get config', 'Get',
          'TEST BLOCK',' TEST SUB-BLOCK','CONFIG/STATE','YAML_FILE_NAME']]
 #
 out.loc[out['RESULT'] == 'PASSED', 'NUM RESULT'] = "1"

@@ -29,7 +29,7 @@ class TestNetworkInstanceInterface(BaseTest):
                                                                    'rpc_clean_order': [1, 0],
                                                                    }])
     def test_ni_interface_subinterface(self, multiple_create_page_objects):
-        multiple_create_page_objects[0].execute_generic_edit_config_test_case()
+        multiple_create_page_objects[0].execute_generic_interfaces_edit_config_test_case()
         assert multiple_create_page_objects[0].validate_rpc(), multiple_create_page_objects[0].get_test_case_description()
         multiple_create_page_objects[1].execute_generic_edit_config_test_case()
         assert multiple_create_page_objects[1].validate_rpc(), multiple_create_page_objects[1].get_test_case_description()
