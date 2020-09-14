@@ -47,8 +47,8 @@ class BasePageObject:
         self.init_generic_variables_to_commit()
         self.values_after_get = {}
         self.excel_logger = ExcelLogger(workbook_name='/excel_logs/cumulative_log.xlsx',
-                                        columns=['RPC ID', 'POM instance', 'Test case name', 'Filter',
-                                                 'First get config', 'RPC', 'Edit config and commit',
+                                        columns=['Test case description', 'RPC ID', 'POM instance', 'Test case name',
+                                                 'Filter', 'First get config', 'RPC', 'Edit config and commit',
                                                  'Second get config', 'Get'])
 
     def init_generic_variables_to_commit(self):
