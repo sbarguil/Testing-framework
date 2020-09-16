@@ -46,3 +46,15 @@
             params:
                    interface_name: "1"
                    oper_status: ""
+
+- testcase:
+      name: if_status_type
+      id: 5
+      description: >
+          This test is to get the type state of an interface.
+      rpcs:
+          - template: if_status_type.xml
+            operation: get
+            params:
+                   interface_name: "1"
+                   type: ""

@@ -33,3 +33,10 @@ class TestInterfacesStatus(BaseTest):
     def test_if_status_oper_status(self, create_page_object):
         create_page_object.execute_get_test_case_with_dispatch()
         assert create_page_object.validate_get_test_case(), create_page_object.get_test_case_description()
+
+    @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
+                                                         'test_case_name': 'if_status_type',
+                                                         'page_object_class': Interfaces}])
+    def test_if_status_type(self, create_page_object):
+        create_page_object.execute_get_test_case_with_dispatch()
+        assert create_page_object.validate_get_test_case(), create_page_object.get_test_case_description()
