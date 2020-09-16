@@ -315,6 +315,9 @@ class Interfaces(BasePageObject):
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()
 
+    def execute_rpc(self):
+        self.execute_interface_rpc()
+
     def execute_interface_rpc(self):
         if self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'edit-config':
             self.execute_generic_interfaces_edit_config_test_case()
