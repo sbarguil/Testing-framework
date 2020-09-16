@@ -20,5 +20,6 @@
           - template: hw_subcomponent_name_state.xml
             operation: get
             params:
+                   name: "CHASIS"
                    subcomponent_name: "0/0/0"
                    name_state_subcomponent: ""
