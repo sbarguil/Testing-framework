@@ -231,21 +231,11 @@ class Hardware(BasePageObject):
         ],
         'hw_port_channel_speed': [
             {
-                'interface_name': 'interfaces/interface/name',
-                'type': 'interfaces/interface/config/type',
-                'enabled': 'interfaces/interface/config/enabled',
-            },
-            {
                 'name': 'components/component/name',
                 'channel_speed': 'components/component/port/breakout-mode/config/channel-speed',
             }
         ],
         'hw_port_channel_speed_state': [
-            {
-                'interface_name': 'interfaces/interface/name',
-                'type': 'interfaces/interface/config/type',
-                'enabled': 'interfaces/interface/config/enabled',
-            },
             {
                 'name': 'components/component/name',
                 'channel_speed': 'components/component/port/breakout-mode/config/channel-speed',
@@ -257,21 +247,11 @@ class Hardware(BasePageObject):
         ],
         'hw_port_num_channels': [
             {
-                'interface_name': 'interfaces/interface/name',
-                'type': 'interfaces/interface/config/type',
-                'enabled': 'interfaces/interface/config/enabled',
-            },
-            {
                 'name': 'components/component/name',
                 'num_channels': 'components/component/port/breakout-mode/config/num-channels',
             }
         ],
         'hw_port_num_channels_state': [
-            {
-                'interface_name': 'interfaces/interface/name',
-                'type': 'interfaces/interface/config/type',
-                'enabled': 'interfaces/interface/config/enabled',
-            },
             {
                 'name': 'components/component/name',
                 'num_channels': 'components/component/port/breakout-mode/config/num-channels',
