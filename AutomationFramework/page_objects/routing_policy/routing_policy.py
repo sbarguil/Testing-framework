@@ -57,7 +57,6 @@ class RoutingPolicy(BasePageObject):
                 'import_export_bgp_policy': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/apply-policy/config/export-policy',
             },
         ],
-<<<<<<< HEAD
         'ni_rt_policy_import_policy': [
             {
                 'name': 'routing-policy/policy-definitions/policy-definition/name',
@@ -87,8 +86,7 @@ class RoutingPolicy(BasePageObject):
                 'address_family': 'network-instances/network-instance/table-connections/table-connection/address-family',
                 'import_policy': 'network-instances/network-instance/table-connections/table-connection/config/import-policy',
             }
-        ]
-=======
+        ],
         'rp_policy_def_match_set_options': [
             {
                 'ext_community_set_name': 'routing-policy/defined-sets/bgp-defined-sets/ext-community-sets/ext-community-set/ext-community-set-name',
@@ -112,7 +110,6 @@ class RoutingPolicy(BasePageObject):
                 'ext_community_set': 'routing-policy/policy-definitions/policy-definition/statements/statement/conditions/bgp-conditions/match-ext-community-set/config/ext-community-set',
             }
         ],
->>>>>>> 7baf719bb03a924716cbd342738ffd7980fba964
     }
 
     def execute_rp_community_def_edit_config_test_case(self):
