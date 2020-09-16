@@ -229,6 +229,38 @@ class Hardware(BasePageObject):
                 'name': 'components/component/name',
             }
         ],
+        'hw_port_channel_speed': [
+            {
+                'name': 'components/component/name',
+                'channel_speed': 'components/component/port/breakout-mode/config/channel-speed',
+            }
+        ],
+        'hw_port_channel_speed_state': [
+            {
+                'name': 'components/component/name',
+                'channel_speed': 'components/component/port/breakout-mode/config/channel-speed',
+            },
+            {
+                'name': 'components/component/name',
+                'channel_speed': 'components/component/port/breakout-mode/state/channel-speed',
+            }
+        ],
+        'hw_port_num_channels': [
+            {
+                'name': 'components/component/name',
+                'num_channels': 'components/component/port/breakout-mode/config/num-channels',
+            }
+        ],
+        'hw_port_num_channels_state': [
+            {
+                'name': 'components/component/name',
+                'num_channels': 'components/component/port/breakout-mode/config/num-channels',
+            },
+            {
+                'name': 'components/component/name',
+                'num_channels': 'components/component/port/breakout-mode/state/num-channels',
+            }
+        ],
     }
 
     def execute_hardware_component_edit_config_test_case(self):
@@ -250,3 +282,6 @@ class Hardware(BasePageObject):
             self.execute_hardware_component_edit_config_test_case()
         elif self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'get':
             self.execute_get_test_case_with_dispatch()
+
+    def execute_rpc(self):
+        self.execute_hardware_rpc()

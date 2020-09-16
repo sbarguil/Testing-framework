@@ -278,6 +278,7 @@ class NetworkInstance(BasePageObject):
                 'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
                 'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
                 'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'peer_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/peer-as',
                 'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
                 'multihop_ttl': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/ebgp-multihop/config/multihop-ttl',
             }

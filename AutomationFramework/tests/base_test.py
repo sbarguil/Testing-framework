@@ -8,6 +8,8 @@ class BaseTest:
         test_case_name = create_page_object_arg['test_case_name']
         page_object_class = create_page_object_arg['page_object_class']
         test_page_object = page_object_class(test_case_file=test_case_file, test_case_name=test_case_name)
+        test_page_object.excel_logger.add_value_to_log_column(value=str(test_page_object.get_test_case_description()),
+                                                              column='Test case description')
         test_page_object.excel_logger.add_value_to_log_column(value=str(test_case_name), column='Test case name')
         test_page_object.excel_logger.add_value_to_log_column(value=str(test_page_object.rpc_idx_in_test_case),
                                                               column='RPC ID')
@@ -28,6 +30,8 @@ class BaseTest:
                 rpc_idx=rpc_index)
 
             test_page_object.excel_logger.add_value_to_log_column(value=str(
+                test_page_object.get_test_case_description()), column='Test case description')
+            test_page_object.excel_logger.add_value_to_log_column(value=str(
                 multiple_create_page_objects_arg['test_case_name'],), column='Test case name')
             test_page_object.excel_logger.add_value_to_log_column(value=str(test_page_object.rpc_idx_in_test_case),
                                                                   column='RPC ID')
@@ -42,7 +46,7 @@ class BaseTest:
         for single_page_object in page_objects_list:
             if single_page_object is not page_objects_list[0]:
                 for column in single_page_object.excel_logger.workbook_columns:
-                    if column != 'Test case name':
+                    if column != 'Test case name' and column != 'Test case description':
                         page_objects_list[0].excel_logger.add_value_to_log_column(
                             column=column, value=' \n-------------------\n' +
                                                  single_page_object.excel_logger.log_values[column])
