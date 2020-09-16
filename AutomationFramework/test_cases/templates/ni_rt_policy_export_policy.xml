@@ -1,4 +1,4 @@
- <edit-config>
+  <edit-config>
     <target>
       <{{target}}/>
     </target>
@@ -9,14 +9,13 @@
           <config>
             <name>{{name}}</name>
           </config>
-          <interfaces>
-            <interface>
-              <id>{{id}}</id>
+          <inter-instance-policies>
+            <apply-policy>
               <config>
-                <id>{{id}}</id>
+                <export-policy>{{export_policy}}</export-policy>
               </config>
-            </interface>
-          </interfaces>
+            </apply-policy>
+          </inter-instance-policies>
         </network-instance>
       </network-instances>
     </config>

@@ -388,6 +388,10 @@ class NetworkInstance(BasePageObject):
         ],
         'ni_ospf_subinterface': [
             {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+            },
+            {
                 'name': 'network-instances/network-instance/name',
                 'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
                 'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
@@ -395,6 +399,24 @@ class NetworkInstance(BasePageObject):
                 'id': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/id',
                 'interface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/interface',
                 'subinterface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/subinterface',
+            }
+        ],
+        'ni_rt_policy_import_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'import_policy': 'network-instances/network-instance/inter-instance-policies/apply-policy/config/import-policy',
+            }
+        ],
+        'ni_rt_policy_export_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'export_policy': 'network-instances/network-instance/inter-instance-policies/apply-policy/config/export-policy',
             }
         ],
         'ni_static_prefix': [
@@ -450,6 +472,43 @@ class NetworkInstance(BasePageObject):
                 'default_import_policy': 'network-instances/network-instance/table-connections/table-connection/config/default-import-policy',
             }
         ],
+        'ni_interface_id': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'id': 'network-instances/network-instance/interfaces/interface/id',
+            }
+        ],
+        'ni_interface_interface': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'id': 'network-instances/network-instance/interfaces/interface/id',
+                'interface': 'network-instances/network-instance/interfaces/interface/config/interface',
+            }
+        ],
+        'ni_interface_subinterface': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'id': 'network-instances/network-instance/interfaces/interface/id',
+                'interface': 'network-instances/network-instance/interfaces/interface/config/interface',
+                'subinterface': 'network-instances/network-instance/interfaces/interface/config/subinterface',
+            }
+        ],
+        'ni_protocol_tables_connection_import_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier_src_protocol': 'network-instances/network-instance/table-connections/table-connection/src-protocol',
+                'identifier_dst_protocol': 'network-instances/network-instance/table-connections/table-connection/dst-protocol',
+                'address_family': 'network-instances/network-instance/table-connections/table-connection/address-family',
+                'import_policy': 'network-instances/network-instance/table-connections/table-connection/config/import-policy',
+            }
+        ]
     }
 
     def execute_network_instance_edit_config_test_case(self):

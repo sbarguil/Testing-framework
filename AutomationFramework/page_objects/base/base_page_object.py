@@ -1,6 +1,8 @@
 import collections
 from collections import OrderedDict
 import pytest
+
+from AutomationFramework.utils.excel_logger import ExcelLogger
 from AutomationFramework.utils.rpc_automator_2 import RPCAutomator2
 from AutomationFramework.capabilities import HOSTS
 import xmltodict
@@ -30,6 +32,7 @@ class BasePageObject:
     rpcs_list = []
     variables_paths = {}
     rpc_idx_in_test_case = 0
+    excel_logger = None
 
     def __init__(self, test_case_file=None, test_case_name=None, rpc_idx=0):
         self.rpc_automator = RPCAutomator2(HOSTS[0])
@@ -43,6 +46,10 @@ class BasePageObject:
         self.set_variables_to_commit(rpc_idx)
         self.init_generic_variables_to_commit()
         self.values_after_get = {}
+        self.excel_logger = ExcelLogger(workbook_name='/excel_logs/cumulative_log.xlsx',
+                                        columns=['Test case description', 'RPC ID', 'POM instance', 'Test case name',
+                                                 'Filter', 'First get config', 'RPC', 'Edit config and commit',
+                                                 'Second get config', 'Get'])
 
     def init_generic_variables_to_commit(self):
         self.generic_variables_to_commit = []
@@ -58,19 +65,23 @@ class BasePageObject:
             pass
         else:
             self.generate_filter_from_test_case()
+        self.excel_logger.add_value_to_log_column(value=str(self.netconf_filter), column='Filter')
         self.execute_edit_config_first_get_config_with_filter()
         self.get_rendered_template()
-        self.execute_edit_config_with_template()
+        commit_response = self.execute_edit_config_with_template()
+        self.excel_logger.add_value_to_log_column(value=str(commit_response), column='Edit config and commit')
         self.execute_edit_config_second_get_config_with_filter()
 
     def execute_generic_edit_config_test_case(self):
         if not self.netconf_filter:
             self.generate_filter_from_test_case()
+        self.excel_logger.add_value_to_log_column(value=str(self.netconf_filter), column='Filter')
         self.set_generic_variables_to_commit()
         self.execute_edit_config_first_get_config_with_filter()
         self.set_generic_values_before_commit()
         self.get_rendered_template()
-        self.execute_edit_config_with_template()
+        commit_response = self.execute_edit_config_with_template()
+        self.excel_logger.add_value_to_log_column(value=str(commit_response), column='Edit config and commit')
         self.execute_edit_config_second_get_config_with_filter()
         self.set_generic_values_after_commit()
 
@@ -147,13 +158,15 @@ class BasePageObject:
         self.rendered_template = self.rpc_automator.rpc_body_generator(test_case=self.test_case,
                                                                        rpc_index=self.rpc_idx_in_test_case)
         print(self.rendered_template)
+        self.excel_logger.add_value_to_log_column(value=str(self.rendered_template),
+                                                  column='RPC')
         return self.rendered_template
 
     def execute_edit_config_with_template(self, template=None):
         if template:
-            self.rpc_automator.safe_dispatch(template=template)
+            return self.rpc_automator.safe_dispatch(template=template)
         else:
-            self.rpc_automator.safe_dispatch(template=self.rendered_template)
+            return self.rpc_automator.safe_dispatch(template=self.rendered_template)
 
     def execute_edit_config_first_get_config_with_filter(self):
         print('---------------------------------------------------------------------------------------')
@@ -161,6 +174,8 @@ class BasePageObject:
         self.edit_config_first_get_config_response = self.rpc_automator.safe_get_config(
             netconf_filter=self.netconf_filter, test_case=self.test_case, rpc_index=self.rpc_idx_in_test_case)
         print(self.edit_config_first_get_config_response)
+        self.excel_logger.add_value_to_log_column(value=str(self.edit_config_first_get_config_response),
+                                                  column='First get config')
         return self.edit_config_first_get_config_response
 
     def execute_edit_config_second_get_config_with_filter(self):
@@ -169,6 +184,8 @@ class BasePageObject:
         self.edit_config_second_get_config_response = self.rpc_automator.safe_get_config(
             netconf_filter=self.netconf_filter, test_case=self.test_case, rpc_index=self.rpc_idx_in_test_case)
         print(self.edit_config_second_get_config_response)
+        self.excel_logger.add_value_to_log_column(value=str(self.edit_config_second_get_config_response),
+                                                  column='Second get config')
         return self.edit_config_second_get_config_response
 
     def get_variable_value_for_rpc_in_test_case(self, variable, rpc_index=0):
@@ -463,6 +480,7 @@ class BasePageObject:
         print('---------------------------------------------------------------------------------------')
         print('- get response')
         print(self.get_response)
+        self.excel_logger.add_value_to_log_column(value=str(self.get_response), column='Get')
         return self.get_response
 
     def execute_get_with_dispatch_with_template(self, template=None):
@@ -473,6 +491,7 @@ class BasePageObject:
         print('---------------------------------------------------------------------------------------')
         print('- Get response')
         print(self.get_response)
+        self.excel_logger.add_value_to_log_column(value=str(self.get_response), column='Get')
         return self.get_response
 
     def validate_rpc(self):

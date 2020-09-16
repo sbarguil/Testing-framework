@@ -224,6 +224,33 @@ class Interfaces(BasePageObject):
                 'type': 'interfaces/interface/config/type',
             }
         ],
+        'ni_ospf_subinterface': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'area_identifier': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/identifier',
+                'id': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/id',
+                'interface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/interface',
+                'subinterface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/subinterface',
+            }
+        ],
+        'ni_interface_subinterface': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'id': 'network-instances/network-instance/interfaces/interface/id',
+                'interface': 'network-instances/network-instance/interfaces/interface/config/interface',
+                'subinterface': 'network-instances/network-instance/interfaces/interface/config/subinterface',
+            }
+        ],
     }
 
     values_before_commit = {
@@ -287,6 +314,9 @@ class Interfaces(BasePageObject):
                                                                       variable='interface_name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()
+
+    def execute_rpc(self):
+        self.execute_interface_rpc()
 
     def execute_interface_rpc(self):
         if self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'edit-config':
