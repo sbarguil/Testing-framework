@@ -28,6 +28,7 @@
                     <neighbor-address>{{neighbor_address}}</neighbor-address>
                     <config>
                       <neighbor-address>{{neighbor_address}}</neighbor-address>
+                      <peer-as>{{peer_as}}</peer-as>
                     </config>
                     <ebgp-multihop>
                       <config>

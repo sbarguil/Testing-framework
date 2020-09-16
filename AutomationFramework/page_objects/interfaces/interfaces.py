@@ -4,12 +4,6 @@ from AutomationFramework.page_objects.base.base_page_object import BasePageObjec
 
 class Interfaces(BasePageObject):
     variables_paths = {
-        'if_subif_type': [
-            {
-                'interface_name': 'interfaces/interface/name',
-                'type': 'interfaces/interface/config/type'
-            }
-        ],
         'if_subif_description': [
             {
                 'interface_name': 'interfaces/interface/name',
@@ -249,6 +243,12 @@ class Interfaces(BasePageObject):
                 'id': 'network-instances/network-instance/interfaces/interface/id',
                 'interface': 'network-instances/network-instance/interfaces/interface/config/interface',
                 'subinterface': 'network-instances/network-instance/interfaces/interface/config/subinterface',
+            }
+        ],
+        'if_status_type': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/state/type',
             }
         ],
     }
