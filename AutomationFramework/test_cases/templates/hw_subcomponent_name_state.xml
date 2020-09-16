@@ -7,7 +7,7 @@
           <subcomponent>
             <name>{{subcomponent_name}}</name>
             <state>
-              <name>{{empty_name}}</name>
+              <name>{{name_state_subcomponent}}</name>
             </state>
           </subcomponent>
         </subcomponents>

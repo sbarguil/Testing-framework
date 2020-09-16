@@ -150,30 +150,15 @@ class Hardware(BasePageObject):
         'hw_subcomponent_name': [
             {
                 'name': 'components/component/name',
-            },
-            {
-                'name': 'components/component/name',
-            },
-            {
-                'name': 'components/component/name',
                 'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
+                'subcomponent_name_state': 'components/component/subcomponents/subcomponent/config/name',
             }
         ],
         'hw_subcomponent_name_state': [
             {
                 'name': 'components/component/name',
-            },
-            {
-                'name': 'components/component/name',
-            },
-            {
-                'name': 'components/component/name',
                 'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
-            },
-            {
-                'name': 'components/component/name',
-                'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
-                'empty_name': 'components/component/subcomponents/subcomponent/state/name',
+                'name_state_subcomponent': 'components/component/subcomponents/subcomponent/state/name',
             }
         ],
         'hw_properties_name': [
