@@ -1,7 +1,7 @@
 import collections
 from collections import OrderedDict
 import pytest
-
+from pathlib import Path
 from AutomationFramework.utils.excel_logger import ExcelLogger
 from AutomationFramework.utils.rpc_automator_2 import RPCAutomator2
 from AutomationFramework.capabilities import HOSTS
@@ -46,7 +46,7 @@ class BasePageObject:
         self.set_variables_to_commit(rpc_idx)
         self.init_generic_variables_to_commit()
         self.values_after_get = {}
-        self.excel_logger = ExcelLogger(workbook_name='/excel_logs/cumulative_log.xlsx',
+        self.excel_logger = ExcelLogger(workbook_name=Path('excel_logs/cumulative_log.xlsx'),
                                         columns=['Test case description', 'RPC ID', 'POM instance', 'Test case name',
                                                  'Filter', 'First get config', 'RPC', 'Edit config and commit',
                                                  'Second get config', 'Get'])
