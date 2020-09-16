@@ -49,7 +49,7 @@
 
 - testcase:
       name: if_status_type
-      id: 3
+      id: 5
       description: >
           This test is to get the type state of an interface.
       rpcs:
