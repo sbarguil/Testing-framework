@@ -5,15 +5,8 @@ module openconfig-evpn {
 
   prefix "oc-evpn";
 
-
-  import openconfig-inet-types {prefix "inet";}
-  import openconfig-yang-types {prefix "yang";}
-  import ietf-routing-types {prefix "rt-types";} /* module does not exists in OC */
   import openconfig-network-instance {prefix "ni";}
   import openconfig-network-instance-types {prefix "ni-types";}
-  import ietf-l2vpn {prefix "l2vpn";}
-  import ietf-pseudowires {prefix "pw";}
-  import ietf-ethernet-segment {prefix "es";}
 
   // meta
   organization
@@ -29,10 +22,6 @@ module openconfig-evpn {
      revision "2020-08-27" {
        description "Initial revision";
        reference   "";
-     }
-
-     feature evpn-bgp-params {
-       description "EVPN's BGP parameters";
      }
 
      feature evpn-pbb-params {
@@ -66,15 +55,6 @@ module openconfig-evpn {
        description "Static MAC move is detected";
      }
 
-     /* Typedefs */
-
-     typedef evpn-instance-ref {
-       type leafref {
-         path "/evpn/evpn-instances/evpn-instance/name";
-       }
-       description "A leafref type to an EVPN instance";
-     }
-
      /* Groupings */
 
      grouping route-rd-rt-grp {
@@ -83,7 +63,7 @@ module openconfig-evpn {
        list rd-rt {
          key "route-distinguisher";
          leaf route-distinguisher {
-           type rt-types:route-distinguisher;
+           type oc-ni-types:route-distinguisher;
            description "Route distinguisher";
          }
          list vpn-target {
@@ -403,42 +383,6 @@ module openconfig-evpn {
              description "Local pseudowire ID";
            }
          }
-       }
-     }
-
-     augment "/ni:network-instances/ni:network-instance/ni:config/ni:type" {
-       when "l2vpn:type = 'l2vpn:vpls-instance-type'" {
-         description "Constraints only for VPLS pseudowires";
-       }
-       description "Augment for VPLS instance";
-       container vpls-contstraints {
-         must "not(boolean(/pw:pseudowires/pw:pseudowire" +
-              "                [pw:name = current()/../l2vpn:endpoint" +
-              "            /l2vpn:pw/l2vpn:name]" +
-              "            /evpn-pw/remote-id)) and " +
-              "not(boolean(/pw:pseudowires/pw:pseudowire" +
-              "                [pw:name = current()/../l2vpn:endpoint" +
-              "            /l2vpn:pw/l2vpn:name]" +
-              "            /evpn-pw/local-id)) and " +
-              "not(boolean(/pw:pseudowires/pw:pseudowire" +
-              "                [pw:name = current()/../l2vpn:endpoint" +
-              "            /l2vpn:primary-pw/l2vpn:name]" +
-              "            /evpn-pw/remote-id)) and " +
-              "not(boolean(/pw:pseudowires/pw:pseudowire" +
-              "                [pw:name = current()/../l2vpn:endpoint" +
-              "            /l2vpn:primary-pw/l2vpn:name]" +
-              "            /evpn-pw/local-id)) and " +
-              "not(boolean(/pw:pseudowires/pw:pseudowire" +
-              "                [pw:name = current()/../l2vpn:endpoint" +
-              "            /l2vpn:backup-pw/l2vpn:name]" +
-              "            /evpn-pw/remote-id)) and " +
-              "not(boolean(/pw:pseudowires/pw:pseudowire" +
-              "                [pw:name = current()/../l2vpn:endpoint" +
-              "            /l2vpn:backup-pw/l2vpn:name]" +
-              "            /evpn-pw/local-id))" {
-           description "A VPLS pseudowire must not be EVPN PW";
-         }
-         description "VPLS constraints";
        }
      }
 
