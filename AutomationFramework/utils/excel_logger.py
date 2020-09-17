@@ -1,5 +1,6 @@
 import openpyxl
 import os
+from pathlib import Path
 
 
 class ExcelLogger:
@@ -14,8 +15,10 @@ class ExcelLogger:
     def __init__(self, workbook_name, columns):
         self.log_values = {}
         self.column_indexes = {}
-        self.workbook_path = os.path.dirname(os.path.realpath(__file__)).replace('/utils', '') + workbook_name
-        self.workbook_name = self.workbook_path.split('/')[-1]
+        not_windows_path = os.path.dirname(os.path.realpath(__file__)).replace('\\', '/')
+
+        self.workbook_path = Path(not_windows_path.replace('/utils', '')) / workbook_name
+        self.workbook_name = self.workbook_path.name
         self.workbook_columns = columns
 
         try:

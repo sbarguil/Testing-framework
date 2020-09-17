@@ -27,3 +27,15 @@ class TestRPPolicyDef(BaseTest):
         create_page_object.execute_rp_policy_def_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
+    @pytest.mark.parametrize('multiple_create_page_objects_arg', [{'test_case_file': test_case_file,
+                                                                   'test_case_name': 'rp_policy_def_match_set_options',
+                                                                   'page_object_rpcs_classes': [RoutingPolicy,
+                                                                                                RoutingPolicy],
+                                                                   'rpc_clean_order': [1, 0],
+                                                                   }])
+    def test_rp_policy_def_match_set_options(self, multiple_create_page_objects):
+        multiple_create_page_objects[0].execute_rp_community_def_edit_config_test_case()
+        assert multiple_create_page_objects[0].validate_rpc(), multiple_create_page_objects[0].get_test_case_description()
+        multiple_create_page_objects[1].execute_rp_policy_def_edit_config_test_case()
+        assert multiple_create_page_objects[1].validate_rpc(), multiple_create_page_objects[1].get_test_case_description()
+

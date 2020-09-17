@@ -150,30 +150,15 @@ class Hardware(BasePageObject):
         'hw_subcomponent_name': [
             {
                 'name': 'components/component/name',
-            },
-            {
-                'name': 'components/component/name',
-            },
-            {
-                'name': 'components/component/name',
                 'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
+                'subcomponent_name_state': 'components/component/subcomponents/subcomponent/config/name',
             }
         ],
         'hw_subcomponent_name_state': [
             {
                 'name': 'components/component/name',
-            },
-            {
-                'name': 'components/component/name',
-            },
-            {
-                'name': 'components/component/name',
                 'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
-            },
-            {
-                'name': 'components/component/name',
-                'subcomponent_name': 'components/component/subcomponents/subcomponent/name',
-                'empty_name': 'components/component/subcomponents/subcomponent/state/name',
+                'name_state_subcomponent': 'components/component/subcomponents/subcomponent/state/name',
             }
         ],
         'hw_properties_name': [
@@ -229,6 +214,38 @@ class Hardware(BasePageObject):
                 'name': 'components/component/name',
             }
         ],
+        'hw_port_channel_speed': [
+            {
+                'name': 'components/component/name',
+                'channel_speed': 'components/component/port/breakout-mode/config/channel-speed',
+            }
+        ],
+        'hw_port_channel_speed_state': [
+            {
+                'name': 'components/component/name',
+                'channel_speed': 'components/component/port/breakout-mode/config/channel-speed',
+            },
+            {
+                'name': 'components/component/name',
+                'channel_speed': 'components/component/port/breakout-mode/state/channel-speed',
+            }
+        ],
+        'hw_port_num_channels': [
+            {
+                'name': 'components/component/name',
+                'num_channels': 'components/component/port/breakout-mode/config/num-channels',
+            }
+        ],
+        'hw_port_num_channels_state': [
+            {
+                'name': 'components/component/name',
+                'num_channels': 'components/component/port/breakout-mode/config/num-channels',
+            },
+            {
+                'name': 'components/component/name',
+                'num_channels': 'components/component/port/breakout-mode/state/num-channels',
+            }
+        ],
     }
 
     def execute_hardware_component_edit_config_test_case(self):
@@ -250,3 +267,6 @@ class Hardware(BasePageObject):
             self.execute_hardware_component_edit_config_test_case()
         elif self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'get':
             self.execute_get_test_case_with_dispatch()
+
+    def execute_rpc(self):
+        self.execute_hardware_rpc()

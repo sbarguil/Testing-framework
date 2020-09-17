@@ -139,7 +139,7 @@
                    neighbor_address: "192.168.1.2"
                    description: "BGP Neighbor 65123 Description"
                    peer_as: "65123"
-                   as: "65000"                
+                   as: "65000"
 
 - testcase:
       name: ni_bgp_import_policy

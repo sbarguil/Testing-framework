@@ -23,6 +23,7 @@
                 <bgp-conditions xmlns="http://openconfig.net/yang/bgp-policy">
                   <match-ext-community-set>
                     <config>
+                      <ext-community-set>{{ext_community_set}}</ext-community-set>
                       <match-set-options>{{match_set_options}}</match-set-options>
                     </config>
                   </match-ext-community-set>

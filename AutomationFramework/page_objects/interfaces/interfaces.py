@@ -4,12 +4,6 @@ from AutomationFramework.page_objects.base.base_page_object import BasePageObjec
 
 class Interfaces(BasePageObject):
     variables_paths = {
-        'if_subif_type': [
-            {
-                'interface_name': 'interfaces/interface/name',
-                'type': 'interfaces/interface/config/type'
-            }
-        ],
         'if_subif_description': [
             {
                 'interface_name': 'interfaces/interface/name',
@@ -251,6 +245,12 @@ class Interfaces(BasePageObject):
                 'subinterface': 'network-instances/network-instance/interfaces/interface/config/subinterface',
             }
         ],
+        'if_status_type': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/state/type',
+            }
+        ],
     }
 
     values_before_commit = {
@@ -314,6 +314,9 @@ class Interfaces(BasePageObject):
                                                                       variable='interface_name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()
+
+    def execute_rpc(self):
+        self.execute_interface_rpc()
 
     def execute_interface_rpc(self):
         if self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'edit-config':
