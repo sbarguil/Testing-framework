@@ -1,3 +1,4 @@
+import time
 import pytest
 
 
@@ -18,6 +19,7 @@ class BaseTest:
         test_page_object.excel_logger.write_log()
         if test_page_object.values_where_changed_after_test:
             test_page_object.clean_after_test()
+        time.sleep(3)
 
     @pytest.fixture
     def multiple_create_page_objects(self, multiple_create_page_objects_arg):
@@ -37,6 +39,7 @@ class BaseTest:
                                                                   column='RPC ID')
             test_page_object.excel_logger.add_value_to_log_column(value=str(type(test_page_object)),
                                                                   column='POM instance')
+            time.sleep(3)
 
             page_objects_list.append(test_page_object)
             rpc_index = rpc_index + 1
@@ -56,7 +59,9 @@ class BaseTest:
             for rpc_clean_index in multiple_create_page_objects_arg['rpc_clean_order']:
                 if page_objects_list[rpc_clean_index].values_where_changed_after_test:
                     page_objects_list[rpc_clean_index].clean_after_test()
+                    time.sleep(3)
         else:
             for single_page_object in page_objects_list:
                 if single_page_object.values_where_changed_after_test:
                     single_page_object.clean_after_test()
+                    time.sleep(3)
