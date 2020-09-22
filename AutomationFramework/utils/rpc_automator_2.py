@@ -83,7 +83,7 @@ class RPCAutomator2:
             return full_response
         except Exception as e:
             print("An exception has occurred when performing the edit_config operation.")
-            raise e
+            # raise e
 
     def safe_dispatch_no_commit(self, template):
         try:
