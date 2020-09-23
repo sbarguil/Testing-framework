@@ -85,6 +85,18 @@ class RPCAutomator2:
             print("An exception has occurred when performing the edit_config operation.")
             raise e
 
+    def safe_discard_changes(self):
+        try:
+            full_response = '- Response of discard-changes: '
+            print(full_response)
+            response_discard_changes = str(self.manager.dispatch(et.fromstring("<discard-changes/>")))
+            print(response_discard_changes)
+            full_response = full_response + response_discard_changes
+            return full_response
+        except Exception as e:
+            print("An exception has occurred when performing the discard-changes operation.")
+            raise e
+
     def safe_dispatch_no_commit(self, template):
         try:
             print('- Response of dispatch without commit')
