@@ -25,7 +25,7 @@
             commit: true
             params:
                    interface_name: "1"
-                   mtu: "1500"
+                   mtu: "1450"
 
 - testcase:
       name: if_config_description
@@ -39,7 +39,7 @@
             commit: true
             params:
                    interface_name: "1"
-                   description: "Test if_config_description"
+                   description: "Test if_config_description 2"
 
 - testcase:
       name: if_config_enabled
@@ -67,7 +67,7 @@
             commit: true
             params:
                    interface_name: "1"
-                   tpid: "TPID_0X9100"
+                   tpid: "TPID_0X9200"
 
 - testcase:
       name: if_config_loopback_mode
