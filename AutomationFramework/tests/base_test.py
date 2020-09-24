@@ -67,4 +67,5 @@ class BaseTest:
             for single_page_object in page_objects_list:
                 if single_page_object.values_where_changed_after_test:
                     single_page_object.clean_after_test()
+                    single_page_object.rpc_automator.safe_discard_changes()
                     time.sleep(3)

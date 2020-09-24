@@ -344,7 +344,7 @@ class BasePageObject:
                     break
                 else:
                     #TODO
-                    pass
+                    return
 
         target_value_dict = OrderedDict()
         target_value_dict['candidate'] = None

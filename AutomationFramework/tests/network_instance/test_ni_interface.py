@@ -12,14 +12,14 @@ class TestNetworkInstanceInterface(BaseTest):
                                                          'test_case_name': 'ni_interface_id',
                                                          'page_object_class': NetworkInstance}])
     def test_ni_interface_id(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_network_instance_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'ni_interface_interface',
                                                          'page_object_class': NetworkInstance}])
     def test_ni_interface_interface(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_network_instance_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('multiple_create_page_objects_arg', [{'test_case_file': test_case_file,
@@ -29,7 +29,7 @@ class TestNetworkInstanceInterface(BaseTest):
                                                                    'rpc_clean_order': [1, 0],
                                                                    }])
     def test_ni_interface_subinterface(self, multiple_create_page_objects):
-        multiple_create_page_objects[0].execute_generic_edit_config_test_case()
+        multiple_create_page_objects[0].execute_network_instance_edit_config_test_case()
         assert multiple_create_page_objects[0].validate_rpc(), multiple_create_page_objects[0].get_test_case_description()
-        multiple_create_page_objects[1].execute_generic_edit_config_test_case()
+        multiple_create_page_objects[1].execute_network_instance_edit_config_test_case()
         assert multiple_create_page_objects[1].validate_rpc(), multiple_create_page_objects[1].get_test_case_description()

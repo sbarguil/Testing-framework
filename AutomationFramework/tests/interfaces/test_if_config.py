@@ -10,15 +10,15 @@ class TestInterfacesConfig(BaseTest):
                                                          'test_case_name': 'if_config_description',
                                                          'page_object_class': Interfaces}])
     def test_if_config_description(self, create_page_object):
-        create_page_object.execute_interfaces_edit_config_test_case()
-        assert create_page_object.validate_test_case_params(), create_page_object.get_test_case_description()
+        create_page_object.execute_generic_interfaces_edit_config_test_case()
+        assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'if_config_enabled',
                                                          'page_object_class': Interfaces}])
     def test_if_config_enabled(self, create_page_object):
-        create_page_object.execute_interfaces_edit_config_test_case()
-        assert create_page_object.validate_test_case_params(), create_page_object.get_test_case_description()
+        create_page_object.execute_generic_interfaces_edit_config_test_case()
+        assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'if_config_loopback_mode',
@@ -31,8 +31,8 @@ class TestInterfacesConfig(BaseTest):
                                                          'test_case_name': 'if_config_mtu',
                                                          'page_object_class': Interfaces}])
     def test_if_config_mtu(self, create_page_object):
-        create_page_object.execute_interfaces_edit_config_test_case()
-        assert create_page_object.validate_test_case_params(), create_page_object.get_test_case_description()
+        create_page_object.execute_generic_interfaces_edit_config_test_case()
+        assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'if_config_tpid',
