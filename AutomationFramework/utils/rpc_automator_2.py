@@ -1,3 +1,5 @@
+import os
+from pathlib import Path
 import xmltodict
 from ncclient import manager
 import yaml
@@ -44,9 +46,15 @@ class RPCAutomator2:
 
         return jinja_template.render(jinja_variables_dict)
 
-    # TODO
     def get_occurrences_of_variable_in_not_rendered_template(self, test_case, rpc_index, variable_in_test_case):
-        return 2
+        template_file_name = test_case['testcase']['rpcs'][rpc_index]['template']
+        not_windows_path = os.path.dirname(os.path.realpath(__file__)).replace('\\', '/')
+        template_file_path = Path(not_windows_path.replace('/utils', '')) / 'test_cases/templates' / template_file_name
+        file = open(template_file_path, 'r')
+        data = file.read()
+        text_to_search = '{{' + variable_in_test_case + '}}'
+        occurrences = data.count(text_to_search)
+        return occurrences
 
     def generate_filter_from_test_case(self, test_case, rpc_index=0):
         template_file_name = test_case['testcase']['rpcs'][rpc_index]['template']

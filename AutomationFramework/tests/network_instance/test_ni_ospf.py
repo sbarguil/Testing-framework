@@ -12,42 +12,42 @@ class TestNetworkInstanceOSPF(BaseTest):
                                                          'test_case_name': 'ni_ospf_router_id',
                                                          'page_object_class': NetworkInstance}])
     def test_ni_ospf_router_id(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_network_instance_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'ni_ospf_identifier',
                                                          'page_object_class': NetworkInstance}])
     def test_ni_ospf_identifier(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_network_instance_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'ni_ospf_id',
                                                          'page_object_class': NetworkInstance}])
     def test_ni_ospf_id(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_network_instance_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'ni_ospf_authentication_type',
                                                          'page_object_class': NetworkInstance}])
     def test_ni_ospf_authentication_type(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_network_instance_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'ni_ospf_passive',
                                                          'page_object_class': NetworkInstance}])
     def test_ni_ospf_passive(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_network_instance_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'ni_ospf_interface',
                                                          'page_object_class': NetworkInstance}])
     def test_ni_ospf_interface(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_network_instance_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('multiple_create_page_objects_arg', [{'test_case_file': test_case_file,

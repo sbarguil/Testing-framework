@@ -218,6 +218,24 @@ class Interfaces(BasePageObject):
                 'type': 'interfaces/interface/config/type',
             }
         ],
+        'if_config_description': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'description': 'interfaces/interface/config/description',
+            }
+        ],
+        'if_config_enabled': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'enabled': 'interfaces/interface/config/enabled',
+            }
+        ],
+        'if_config_mtu': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'mtu': 'interfaces/interface/config/mtu',
+            }
+        ],
         'ni_ospf_subinterface': [
             {
                 'interface_name': 'interfaces/interface/name',
