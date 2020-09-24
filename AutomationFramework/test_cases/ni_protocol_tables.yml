@@ -9,7 +9,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Base"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    address_family: "IPV4"
@@ -25,7 +25,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Base"
                    identifier_dst_protocol: "BGP"
                    identifier_src_protocol: "OSPF"
                    address_family: "IPV4"
@@ -49,7 +49,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Base"
                    identifier_dst_protocol: "BGP"
                    identifier_src_protocol: "OSPF"
                    address_family: "IPV4"
@@ -67,7 +67,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Base"
                    identifier_dst_protocol: "BGP"
                    identifier_src_protocol: "OSPF"
                    address_family: "IPV4"

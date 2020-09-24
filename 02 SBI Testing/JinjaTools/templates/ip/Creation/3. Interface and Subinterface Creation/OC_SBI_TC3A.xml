@@ -8,7 +8,7 @@
                <name>{{interface_name}}</name>
                <config>
                    <name>{{interface_name}}</name>
-                   <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:{{interface_type}}</type>
+                   <type>ianaift:{{interface_type}}</type>
 				   <mtu>{{interface_mtu}}</mtu>
 				   <description>{{description}}</description>
 				   <enabled>{{enabled}}</enabled>

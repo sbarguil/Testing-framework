@@ -10,8 +10,8 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1/1/c4/1"
-                   type: "ethernet3Mbit"
+                   interface_name: "1/1/c11/2"
+                   type: "ieee8023adLag"
 
 - testcase:
       name: if_config_mtu
@@ -24,7 +24,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1/1/c4/1"
+                   interface_name: "1/1/c11/2"
                    mtu: "1500"
 
 - testcase:
@@ -38,7 +38,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1/1/c4/1"
+                   interface_name: "1/1/c11/2"
                    description: "Test if_config_description"
 
 - testcase:
@@ -52,7 +52,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1/1/c4/1"
+                   interface_name: "1/1/c11/2"
                    enabled: "false"
 
 - testcase:
@@ -66,7 +66,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1/1/c4/1"
+                   interface_name: "1/1/c11/2"
                    tpid: "TPID_0X9100"
 
 - testcase:
@@ -81,6 +81,6 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
+                  interface_name: "loopback"
                   type: "softwareLoopback"
                   loopback_mode: "true"
