@@ -5,9 +5,11 @@ module openconfig-evpn {
 
   prefix "oc-evpn";
 
-  import openconfig-network-instance {prefix "ni";}
-  import openconfig-network-instance-types {prefix "ni-types";}
-
+  import openconfig-network-instance {prefix ni;}
+  import openconfig-network-instance-types {prefix ni-types;}
+  import openconfig-yang-types { prefix oc-yang; }
+  import openconfig-extensions { prefix oc-ext; }
+  
   // meta
   organization
     "OpenConfig working group";
@@ -18,11 +20,14 @@ module openconfig-evpn {
 
      description   "evpn";
 
+     oc-ext:openconfig-version "0.0.1";
 
      revision "2020-08-27" {
        description "Initial revision";
-       reference   "";
+       reference   "0.0.1";
      }
+
+      /* Features */
 
      feature evpn-pbb-params {
        description "EVPN's PBB parameters";
@@ -35,370 +40,128 @@ module openconfig-evpn {
       description "Reference to an EVPN instance";
     }
 
-     identity evpn-notification-state {
-       description "The base identity on which EVPN notification " +
-                   "states are based";
-     }
+    identity l2vpn-instance-type {
+      description "Base identity from which identities of " +
+                  "l2vpn service instance types are derived";
+    }
 
-     identity MAC-duplication-detected {
-       base "evpn-notification-state";
-       description "MAC duplication is detected";
-     }
+    identity vpws-instance-type {
+      base l2vpn-instance-type;
+      description "This identity represents VPWS instance type";
+    }
 
-     identity mass-withdraw-received {
-       base "evpn-notification-state";
-       description "Mass withdraw received";
-     }
+    identity vpls-instance-type {
+      base l2vpn-instance-type;
+      description "This identity represents VPLS instance type";
+    }
 
-     identity static-MAC-move-detected {
-       base "evpn-notification-state";
-       description "Static MAC move is detected";
-     }
+     /* Typedef */
 
      /* Groupings */
 
-     grouping route-rd-rt-grp {
-       description "A grouping for a route's route distinguishers " +
-                   "and route targets";
-       list rd-rt {
-         key "route-distinguisher";
-         leaf route-distinguisher {
-           type oc-ni-types:route-distinguisher;
-           description "Route distinguisher";
-         }
-         list vpn-target {
-           key "route-target";
-           leaf route-target {
-             type rt-types:route-target;
-             description "BGP route target";
-           }
-           description "A list of route targets";
-         }
-         description "A list of route distinguishers and " +
-                     "corresponding VPN route targets";
-       }
-     }
-
-     grouping next-hop-label-grp {
-       description "next-hop-label-grp";
-       leaf next-hop {
-         type inet:ip-address;
-         description "next-hop";
-       }
-       leaf label {
-         type rt-types:mpls-label;
-         description "label";
-       }
-     }
-
-     grouping next-hop-label2-grp {
-       description "next-hop-label2-grp";
-       leaf label2 {
-         type rt-types:mpls-label;
-         description "label2";
-       }
-     }
-
-     grouping path-detail-grp {
-       description "path-detail-grp";
-       container detail {
-         config false;
-         description "path details";
-         container attributes {
-           leaf-list extended-community {
-             type string;
-             description "extended-community";
-           }
-           description "attributes";
-         }
-         leaf bestpath {
-           type empty;
-           description "Indicate this path is the best path";
-         }
-       }
-     }
+      grouping evpn-parameters-grp {
+            container common {
+                  leaf ingress-replication {
+                    type boolean;
+                    description "ingress-replication";
+                  }
+                  leaf p2mp-replication {
+                    type boolean;
+                    description "p2mp-replication";
+                  }
+              description "common evpn attributes";
+            }
+          description "PBB parameters grouping";
+          container pbb-parameters {
+            leaf source-bmac {
+              type oc-yang:hex-string;
+              description "source-bmac";
+              }
+            choice component-type {
+              description "PBB component type";
+              case i-component {
+                leaf i-sid {
+                type uint32 {
+                        range "0..16777216";
+                      }
+                      description "I-SID type that is 24-bits.";
+                }
+                leaf backbone-src-mac {
+                  type oc-yang:mac-address;
+                  description "backbone-src-mac";
+                }
+              }
+              case b-component {
+                leaf bind-b-component-name {
+                  type leafref {
+                   path "/ni:network-instances/ni:network-instance/ni:name";
+                  }
+                  description "Reference to the associated b-component";
+                }
+                leaf bind-b-component-type {
+                  type identityref {
+                    base l2vpn-instance-type;
+                    }
+                  }
+                  description "Type of the associated b-component";
+                }
+              }
+            description "pbb-parameters";
+            }
+            leaf arp-proxy {
+              type boolean;
+              default false;
+              description "Enable (TRUE) or disable (FALSE) ARP proxy";
+            }
+            leaf arp-suppression {
+              type boolean;
+              default false;
+              description "Enable (TRUE) or disable (FALSE) " +
+                          "ARP suppression";
+            }
+            leaf nd-proxy {
+              type boolean;
+              default false;
+              description "Enable (TRUE) or disable (FALSE) ND proxy";
+            }
+            leaf nd-suppression {
+              type boolean;
+              default false;
+              description "Enable (TRUE) or disable (FALSE) " +
+                          "ND suppression";
+            }
+            leaf underlay-multicast {
+              type boolean;
+              default false;
+              description "Enable (TRUE) or disable (FALSE) " +
+                          "underlay multicast";
+            }
+            leaf flood-unknown-unicast-supression {
+              type boolean;
+              default false;
+              description "Enable (TRUE) or disable (FALSE) " +
+                          "flood unknown unicast suppression";
+            }
+            leaf vpws-vlan-aware {
+              type boolean;
+              default false;
+              description "Enable (TRUE) or disable (FALSE) " +
+                          "VPWS VLAN aware";
+            }
+          }
 
      /* EVPN YANG Model */
 
-     container evpn {
-       description "evpn";
-       container common {
-         description "common epn attributes";
-         choice replication-type {
-           description "A choice of replication type";
-           case ingress-replication {
-             leaf ingress-replication {
-               type boolean;
-               description "ingress-replication";
-             }
-           }
-           case p2mp-replication {
-             leaf p2mp-replication {
-               type boolean;
-               description "p2mp-replication";
-             }
-           }
-         }
-       }
-       container evpn-instances {
-         description "evpn-instances";
-         list evpn-instance {
-           key "name";
-           description "An EVPN instance";
-           leaf name {
-             type string;
-             description "Name of EVPN instance";
-           }
-           leaf evi {
-             type uint32;
-             description "evi";
-           }
-           container pbb-parameters {
-             if-feature "evpn-pbb-params";
-             description "PBB parameters";
-             leaf source-bmac {
-               type yang:hex-string;
-               description "source-bmac";
-             }
-           }
-           container bgp-parameters {
-             description "BGP parameters";
-             container common {
-               description "BGP parameters common to all pseudowires";
-               list rd-rt {
-                 if-feature evpn-bgp-params;
-                 key "route-distinguisher";
-                 leaf route-distinguisher {
-                   type rt-types:route-distinguisher;
-                   description "Route distinguisher";
-                 }
-                 uses rt-types:vpn-route-targets;
-                 description "A list of route distinguishers and " +
-                             "corresponding VPN route targets";
-               }
-             }
-           }
-           leaf arp-proxy {
-             type boolean;
-             default false;
-             description "Enable (TRUE) or disable (FALSE) ARP proxy";
-           }
-           leaf arp-suppression {
-             type boolean;
-             default false;
-             description "Enable (TRUE) or disable (FALSE) " +
-                         "ARP suppression";
-           }
-           leaf nd-proxy {
-             type boolean;
-             default false;
-             description "Enable (TRUE) or disable (FALSE) ND proxy";
-           }
-           leaf nd-suppression {
-             type boolean;
-             default false;
-             description "Enable (TRUE) or disable (FALSE) " +
-                         "ND suppression";
-           }
-           leaf underlay-multicast {
-             type boolean;
-             default false;
-             description "Enable (TRUE) or disable (FALSE) " +
-                         "underlay multicast";
-           }
-           leaf flood-unknown-unicast-supression {
-             type boolean;
-             default false;
-             description "Enable (TRUE) or disable (FALSE) " +
-                         "flood unknown unicast suppression";
-           }
-           leaf vpws-vlan-aware {
-             type boolean;
-             default false;
-             description "Enable (TRUE) or disable (FALSE) " +
-                         "VPWS VLAN aware";
-           }
-           container routes {
-             config false;
-             description "routes";
-             list ethernet-auto-discovery-route {
-               uses route-rd-rt-grp;
-               leaf ethernet-segment-identifier {
-                 type es:ethernet-segment-identifier-type;
-                 description "Ethernet segment identifier (esi)";
-               }
-               leaf ethernet-tag {
-                 type uint32;
-                 description "An ethernet tag (etag) indentifying a " +
-                             "broadcast domain";
-               }
-               list path {
-                 uses next-hop-label-grp;
-                 uses path-detail-grp;
-                 description "path";
-               }
-               description "ethernet-auto-discovery-route";
-             }
-             list mac-ip-advertisement-route {
-               uses route-rd-rt-grp;
-               leaf ethernet-segment-identifier {
-                 type es:ethernet-segment-identifier-type;
-                 description "Ethernet segment identifier (esi)";
-               }
-               leaf ethernet-tag {
-                 type uint32;
-                 description "An ethernet tag (etag) indentifying a " +
-                             "broadcast domain";
-               }
-               leaf mac-address {
-                 type yang:mac-address;
-                 description "Route mac address";
-               }
-               leaf mac-address-length {
-                 type uint8 {
-                   range "0..48";
-                 }
-                 description "mac address length";
-               }
-               leaf ip-prefix {
-                 type inet:ip-prefix;
-                 description "ip-prefix";
-               }
-               list path {
-                 uses next-hop-label-grp;
-                 uses next-hop-label2-grp;
-                 uses path-detail-grp;
-                 description "path";
-               }
-               description "mac-ip-advertisement-route";
-             }
-             list inclusive-multicast-ethernet-tag-route {
-               uses route-rd-rt-grp;
-               leaf originator-ip-prefix {
-                 type inet:ip-prefix;
-                 description "originator-ip-prefix";
-               }
-               list path {
-                 uses next-hop-label-grp;
-                 uses path-detail-grp;
-                 description "path";
-               }
-               description "inclusive-multicast-ethernet-tag-route";
-             }
-             list ethernet-segment-route {
-               uses route-rd-rt-grp;
-               leaf ethernet-segment-identifier {
-                 type es:ethernet-segment-identifier-type;
-                 description "Ethernet segment identifier (esi)";
-               }
-               leaf originator-ip-prefix {
-                 type inet:ip-prefix;
-                 description "originator ip-prefix";
-               }
-               list path {
-                 leaf next-hop {
-                   type inet:ip-address;
-                   description "next-hop";
-                 }
-                 uses path-detail-grp;
-                 description "path";
-               }
-               description "ethernet-segment-route";
-             }
-             list ip-prefix-route {
-               uses route-rd-rt-grp;
-               leaf ethernet-segment-identifier {
-                 type es:ethernet-segment-identifier-type;
-                 description "Ethernet segment identifier (esi)";
-               }
-               leaf ip-prefix {
-                 type inet:ip-prefix;
-                 description "ip-prefix";
-               }
-               list path {
-                 uses next-hop-label-grp;
-                 uses path-detail-grp;
-                 description "path";
-               }
-               description "ip-prefix route";
-             }
-           }
-           container statistics {
-             config false;
-             description "Statistics";
-             leaf tx-count {
-               type yang:counter32;
-               description "transmission count";
-             }
-             leaf rx-count {
-               type yang:counter32;
-               description "receive count";
-             }
-             container detail {
-               description "Detailed statistics";
-               leaf broadcast-tx-count {
-                 type yang:counter32;
-                 description "broadcast transmission count";
-               }
-               leaf broadcast-rx-count {
-                 type yang:counter32;
-                 description "broadcast receive count";
-               }
-               leaf multicast-tx-count {
-                 type yang:counter32;
-                 description "multicast transmission count";
-               }
-               leaf multicast-rx-count {
-                 type yang:counter32;
-                 description "multicast receive count";
-               }
-               leaf unknown-unicast-tx-count {
-                 type yang:counter32;
-                 description "unknown unicast transmission count";
-               }
-               leaf unknown-unicast-rx-count {
-                 type yang:counter32;
-                 description "unknown-unicast receive count";
-               }
-             }
-           }
-         }
-       }
-     }
 
-     /* augments */
+     /* Augments */
 
-     augment "/pw:pseudowires/pw:pseudowire/pw:pw-type" {
-       description "Augment for an L2VPN instance to add EVPN VPWS " +
-                   "pseudowire";
-       case evpn-pw {
-         container evpn-pw {
+     augment "/ni:network-instances/ni:network-instance" {
+       description "Augment for an L2VPN instance to add EVPN PBB";
+         container evpn {
            description "EVPN pseudowire";
-           leaf remote-id {
-             type uint32;
-             description "Remote pseudowire ID";
-           }
-           leaf local-id {
-             type uint32;
-             description "Local pseudowire ID";
-           }
+          uses evpn-parameters-grp;  
          }
        }
-     }
+     
 
-     /* Notifications */
-
-     notification evpn-state-change-notification {
-       description "EVPN state change notification";
-       leaf evpn-instance {
-         type evpn-instance-ref;
-         description "Related EVPN instance";
-       }
-       leaf state {
-         type identityref {
-           base evpn-notification-state;
-         }
-         description "State change notification";
-       }
-     }
    }
