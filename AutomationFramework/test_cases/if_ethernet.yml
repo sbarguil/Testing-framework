@@ -52,7 +52,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "400"
+                   interface_name: "lag-1"
                    type: "ieee8023adLag"
                    enabled: "true"
 
@@ -62,7 +62,7 @@
             commit: true
             params:
                    interface_name: "1/1/c11/2"
-                   aggregate_id: "400"
+                   aggregate_id: "lag-1"
 
 - testcase:
       name: if_ethernet_port_speed_state
