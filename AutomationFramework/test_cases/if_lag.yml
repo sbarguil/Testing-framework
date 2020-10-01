@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "system"
+                   interface_name: "lag-1"
                    type: "ieee8023adLag"
                    enabled: "true"
                    lag_type:  "LACP"
@@ -26,7 +26,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "system"
+                   interface_name: "lag-1"
                    type: "ieee8023adLag"
                    enabled: "true"
                    min_links:  "5"
