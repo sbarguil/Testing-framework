@@ -10,21 +10,21 @@ class TestQOSScheduler(BaseTest):
                                                          'test_case_name': 'qos_scheduler_policy_name',
                                                          'page_object_class': QOS}])
     def test_qos_scheduler_policy_name(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_qos_scheduler_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'qos_scheduler_sequence',
                                                          'page_object_class': QOS}])
     def test_qos_scheduler_sequence(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_qos_scheduler_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'qos_scheduler_id',
                                                          'page_object_class': QOS}])
     def test_qos_scheduler_id(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_qos_scheduler_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('multiple_create_page_objects_arg', [{'test_case_file': test_case_file,
@@ -42,26 +42,26 @@ class TestQOSScheduler(BaseTest):
                                                          'test_case_name': 'qos_scheduler_weight',
                                                          'page_object_class': QOS}])
     def test_qos_scheduler_weight(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_qos_scheduler_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'qos_scheduler_cir',
                                                          'page_object_class': QOS}])
     def test_qos_scheduler_cir(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_qos_scheduler_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'qos_scheduler_max_queue_depth_bytes',
                                                          'page_object_class': QOS}])
     def test_qos_scheduler_max_queue_depth_bytes(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_qos_scheduler_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'qos_scheduler_bc',
                                                          'page_object_class': QOS}])
     def test_qos_scheduler_bc(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_qos_scheduler_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
