@@ -11,7 +11,7 @@
             commit: true
             params:
                    name: "FPC0:PIC0:PORT0"
-                   channel_speed: "SPEED_40GB"
+                   channel_speed: "SPEED_50GB"
 
 - testcase:
       name: hw_port_num_channels
@@ -25,7 +25,7 @@
             commit: true
             params:
                    name: "FPC0:PIC0:PORT0"
-                   num_channels: "4"
+                   num_channels: "5"
 
 - testcase:
       name: hw_port_channel_speed_state
@@ -40,7 +40,7 @@
             commit: true
             params:
                    name: "FPC0:PIC0:PORT0"
-                   channel_speed: "SPEED_40GB"
+                   channel_speed: "SPEED_50GB"
 
           - template: hw_port_channel_speed_state.xml
             operation: get
@@ -60,7 +60,7 @@
             commit: true
             params:
                    name: "FPC0:PIC0:PORT0"
-                   num_channels: "4"
+                   num_channels: "5"
 
           - template: hw_port_num_channels_state.xml
             operation: get
