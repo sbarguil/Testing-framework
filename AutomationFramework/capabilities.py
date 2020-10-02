@@ -1,29 +1,19 @@
-#Cisco
-"""HOSTS = [
-    {
-        'host': '10.95.86.212',
-        'port': '830',
-        'username': 'cisco',
-        'password': 'cisco2020',
-    },
-]"""
-
 #Juniper
-"""HOSTS = [
+HOSTS = [
     {
-        'host': '10.95.86.135',
+        'host': 'localhost',
         'port': '830',
-        'username': 'tid',
-        'password': 'j21-pass',
+        'username': 'jupiter',
+        'password': 'jupiter1',
     },
-]"""
+]
 
 #Simulated cisco
-HOSTS = [
+"""HOSTS = [
     {
         'host': '10.95.86.216',
         'port': '12022',
         'username': 'admin',
         'password': 'admin',
     },
-]
+]"""

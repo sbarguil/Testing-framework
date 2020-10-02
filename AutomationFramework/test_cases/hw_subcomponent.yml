@@ -8,8 +8,8 @@
           - template: hw_subcomponent_name.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   subcomponent_name: "BACKPLANE"
+                   name: "FPC0:PIC0"
+                   subcomponent_name: "FPC0:PIC0:PORT0"
                    subcomponent_name_state: ""
 
 - testcase:
@@ -21,6 +21,6 @@
           - template: hw_subcomponent_name_state.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   subcomponent_name: "BACKPLANE"
+                   name: "FPC0:PIC0"
+                   subcomponent_name: "FPC0:PIC0:PORT0"
                    name_state_subcomponent: ""

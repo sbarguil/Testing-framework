@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Eth1/1"
+                   name: "FPC0:PIC0:PORT0"
                    channel_speed: "SPEED_40GB"
 
 - testcase:
@@ -24,7 +24,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Eth1/1"
+                   name: "FPC0:PIC0:PORT0"
                    num_channels: "4"
 
 - testcase:
@@ -39,13 +39,13 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Eth1/1"
+                   name: "FPC0:PIC0:PORT0"
                    channel_speed: "SPEED_40GB"
 
           - template: hw_port_channel_speed_state.xml
             operation: get
             params:
-                   name: "Eth1/1"
+                   name: "FPC0:PIC0:PORT0"
                    channel_speed_state: ""
 
 - testcase:
@@ -59,11 +59,11 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Eth1/1"
+                   name: "FPC0:PIC0:PORT0"
                    num_channels: "4"
 
           - template: hw_port_num_channels_state.xml
             operation: get
             params:
-                   name: "Eth1/1"
+                   name: "FPC0:PIC0:PORT0"
                    num_channels: ""

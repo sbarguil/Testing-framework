@@ -8,7 +8,7 @@
           - template: hw_transceiver_slot_id.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "FPC0:PIC0:PORT3:Xcvr0"
                    slot_id: ""
 
 - testcase:
@@ -22,8 +22,8 @@
             operation: edit-config
             commit: true
             params:
-                   name: "0/0/5-SFP Socket"
-                   enabled: "true"
+                   name: "FPC0:PIC0:PORT3:Xcvr0"
+                   enabled: "false"
 
 - testcase:
       name: hw_transceiver_enabled_state
@@ -34,6 +34,6 @@
           - template: hw_transceiver_enabled_state.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "FPC0:PIC0:PORT3:Xcvr0"
                    enabled: ""
 

@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "test_300"
+                   interface_name: "ae2002"
                    type: "ieee8023adLag"
                    enabled: "true"
                    lag_type:  "LACP"
@@ -26,7 +26,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "test_300"
+                   interface_name: "ae2002"
                    type: "ieee8023adLag"
                    enabled: "true"
                    min_links:  "5"
