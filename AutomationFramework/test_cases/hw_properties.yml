@@ -9,6 +9,7 @@
             operation: get
             params:
                    name: "Midplane"
+                   property_name: "fru-model-number"
                    empty_name: ""
 
 - testcase:
@@ -21,4 +22,5 @@
             operation: get
             params:
                    name: "Midplane"
+                   property_name: "fru-model-number"
                    value: ""
