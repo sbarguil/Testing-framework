@@ -229,7 +229,7 @@ class Hardware(BasePageObject):
             },
             {
                 'name': 'components/component/name',
-                'channel_speed': 'components/component/port/breakout-mode/state/channel-speed',
+                'channel_speed_state': 'components/component/port/breakout-mode/state/channel-speed',
             }
         ],
         'hw_port_num_channels': [
