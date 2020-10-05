@@ -5,11 +5,12 @@
     <config>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
+          <name>{{name}}</name>
+          <config>
             <name>{{name}}</name>
-            <config>
-                <name>{{name}}</name>
-                <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
-            </config>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+            <route-distinguisher>65000:123</route-distinguisher>
+          </config>
             <fdb>
                 <config>
                     <mac-aging-time>{{mac_aging_time}}</mac-aging-time>

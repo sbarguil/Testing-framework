@@ -10,6 +10,7 @@
             <name>{{name}}</name>
               <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
               <enabled-address-families xmlns:oc-types="http://openconfig.net/yang/openconfig-types">{{enabled_address_families}}</enabled-address-families>
+            <route-distinguisher>65000:123</route-distinguisher>
           </config>
         </network-instance>
       </network-instances>

@@ -7,8 +7,9 @@
         <network-instance>
           <name>{{name}}</name>
           <config>
-              <name>{{name}}</name>
-              <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+            <route-distinguisher>65000:123</route-distinguisher>
           </config>
           <encapsulation>
             <config>
