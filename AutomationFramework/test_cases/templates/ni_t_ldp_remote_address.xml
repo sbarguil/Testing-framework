@@ -8,7 +8,7 @@
           <name>{{name}}</name>
           <config>
             <name>{{name}}</name>
-            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:{{type}}</type>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
           </config>
           <mpls>
             <signaling-protocols>

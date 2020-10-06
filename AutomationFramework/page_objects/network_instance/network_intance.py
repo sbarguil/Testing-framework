@@ -6,7 +6,6 @@ class NetworkInstance(BasePageObject):
         'ni_config_name': [
             {
                 'name': 'network-instances/network-instance/name',
-                'instance_name': 'network-instances/network-instance/config/name'
             }
         ],
         'ni_config_type': [
