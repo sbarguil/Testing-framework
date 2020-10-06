@@ -11,7 +11,7 @@
             commit: true
             params:
                    ext_community_set_name: "IMPORT_EXAMPLE"
-                   ext_community_member: "65000:103"
+                   ext_community_member: "route-target:65000:103"
 
 - testcase:
       name: rp_community_def_ext_community_set_name

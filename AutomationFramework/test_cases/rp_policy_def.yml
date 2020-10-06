@@ -54,7 +54,7 @@
             commit: true
             params:
                    ext_community_set_name: "RT_IMPORT_POLICY"
-                   ext_community_member: "65000:103"
+                   ext_community_member: "route-target:65000:103"
 
           - template: rp_policy_def_match_set_options.xml
             target: candidate
