@@ -12,6 +12,11 @@
               <config>
                 <index>{{index}}</index>
               </config>
+              <vlan xmlns="http://openconfig.net/yang/vlan">
+                <config>
+                  <vlan-id>100</vlan-id>
+                </config>
+              </vlan>
               <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip">
                 <config>
                   <mtu>{{mtu}}</mtu>

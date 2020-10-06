@@ -119,7 +119,7 @@
             params:
                    interface_name: "et-0/0/3"
                    index: "100"
-                   mtu: "1500"
+                   mtu: "1450"
 
 - testcase:
       name: if_subif_vlan_id

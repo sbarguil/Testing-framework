@@ -14,6 +14,11 @@
                 <index>{{index}}</index>
                 <description>{{description}}</description>
               </config>
+              <vlan xmlns="http://openconfig.net/yang/vlan">
+                <config>
+                  <vlan-id>100</vlan-id>
+                </config>
+              </vlan>
             </subinterface>
           </subinterfaces>
         </interface>
