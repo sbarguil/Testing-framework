@@ -11,7 +11,7 @@
             params:
                    name: "Base"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "0"
                    address_family: "IPV4"
 
 - testcase:

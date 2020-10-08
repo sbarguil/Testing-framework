@@ -28,6 +28,7 @@
                     <neighbor-address>{{neighbor_address}}</neighbor-address>
                     <config>
                       <neighbor-address>{{neighbor_address}}</neighbor-address>
+                      <peer-group>test</peer-group>
                     </config>
                     <ebgp-multihop>
                       <config>
@@ -36,6 +37,14 @@
                     </ebgp-multihop>
                   </neighbor>
                 </neighbors>
+                <peer-groups>
+                  <peer-group>
+                    <peer-group-name>test</peer-group-name>
+                    <config>
+                      <peer-group-name>test</peer-group-name>
+                    </config>
+                  </peer-group>
+                </peer-groups>
               </bgp>
             </protocol>
           </protocols>

@@ -27,10 +27,19 @@
                   <neighbor>
                     <neighbor-address>{{neighbor_address}}</neighbor-address>
                     <config>
+                      <peer-group>test</peer-group>
                       <neighbor-address>{{neighbor_address}}</neighbor-address>
                     </config>
                   </neighbor>
                 </neighbors>
+                <peer-groups>
+                  <peer-group>
+                    <peer-group-name>test</peer-group-name>
+                    <config>
+                      <peer-group-name>test</peer-group-name>
+                    </config>
+                  </peer-group>
+                </peer-groups>
               </bgp>
             </protocol>
           </protocols>

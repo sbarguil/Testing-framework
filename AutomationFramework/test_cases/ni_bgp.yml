@@ -12,7 +12,7 @@
             params:
                    name: "Base"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "0"
                    as: "65000"
 
 - testcase:
@@ -28,7 +28,7 @@
             params:
                    name: "Base"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "0"
                    router_id: "172.16.1.2"
                    as: "65000"
 
@@ -45,7 +45,7 @@
             params:
                    name: "Base"
                    identifier: "BGP"
-                   protocol_name: "BGP_65100"
+                   protocol_name: "0"
                    neighbor_address: "192.168.1.2"
                    as: "65100"
 
@@ -62,7 +62,7 @@
             params:
                    name: "Base"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "0"
                    neighbor_address: "192.168.1.2"
                    peer_as: "65123"
                    as: "65000"
@@ -80,7 +80,7 @@
             params:
                    name: "Base"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "0"
                    neighbor_address: "192.168.1.2"
                    local_as: "65001"
                    peer_as: "65123"
@@ -99,7 +99,7 @@
             params:
                    name: "Base"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "0"
                    neighbor_address: "192.168.1.2"
                    peer_type: "EXTERNAL"
                    as: "65000"
@@ -117,7 +117,7 @@
             params:
                    name: "Base"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "0"
                    neighbor_address: "192.168.1.2"
                    as: "65000"
                    remove_private_as: "PRIVATE_AS_REMOVE_ALL"
@@ -135,7 +135,7 @@
             params:
                    name: "Base"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "0"
                    neighbor_address: "192.168.1.2"
                    description: "BGP Neighbor 65123 Description"
                    peer_as: "65123"
@@ -162,7 +162,7 @@
             params:
                    name: "Base"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "0"
                    neighbor_address: "192.168.1.2"
                    import_export_bgp_policy: "BGP_Policy_Import_Export"
 
@@ -186,7 +186,7 @@
             params:
                    name: "Base"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "0"
                    neighbor_address: "192.168.1.2"
                    import_export_bgp_policy: "BGP_Policy_Export_Export"
 
@@ -203,7 +203,7 @@
             params:
                    name: "Base"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "0"
                    neighbor_address: "192.168.1.2"
                    as: "65000"
                    enabled: "true"
@@ -221,7 +221,7 @@
             params:
                    name: "Base"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "0"
                    neighbor_address: "192.168.1.2"
                    multihop_ttl: "3"
                    as: "65000"

@@ -18,11 +18,17 @@
                 <name>{{protocol_name}}</name>
               </config>
               <bgp>
+                <global>
+                  <config>
+                    <as>65000</as>
+                  </config>
+                </global>
                 <neighbors>
                   <neighbor>
                     <neighbor-address>{{neighbor_address}}</neighbor-address>
                     <config>
                       <neighbor-address>{{neighbor_address}}</neighbor-address>
+                      <peer-group>test</peer-group>
                     </config>
                     <apply-policy>
                       <config>
@@ -31,6 +37,14 @@
                     </apply-policy>
                   </neighbor>
                 </neighbors>
+                <peer-groups>
+                  <peer-group>
+                    <peer-group-name>test</peer-group-name>
+                    <config>
+                      <peer-group-name>test</peer-group-name>
+                    </config>
+                  </peer-group>
+                </peer-groups>
               </bgp>
             </protocol>
           </protocols>

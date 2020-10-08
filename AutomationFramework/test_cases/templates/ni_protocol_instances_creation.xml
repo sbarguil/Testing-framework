@@ -17,6 +17,13 @@
                 <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier}}</identifier>
                 <name>{{protocol_name}}</name>
               </config>
+              <bgp>
+                <global>
+                  <config>
+                    <as>65000</as>
+                  </config>
+                </global>
+              </bgp>
             </protocol>
           </protocols>
         </network-instance>

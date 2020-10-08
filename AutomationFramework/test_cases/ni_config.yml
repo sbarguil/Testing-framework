@@ -24,7 +24,7 @@
             commit: true
             params:
                    name: "Base"
-                   type: "L3VRF"
+                   type: "DEFAULT_INSTANCE"
 
 - testcase:
       name: ni_config_enabled

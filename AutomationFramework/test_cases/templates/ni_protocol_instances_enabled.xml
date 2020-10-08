@@ -18,6 +18,13 @@
                 <name>{{protocol_name}}</name>
                 <enabled>{{enabled}}</enabled>
               </config>
+              <bgp>
+                <global>
+                  <config>
+                    <as>65000</as>
+                  </config>
+                </global>
+              </bgp>
             </protocol>
           </protocols>
         </network-instance>
