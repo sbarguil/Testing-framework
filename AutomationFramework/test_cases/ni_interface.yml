@@ -26,7 +26,7 @@
             params:
                    name: "Prueba_LxVPN"
                    id: "1"
-                   interface: "et-0/0/3"
+                   interface: "ge-0/0/3"
 
 - testcase:
       name: ni_interface_subinterface
@@ -40,7 +40,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "et-0/0/3"
+                   interface_name: "ge-0/0/3"
                    index: "100"
 
           - template: ni_interface_subinterface.xml
@@ -50,5 +50,5 @@
             params:
                    name: "Prueba_LxVPN"
                    id: "1"
-                   interface: "et-0/0/3"
+                   interface: "ge-0/0/3"
                    subinterface: "100"

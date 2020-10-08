@@ -1,10 +1,10 @@
 #Juniper
 HOSTS = [
     {
-        'host': 'localhost',
+        'host': '10.95.86.135',
         'port': '830',
-        'username': 'jupiter',
-        'password': 'jupiter1',
+        'username': 'juniper',
+        'password': 'jun1per',
     },
 ]
 
