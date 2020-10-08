@@ -7,7 +7,7 @@
         <network-instance>
           <name>{{name}}</name>
           <config>
-            <name>{{instance_name}}</name>
+            <name>{{name}}</name>
               <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">L3VRF</type>
             <route-distinguisher>65000:123</route-distinguisher>
           </config>

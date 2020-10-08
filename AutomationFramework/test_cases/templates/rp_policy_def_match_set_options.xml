@@ -17,9 +17,6 @@
                 <name>{{statement_name}}</name>
               </config>
               <conditions>
-                <config>
-                  <call-policy>{{statement_name}}</call-policy>
-                </config>
                 <bgp-conditions xmlns="http://openconfig.net/yang/bgp-policy">
                   <match-ext-community-set>
                     <config>
