@@ -131,7 +131,7 @@
             commit: true
             params:
                    interface_name: "ge-0/0/3"
-                   index: "600"
+                   index: "0"
 
           - template: ni_ospf_subinterface.xml
             target: candidate

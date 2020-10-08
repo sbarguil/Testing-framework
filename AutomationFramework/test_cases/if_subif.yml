@@ -11,7 +11,7 @@
             commit: true
             params:
                    interface_name: "ge-0/0/3"
-                   index: "100"
+                   index: "0"
                    description: "Testing1"
 
 - testcase:
@@ -26,7 +26,7 @@
             commit: true
             params:
                    interface_name: "ge-0/0/3"
-                   index: "100"
+                   index: "0"
                    enabled: "false"
 
 - testcase:
@@ -41,7 +41,7 @@
             commit: true
             params:
                    interface_name: "ge-0/0/3"
-                   index: "100"
+                   index: "0"
                    ip: "192.168.30.1"
                    prefix_length: "24"
 
@@ -57,7 +57,7 @@
             commit: true
             params:
                    interface_name: "ge-0/0/3"
-                   index: "100"
+                   index: "0"
                    ip: "192.168.30.1"
                    prefix_length: "24"
 
@@ -65,7 +65,7 @@
             operation: get
             params:
                    interface_name: "ge-0/0/3"
-                   index: "100"
+                   index: "0"
                    ip: ""
 
 - testcase:
@@ -80,7 +80,7 @@
             commit: true
             params:
                    interface_name: "ge-0/0/3"
-                   index: "100"
+                   index: "0"
                    ip: "192.168.30.1"
                    prefix_length: "24"
 
@@ -88,7 +88,7 @@
             operation: get
             params:
                    interface_name: "ge-0/0/3"
-                   index: "100"
+                   index: "0"
                    origin: ""
 
 - testcase:
@@ -103,7 +103,7 @@
             commit: true
             params:
                    interface_name: "ge-0/0/3"
-                   index: "100"
+                   index: "0"
                    dhcp_client: "true"
 
 - testcase:
@@ -118,8 +118,8 @@
             commit: true
             params:
                    interface_name: "ge-0/0/3"
-                   index: "100"
-                   mtu: "1450"
+                   index: "0"
+                   mtu: "1250"
 
 - testcase:
       name: if_subif_vlan_id
@@ -133,7 +133,7 @@
             commit: true
             params:
                    interface_name: "ge-0/0/3"
-                   index: "100"
+                   index: "0"
                    vlan_id: "100"
 
 - testcase:
@@ -148,7 +148,7 @@
             commit: true
             params:
                    interface_name: "ge-0/0/3"
-                   index: "1030"
+                   index: "0"
                    inner_vlan_id: "100"
                    outer_vlan_id: "30"
 
@@ -164,5 +164,5 @@
             commit: true
             params:
                    interface_name: "ge-0/0/3"
-                   index: "250"
+                   index: "0"
                    vlan_id: "250"

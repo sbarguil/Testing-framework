@@ -41,7 +41,7 @@
             commit: true
             params:
                    interface_name: "ge-0/0/3"
-                   index: "100"
+                   index: "0"
 
           - template: ni_interface_subinterface.xml
             target: candidate
