@@ -22,6 +22,7 @@ folder you can find all the test cases definition in YML files. Each YAML test c
 also defines the rpcs to execute in the test. There may be as many rpcs as needed. Each rpc has target 
 (only if operation == edit-config), operation (edit-config or get), commit (only if operation == edit-config) and a 
 list of params with them specific values. These params are variables that later will be replaced in its specific templates  
+
 ![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/yaml_example.png)
 
 #### XML templates
@@ -29,11 +30,13 @@ The next picture was taken from `AutomationFramework/test_cases/templates/if_con
 `AutomationFramework/test_cases/templates/` folder you can find all the templates definition used in the each rpc from 
 all the test cases defined in the YAML files. The templates are written in XML but the framework uses the `jinja2` 
 library to insert variables within the XML notation, those variables are declared like `{{interface_name}}`.
+
 ![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/xml_example.png)
 
 - In the test execution, the framework will fill the templates with the values specified in the YAML files for the
  variables. In our example, we can see the the rpc sent in the next picture, where the values of lines 3, 8, 10, 11 
  and 12 where replaced.
+ 
 ![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/filled_xml_example.png)
  
 #### RPC operations workflow
@@ -49,6 +52,7 @@ the base generic code of the testing framework is in the branch `automation-fram
 branch for each vendor since each one may need individual adjustments in order of executing the tests. Following the 
 same logic, there may be differences between the same vendor software versions so we create too a branch for each 
 individual version.
+
 ![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/branching_strategy_diagram.png)
 
 #### Specify router and credentials
