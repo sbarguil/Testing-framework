@@ -15,7 +15,7 @@ Next is a explanation of how the framework is built and how does it works
 - The next picture was taken from `AutomationFramework/test_cases/if_config.yml`. In the `AutomationFramework/test_cases/` 
 folder you can find all the test cases definition in YML files. The framework runs each test case after a python 
 implementation of the test case that has as parameters the YML file name and the test case name specified in the YML.
-![alt text](https://github.com/sbarguil/Testing-framework/tree/automation_framework/AutomationFramework/img/yaml_example.png?raw=true)
+![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/yaml_example.png)
 
 ### Tests execution workflow
 1. Create a new branch for the vendor and version of the device tested
