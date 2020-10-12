@@ -1,5 +1,12 @@
 # Automation Framework
-
+#### Installation
+You must use an environment tool for this project, we recommend using conda since all the below commands are intended for it.
+It is expected as a prerequisite that you have installed conda.
+1. Create a new environment from `environment.yml` with `conda env create --prefix .conda-env --file environment.yml`
+2. Activate the environment with `conda activate .conda-env/` 
+- Every time make a change in the environment you must update the `environment.yml`
+1. Export your current environment with `conda env export --prefix .conda-env > environment.yml`
+2. Delete the last line of the new `environment.yml` file with the prefix information and add the change to git
 #### Tests execution workflow
 1. Create a new branch for the vendor and version of the device tested
 2. Edit the `capabilities.py` with the credentials of the device  
