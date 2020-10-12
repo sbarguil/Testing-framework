@@ -1,5 +1,5 @@
 # Automation Framework
-#### Installation
+### Installation
 You must use an environment tool for this project, we recommend using conda since all the below commands are intended for it.
 It is expected as a prerequisite that you have installed conda.
 1. Create a new environment from `environment.yml` with `conda env create --prefix .conda-env --file environment.yml`
@@ -7,7 +7,17 @@ It is expected as a prerequisite that you have installed conda.
 - Every time make a change in the environment you must update the `environment.yml`
 1. Export your current environment with `conda env export --prefix .conda-env > environment.yml`
 2. Delete the last line of the new `environment.yml` file with the prefix information and add the change to git
-#### Tests execution workflow
+
+### Automation framework overview
+Next is a explanation of how the framework is built and how does it works
+
+#### YAML test cases and XML templates
+- The next picture was taken from `AutomationFramework/test_cases/if_config.yml`. In the `AutomationFramework/test_cases/` 
+folder you can find all the test cases definition in YML files. The framework runs each test case after a python 
+implementation of the test case that has as parameters the YML file name and the test case name specified in the YML.
+![alt text](https://github.com/sbarguil/Testing-framework/tree/automation_framework/AutomationFramework/img/yaml_example.png)
+
+### Tests execution workflow
 1. Create a new branch for the vendor and version of the device tested
 2. Edit the `capabilities.py` with the credentials of the device  
 3. Edit the YAML files in the `test_cases/` folder to match the device set up
@@ -22,7 +32,7 @@ It is expected as a prerequisite that you have installed conda.
 6. The final report will be generated and placed in `REPORTS_FOLDER` like `final_output.xlsx`
   
  
-#### Other running commands
+### Other running commands
 - For running the tests locally
 
     `python -m pytest -s`
