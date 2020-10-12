@@ -9,13 +9,92 @@ It is expected as a prerequisite that you have installed conda.
 2. Delete the last line of the new `environment.yml` file with the prefix information and add the change to git
 
 ### Automation framework overview
-Next is a explanation of how the framework is built and how does it works
+Next is a explanation of how the framework is built and how does it works:
 
-#### YAML test cases and XML templates
-- The next picture was taken from `AutomationFramework/test_cases/if_config.yml`. In the `AutomationFramework/test_cases/` 
-folder you can find all the test cases definition in YML files. The framework runs each test case after a python 
-implementation of the test case that has as parameters the YML file name and the test case name specified in the YML.
+#### Pytest tests
+The framework executes a pytest test that specifies a YAML file (line 7 in the next image) where a set of test cases are described and identifies 
+the name of the actual test to run from that YML set (line 10 in the next image)
+![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/pytest_test_example.png)
+
+#### YAML test cases
+The next picture was taken from `AutomationFramework/test_cases/if_config.yml`. In the `AutomationFramework/test_cases/` 
+folder you can find all the test cases definition in YML files. Each YAML test case specifies some basic information and 
+also defines the rpcs to execute in the test. There may be as many rpcs as needed. Each rpc has target 
+(only if operation == edit-config), operation (edit-config or get), commit (only if operation == edit-config) and a 
+list of params with them specific values. These params are variables that later will be replaced in its specific templates  
 ![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/yaml_example.png)
+
+#### XML templates
+The next picture was taken from `AutomationFramework/test_cases/templates/if_config_loopback_mode.xml`. In the 
+`AutomationFramework/test_cases/templates/` folder you can find all the templates definition used in the each rpc from 
+all the test cases defined in the YAML files. The templates are written in XML but the framework uses the `jinja2` 
+library to insert variables within the XML notation, those variables are declared like `{{interface_name}}`.
+![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/xml_example.png)
+
+- In the test execution, the framework will fill the templates with the values specified in the YAML files for the
+ variables. In our example, we can see the the rpc sent in the next picture, where the values of lines 3, 8, 10, 11 
+ and 12 where replaced.
+![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/filled_xml_example.png)
+ 
+#### RPC operations workflow
+- edit-config:
+- get:
+
+### Vendor setup
+
+#### Branching strategy
+In the following explanation we will use nokia as example. Anyway for any vendor all the steps apply the same way.
+The next branch diagram describes the testing set up for a vendor and the different versions from it. Knowing that 
+the base generic code of the testing framework is in the branch `automation-framework`, the idea is to have a separate
+branch for each vendor since each one may need individual adjustments in order of executing the tests. Following the 
+same logic, there may be differences between the same vendor software versions so we create too a branch for each 
+individual version.
+![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/branching_strategy_diagram.png)
+
+#### Specify router and credentials
+You can define this information overwriting the `AutomationFramework/capabilities.py` file. 
+
+#### YAML set up
+The YAML set up refers to the adjustments of the YAML files where the actual values intended to be tested are defined. 
+Before getting in the set up process refer to the explanation on how the framework works in the section `TAutomation framework overview`.
+For each vendor we need to change the variable values to test, for example in Cisco the interface-name to test may be 
+“GigabitEthernet0/0/0/1” but in Juniper might be “ge-0/0/1”. 
+The variables to update for all vendors are:
+
+| File                         | Variable                                                                     | Description                                                                                                                                                                           |
+|------------------------------|------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|  			 hw_component.yml 		          |  			 - params→name 		                                                             |  			 - The name of any component in the device. It’s better if the component has defined the description, hardware-version, id, location, mfg-date, oper-status, parent, serial-no, type |
+|  			 hw_config.yml 		             |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 hw_cpu.yml 		                |  			 - params→name 		                                                             |  			 - The name of any cpu component in the device 		                                                                                                                                      |
+|  			 hw_fan.yml 		                |  			 - params→name 		                                                             |  			 - The name of any fan component in the device 		                                                                                                                                      |
+|  			 hw_linecard.yml 		           |  			 - params→name 		                                                             |  			 - The name of any linecard component in the device 		                                                                                                                                 |
+|  			 hw_port.yml 		               |  			 - params→name 		                                                             |  			 - The name of any port component in the device with breakout mode hardware                                                                                                          |
+|  			 hw_properties.yml 		         |  			 - params→name 		                                                             |  			 - The name of any component in the device 		                                                                                                                                          |
+|  			 hw_psu.yml 		                |  			 - params→name 		                                                             |  			 - The name of any psu component in the device 		                                                                                                                                      |
+|  			 hw_subcomponent.yml 		       |  			 - params→name - params→subcomponent_name                                   |  			 - The name of any component in the device with a subcomponent in it - The name of a subcomponent                                                                                    |
+|  			 hw_transceiver.yml 		        |  			 - params→name 		                                                             |  			 - The name of any transceiver (sfp) component in the device 		                                                                                                                        |
+|  			 if_config.yml 		             |  			 - params→interface_name (Don’t change the variable in the test case id:6) 		 |  			 - The name of a interface to test. It’s better if the type is ethernetCsmacd                                                                                                        |
+|  			 if_ethernet.yml 		           |  			 - params→interface_name 		                                                   |  			 - The name of a interface to test. Is required to testa a type ethernetCsmacd interface                                                                                             |
+|  			 if_gre.yml 		                |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 if_lag.yml 		                |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 if_status.yml 		             |  			 - params→interface_name 		                                                   |  			 - The name of a interface to test. It’s better if the type is ethernetCsmacd                                                                                                        |
+|  			 if_subif.yml 		              |  			 - params→interface_name 		                                                   |  			 - The name of a interface to test. It’s better if the type is ethernetCsmacd                                                                                                        |
+|  			 ni_bgp.yml 		                |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 ni_config.yml 		             |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 ni_connection_point.yml 		   |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 ni_encapsulation.yml 		      |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 ni_fdb.yml 		                |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 ni_interface.yml 		          |  			 - params→interface - params→interface_name                                 |  			 - The name of a interface to test. It’s better if the type is ethernetCsmacd - The name of a interface to test. It’s better if the type is ethernetCsmacd                           |
+|  			 ni_ospf.yml 		               |  			 - params→interface  - params→interface_name                                |  			 - The name of a interface to test. It’s better if the type is ethernetCsmacd - The name of a interface to test. It’s better if the type is ethernetCsmacd                           |
+|  			 ni_protocol_instances.yml 		 |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 ni_protocol_tables.yml 		    |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 ni_rt_policy.yml 		          |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 ni_static.yml 		             |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 ni_t_ldp.yml 		              |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 qos_queue.yml 		             |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 qos_scheduler.yml 		         |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 rp_community_def.yml 		      |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
+|  			 rp_policy_def.yml 		         |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
 
 ### Tests execution workflow
 1. Create a new branch for the vendor and version of the device tested
