@@ -1,12 +1,26 @@
 # Automation Framework
 ##### Table of Contents  
-[Installation](#installation-ref)  
-[FAQs](#faqs-ref)  
+[1. Installation](#installation-ref)  
+[2. Automation framework overview](#framework-overview-ref)  
+[2.1. Pytest tests](#pytest-tests-ref)  
+[2.2. YAML test cases](#yaml-test-cases-ref)  
+[2.3. XML templates](#xml-templates-ref)  
+[2.4. RPC operations workflow](#operations-workflow-ref)  
+[3. Vendor setup](#vendor-setup-ref)  
+[3.1. Branching strategy](#branching-strategy-ref)  
+[3.2. Specify router and credentials](#specify-credentials-ref)  
+[3.3. YAML set up](#yaml-setup-ref)  
+[4. Tests execution workflow](#execution-ref)  
+[5. Excel reporting](#excel-reporting-ref)  
+[6. Workflow for contribution in this project](#contribution-workflow-ref)  
+[7. Vendor specific findings](#vendor-findings-ref)  
+[8. Vendor specific findings](#other-commands-ref)  
+[9. FAQs](#faqs-ref)  
   
 
 <a name="installation-ref"/>
 
-### Installation
+### 1. Installation
 You must use an environment tool for this project, we recommend using conda since all the below commands are intended for it.
 It is expected as a prerequisite that you have installed conda.
 1. Create a new environment from `environment.yml` with `conda env create --prefix .conda-env --file environment.yml`
@@ -15,15 +29,21 @@ It is expected as a prerequisite that you have installed conda.
 1. Export your current environment with `conda env export --prefix .conda-env > environment.yml`
 2. Delete the last line of the new `environment.yml` file with the prefix information and add the change to git
 
-### Automation framework overview
+<a name="framework-overview-ref"/>
+
+### 2. Automation framework overview
 Next is a explanation of how the framework is built and how does it works:
 
-#### Pytest tests
+<a name="pytest-tests-ref"/>
+
+#### 2.1. Pytest tests
 The framework executes a pytest test that specifies a YAML file (line 7 in the next image) where a set of test cases are described and identifies 
 the name of the actual test to run from that YML set (line 10 in the next image)
 ![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/pytest_test_example.png)
 
-#### YAML test cases
+<a name="yaml-test-cases-ref"/>
+
+#### 2.2. YAML test cases
 The next picture was taken from `AutomationFramework/test_cases/if_config.yml`. In the `AutomationFramework/test_cases/` 
 folder you can find all the test cases definition in YML files. Each YAML test case specifies some basic information and 
 also defines the rpcs to execute in the test. There may be as many rpcs as needed. Each rpc has target 
@@ -32,7 +52,9 @@ list of params with them specific values. These params are variables that later 
 
 ![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/yaml_example.png)
 
-#### XML templates
+<a name="xml-templates-ref"/>
+
+#### 2.3. XML templates
 The next picture was taken from `AutomationFramework/test_cases/templates/if_config_loopback_mode.xml`. In the 
 `AutomationFramework/test_cases/templates/` folder you can find all the templates definition used in the each rpc from 
 all the test cases defined in the YAML files. The templates are written in XML but the framework uses the `jinja2` 
@@ -40,17 +62,22 @@ library to insert variables within the XML notation, those variables are declare
 
 ![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/xml_example.png)
 
-- In the test execution, the framework will fill the templates with the values specified in the YAML files for the
- variables. In our example, we can see the the rpc sent in the next picture, where the values of lines 3, 8, 10, 11 
- and 12 where replaced.
+In the test execution, the framework will fill the templates with the values specified in the YAML files for the
+variables. In our example, we can see the the rpc sent in the next picture, where the values of lines 3, 8, 10, 11 
+and 12 where replaced.
  
 ![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/filled_xml_example.png)
  
-#### RPC operations workflow
+<a name="operations-workflow-ref"/>
+ 
+#### 2.4. RPC operations workflow
+(TODO:)
 - edit-config:
 - get:
 
-### Vendor setup
+<a name="vendor-setup-ref"/>
+
+### 3. Vendor setup
 It is necessary and advisable to carry out a preliminary exploratory process using the CLI and tools such as NCClient or 
 YangSuit to check and analyze the differences of each provider regarding the configuration and operation of open-config,
 since in addition to changes in the configuration of the variables, some have certain characteristics, such as Nokia or 
@@ -58,7 +85,9 @@ Juniper work with two different configuration trees, one for its own configurati
 limitation when you want to configure the same parameter in one, you cannot in the other or have preference, in addition 
 other types of nuances particular to each vendor, this process can save us debugging time when executing the tests.
 
-#### Branching strategy
+<a name="branching-strategy-ref"/>
+
+#### 3.1. Branching strategy
 In the following explanation we will use nokia as example. Anyway for any vendor all the steps apply the same way.
 The next branch diagram describes the testing set up for a vendor and the different versions from it. Knowing that 
 the base generic code of the testing framework is in the branch `automation-framework`, the idea is to have a separate
@@ -68,14 +97,19 @@ individual version.
 
 ![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/branching_strategy_diagram.png)
 
-#### Specify router and credentials
+<a name="specify-credentials-ref"/>
+
+#### 3.2. Specify router and credentials
 You can define this information overwriting the `AutomationFramework/capabilities.py` file. 
 
-#### YAML set up
+<a name="yaml-setup-ref"/>
+
+#### 3.3. YAML set up
 The YAML set up refers to the adjustments of the YAML files where the actual values intended to be tested are defined. 
 Before getting in the set up process refer to the explanation on how the framework works in the section `TAutomation framework overview`.
 For each vendor we need to change the variable values to test, for example in Cisco the interface-name to test may be 
-“GigabitEthernet0/0/0/1” but in Juniper might be “ge-0/0/1”. 
+“GigabitEthernet0/0/0/1” but in Juniper might be “ge-0/0/1”. Next there is a guide of the expected modifications to make 
+in order to execute the tests. Anyway, more adjustments might be needed by a vendor's particular needs
 The variables to update for all vendors are:
 
 | File                         | Variable                                                                     | Description                                                                                                                                                                           |
@@ -113,33 +147,44 @@ The variables to update for all vendors are:
 |  			 rp_community_def.yml 		      |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
 |  			 rp_policy_def.yml 		         |  			 NA 		                                                                        |  			 NA 		                                                                                                                                                                                 |
 
-### Tests execution workflow
-1. Create a new branch for the vendor and version of the device tested
-2. Edit the `capabilities.py` with the credentials of the device  
-3. Edit the YAML files in the `test_cases/` folder to match the device set up
-4. Run the tests form the console with the command `python execute_sub_set.py SUB_SET` where `SUB_SET` is the path of a suite to run. i.e. `tests/hardware` or `tests/hardware/test_hw_component.py`
+<a name="execution-ref"/>
+
+### 4. Tests execution workflow
+For the execution of the tests, you can run the tests individually, by a subset or specific test suite.
+To do so, form the console run the command `python execute_sub_set.py SUB_SET` where `SUB_SET` is the path of a suite 
+to run. i.e. `tests/hardware` or `tests/hardware/test_hw_component.py` or 
+`tests/hardware/test_hw_component.py::TestHardwareComponent::test_hw_component_description` in the case you want to run 
+a single test.
     - It's recommended to make at least one run for each block where the block is the `SUB_SET`:
         - `python execute_sub_set.py tests/hardware`
         - `python execute_sub_set.py tests/interfaces`
         - `python execute_sub_set.py tests/network_instance`
         - `python execute_sub_set.py tests/qos`
         - `python execute_sub_set.py tests/routing_policy`
-5. Generate the full report with `python generate_report.py REPORTS_FOLDER VENDOR_NAME` where `REPORTS_FOLDER` is the folder where the sub set reports generated in the previous step are located, usually `reports` and `VENDOR_NAME` is a string with the name of the vendor for the record.
-6. The final report will be generated and placed in `REPORTS_FOLDER` like `final_output.xlsx`
   
- 
-### Other running commands
-- For running the tests locally
+<a name="excel-reporting-ref"/>
+
+### 5. Excel reporting
+(TODO)
+Generate the full report with `python generate_report.py REPORTS_FOLDER VENDOR_NAME` where `REPORTS_FOLDER` is the folder where the sub set reports generated in the previous step are located, usually `reports` and `VENDOR_NAME` is a string with the name of the vendor for the record.
+The final report will be generated and placed in `REPORTS_FOLDER` like `final_output.xlsx`
+
+<a name="contribution-workflow-ref"/>
+  
+### 6. Workflow for contribution in this project 
+(TODO)
+
+<a name="vendor-findings-ref"/>
+  
+### 7. Vendor specific findings 
+(TODO)
+
+<a name="other-commands-ref"/>
+
+### 8. Other running commands
+- For running the tests locally without excel reporting
 
     `python -m pytest -s`
-
-- For running the tests generating html reports, required `pip install pytest-html`
-
-    - `python -m pytest --html=reports/report.html --self-contained-html`
-
-- For running the tests generating excel reports, required `pip install pytest-excel
-`
-    - `py.test --excelreport=reports/report.xls`
 
 - For change the parameters:
 
@@ -154,7 +199,7 @@ The variables to update for all vendors are:
 	
 <a name="faqs-ref"/>
 
-### FAQs
+### 9. FAQs
 ##### - How to debug the execution of the tests?
 Once the report has been generated, we proceed to analyze it, looking for errors in column K of the report. If an error occurs, 
 see the next column L, where the error message appears. In addition, the NCClient, YangSuit and CLI tools can also be 
