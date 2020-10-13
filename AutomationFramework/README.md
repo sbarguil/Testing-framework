@@ -1,4 +1,11 @@
 # Automation Framework
+##### Table of Contents  
+[Installation](#installation-ref)  
+[FAQs](#faqs-ref)  
+  
+
+<a name="installation-ref"/>
+
 ### Installation
 You must use an environment tool for this project, we recommend using conda since all the below commands are intended for it.
 It is expected as a prerequisite that you have installed conda.
@@ -44,6 +51,12 @@ library to insert variables within the XML notation, those variables are declare
 - get:
 
 ### Vendor setup
+It is necessary and advisable to carry out a preliminary exploratory process using the CLI and tools such as NCClient or 
+YangSuit to check and analyze the differences of each provider regarding the configuration and operation of open-config,
+since in addition to changes in the configuration of the variables, some have certain characteristics, such as Nokia or 
+Juniper work with two different configuration trees, one for its own configuration and the other for open-config, with 
+limitation when you want to configure the same parameter in one, you cannot in the other or have preference, in addition 
+other types of nuances particular to each vendor, this process can save us debugging time when executing the tests.
 
 #### Branching strategy
 In the following explanation we will use nokia as example. Anyway for any vendor all the steps apply the same way.
@@ -138,3 +151,27 @@ The variables to update for all vendors are:
 	1. **Enter your param name:** interface_name
 	2. **Enter current value:** 1
 	3. **Enter new value:** GigabitEthernet0/0/0/1
+	
+<a name="faqs-ref"/>
+
+### FAQs
+##### - How to debug the execution of the tests?
+Once the report has been generated, we proceed to analyze it, looking for errors in column K of the report. If an error occurs, 
+see the next column L, where the error message appears. In addition, the NCClient, YangSuit and CLI tools can also be 
+used to launch the configuration parameter and see if it is possible to load it or if any other messages appear. 
+The vendor's manual can be useful to see which is the correct way to send the command.
+
+##### - How do I create a new test?
+
+##### - Why does an error sometimes appear after having run the same test previously successfully?
+This is due to the fact that the deletion process is not carried out correctly (tear down) and when reconfiguring what 
+has already been configured, an error occurs. An example is shown in the following figure
+
+![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/teardown_error_example.png)
+
+##### - Why does a skipped sometimes occur in a test?
+Sometimes skipped occurs because the current configuration of the parameter is already the same as it is already 
+configured, so you must change the parameter to another value or check that it is not the same as the one that will run 
+the test. An example is shown in the following figure
+
+![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/skipped_test_example.png)
