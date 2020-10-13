@@ -1,0 +1,14 @@
+<get>
+  <filter>
+    <components xmlns="http://openconfig.net/yang/platform">
+      <component>
+        <name>{{name}}</name>
+        <power-supply>
+          <state>
+            <enabled xmlns="http://openconfig.net/yang/platform/psu">{{enabled}}</enabled>
+          </state>
+        </power-supply>
+      </component>
+    </components>
+  </filter>
+</get>
