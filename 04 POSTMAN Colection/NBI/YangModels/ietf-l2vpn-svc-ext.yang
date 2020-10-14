@@ -1,0 +1,157 @@
+module ietf-l2vpn-svc-ext {
+ 
+ yang-version 1.1;
+
+ namespace "urn:ietf:params:xml:ns:yang:ietf-l2vpn-svc-ext";
+ 
+ prefix l2vpn-svc-ext;
+ 
+ import ietf-inet-types {
+  prefix inet;
+ }
+ import ietf-yang-types {
+  prefix yang;
+ }
+ import ietf-routing-types {
+    prefix rt-types;
+ }
+
+ import ietf-l2vpn-svc {
+    prefix l2vpn-svc;
+ }
+ 
+ import ietf-routing-policy {
+    prefix rt-pol;
+ }
+ 
+ organization
+  "TELEFONICA GCTIO";
+ contact
+  "WG List: <mailto:sdn@telefonica.com>
+   Editor:
+    Extended L2SM WG
+   Chairs:
+    Oscar Gonzalez, Victor Lopez
+  ";
+ description
+  "This YANG module extends the service configuration model
+   for Layer 2 VPNs (l2vpn-svc). This extension aims to include
+   additional svc params for multi-domain orchestration.";
+ 
+ revision 2019-07-03 {
+  description
+   "First revision.";
+ }
+
+  typedef operational-type {
+   type enumeration {
+     enum "up" {
+       value 0;
+       description "Operational status UP.";
+     }
+     enum "down" {
+      value 1;
+      description "Operational status DOWN";
+     }
+     enum "unknown" {
+      value 2;
+      description "Operational status UNKNOWN";
+     }
+   }
+  }
+
+
+  grouping status-params {
+    container status {
+      description "Operational and administrative status for
+        different elements in the model.";
+      leaf admin-enabled {
+        description "True is the entity is administratively
+          enabled.";
+        type boolean;
+      }
+      leaf oper-status {
+        config false;
+        description "Operational status of the given entity
+          (UP, DOWN, UNKNOWN).";
+        type operational-type;
+      }
+    }
+  }
+
+
+  grouping site-bearer-params {
+
+    description "Container that encloses all the bearers
+      connected to a site. A bearer is mapped one to one
+      to a port on the PE router.";
+
+    container site-bearers {
+      list bearer {
+        key "bearer-id";
+
+        leaf bearer-id {
+          description "Unique identifier for a bearer. This
+          identifies shall be mapped to the bearer-reference
+          on a site-network-access.";
+          type string;
+        }
+
+        leaf ne-id {
+          description "Unique identifier for a network
+          element. This identifier may be a string, a UUID,
+          an IP address, etc.";
+          type string;
+        }
+
+        leaf port-id {
+          description "Port of the PE router for the given
+          bearer.";
+          type string;
+        }
+      }
+    }
+   }
+ 
+  ///l2vpn-svc:site-network-accesses/l2vpn-svc:site-network-access
+
+  augment "/l2vpn-svc:l2vpn-svc/l2vpn-svc:sites/l2vpn-svc:site/l2vpn-svc:site-network-accesses/l2vpn-svc:site-network-access" {
+    description
+     "";
+
+    leaf description {
+      type string;
+      description
+        "Textual description of a site-network-access.";
+    }
+
+    uses status-params;
+
+  }
+
+  augment "/l2vpn-svc:l2vpn-svc/l2vpn-svc:sites/l2vpn-svc:site" {
+    description
+     "";
+
+    leaf description {
+      type string;
+      description
+        "Textual description of a site.";
+    }
+    uses site-bearer-params;
+
+  }
+
+  augment "/l2vpn-svc:l2vpn-svc/l2vpn-svc:vpn-services/l2vpn-svc:vpn-service" {
+    description
+     "";
+
+    leaf description {
+      type string;
+      description
+        "Textual description of a vpn-service.";
+    }
+
+  }
+
+ }

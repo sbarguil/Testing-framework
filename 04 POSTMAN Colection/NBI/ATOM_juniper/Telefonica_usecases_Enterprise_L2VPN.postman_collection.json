@@ -1,0 +1,1524 @@
+{
+	"info": {
+		"_postman_id": "8310913d-7116-4a29-978e-6debff7dbb5c",
+		"name": "Telefonica_usecases_Enterprise_L2VPN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "begin task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3e6b8ccb-87e4-4c89-9258-f91be33d407d",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "saveHelperData",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<input><taskname>SERVMODEL:Services</taskname></input>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/operations/tasks:begin-task.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"operations",
+						"tasks:begin-task.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Commit Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e4a98b08-3271-493c-9c71-be8bdf46f574",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "saveHelperData",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"value": "{{session}}"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					}
+				],
+				"url": {
+					"raw": "{{url}}/restconf/operations/tasks:commit-task.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"operations",
+						"tasks:commit-task.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vpn Service -Enterprise-2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "745c0887-579e-4278-9b34-ac400881aca8",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<vpn-service>\n        <cloud-accesses/>\n        <extranet-vpns/>\n        <frame-delivery>\n            <multicast-gp-port-mapping>static-mapping</multicast-gp-port-mapping>\n        </frame-delivery>\n        <carrierscarrier>false</carrierscarrier>\n        <ce-vlan-cos-preservation>false</ce-vlan-cos-preservation>\n        <ce-vlan-preservation>false</ce-vlan-preservation>\n        <customer-name>17242</customer-name>\n        <description>SBC_BUC_La_Joya_Acceso_SIP_ALTAMIRA</description>\n        <svc-topo>hub-spoke</svc-topo>\n        <vpn-id>200172420</vpn-id>\n        <vpn-svc-type>ldp-l2tp-vpls</vpn-svc-type>\n    </vpn-service>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/vpn-services.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"vpn-services.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vpn Service -Enterprise-1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5d97e2c5-57b1-4e38-b7f3-c8ce2c54c3eb",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<vpn-service>\n        <cloud-accesses/>\n        <extranet-vpns/>\n        <frame-delivery>\n            <multicast-gp-port-mapping>static-mapping</multicast-gp-port-mapping>\n        </frame-delivery>\n        <carrierscarrier>false</carrierscarrier>\n        <ce-vlan-cos-preservation>false</ce-vlan-cos-preservation>\n        <ce-vlan-preservation>false</ce-vlan-preservation>\n        <customer-name>16746</customer-name>\n        <description>AZTECA_VALDPARCL16_DS01265236</description>\n        <svc-topo>hub-spoke</svc-topo>\n        <vpn-id>100167463</vpn-id>\n        <vpn-svc-type>ldp-l2tp-vpls</vpn-svc-type>\n    </vpn-service>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/vpn-services.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"vpn-services.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vpn Service -Enterprise-3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3960f87d-7870-4239-9715-61352c5d2723",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    <vpn-service>\n        <cloud-accesses/>\n        <extranet-vpns/>\n        <frame-delivery>\n            <multicast-gp-port-mapping>static-mapping</multicast-gp-port-mapping>\n        </frame-delivery>\n        <carrierscarrier>false</carrierscarrier>\n        <ce-vlan-cos-preservation>false</ce-vlan-cos-preservation>\n        <ce-vlan-preservation>false</ce-vlan-preservation>\n        <customer-name>16746</customer-name>\n        <description>AZTECA_VALDPARCL16_DS01265236</description>\n        <svc-topo>any-to-any</svc-topo>\n        <vpn-id>100167464</vpn-id>\n        <vpn-svc-type>pwe3</vpn-svc-type>\n    </vpn-service>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/vpn-services.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"vpn-services.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site_service_Enterprise-1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "84d414fd-ae02-4bc4-bfec-016aa95df49b",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site>\n        <access-control-list/>\n        <devices>\n            <device>\n                <device-id>172.16.4.154</device-id>\n                <location>S211</location>\n            </device>\n        </devices>\n        <locations>\n            <location>\n                <location-id>S211</location-id>\n            </location>\n        </locations>\n        <management>\n            <type>provider-managed</type>\n        </management>\n        <site-bearers>\n            <bearer>\n                <bearer-id>VPLS_01_S211_01</bearer-id>\n                <ne-id>172.16.4.154</ne-id>\n                <port-id>xe-0/1/4</port-id>\n            </bearer>\n        </site-bearers>\n        <site-network-accesses>\n            <site-network-access>\n                <access-control-list/>\n                <bearer>\n                    <always-on>true</always-on>\n                    <bearer-reference>VPLS_01_S211_01</bearer-reference>\n                </bearer>\n                <connection>\n                    <tagged-interface>\n                        <dot1q-vlan-tagged>\n                            <tg-type>c-vlan</tg-type>\n                            <cvlan-id>521</cvlan-id>\n                        </dot1q-vlan-tagged>\n                        <type>dot1q</type>\n                    </tagged-interface>\n                    <encapsulation-type>vlan</encapsulation-type>\n                    <eth-inf-type>tagged</eth-inf-type>\n                </connection>\n                <mac-addr-limit>\n                    <limit-number>2</limit-number>\n                    <time-interval>300</time-interval>\n                    <action>warning</action>\n                </mac-addr-limit>\n                <service>\n                    <svc-mtu>32768</svc-mtu>\n                </service>\n                <status>\n                    <admin-enabled>true</admin-enabled>\n                </status>\n                <vpn-attachment>\n                    <vpn-id>100167463</vpn-id>\n                    <site-role>hub-role</site-role>\n                </vpn-attachment>\n                <description>SNA</description>\n                <device-reference>172.16.4.154</device-reference>\n                <network-access-id>SNA_100167463_S211_01</network-access-id>\n                <type>point-to-point</type>\n            </site-network-access>\n        </site-network-accesses>\n        <vpn-policies/>\n        <bundling-type>one2one-bundling</bundling-type>\n        <default-ce-vlan-id>567</default-ce-vlan-id>\n        <description>S211</description>\n        <site-id>S211</site-id>\n        <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n    </site>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site_service_Enterprise-2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "149d81e5-ca10-490a-a517-ac88ac772ebf",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site>\n        <access-control-list/>\n        <devices>\n            <device>\n                <device-id>172.16.4.154</device-id>\n                <location>S212</location>\n            </device>\n        </devices>\n        <locations>\n            <location>\n                <location-id>S212</location-id>\n            </location>\n        </locations>\n        <management>\n            <type>provider-managed</type>\n        </management>\n        <site-bearers>\n            <bearer>\n                <bearer-id>VPLS_02_S212_02</bearer-id>\n                <ne-id>172.16.4.154</ne-id>\n                <port-id>xe-0/1/4</port-id>\n            </bearer>\n        </site-bearers>\n        <site-network-accesses>\n            <site-network-access>\n                <access-control-list/>\n                <bearer>\n                    <always-on>true</always-on>\n                    <bearer-reference>VPLS_02_S212_02</bearer-reference>\n                </bearer>\n                <connection>\n                    <tagged-interface>\n                        <dot1q-vlan-tagged>\n                            <tg-type>c-vlan</tg-type>\n                            <cvlan-id>1302</cvlan-id>\n                        </dot1q-vlan-tagged>\n                        <type>dot1q</type>\n                    </tagged-interface>\n                    <encapsulation-type>vlan</encapsulation-type>\n                    <eth-inf-type>tagged</eth-inf-type>\n                </connection>\n                <mac-addr-limit>\n                    <limit-number>2</limit-number>\n                    <time-interval>300</time-interval>\n                    <action>warning</action>\n                </mac-addr-limit>\n                <service>\n                    <svc-mtu>32768</svc-mtu>\n                </service>\n                <status>\n                    <admin-enabled>true</admin-enabled>\n                </status>\n                <vpn-attachment>\n                    <vpn-id>200172420</vpn-id>\n                    <site-role>spoke-role</site-role>\n                </vpn-attachment>\n                <description>SNA</description>\n                <device-reference>172.16.4.154</device-reference>\n                <network-access-id>SNA_200172420_S212_01</network-access-id>\n                <type>point-to-point</type>\n            </site-network-access>\n        </site-network-accesses>\n        <vpn-policies/>\n        <bundling-type>one2one-bundling</bundling-type>\n        <default-ce-vlan-id>568</default-ce-vlan-id>\n        <description>S212</description>\n        <site-id>S212</site-id>\n        <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n    </site>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site_service_Enterprise-3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1535b71b-024a-49d7-9e5a-1a3006e93dfd",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site>\n        <access-control-list/>\n        <devices>\n            <device>\n                <device-id>172.16.4.154</device-id>\n                <location>S213</location>\n            </device>\n        </devices>\n        <locations>\n            <location>\n                <location-id>S213</location-id>\n            </location>\n        </locations>\n        <management>\n            <type>provider-managed</type>\n        </management>\n        <site-bearers>\n            <bearer>\n                <bearer-id>VLL_01_S211_01</bearer-id>\n                <ne-id>172.16.4.154</ne-id>\n                <port-id>xe-0/1/4</port-id>\n            </bearer>\n        </site-bearers>\n        <site-network-accesses>\n            <site-network-access>\n                <access-control-list/>\n                <bearer>\n                    <always-on>true</always-on>\n                    <bearer-reference>VLL_01_S211_01</bearer-reference>\n                </bearer>\n                <connection>\n                    <tagged-interface>\n                        <dot1q-vlan-tagged>\n                            <tg-type>c-vlan</tg-type>\n                            <cvlan-id>522</cvlan-id>\n                        </dot1q-vlan-tagged>\n                        <type>dot1q</type>\n                    </tagged-interface>\n                    <encapsulation-type>vlan</encapsulation-type>\n                    <eth-inf-type>tagged</eth-inf-type>\n                </connection>\n                <mac-addr-limit>\n                    <limit-number>2</limit-number>\n                    <time-interval>300</time-interval>\n                    <action>warning</action>\n                </mac-addr-limit>\n                <service>\n                    <svc-mtu>32768</svc-mtu>\n                </service>\n                <status>\n                    <admin-enabled>true</admin-enabled>\n                </status>\n                <vpn-attachment>\n                    <vpn-id>200172420</vpn-id>\n                    <site-role>hub-role</site-role>\n                </vpn-attachment>\n                <description>SNA</description>\n                <device-reference>172.16.4.154</device-reference>\n                <network-access-id>VLL_100167464_S211_01</network-access-id>\n                <type>point-to-point</type>\n            </site-network-access>\n        </site-network-accesses>\n        <vpn-policies/>\n        <bundling-type>one2one-bundling</bundling-type>\n        <default-ce-vlan-id>568</default-ce-vlan-id>\n        <description>S213</description>\n        <site-id>S213</site-id>\n        <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n    </site>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "site-Enterprise-1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "22edff6e-e7c8-441a-9221-37bf04589c31",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site>\n        <access-control-list/>\n        <devices/>\n        <locations/>\n        <management>\n            <type>provider-managed</type>\n        </management>\n        <site-bearers/>\n        <site-network-accesses/>\n        <vpn-policies/>\n        <bundling-type>one2one-bundling</bundling-type>\n        <default-ce-vlan-id>567</default-ce-vlan-id>\n        <description>S211</description>\n        <site-id>S211</site-id>\n        <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n    </site>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "site-Enterprise-3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dcdbd1ba-b469-4d00-a996-1851e0454a26",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site>\n        <access-control-list/>\n        <devices/>\n        <locations/>\n        <management>\n            <type>provider-managed</type>\n        </management>\n        <site-bearers/>\n        <site-network-accesses/>\n        <vpn-policies/>\n        <bundling-type>one2one-bundling</bundling-type>\n        <default-ce-vlan-id>568</default-ce-vlan-id>\n        <description>S213</description>\n        <site-id>S213</site-id>\n        <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n    </site>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "site-Enterprise-2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "66c3c05e-1f88-43f2-9844-686d83269c00",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site>\n        <access-control-list/>\n        <devices/>\n        <locations/>\n        <management>\n            <type>provider-managed</type>\n        </management>\n        <site-bearers/>\n        <site-network-accesses/>\n        <vpn-policies/>\n        <bundling-type>one2one-bundling</bundling-type>\n        <default-ce-vlan-id>568</default-ce-vlan-id>\n        <description>S212</description>\n        <site-id>S212</site-id>\n        <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n    </site>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "location-Enterprise-1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e855adcd-2e47-439d-ae2c-0e6acd216e22",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<location>\n        <location-id>S211</location-id>\n    </location>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites/site=S211/locations.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites",
+						"site=S211",
+						"locations.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "location-Enterprise-2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0e8bf977-9ebe-4413-9b2c-ed3f3ecca77d",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<location>\n        <location-id>S212</location-id>\n    </location>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites/site=S212/locations.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites",
+						"site=S212",
+						"locations.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "location-Enterprise-3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "087b68b3-b3ca-4580-9d53-58901596fb88",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<location>\n        <location-id>S213</location-id>\n    </location>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites/site=S213/locations.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites",
+						"site=S213",
+						"locations.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Device creation-Enterprise-1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8669c-0fb8-4d07-9386-c7b8797367e8",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<device>\n        <device-id>172.16.4.154</device-id>\n        <location>S211</location>\n    </device>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites/site=S211/devices.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites",
+						"site=S211",
+						"devices.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Device creation-Enterprise-3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dd4d43a2-ab9a-4498-b808-91af9f76d60d",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<device>\n        <device-id>172.16.4.154</device-id>\n        <location>S213</location>\n    </device>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites/site=S213/devices.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites",
+						"site=S213",
+						"devices.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Device creation-Enterprise-2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5118b12f-a16c-40c6-b528-724596f106e2",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<device>\n        <device-id>172.16.4.154</device-id>\n        <location>S212</location>\n    </device>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data/controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites/site=S212/devices.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites",
+						"site=S212",
+						"devices.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "site bearer-Enterprise-1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c12ab1a0-4fd4-4c55-8a51-f0c8e97427c9",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<bearer>\n        <bearer-id>VPLS_01_S211_01</bearer-id>\n        <ne-id>172.16.4.154</ne-id>\n        <port-id>xe-0/1/4</port-id>\n    </bearer>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data//controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites/site=S211/site-bearers.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites",
+						"site=S211",
+						"site-bearers.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "site bearer-Enterprise-3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "87c11aa0-7189-480f-8dd3-453db68ba26b",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<bearer>\n        <bearer-id>VLL_01_S211_01</bearer-id>\n        <ne-id>172.16.4.154</ne-id>\n        <port-id>xe-0/1/4</port-id>\n    </bearer>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data//controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites/site=S213/site-bearers.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites",
+						"site=S213",
+						"site-bearers.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "site bearer-Enterprise-2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "64015c60-80a1-4097-a48f-b07419a733e0",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<bearer>\n        <bearer-id>VPLS_02_S212_02</bearer-id>\n        <ne-id>172.16.4.154</ne-id>\n        <port-id>xe-0/1/4</port-id>\n    </bearer>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data//controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites/site=S212/site-bearers.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites",
+						"site=S212",
+						"site-bearers.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site network access-Enterprise-1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2d11303a-a114-4e02-bf03-dd97ec77d37f",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site-network-access>\n        <access-control-list/>\n        <bearer>\n            <always-on>true</always-on>\n            <bearer-reference>VPLS_01_S211_01</bearer-reference>\n        </bearer>\n        <connection>\n            <tagged-interface>\n                <dot1q-vlan-tagged>\n                    <tg-type>c-vlan</tg-type>\n                    <cvlan-id>521</cvlan-id>\n                </dot1q-vlan-tagged>\n                <type>dot1q</type>\n            </tagged-interface>\n            <encapsulation-type>vlan</encapsulation-type>\n            <eth-inf-type>tagged</eth-inf-type>\n        </connection>\n        <mac-addr-limit>\n            <limit-number>2</limit-number>\n            <time-interval>300</time-interval>\n            <action>warning</action>\n        </mac-addr-limit>\n        <service>\n            <svc-mtu>32768</svc-mtu>\n        </service>\n        <status>\n            <admin-enabled>true</admin-enabled>\n        </status>\n        <vpn-attachment>\n            <vpn-id>100167463</vpn-id>\n            <site-role>hub-role</site-role>\n        </vpn-attachment>\n        <description>SNA</description>\n        <device-reference>172.16.4.154</device-reference>\n        <network-access-id>SNA_100167463_S211_01</network-access-id>\n        <type>point-to-point</type>\n    </site-network-access>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data//controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites/site=S211/site-network-accesses.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites",
+						"site=S211",
+						"site-network-accesses.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site network access-Enterprise-2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c20fb72-b3a4-49e5-930d-4754087af55c",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site-network-access>\n        <access-control-list/>\n        <bearer>\n            <always-on>true</always-on>\n            <bearer-reference>VPLS_02_S212_02</bearer-reference>\n        </bearer>\n        <connection>\n            <tagged-interface>\n                <dot1q-vlan-tagged>\n                    <tg-type>c-vlan</tg-type>\n                    <cvlan-id>1302</cvlan-id>\n                </dot1q-vlan-tagged>\n                <type>dot1q</type>\n            </tagged-interface>\n            <encapsulation-type>vlan</encapsulation-type>\n            <eth-inf-type>tagged</eth-inf-type>\n        </connection>\n        <mac-addr-limit>\n            <limit-number>2</limit-number>\n            <time-interval>300</time-interval>\n            <action>warning</action>\n        </mac-addr-limit>\n        <service>\n            <svc-mtu>32768</svc-mtu>\n        </service>\n        <status>\n            <admin-enabled>true</admin-enabled>\n        </status>\n        <vpn-attachment>\n            <vpn-id>200172420</vpn-id>\n            <site-role>spoke-role</site-role>\n        </vpn-attachment>\n        <description>SNA</description>\n        <device-reference>172.16.4.154</device-reference>\n        <network-access-id>SNA_200172420_S212_01</network-access-id>\n        <type>point-to-point</type>\n    </site-network-access>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data//controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites/site=S212/site-network-accesses.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites",
+						"site=S212",
+						"site-network-accesses.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site network access-Enterprise-3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bf44b02d-356e-413b-8db0-5cd4d5772b4a",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site-network-access>\n        <access-control-list/>\n        <bearer>\n            <always-on>true</always-on>\n            <bearer-reference>VLL_01_S211_01</bearer-reference>\n        </bearer>\n        <connection>\n            <tagged-interface>\n                <dot1q-vlan-tagged>\n                    <tg-type>c-vlan</tg-type>\n                    <cvlan-id>522</cvlan-id>\n                </dot1q-vlan-tagged>\n                <type>dot1q</type>\n            </tagged-interface>\n            <encapsulation-type>vlan</encapsulation-type>\n            <eth-inf-type>tagged</eth-inf-type>\n        </connection>\n        <mac-addr-limit>\n            <limit-number>2</limit-number>\n            <time-interval>300</time-interval>\n            <action>warning</action>\n        </mac-addr-limit>\n        <service>\n            <svc-mtu>32768</svc-mtu>\n        </service>\n        <status>\n            <admin-enabled>true</admin-enabled>\n        </status>\n        <vpn-attachment>\n            <vpn-id>200172420</vpn-id>\n            <site-role>hub-role</site-role>\n        </vpn-attachment>\n        <description>SNA</description>\n        <device-reference>172.16.4.154</device-reference>\n        <network-access-id>VLL_100167464_S211_01</network-access-id>\n        <type>point-to-point</type>\n    </site-network-access>"
+				},
+				"url": {
+					"raw": "{{url}}/restconf/data//controller:services/ietf_l2vpn_svc_oc:l2vpn-svc/sites/site=S213/site-network-accesses.xml",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"",
+						"controller:services",
+						"ietf_l2vpn_svc_oc:l2vpn-svc",
+						"sites",
+						"site=S213",
+						"site-network-accesses.xml"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
