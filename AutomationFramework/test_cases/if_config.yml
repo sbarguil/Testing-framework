@@ -53,7 +53,7 @@
             commit: true
             params:
                    interface_name: "GigabitEthernet0/0/0/1"
-                   enabled: "true"
+                   enabled: "false"
 
 - testcase:
       name: if_config_tpid
@@ -67,7 +67,7 @@
             commit: true
             params:
                    interface_name: "GigabitEthernet0/0/0/1"
-                   tpid: "TPID_0X9100"
+                   tpid: "TPID_0X9200"
 
 - testcase:
       name: if_config_loopback_mode
@@ -81,6 +81,6 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "GigabitEthernet0/0/0/1"
+                  interface_name: "Loopback0"
                   type: "softwareLoopback"
                   loopback_mode: "true"

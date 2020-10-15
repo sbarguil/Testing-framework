@@ -7,7 +7,7 @@
         <network-instance>
           <name>{{name}}</name>
           <config>
-            <name>{{instance_name}}</name>
+            <name>{{name}}</name>
           </config>
         </network-instance>
       </network-instances>

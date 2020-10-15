@@ -164,12 +164,14 @@ class Hardware(BasePageObject):
         'hw_properties_name': [
             {
                 'name': 'components/component/name',
+                'property_name': 'components/component/properties/property/name',
                 'empty_name': 'components/component/properties/property/state/name',
             }
         ],
         'hw_properties_value': [
             {
                 'name': 'components/component/name',
+                'property_name': 'components/component/properties/property/name',
                 'value': 'components/component/properties/property/state/value',
             }
         ],
@@ -227,7 +229,7 @@ class Hardware(BasePageObject):
             },
             {
                 'name': 'components/component/name',
-                'channel_speed': 'components/component/port/breakout-mode/state/channel-speed',
+                'channel_speed_state': 'components/component/port/breakout-mode/state/channel-speed',
             }
         ],
         'hw_port_num_channels': [
