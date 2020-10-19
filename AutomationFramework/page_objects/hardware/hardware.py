@@ -129,6 +129,12 @@ class Hardware(BasePageObject):
                 'oper_status': 'components/component/state/oper-status',
             }
         ],
+         'hw_component_mfg_name': [
+            {
+                'name': 'components/component/name',
+                'mfg_name': 'components/component/state/mfg-name',
+            }
+        ],
         'hw_component_parent': [
             {
                 'name': 'components/component/name',
