@@ -72,34 +72,34 @@ class TestHardwareComponent(BaseTest):
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'hw_component_mfg_name',
                                                          'page_object_class': Hardware}])
-    def test_hw_component_type(self, create_page_object):
+    def test_hw_component_mfg_name(self, create_page_object):
         create_page_object.execute_get_test_case_with_dispatch()
         assert create_page_object.validate_get_test_case(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'hw_component_partnumber',
                                                          'page_object_class': Hardware}])
-    def test_hw_component_type(self, create_page_object):
+    def test_hw_component_partnumber(self, create_page_object):
         create_page_object.execute_get_test_case_with_dispatch()
         assert create_page_object.validate_get_test_case(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'hw_component_removable',
                                                          'page_object_class': Hardware}])
-    def test_hw_component_type(self, create_page_object):
+    def test_hw_component_removable(self, create_page_object):
         create_page_object.execute_get_test_case_with_dispatch()
         assert create_page_object.validate_get_test_case(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'hw_component_software_version',
                                                          'page_object_class': Hardware}])
-    def test_hw_component_type(self, create_page_object):
+    def test_hw_component_software_version(self, create_page_object):
         create_page_object.execute_get_test_case_with_dispatch()
         assert create_page_object.validate_get_test_case(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'hw_component_used_power',
                                                          'page_object_class': Hardware}])
-    def test_hw_component_type(self, create_page_object):
+    def test_hw_component_used_power(self, create_page_object):
         create_page_object.execute_get_test_case_with_dispatch()
         assert create_page_object.validate_get_test_case(), create_page_object.get_test_case_description()
