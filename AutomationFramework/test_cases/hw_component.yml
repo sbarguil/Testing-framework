@@ -106,3 +106,63 @@
             params:
                    name: "Waveserver-Ai"
                    type: ""
+
+- testcase:
+      name: hw_component_mfg_name
+      id: 10
+      description: >
+          This test is to get the manufacturer of component by the system.
+      rpcs:
+          - template: hw_component_mfg_name.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   mfg_name: ""
+
+- testcase:
+      name: hw_component_partnumber
+      id: 11
+      description: >
+          This test is to get the partnumber of component by the system.
+      rpcs:
+          - template: hw_component_partnumber.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   partnumber: ""
+
+- testcase:
+      name: hw_component_removable
+      id: 12
+      description: >
+          This test is to get if the component is removable.
+      rpcs:
+          - template: hw_component_removable.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   removable: ""
+
+- testcase:
+      name: hw_component_software_version
+      id: 13
+      description: >
+          This test is to get software version of component by the system.
+      rpcs:
+          - template: hw_component_software_version.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   software_version: ""
+
+- testcase:
+      name: hw_component_used_power
+      id: 14
+      description: >
+          This test is to get used_power of component by the system.
+      rpcs:
+          - template: hw_component_used_power.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   used_power: ""
