@@ -10,3 +10,27 @@
             params:
                    name: "OCH-1-1"
                    frequency: ""
+                   
+- testcase:
+      name: hw_target_output_power
+      id: 2
+      description: >
+          This test is to get power of optical channel.
+      rpcs:
+          - template: hw_target_output_power.xml
+            operation: get
+            params:
+                   name: "OCH-1-1"
+                   target_output_power: ""
+                   
+- testcase:
+      name: hw_operational_mode
+      id: 3
+      description: >
+          This test is to get mode_id of optical channel.
+      rpcs:
+          - template: hw_operational_mode.xml
+            operation: get
+            params:
+                   name: "OCH-1-1"
+                   operational_mode: ""

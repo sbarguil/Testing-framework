@@ -138,25 +138,25 @@ class Hardware(BasePageObject):
         'hw_component_partnumber': [
             {
                 'name': 'components/component/name',
-                'mfg_name': 'components/component/state/part-no',
+                'partnumber': 'components/component/state/part-no',
             }
         ],
         'hw_component_removable': [
             {
                 'name': 'components/component/name',
-                'mfg_name': 'components/component/state/removable',
+                'removable': 'components/component/state/removable',
             }
         ],
         'hw_component_used_power': [
             {
                 'name': 'components/component/name',
-                'mfg_name': 'components/component/state/used-power',
+                'used_power': 'components/component/state/used-power',
             }
         ],
         'hw_component_software-version': [
             {
                 'name': 'components/component/name',
-                'mfg_name': 'components/component/state/software-version',
+                'software_version': 'components/component/state/software-version',
             }
         ],
         'hw_component_parent': [
@@ -175,6 +175,24 @@ class Hardware(BasePageObject):
             {
                 'name': 'components/component/name',
                 'type': 'components/component/state/type',
+            }
+        ],
+        'hw_frequency': [
+            {
+                'name': 'components/component/name',
+                'frequency': 'components/component/optical-channel/config/frequency',
+            }
+        ],
+        'hw_target_output_power': [
+            {
+                'name': 'components/component/name',
+                'frequency': 'components/component/optical-channel/config/target-output-power',
+            }
+        ],
+        'hw_operational_mode': [
+            {
+                'name': 'components/component/name',
+                'frequency': 'components/component/optical-channel/config/operational-mode',
             }
         ],
         'hw_subcomponent_name': [
