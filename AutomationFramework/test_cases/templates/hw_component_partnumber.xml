@@ -4,7 +4,7 @@
       <component>
         <name>{{name}}</name>
         <state>
-          <part-no>{{part_no}}</part-no>
+          <part-no>{{partnumber}}</part-no>
         </state>
       </component>
     </components>
