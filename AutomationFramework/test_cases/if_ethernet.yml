@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1/1/c11/2"
+                   interface_name: "1/1/1"
                    auto_negotiate: "false"
 
 - testcase:
@@ -24,7 +24,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1/1/c11/2"
+                   interface_name: "1/1/1"
                    duplex_mode: "FULL"
 
 - testcase:
@@ -38,8 +38,8 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1/1/c11/2"
-                   port_speed: "SPEED_100MB"
+                   interface_name: "1/1/1"
+                   port_speed: "SPEED_1GB"
 
 - testcase:
       name: if_ethernet_aggregate_id
@@ -61,7 +61,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1/1/c11/2"
+                   interface_name: "1/1/1"
                    aggregate_id: "lag-1"
 
 - testcase:
@@ -73,5 +73,5 @@
           - template: if_ethernet_port_speed_state.xml
             operation: get
             params:
-                   interface_name: "1/1/c11/2"
+                   interface_name: "1/1/1"
                    port_speed: ""
