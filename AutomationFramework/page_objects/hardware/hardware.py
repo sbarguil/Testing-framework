@@ -186,13 +186,13 @@ class Hardware(BasePageObject):
         'hw_target_output_power': [
             {
                 'name': 'components/component/name',
-                'frequency': 'components/component/optical-channel/config/target-output-power',
+                'target_output_power': 'components/component/optical-channel/config/target-output-power',
             }
         ],
         'hw_operational_mode': [
             {
                 'name': 'components/component/name',
-                'frequency': 'components/component/optical-channel/config/operational-mode',
+                'operational_mode': 'components/component/optical-channel/config/operational-mode',
             }
         ],
         'hw_subcomponent_name': [
