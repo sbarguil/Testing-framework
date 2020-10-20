@@ -3,7 +3,7 @@
       <components xmlns="http://openconfig.net/yang/platform">
         <component>
           <name>{{name}}</name>
-             <oc-opt-term:optical-channel>
+             <optical-channel xmlns="http://openconfig.net/yang/terminal-device">
                <config>
                  <frequency>{{frequency}}</frequency>
                </config>

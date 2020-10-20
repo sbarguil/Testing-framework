@@ -1,12 +1,12 @@
 
 - testcase:
-      name: hw_component_frequency
+      name: hw_frequency
       id: 1
       description: >
           This test is to get frequency of optical channel.
       rpcs:
-          - template: hw_component_frequency.xml
+          - template: hw_frequency.xml
             operation: get
             params:
-                   name: "OCH-1-4-L1"
+                   name: "OCH-1-1"
                    frequency: ""

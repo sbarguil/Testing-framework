@@ -8,5 +8,5 @@
           - template: hw_fan_speed.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "FAN-1"
                    speed: ""
