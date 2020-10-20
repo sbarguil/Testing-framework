@@ -129,10 +129,34 @@ class Hardware(BasePageObject):
                 'oper_status': 'components/component/state/oper-status',
             }
         ],
-         'hw_component_mfg_name': [
+        'hw_component_mfg_name': [
             {
                 'name': 'components/component/name',
                 'mfg_name': 'components/component/state/mfg-name',
+            }
+        ],
+        'hw_component_partnumber': [
+            {
+                'name': 'components/component/name',
+                'mfg_name': 'components/component/state/part-no',
+            }
+        ],
+        'hw_component_removable': [
+            {
+                'name': 'components/component/name',
+                'mfg_name': 'components/component/state/removable',
+            }
+        ],
+        'hw_component_used_power': [
+            {
+                'name': 'components/component/name',
+                'mfg_name': 'components/component/state/used-power',
+            }
+        ],
+        'hw_component_software-version': [
+            {
+                'name': 'components/component/name',
+                'mfg_name': 'components/component/state/software-version',
             }
         ],
         'hw_component_parent': [
