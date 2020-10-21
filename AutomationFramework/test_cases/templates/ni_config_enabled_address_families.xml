@@ -8,8 +8,8 @@
           <name>{{name}}</name>
           <config>
             <name>{{name}}</name>
-              <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
-              <enabled-address-families xmlns:oc-types="http://openconfig.net/yang/openconfig-types">{{enabled_address_families}}</enabled-address-families>
+              <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:{{type}}</type>
+              <enabled-address-families xmlns:oc-types="http://openconfig.net/yang/openconfig-types">oc-types:{{enabled_address_families}}</enabled-address-families>
           </config>
         </network-instance>
       </network-instances>

@@ -8,11 +8,11 @@
           <name>{{name}}</name>
           <config>
               <name>{{name}}</name>
-              <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+              <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:{{type}}</type>
           </config>
           <encapsulation>
             <config>
-              <encapsulation-type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{encapsulation_type}}</encapsulation-type>
+              <encapsulation-type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:{{encapsulation_type}}</encapsulation-type>
             </config>
           </encapsulation>
         </network-instance>

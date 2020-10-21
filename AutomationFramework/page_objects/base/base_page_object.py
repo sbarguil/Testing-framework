@@ -90,7 +90,8 @@ class BasePageObject:
         rpc_reply_key = self.get_rpc_reply_key_from_get_config()
         data_key = self.get_data_key_from_get_config(rpc_reply_key=rpc_reply_key)
         parsed_dict = xmltodict.parse(
-            self.edit_config_second_get_config_response.xml)[rpc_reply_key][data_key]
+            # This was modified due to device_param:{name: alu}
+            str(self.edit_config_second_get_config_response))[rpc_reply_key][data_key]
         for variable in self.generic_variables_to_commit:
             new_variable = {'test_case_key': variable['test_case_key'],
                             'value_after_commit': self.get_tag_value_in_given_dict_by_path(parsed_dict=parsed_dict,
@@ -106,7 +107,8 @@ class BasePageObject:
         rpc_reply_key = self.get_rpc_reply_key_from_get_config()
         data_key = self.get_data_key_from_get_config(rpc_reply_key=rpc_reply_key)
         parsed_dict = xmltodict.parse(
-            self.edit_config_first_get_config_response.xml)[rpc_reply_key][data_key]
+            # This was modified due to device_param:{name: alu}
+            str(self.edit_config_first_get_config_response))[rpc_reply_key][data_key]
         for variable in self.generic_variables_to_commit:
             new_variable = {'test_case_key': variable['test_case_key'],
                             'value_before_commit': self.get_tag_value_in_given_dict_by_path(parsed_dict=parsed_dict,
@@ -207,7 +209,8 @@ class BasePageObject:
                 if value not in self.values_after_commit[key]['#text']:
                     test_passes = False
             else:
-                if self.values_after_commit[key] != value:
+                # This was modified due to device_param:{name: alu}
+                if self.values_after_commit[key] not in value:
                     test_passes = False
         return test_passes
 
@@ -229,7 +232,8 @@ class BasePageObject:
                         if variable['value_to_commit'] not in item_after['value_after_commit']['#text']:
                             test_passes = False
                     else:
-                        if variable['value_to_commit'] != item_after['value_after_commit']:
+                        # This was modified due to device_param:{name: alu}
+                        if variable['value_to_commit'] not in item_after['value_after_commit']:
                             test_passes = False
         return test_passes
 
@@ -284,7 +288,8 @@ class BasePageObject:
             response_dict = xmltodict.parse(self.get_config_response.xml)
         else:
             if self.edit_config_first_get_config_response:
-                response_dict = xmltodict.parse(self.edit_config_first_get_config_response.xml)
+                # This was modified due to device_param:{name: alu}
+                response_dict = xmltodict.parse(str(self.edit_config_first_get_config_response))
             else:
                 return None
         for keys in response_dict:
@@ -297,7 +302,8 @@ class BasePageObject:
             response_dict = xmltodict.parse(self.get_config_response.xml)[rpc_reply_key]
         else:
             if self.edit_config_first_get_config_response:
-                response_dict = xmltodict.parse(self.edit_config_first_get_config_response.xml)[rpc_reply_key]
+                # This was modified due to device_param:{name: alu}
+                response_dict = xmltodict.parse(str(self.edit_config_first_get_config_response))[rpc_reply_key]
             else:
                 return None
         for keys in response_dict:
@@ -352,6 +358,7 @@ class BasePageObject:
         target_tag_dict = OrderedDict()
         target_tag_dict['target'] = target_value_dict
         target_tag_dict['config'] = parsed_edit_config_template_with_delete
+        target_tag_dict['config']['@xmlns:nc'] = 'urn:ietf:params:xml:ns:netconf:base:1.0'
 
         full_parsed_edit_config_template_with_delete = OrderedDict()
         full_parsed_edit_config_template_with_delete['edit-config'] = target_tag_dict
@@ -371,7 +378,7 @@ class BasePageObject:
             recursive_return = self.insert_delete_operation_to_dict_in_parent_container(
                 created_item_path_list=created_item_path_list[1:], parsed_dict=parsed_dict[created_item_path_list[0]])
             if recursive_return == True:
-                parsed_dict[created_item_path_list[0]]['@operation'] = 'delete'
+                parsed_dict[created_item_path_list[0]]['@nc:operation'] = 'delete'
                 return parsed_dict
 
             parsed_dict[created_item_path_list[0]] = recursive_return

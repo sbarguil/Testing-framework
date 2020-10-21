@@ -5,16 +5,17 @@
   <config>
     <network-instances xmlns="http://openconfig.net/yang/network-instance">
       <network-instance>
-        <name>{{name}}</name>
-        <config>
           <name>{{name}}</name>
-        </config>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:L3VRF</type>
+          </config>
         <protocols>
           <protocol>
             <identifier>{{identifier}}</identifier>
             <name>{{protocol_name}}</name>
             <config>
-              <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier}}</identifier>
+              <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier}}</identifier>
               <name>{{protocol_name}}</name>
             </config>
             <ospfv2>
