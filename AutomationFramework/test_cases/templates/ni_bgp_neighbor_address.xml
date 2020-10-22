@@ -12,7 +12,7 @@
           </config>
           <protocols>
             <protocol>
-              <identifier>{{identifier}}</identifier>
+              <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier}}</identifier>
               <name>{{protocol_name}}</name>
               <config>
                 <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier}}</identifier>
@@ -29,6 +29,7 @@
                     <neighbor-address>{{neighbor_address}}</neighbor-address>
                     <config>
                       <neighbor-address>{{neighbor_address}}</neighbor-address>
+                      <peer-as>65100</peer-as>
                     </config>
                   </neighbor>
                 </neighbors>

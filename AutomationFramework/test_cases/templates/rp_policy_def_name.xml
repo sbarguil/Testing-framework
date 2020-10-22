@@ -10,6 +10,14 @@
             <config>
               <name>{{name}}</name>
             </config>
+            <statements>
+              <statement>
+               <name>1</name>
+               <config>
+                <name>1</name>
+               </config>
+              </statement>
+            </statements>
           </policy-definition>
         </policy-definitions>
       </routing-policy>

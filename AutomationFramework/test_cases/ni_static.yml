@@ -11,7 +11,7 @@
             params:
                    name: "Prueba_LxVPN"
                    identifier: "STATIC"
-                   protocol_name: "STATIC_ROUTES_1"
+                   protocol_name: "default"
                    prefix: "192.168.100.0/24"
 
 - testcase:
@@ -27,7 +27,7 @@
             params:
                    name: "Prueba_LxVPN"
                    identifier: "STATIC"
-                   protocol_name: "STATIC_ROUTES_1"
+                   protocol_name: "default"
                    prefix: "192.168.100.0/24"
                    index: "10"
                    next_hop: "172.16.1.100"
@@ -45,7 +45,7 @@
             params:
                    name: "Prueba_LxVPN"
                    identifier: "STATIC"
-                   protocol_name: "STATIC_ROUTES_1"
+                   protocol_name: "default"
                    prefix: "192.168.100.0/24"
-                   index: "10"
+                   index: "10.10.10.10"
                    metric: "150"

@@ -9,7 +9,7 @@
           <port>
             <breakout-mode xmlns="http://openconfig.net/yang/platform/port">
               <config>
-                <channel-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">{{channel_speed}}</channel-speed>
+                <channel-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:{{channel_speed}}</channel-speed>
               </config>
             </breakout-mode>
           </port>

@@ -12,7 +12,7 @@
             params:
                    name: "Prueba_LxVPN"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "default"
 
 - testcase:
       name: ni_protocol_instances_enabled
@@ -27,5 +27,5 @@
             params:
                    name: "Prueba_LxVPN"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "default"
                    enabled: "true"    

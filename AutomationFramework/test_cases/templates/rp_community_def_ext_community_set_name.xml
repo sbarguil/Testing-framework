@@ -11,6 +11,7 @@
                 <ext-community-set-name>{{ext_community_set_name}}</ext-community-set-name>
                 <config>
                   <ext-community-set-name>{{ext_community_set_name}}</ext-community-set-name>
+                  <ext-community-member>65000:103</ext-community-member>
                 </config>
               </ext-community-set>
             </ext-community-sets>

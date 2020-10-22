@@ -121,14 +121,27 @@ class BasePageObject:
     def get_tag_value_in_given_dict_by_path(self, path, parsed_dict):
         recursive_return = None
         if len(path) == 1:
-            return parsed_dict[path[0]]
+            if isinstance(parsed_dict, list):
+                all_values = ''
+                for item in parsed_dict:
+                    all_values = all_values + ' ' + item[path[0]]
+                return all_values
+            else:
+                return parsed_dict[path[0]]
         else:
             try:
-                if path[0] in parsed_dict:
-                    recursive_return = self.get_tag_value_in_given_dict_by_path(path=path[1:],
-                                                                                parsed_dict=parsed_dict[path[0]])
+                if isinstance(parsed_dict, list):
+                    for item in parsed_dict:
+                        if path[0] in item:
+                            recursive_return = self.get_tag_value_in_given_dict_by_path(path=path[1:],
+                                                                                        parsed_dict=item[path[0]])
+                            break
                 else:
-                    raise Exception('The path specified for the param doesnt exists in the response')
+                    if path[0] in parsed_dict:
+                        recursive_return = self.get_tag_value_in_given_dict_by_path(path=path[1:],
+                                                                                    parsed_dict=parsed_dict[path[0]])
+                    else:
+                        raise Exception('The path specified for the param doesnt exists in the response')
             except:
                 recursive_return = None
         return recursive_return
@@ -426,7 +439,8 @@ class BasePageObject:
     def set_values_after_get_from_generic_variables(self):
         rpc_reply_key = self.get_rpc_reply_key_from_get_response()
         data_key = self.get_data_key_from_get_response(rpc_reply_key=rpc_reply_key)
-        parsed_dict = xmltodict.parse(self.get_response.xml)[rpc_reply_key][data_key]
+        # This was modified due to device_param:{name: alu}
+        parsed_dict = xmltodict.parse(str(self.get_response))[rpc_reply_key][data_key]
         variables_to_search = []
         for variable in self.generic_variables_to_commit:
             if not variable['value_to_commit']:
@@ -466,14 +480,16 @@ class BasePageObject:
         return recursive_return
 
     def get_rpc_reply_key_from_get_response(self):
-        response_dict = xmltodict.parse(self.get_response.xml)
+        # This was modified due to device_param:{name: alu}
+        response_dict = xmltodict.parse(str(self.get_response))
         for keys in response_dict:
             if 'rpc-reply' in keys:
                 return keys
         return None
 
     def get_data_key_from_get_response(self, rpc_reply_key):
-        response_dict = xmltodict.parse(self.get_response.xml)[rpc_reply_key]
+        # This was modified due to device_param:{name: alu}
+        response_dict = xmltodict.parse(str(self.get_response))[rpc_reply_key]
         for keys in response_dict:
             if 'data' in keys:
                 return keys

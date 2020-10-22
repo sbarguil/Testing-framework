@@ -9,6 +9,7 @@
           <config>
               <name>{{name}}</name>
               <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:{{type}}</type>
+              <enabled-address-families xmlns:oc-types="http://openconfig.net/yang/openconfig-types">oc-types:IPV4</enabled-address-families>
           </config>
           <encapsulation>
             <config>

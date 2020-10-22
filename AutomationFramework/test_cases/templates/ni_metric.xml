@@ -12,7 +12,7 @@
           </config>
           <protocols>
             <protocol>
-              <identifier>{{identifier}}</identifier>
+              <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier}}</identifier>
               <name>{{protocol_name}}</name>
               <config>
                 <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier}}</identifier>
@@ -30,6 +30,7 @@
                       <config>
                         <index>{{index}}</index>
                         <metric>{{metric}}</metric>
+                        <next-hop>10.10.10.10</next-hop>
                       </config>
                     </next-hop>
                   </next-hops>

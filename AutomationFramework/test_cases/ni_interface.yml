@@ -11,7 +11,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   id: "1"
+                   id: "GigabitEthernet0/3/2"
 
 - testcase:
       name: ni_interface_interface
@@ -25,8 +25,8 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   id: "1"
-                   interface: "1"
+                   id: "GigabitEthernet0/3/2"
+                   interface: "GigabitEthernet0/3/2"
 
 - testcase:
       name: ni_interface_subinterface
@@ -40,7 +40,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "GigabitEthernet0/5/3"
+                   interface_name: "GigabitEthernet0/3/2"
                    index: "100"
 
           - template: ni_interface_subinterface.xml
@@ -49,6 +49,6 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   id: "1"
-                   interface: "GigabitEthernet0/5/3"
+                   id: "GigabitEthernet0/3/2"
+                   interface: "GigabitEthernet0/3/2"
                    subinterface: "100"

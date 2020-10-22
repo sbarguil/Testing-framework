@@ -318,6 +318,28 @@ class Interfaces(BasePageObject):
         self.set_values_before_commit_dict()
         self.set_values_after_commit_dict()
 
+    def execute_generic_subif_edit_config_test_case(self):
+        filter_to_use = """
+                    <filter>
+                        <interfaces xmlns="http://openconfig.net/yang/interfaces">
+                            <interface>
+                                <name>{}</name>
+                                <subinterfaces>
+                                    <subinterface>
+                                        <index>{}</index>
+                                    </subinterface>
+                                </subinterfaces>
+                            </interface>
+                        </interfaces>
+                    </filter>
+                    """
+        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=self.rpc_idx_in_test_case,
+                                                                      variable='interface_name')
+        subif_index = self.get_variable_value_for_rpc_in_test_case(rpc_index=self.rpc_idx_in_test_case,
+                                                                   variable='index')
+        self.set_filter(filter_to_use.format(interface_name, subif_index))
+        self.execute_generic_edit_config_test_case()
+
     def execute_generic_interfaces_edit_config_test_case(self):
         filter_to_use = """
                     <filter>
@@ -335,6 +357,12 @@ class Interfaces(BasePageObject):
 
     def execute_rpc(self):
         self.execute_interface_rpc()
+
+    def execute_subif_rpc(self):
+        if self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'edit-config':
+            self.execute_generic_subif_edit_config_test_case()
+        elif self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'get':
+            self.execute_get_test_case_with_dispatch()
 
     def execute_interface_rpc(self):
         if self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'edit-config':
