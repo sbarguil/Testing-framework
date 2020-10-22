@@ -52,7 +52,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "400"
+                   interface_name: "Eth-Trunk2"
                    type: "ieee8023adLag"
                    enabled: "true"
 
@@ -61,8 +61,8 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "GigabitEthernet0/3/0"
-                   aggregate_id: "400"
+                   interface_name: "GigabitEthernet0/3/5"
+                   aggregate_id: "Eth-Trunk2"
 
 - testcase:
       name: if_ethernet_port_speed_state
