@@ -8,7 +8,7 @@
           - template: hw_subcomponent_name.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "chassis"
                    subcomponent_name: "BACKPLANE"
                    subcomponent_name_state: ""
 
@@ -21,6 +21,6 @@
           - template: hw_subcomponent_name_state.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "chassis"
                    subcomponent_name: "BACKPLANE"
                    name_state_subcomponent: ""

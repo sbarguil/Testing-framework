@@ -1,7 +1,7 @@
 HOSTS = [
     {
-        'host': '10.95.86.216',
-        'port': '12022',
+        'host': 'localhost',
+        'port': '830',
         'username': 'admin',
         'password': 'admin',
     },

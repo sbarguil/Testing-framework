@@ -8,7 +8,7 @@
           - template: hw_transceiver_slot_id.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "Transceiver#1"
                    slot_id: ""
 
 - testcase:
@@ -22,7 +22,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "0/0/5-SFP Socket"
+                   name: "Transceiver#1"
                    enabled: "true"
 
 - testcase:
@@ -34,6 +34,6 @@
           - template: hw_transceiver_enabled_state.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "Transceiver#1"
                    enabled: ""
 

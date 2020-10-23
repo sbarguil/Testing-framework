@@ -19,7 +19,7 @@
                 </config>
                 <conditions>
                   <config>
-                    <install-protocol-eq xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{install_protocol_eq}}</install-protocol-eq>
+                    <install-protocol-eq xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{install_protocol_eq}}</install-protocol-eq>
                   </config>
                 </conditions>
               </statement>

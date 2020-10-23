@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "0/0/4"
+                   name: "chassis"
                    power_admin_state: "POWER_DISABLED"
 
 - testcase:
@@ -22,5 +22,5 @@
           - template: hw_linecard_power_admin_state.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "chassis"
                    power_admin_state: ""
