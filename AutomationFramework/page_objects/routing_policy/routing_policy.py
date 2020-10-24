@@ -91,12 +91,13 @@ class RoutingPolicy(BasePageObject):
             {
                 'ext_community_set_name': 'routing-policy/defined-sets/bgp-defined-sets/ext-community-sets/ext-community-set/ext-community-set-name',
                 'ext_community_member': 'routing-policy/defined-sets/bgp-defined-sets/ext-community-sets/ext-community-set/config/ext-community-member',
+                'match_set_options': 'routing-policy/defined-sets/bgp-defined-sets/ext-community-sets/ext-community-set/config/match-set-options',
             },
             {
                 'name': 'routing-policy/policy-definitions/policy-definition/name',
                 'statement_name': 'routing-policy/policy-definitions/policy-definition/statements/statement/name',
-                'ext_community_set': 'routing-policy/policy-definitions/policy-definition/statements/statement/conditions/bgp-conditions/match-ext-community-set/config/ext-community-set',
-                'match_set_options': 'routing-policy/policy-definitions/policy-definition/statements/statement/conditions/bgp-conditions/match-ext-community-set/config/match-set-options',
+                'ext_community_set': 'routing-policy/policy-definitions/policy-definition/statements/statement/conditions/bgp-conditions/config/ext-community-set',
+
             }
         ],
         'rp_policy_def_ext_community_set': [

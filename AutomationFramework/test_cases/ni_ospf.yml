@@ -81,7 +81,7 @@
                    protocol_name: "22"
                    area_identifier: "0.0.0.0"
                    id: "GigabitEthernet0/3/0"
-                   authentication_type: "MD5"
+                   authentication_type: "md5"
 
 - testcase:
       name: ni_ospf_passive

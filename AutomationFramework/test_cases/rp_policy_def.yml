@@ -55,6 +55,7 @@
             params:
                    ext_community_set_name: "RT_IMPORT_POLICY"
                    ext_community_member: "65000:103"
+                   match_set_options: "ANY"
 
           - template: rp_policy_def_match_set_options.xml
             target: candidate
@@ -63,5 +64,5 @@
             params:
                    name: "ROUTING_POLICY_EXPORT"
                    statement_name: "1"
-                   match_set_options: "ANY"
+
                    ext_community_set: "RT_IMPORT_POLICY"

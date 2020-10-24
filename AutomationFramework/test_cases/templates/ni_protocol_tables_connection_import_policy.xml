@@ -23,40 +23,34 @@
               </config>
             </table-connection>
           </table-connections>
-          <tables>
-            <table>
-              <protocol xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier_src_protocol}}</protocol>
-              <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">oc-types:{{address_family}}</address-family>
-              <config>
-                <protocol xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier_src_protocol}}</protocol>
-                <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">oc-types:{{address_family}}</address-family>
-              </config>
-            </table>
-              <table>
-              <protocol xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier_dst_protocol}}</protocol>
-              <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">oc-types:{{address_family}}</address-family>
-              <config>
-                <protocol xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier_dst_protocol}}</protocol>
-                <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">oc-types:{{address_family}}</address-family>
-              </config>
-            </table>
-          </tables>
           <protocols>
             <protocol>
               <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier_src_protocol}}</identifier>
-              <name>OSPF_1</name>
+              <name>22</name>
               <config>
                 <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier_src_protocol}}</identifier>
-                <name>OSPF_1</name>
+                <name>22</name>
               </config>
             </protocol>
             <protocol>
                 <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier_dst_protocol}}</identifier>
-                <name>BGP_6500</name>
+                <name>default</name>
               <config>
-              <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier_dst_protocol}}</identifier>
-              <name>BGP_6500</name>
+                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier_dst_protocol}}</identifier>
+                <name>default</name>
               </config>
+              <bgp>
+                <global>
+                  <config>
+                    <as>65000</as>
+                  </config>
+                  <afi-safis>
+                    <afi-safi>
+                      <afi-safi-name xmlns:oc-bgp-types="http://openconfig.net/yang/bgp-types">oc-bgp-types:IPV4_UNICAST</afi-safi-name>
+                    </afi-safi>
+                  </afi-safis>
+                </global>
+              </bgp>
             </protocol>
           </protocols>
         </network-instance>

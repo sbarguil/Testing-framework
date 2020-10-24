@@ -16,6 +16,7 @@
               <config>
                 <id>{{id}}</id>
                 <interface>{{interface}}</interface>
+                <subinterface>0</subinterface>
               </config>
             </interface>
           </interfaces>

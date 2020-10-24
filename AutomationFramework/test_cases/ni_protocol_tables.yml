@@ -11,7 +11,7 @@
             params:
                    name: "Prueba_LxVPN"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "default"
                    address_family: "IPV4"
 
 - testcase:

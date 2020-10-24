@@ -41,7 +41,7 @@
             commit: true
             params:
                    interface_name: "GigabitEthernet0/3/2"
-                   index: "100"
+                   index: "122"
 
           - template: ni_interface_subinterface.xml
             target: candidate
@@ -49,6 +49,6 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   id: "GigabitEthernet0/3/2"
+                   id: "GigabitEthernet0/3/2.122"
                    interface: "GigabitEthernet0/3/2"
-                   subinterface: "100"
+                   subinterface: "122"
