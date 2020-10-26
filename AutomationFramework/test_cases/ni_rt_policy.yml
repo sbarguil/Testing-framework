@@ -31,7 +31,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Policy_2"
+                   name: "Policy_3"
 
           - template: ni_rt_policy_export_policy.xml
             target: candidate
@@ -39,4 +39,4 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   export_policy: "Policy_2"
+                   export_policy: "Policy_3"

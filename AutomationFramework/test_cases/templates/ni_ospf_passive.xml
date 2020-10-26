@@ -10,6 +10,16 @@
             <name>{{name}}</name>
             <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:L3VRF</type>
           </config>
+          <interfaces>
+            <interface>
+              <id>GigabitEthernet0/3/0</id>
+              <config>
+                <id>GigabitEthernet0/3/0</id>
+                <interface>GigabitEthernet0/3/0</interface>
+                <subinterface>0</subinterface>
+              </config>
+            </interface>
+          </interfaces>
           <protocols>
             <protocol>
               <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier}}</identifier>
