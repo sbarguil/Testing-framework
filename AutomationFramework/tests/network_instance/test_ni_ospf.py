@@ -50,6 +50,13 @@ class TestNetworkInstanceOSPF(BaseTest):
         create_page_object.execute_network_instance_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
+    @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
+                                                         'test_case_name': 'ni_ospf_network_type',
+                                                         'page_object_class': NetworkInstance}])
+    def test_ni_ospf_network_type(self, create_page_object):
+        create_page_object.execute_network_instance_edit_config_test_case()
+        assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
+
     @pytest.mark.parametrize('multiple_create_page_objects_arg', [{'test_case_file': test_case_file,
                                                                    'test_case_name': 'ni_ospf_subinterface',
                                                                    'page_object_rpcs_classes': [Interfaces,
