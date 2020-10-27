@@ -8,11 +8,11 @@
           <name>{{name}}</name>
           <config>
               <name>{{name}}</name>
-              <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+              <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:{{type}}</type>
           </config>
           <encapsulation>
             <config>
-              <label-allocation-mode xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{label_allocation_mode}}</label-allocation-mode>
+              <label-allocation-mode xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:{{label_allocation_mode}}</label-allocation-mode>
             </config>
           </encapsulation>
         </network-instance>

@@ -11,7 +11,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   id: "1"
+                   id: "eth-1/0/5"
 
 - testcase:
       name: ni_interface_interface
@@ -26,7 +26,7 @@
             params:
                    name: "Prueba_LxVPN"
                    id: "1"
-                   interface: "1"
+                   interface: "eth-1/0/5"
 
 - testcase:
       name: ni_interface_subinterface
@@ -50,5 +50,5 @@
             params:
                    name: "Prueba_LxVPN"
                    id: "1"
-                   interface: "1"
+                   interface: "eth-1/0/5"
                    subinterface: "100"

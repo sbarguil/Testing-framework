@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "2"
+                   interface_name: "eth-1/0/2"
                    auto_negotiate: "false"
 
 - testcase:
@@ -24,7 +24,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "2"
+                   interface_name: "eth-1/0/2"
                    duplex_mode: "FULL"
 
 - testcase:
@@ -38,7 +38,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "2"
+                   interface_name: "eth-1/0/2"
                    port_speed: "SPEED_100MB"
 
 - testcase:
@@ -52,7 +52,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "400"
+                   interface_name: ""
                    type: "ieee8023adLag"
                    enabled: "true"
 
@@ -61,7 +61,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "2"
+                   interface_name: "eth-1/0/2"
                    aggregate_id: "400"
 
 - testcase:
@@ -73,5 +73,5 @@
           - template: if_ethernet_port_speed_state.xml
             operation: get
             params:
-                   interface_name: "2"
+                   interface_name: "eth-1/0/2"
                    port_speed: ""

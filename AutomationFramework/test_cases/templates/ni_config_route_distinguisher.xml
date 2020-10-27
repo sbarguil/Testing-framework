@@ -9,6 +9,7 @@
           <config>
             <name>{{name}}</name>
             <route-distinguisher>{{route_distinguisher}}</route-distinguisher>
+              <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:L3VRF</type>
           </config>
         </network-instance>
       </network-instances>

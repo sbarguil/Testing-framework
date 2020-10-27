@@ -9,6 +9,7 @@
           <config>
             <name>{{name}}</name>
             <router-id>{{router_id}}</router-id>
+              <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:L3VRF</type>
           </config>
         </network-instance>
       </network-instances>
