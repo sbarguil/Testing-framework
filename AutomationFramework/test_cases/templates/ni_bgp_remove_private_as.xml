@@ -10,6 +10,7 @@
           <name>{{name}}</name>
           <config>
             <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:L3VRF</type>
           </config>
           <protocols>
             <protocol>
@@ -30,6 +31,7 @@
                     <neighbor-address>{{neighbor_address}}</neighbor-address>
                     <config>
                       <neighbor-address>{{neighbor_address}}</neighbor-address>
+                      <peer-type>{{peer_type}}</peer-type>
                       <remove-private-as xmlns:oc-bgp-types="http://openconfig.net/yang/bgp-types">{{remove_private_as}}</remove-private-as>
                     </config>
                   </neighbor>
