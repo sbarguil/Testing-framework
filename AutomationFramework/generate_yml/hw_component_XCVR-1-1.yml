@@ -1,0 +1,140 @@
+- testcase:
+    description: This test is to get description components.
+    id: 1
+    name: hw_component_description
+    rpcs:
+    - operation: get
+      params:
+        description: ''
+        name: XCVR-1-1
+      template: hw_component_description.xml
+- testcase:
+    description: This test is to get the hardware version components.
+    id: 2
+    name: hw_component_hardware_version
+    rpcs:
+    - operation: get
+      params:
+        hardware_version: ''
+        name: XCVR-1-1
+      template: hw_component_hardware_version.xml
+- testcase:
+    description: This test is to get the component id.
+    id: 3
+    name: hw_component_id
+    rpcs:
+    - operation: get
+      params:
+        id: ''
+        name: XCVR-1-1
+      template: hw_component_id.xml
+- testcase:
+    description: This test is to get location components.
+    id: 4
+    name: hw_component_location
+    rpcs:
+    - operation: get
+      params:
+        location: ''
+        name: XCVR-1-1
+      template: hw_component_location.xml
+- testcase:
+    description: This test is to get manufacturing date.
+    id: 5
+    name: hw_component_mfg_date
+    rpcs:
+    - operation: get
+      params:
+        mfg_date: ''
+        name: XCVR-1-1
+      template: hw_component_mfg_date.xml
+- testcase:
+    description: This test is to get operation status component.
+    id: 6
+    name: hw_component_oper_status
+    rpcs:
+    - operation: get
+      params:
+        name: XCVR-1-1
+        oper_status: ''
+      template: hw_component_oper_status.xml
+- testcase:
+    description: This test is to get name of the parent component.
+    id: 7
+    name: hw_component_parent
+    rpcs:
+    - operation: get
+      params:
+        name: XCVR-1-1
+        parent: ''
+      template: hw_component_parent.xml
+- testcase:
+    description: This test is to get serial number of the component.
+    id: 8
+    name: hw_component_serial_no
+    rpcs:
+    - operation: get
+      params:
+        name: XCVR-1-1
+        serial_no: ''
+      template: hw_component_serial_no.xml
+- testcase:
+    description: This test is to get type of component by the system.
+    id: 9
+    name: hw_component_type
+    rpcs:
+    - operation: get
+      params:
+        name: XCVR-1-1
+        type: ''
+      template: hw_component_type.xml
+- testcase:
+    description: This test is to get the manufacturer of component by the system.
+    id: 10
+    name: hw_component_mfg_name
+    rpcs:
+    - operation: get
+      params:
+        mfg_name: ''
+        name: XCVR-1-1
+      template: hw_component_mfg_name.xml
+- testcase:
+    description: This test is to get the partnumber of component by the system.
+    id: 11
+    name: hw_component_partnumber
+    rpcs:
+    - operation: get
+      params:
+        name: XCVR-1-1
+        partnumber: ''
+      template: hw_component_partnumber.xml
+- testcase:
+    description: This test is to get if the component is removable.
+    id: 12
+    name: hw_component_removable
+    rpcs:
+    - operation: get
+      params:
+        name: XCVR-1-1
+        removable: ''
+      template: hw_component_removable.xml
+- testcase:
+    description: This test is to get software version of component by the system.
+    id: 13
+    name: hw_component_software_version
+    rpcs:
+    - operation: get
+      params:
+        name: XCVR-1-1
+        software_version: ''
+      template: hw_component_software_version.xml
+- testcase:
+    description: This test is to get used_power of component by the system.
+    id: 14
+    name: hw_component_used_power
+    rpcs:
+    - operation: get
+      params:
+        name: XCVR-1-1
+        used_power: ''
+      template: hw_component_used_power.xml

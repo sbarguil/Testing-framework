@@ -2,6 +2,8 @@
     <target>
       <{{target}}/>
     </target>
+ <default-operation>merge</default-operation>
+    <error-option>rollback-on-error</error-option>
     <config>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
@@ -11,7 +13,7 @@
           </config>
           <protocols>
             <protocol>
-              <identifier>{{identifier}}</identifier>
+              <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier}}</identifier>
               <name>{{protocol_name}}</name>
               <config>
                 <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier}}</identifier>
@@ -28,7 +30,7 @@
                     <neighbor-address>{{neighbor_address}}</neighbor-address>
                     <config>
                       <neighbor-address>{{neighbor_address}}</neighbor-address>
-                      <remove-private-as>{{remove_private_as}}</remove-private-as>
+                      <remove-private-as xmlns:oc-bgp-types="http://openconfig.net/yang/bgp-types">{{remove_private_as}}</remove-private-as>
                     </config>
                   </neighbor>
                 </neighbors>

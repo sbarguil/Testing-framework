@@ -2,7 +2,9 @@
     <target>
       <{{target}}/>
     </target>
-    <config>
+ <default-operation>merge</default-operation>
+    <error-option>rollback-on-error</error-option>  
+  <config>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
           <name>{{name}}</name>

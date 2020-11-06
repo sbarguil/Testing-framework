@@ -11,7 +11,7 @@
           </config>
           <protocols>
             <protocol>
-              <identifier>{{identifier}}</identifier>
+              <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier}}</identifier>
               <name>{{protocol_name}}</name>
               <config>
                 <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier}}</identifier>

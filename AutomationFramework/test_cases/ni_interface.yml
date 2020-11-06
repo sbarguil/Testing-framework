@@ -10,8 +10,8 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
-                   id: "1"
+                   name: "VPLS_10"
+                   id: "xgei-0/0/0/1"
 
 - testcase:
       name: ni_interface_interface
@@ -24,9 +24,9 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    id: "1"
-                   interface: "1"
+                   interface: "xgei-0/0/0/1"
 
 - testcase:
       name: ni_interface_subinterface
@@ -48,7 +48,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    id: "1"
-                   interface: "1"
+                   interface: "xgei-0/0/0/1"
                    subinterface: "100"

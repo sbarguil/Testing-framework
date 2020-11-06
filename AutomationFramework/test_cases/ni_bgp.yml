@@ -6,14 +6,14 @@
           This test is to set as-number for a BGP instance within a L3 network-instance.
       rpcs:
           - template: ni_bgp_as.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
-                   identifier: "BGP"
+                   name: "VPLS_15"
+                   identifier: "oc-pol-types:BGP"
                    protocol_name: "BGP_65000"
-                   as: "65000"
+                   as: "1" 
 
 - testcase:
       name: ni_bgp_router_id
@@ -22,15 +22,15 @@
           This test is to set router-id for a BGP instance within a L3 network-instance.
       rpcs:
           - template: ni_bgp_router_id.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
-                   identifier: "BGP"
+                   name: "VPLS_19"
+                   identifier: "oc-pol-types:BGP"
                    protocol_name: "BGP_65000"
-                   router_id: "172.16.1.2"
-                   as: "65000"
+                   router_id: "21.1.1.3"
+                   as: "2"
 
 - testcase:
       name: ni_bgp_neighbor_address
@@ -39,15 +39,15 @@
           This test is to set neighbor-address for a BGP instance within a L3 network-instance.
       rpcs:
           - template: ni_bgp_neighbor_address.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
-                   identifier: "BGP"
-                   protocol_name: "BGP_65100"
-                   neighbor_address: "192.168.1.2"
-                   as: "65100"
+                   name: "VPRN_120"
+                   identifier: "oc-pol-types:BGP"
+                   protocol_name: "BGP_65000"
+                   neighbor_address: "192.168.120.120"
+                   as: "2"
 
 - testcase:
       name: ni_bgp_peer_as
@@ -56,16 +56,16 @@
           This test is to set a neighbor peer-as for a BGP instance within a L3 network-instance.
       rpcs:
           - template: ni_bgp_peer_as.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
-                   identifier: "BGP"
+                   name: "VPRN_120"
+                   identifier: "oc-pol-types:BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2"
+                   neighbor_address: "192.168.120.120" 
                    peer_as: "65123"
-                   as: "65000"
+                   as: "2"
 
 - testcase:
       name: ni_bgp_local_as
@@ -74,17 +74,17 @@
           This test is to set a neighbor local-as for a BGP instance within a L3 network-instance.
       rpcs:
           - template: ni_bgp_local_as.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
-                   identifier: "BGP"
+                   name: "VPRN_120"
+                   identifier: "oc-pol-types:BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2"
+                   neighbor_address: "192.168.120.120"
                    local_as: "65001"
                    peer_as: "65123"
-                   as: "65000"
+                   as: "2"
 
 - testcase:
       name: ni_bgp_peer_type
@@ -93,16 +93,16 @@
           This test is to set a neighbor peer-type for a BGP instance within a L3 network-instance.
       rpcs:
           - template: ni_bgp_peer_type.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
-                   identifier: "BGP"
+                   name: "VPRN_120"
+                   identifier: "oc-pol-types:BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2"
+                   neighbor_address: "192.168.120.120"
                    peer_type: "EXTERNAL"
-                   as: "65000"
+                   as: "2"
 
 - testcase:
       name: ni_bgp_remove_private_as
@@ -111,16 +111,16 @@
           This test is to set a neighbor remove-private-as parameter for a BGP instance within a L3 network-instance.
       rpcs:
           - template: ni_bgp_remove_private_as.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
-                   identifier: "BGP"
+                   name: "VPRN_120"
+                   identifier: "oc-pol-types:BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2"
-                   as: "65000"
-                   remove_private_as: "PRIVATE_AS_REMOVE_ALL"
+                   neighbor_address: "192.168.120.120"
+                   as: "2"
+                   remove_private_as: "oc-bgp-types:PRIVATE_AS_REMOVE_ALL"
 
 - testcase:
       name: ni_bgp_description
@@ -129,17 +129,17 @@
           This test is to set a neighbor description for a BGP instance within a L3 network-instance.
       rpcs:
           - template: ni_bgp_description.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
-                   identifier: "BGP"
+                   name: "VPRN_120"
+                   identifier: "oc-pol-types:BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2"
+                   neighbor_address: "192.168.120.120"
                    description: "BGP Neighbor 65123 Description"
                    peer_as: "65123"
-                   as: "65000"
+                   as: "2"
 
 - testcase:
       name: ni_bgp_import_policy
@@ -149,22 +149,23 @@
       rpcs:
 
           - template: rp_policy_def_name.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "BGP_Policy_Import_Export"
+                   name: "ROUTING_POLICY_EXPORT"
 
           - template: ni_bgp_import_policy.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
-                   identifier: "BGP"
+                   name: "VPRN_130"
+                   identifier: "oc-pol-types:BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2"
-                   import_export_bgp_policy: "BGP_Policy_Import_Export"
+                   neighbor_address: "192.168.120.130"
+                   import_export_bgp_policy: "ROUTING_POLICY_EXPORT"
+                   peer_as: "300"
 
 - testcase:
       name: ni_bgp_export_policy
@@ -173,22 +174,22 @@
           This test is to set a neighbor export-policy for a BGP instance within a L3 network-instance.
       rpcs:
           - template: rp_policy_def_name.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "BGP_Policy_Export_Export"
+                   name: "ROUTING_POLICY_EXPORT"
 
           - template: ni_bgp_export_policy.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
-                   identifier: "BGP"
+                   name: "VPRN_133"
+                   identifier: "oc-pol-types:BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2"
-                   import_export_bgp_policy: "BGP_Policy_Export_Export"
+                   neighbor_address: "192.168.120.130"
+                   import_export_bgp_policy: "ROUTING_POLICY_EXPORT"
 
 - testcase:
       name: ni_bgp_enabled
@@ -197,15 +198,15 @@
           This test is to enable a neighbor multihop for a BGP instance within a L3 network-instance.
       rpcs:
           - template: ni_bgp_enabled.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
-                   identifier: "BGP"
+                   name: "VPRN_130"
+                   identifier: "oc-pol-types:BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2"
-                   as: "65000"
+                   neighbor_address: "192.168.120.130"
+                   as: "65123"
                    enabled: "true"
 
 - testcase:
@@ -215,12 +216,12 @@
           This test is to set a neighbor multihop-ttl parameter for a BGP instance within a L3 network-instance.
       rpcs:
           - template: ni_bgp_multihop_ttl.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
-                   identifier: "BGP"
+                   name: "VPRN_130"
+                   identifier: "oc-pol-types:BGP"
                    protocol_name: "BGP_65000"
                    neighbor_address: "192.168.1.2"
                    multihop_ttl: "3"

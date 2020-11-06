@@ -6,7 +6,7 @@
           This test is to set the name of routing policy.
       rpcs:
           - template: rp_policy_def_name.xml
-            target: candidate
+            target: running 
             operation: edit-config
             commit: true
             params:
@@ -19,7 +19,7 @@
           This test is to define accept or reject the action policy.
       rpcs:
           - template: rp_policy_def_policy_result.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
@@ -34,7 +34,7 @@
           This test is to define routing protocol to apply in the policy.
       rpcs:
           - template: rp_policy_def_install_protocol_eq.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
@@ -49,7 +49,7 @@
           This test is to define the behaviour options match operation, create a community set and associate it.
       rpcs:
           - template: rp_policy_def_create_ext_community_set.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
@@ -57,7 +57,7 @@
                    ext_community_member: "65000:103"
 
           - template: rp_policy_def_match_set_options.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:

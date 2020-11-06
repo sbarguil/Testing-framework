@@ -38,8 +38,8 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   description: "Test if_config_description 2"
+                   interface_name: "xgei-0/0/0/3.201"
+                   description: "Test if_config_description from automation framework"
 
 - testcase:
       name: if_config_enabled

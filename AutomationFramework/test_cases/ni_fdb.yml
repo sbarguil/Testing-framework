@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    type: "L2VSI"
                    mac_aging_time: "600"
 
@@ -25,7 +25,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    type: "L2VSI"
                    mac_learning: "true"
 
@@ -40,6 +40,6 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    type: "L2VSI"
                    maximum_entries: "16384"

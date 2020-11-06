@@ -6,11 +6,11 @@
           This test is to define if the interface is auto negotiate enable.
       rpcs:
           - template: if_ethernet_auto_negotiate.xml
-            target: candidate
+            target: running 
             operation: edit-config
             commit: true
             params:
-                   interface_name: "2"
+                   interface_name: "xgei-0/0/0/1"
                    auto_negotiate: "false"
 
 - testcase:
@@ -73,5 +73,19 @@
           - template: if_ethernet_port_speed_state.xml
             operation: get
             params:
-                   interface_name: "2"
+                   interface_name: "gei-0/1/2/1"
                    port_speed: ""
+
+
+- testcase:
+      name: if_ethernet_port_type
+      id: 6
+      description: >
+          This test is to get the type of this interface.
+      rpcs:
+          - template: if_ethernet_port_type.xml
+            operation: get
+            params:
+                   interface_name: "gei-0/1/2/1"
+                   type: ""
+

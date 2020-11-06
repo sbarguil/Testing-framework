@@ -144,5 +144,5 @@ class RPCAutomator2:
             if loaded_file[idx]['testcase']['name'] == test_case_name:
                 specified_test_case = loaded_file[idx]
             idx = idx + 1
-
+        print("**********************************************************",specified_test_case)
         return specified_test_case

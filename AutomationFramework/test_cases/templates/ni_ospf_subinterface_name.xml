@@ -2,6 +2,8 @@
   <target>
       <{{target}}/>
   </target>
+   <default-operation>merge</default-operation>
+    <error-option>rollback-on-error</error-option>
   <config>
     <interfaces xmlns="http://openconfig.net/yang/interfaces">
       <interface>

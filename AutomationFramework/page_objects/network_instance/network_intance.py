@@ -185,80 +185,82 @@ class NetworkInstance(BasePageObject):
         ],
         'ni_bgp_as': [
             {
-                'name': 'network-instances/network-instance/name',
-                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
-                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
-                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
+                'name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:name',
+                'identifier': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:identifier',
+                'protocol_name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:name',
+                'as': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:global/oc-netinst:config/oc-netinst:as',
             }
         ],
         'ni_bgp_router_id': [
             {
-                'name': 'network-instances/network-instance/name',
-                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
-                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
-                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
-                'router_id': 'network-instances/network-instance/protocols/protocol/bgp/global/config/router-id',
-            }
+                'name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:name',
+                'identifier': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:identifier',
+                'protocol_name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:name',
+                'as': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:global/oc-netinst:config/oc-netinst:as',
+                'router_id': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:global/oc-netinst:config/oc-netinst:router-id',
+            } 
         ],
+
         'ni_bgp_neighbor_address': [
             {
-                'name': 'network-instances/network-instance/name',
-                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
-                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
-                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
-                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:name',
+                'identifier': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:identifier',
+                'protocol_name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:name',
+                'as': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:global/oc-netinst:config/oc-netinst:as',
+                'neighbor_address': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:config/oc-netinst:neighbor-address', 
             }
         ],
+
         'ni_bgp_peer_as': [
-            {
-                'name': 'network-instances/network-instance/name',
-                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
-                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
-                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
-                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
-                'peer_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/peer-as',
+           {
+                'name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:name',
+                'identifier': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:identifier',
+                'protocol_name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:name',
+                'as': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:global/oc-netinst:config/oc-netinst:as',
+                'neighbor_address': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:config/oc-netinst:neighbor-address',
+                'peer_as': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:config/oc-netinst:peer-as',
             }
         ],
-        'ni_bgp_local_as': [
+       'ni_bgp_local_as': [
             {
-                'name': 'network-instances/network-instance/name',
-                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
-                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
-                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
-                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
-                'peer_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/peer-as',
-                'local_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/local-as',
+                'name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:name',
+                'identifier': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:identifier',
+                'protocol_name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:name',
+                'as': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:global/oc-netinst:config/oc-netinst:as',
+                'neighbor_address': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:config/oc-netinst:neighbor-address',
+                'peer_as': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:config/oc-netinst:peer-as',
+                'local_as': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:config/oc-netinst:local-as',
             }
         ],
-        'ni_bgp_peer_type': [
+       'ni_bgp_peer_type': [
             {
-                'name': 'network-instances/network-instance/name',
-                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
-                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
-                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
-                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
-                'peer_type': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/peer-type',
+                'name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:name',
+                'identifier': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:identifier',
+                'protocol_name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:name',
+                'as': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:global/oc-netinst:config/oc-netinst:as',
+                'neighbor_address': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:config/oc-netinst:neighbor-address',
+                'peer_type': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:config/oc-netinst:peer-type',
             }
         ],
         'ni_bgp_remove_private_as': [
             {
-                'name': 'network-instances/network-instance/name',
-                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
-                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
-                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
-                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
-                'remove_private_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/remove-private-as',
+                'name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:name',
+                'identifier': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:identifier',
+                'protocol_name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:name',
+                'as': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:global/oc-netinst:config/oc-netinst:as',
+                'neighbor_address': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:config/oc-netinst:neighbor-address',
+                'remove_private_as': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:config/oc-netinst:remove-private-as',
             }
         ],
         'ni_bgp_description': [
             {
-                'name': 'network-instances/network-instance/name',
-                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
-                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
-                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
-                'description': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/description',
-                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
-                'peer_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/peer-as',
+                'name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:name',
+                'identifier': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:identifier',
+                'protocol_name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:name',
+                'as': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:global/oc-netinst:config/oc-netinst:as',
+                'neighbor_address': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:config/oc-netinst:neighbor-address',
+                'peer_as': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:config/oc-netinst:peer-as',
+                'description': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:config/oc-netinst:description',
             }
         ],
         'ni_bgp_enabled': [
@@ -282,16 +284,17 @@ class NetworkInstance(BasePageObject):
                 'multihop_ttl': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/ebgp-multihop/config/multihop-ttl',
             }
         ],
+
         'ni_bgp_import_policy': [
             {
-                'name': 'routing-policy/policy-definitions/policy-definition/name',
+                'name': 'oc-bgp-pol:routing-policy/oc-bgp-pol:policy-definitions/oc-bgp-pol:policy-definition/oc-bgp-pol:name',
             },
             {
-                'name': 'network-instances/network-instance/name',
-                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
-                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
-                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
-                'import_export_bgp_policy': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/apply-policy/config/import-policy',
+                'name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:name',
+                'identifier': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:identifier',
+                'protocol_name': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:name',
+                'neighbor_address': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:neighbor-address',
+                'import_export_bgp_policy': 'oc-netinst:network-instances/oc-netinst:network-instance/oc-netinst:protocols/oc-netinst:protocol/oc-netinst:bgp/oc-netinst:neighbors/oc-netinst:neighbor/oc-netinst:apply-policy/oc-netinst:config/oc-netinst:import-policy',
             },
         ],
         'ni_bgp_export_policy': [

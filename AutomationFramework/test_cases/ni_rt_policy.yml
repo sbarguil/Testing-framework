@@ -17,7 +17,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    import_policy: "Policy_1"
 
 - testcase:
@@ -38,5 +38,5 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    export_policy: "Policy_1"

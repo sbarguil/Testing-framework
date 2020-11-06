@@ -5,11 +5,11 @@
           This test is to create a routing table for a protocol: BGP, OSPF or STATIC.
       rpcs:
           - template: ni_protocol_tables_creation.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    address_family: "IPV4"
@@ -21,11 +21,11 @@
           This test is to create connection of routing tables between protocols (BGP, OSPF or STATIC) to redistribute routes within a L3 network-instance.
       rpcs:
           - template: ni_protocol_tables_connection.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    identifier_dst_protocol: "BGP"
                    identifier_src_protocol: "OSPF"
                    address_family: "IPV4"
@@ -38,18 +38,18 @@
       rpcs:
 
           - template: ni_protocol_policy_name.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "REDISTRIBUTION_POLICY"
+                   name: "VPLS_10"
 
           - template: ni_protocol_tables_connection_import_policy.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    identifier_dst_protocol: "BGP"
                    identifier_src_protocol: "OSPF"
                    address_family: "IPV4"
@@ -63,11 +63,11 @@
           This test is to set a default-policy to a table connection between protocols (BGP, OSPF or STATIC) to redistribute routes within a L3 network-instance.
       rpcs:
           - template: ni_protocol_tables_connection_default_import_policy.xml
-            target: candidate
+            target: running
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    identifier_dst_protocol: "BGP"
                    identifier_src_protocol: "OSPF"
                    address_family: "IPV4"

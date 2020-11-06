@@ -336,16 +336,19 @@ class BasePageObject:
         print(xmltodict.parse(self.rendered_template))
         parsed_edit_config_template = xmltodict.parse(self.rendered_template)['edit-config']['config']
         parsed_edit_config_template_with_delete = {}
+
+        print("::::::::::::: im hereeeeeeeee")
         for variable in self.generic_values_before_commit:
             if not variable['value_before_commit']:
                 if self.container_created(variable=variable):
+                 
                     parsed_edit_config_template_with_delete = self.insert_delete_operation_to_dict_in_parent_container(
                         parsed_dict=parsed_edit_config_template, created_item_path_list=variable['path_list'])
                     break
                 else:
                     #TODO
                     return
-
+        print("**********here tooooooooooooooooooooooooo")
         target_value_dict = OrderedDict()
         target_value_dict['candidate'] = None
 
@@ -364,6 +367,7 @@ class BasePageObject:
             self.execute_edit_config_with_template(template=edit_config_template_with_delete)
 
     def insert_delete_operation_to_dict_in_parent_container(self, created_item_path_list, parsed_dict):
+        print("::::::::::::::::::::::::::::", created_item_path_list, parsed_dict) 
         recursive_return = None
         if len(created_item_path_list) == 1:
             return True

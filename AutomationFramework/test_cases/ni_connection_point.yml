@@ -9,7 +9,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    type: "L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
 
@@ -24,7 +24,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    type: "L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
@@ -40,7 +40,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    type: "L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
@@ -57,7 +57,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    type: "L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
@@ -74,7 +74,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    type: "L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
@@ -92,7 +92,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    type: "L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
@@ -110,7 +110,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "VPLS_10"
                    type: "L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"

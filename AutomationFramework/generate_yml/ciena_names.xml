@@ -1,0 +1,130 @@
+ <data>
+  <components xmlns="http://openconfig.net/yang/platform">
+   <component>
+    <name>LM-1</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:LINECARD</type>
+    </state>
+   </component>
+   <component>
+    <name>SLOT-1</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:CHASSIS</type>
+    </state>
+   </component>
+   <component>
+    <name>XCVR-1-1</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:TRANSCEIVER</type>
+    </state>
+   </component>
+   <component>
+    <name>OCH-1-1</name>
+    <state>
+     <type xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:OPTICAL_CHANNEL</type>
+    </state>
+   </component>
+   <component>
+    <name>XCVR-1-2</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:TRANSCEIVER</type>
+    </state>
+   </component>
+   <component>
+    <name>OCH-1-2</name>
+    <state>
+     <type xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:OPTICAL_CHANNEL</type>
+    </state>
+   </component>
+   <component>
+    <name>XCVR-1-3</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:TRANSCEIVER</type>
+    </state>
+   </component>
+   <component>
+    <name>XCVR-1-4</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:TRANSCEIVER</type>
+    </state>
+   </component>
+   <component>
+    <name>Waveserver-Ai</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:CHASSIS</type>
+    </state>
+   </component>
+   <component>
+    <name>ILAN-1</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:PORT</type>
+    </state>
+   </component>
+   <component>
+    <name>ILAN-2</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:PORT</type>
+    </state>
+   </component>
+   <component>
+    <name>DCN</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:PORT</type>
+    </state>
+   </component>
+   <component>
+    <name>CONSOLE</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:PORT</type>
+    </state>
+   </component>
+   <component>
+    <name>AP-1</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:FRU</type>
+    </state>
+   </component>
+   <component>
+    <name>FAN-1</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:FAN</type>
+    </state>
+   </component>
+   <component>
+    <name>FAN-2</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:FAN</type>
+    </state>
+   </component>
+   <component>
+    <name>PSU-1</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:POWER_SUPPLY</type>
+    </state>
+   </component>
+   <component>
+    <name>PSU-2</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:POWER_SUPPLY</type>
+    </state>
+   </component>
+   <component>
+    <name>SLOT-2</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:CHASSIS</type>
+    </state>
+   </component>
+   <component>
+    <name>SLOT-3</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:CHASSIS</type>
+    </state>
+   </component>
+   <component>
+    <name>WCS-1</name>
+    <state>
+     <type xmlns:oc-platform-types="http://openconfig.net/yang/platform-types">oc-platform-types:CPU</type>
+    </state>
+   </component>
+  </components>
+ </data>
