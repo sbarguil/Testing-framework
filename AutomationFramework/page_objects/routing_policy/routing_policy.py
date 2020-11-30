@@ -19,6 +19,12 @@ class RoutingPolicy(BasePageObject):
                 'name': 'routing-policy/policy-definitions/policy-definition/name',
             }
         ],
+        'rp_policy_def_statement_result': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+                'statement_name': 'routing-policy/policy-definitions/policy-definition/statements/statement/name',
+            }
+        ],
         'rp_policy_def_policy_result': [
             {
                 'name': 'routing-policy/policy-definitions/policy-definition/name',

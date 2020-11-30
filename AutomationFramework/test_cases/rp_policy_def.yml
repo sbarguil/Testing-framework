@@ -12,6 +12,21 @@
             params:
                    name: "ROUTING_POLICY_EXPORT"
 
+
+- testcase:
+      name: rp_policy_def_statement_name
+      id: 1
+      description: >
+          This test is to set the name of routing policy.
+      rpcs:
+          - template: rp_policy_def_statement_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "ROUTING_POLICY_EXPORT"
+                   statement_name: "1"
+
 - testcase:
       name: rp_policy_def_policy_result
       id: 2
