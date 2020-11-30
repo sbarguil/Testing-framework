@@ -14,6 +14,13 @@ class TestRPPolicyDef(BaseTest):
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
+                                                         'test_case_name': 'rp_policy_def_statement_name',
+                                                         'page_object_class': RoutingPolicy}])
+    def test_rp_policy_def_name(self, create_page_object):
+        create_page_object.execute_rp_policy_def_edit_config_test_case()
+        assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
+
+    @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'rp_policy_def_policy_result',
                                                          'page_object_class': RoutingPolicy}])
     def test_rp_policy_def_policy_result(self, create_page_object):
