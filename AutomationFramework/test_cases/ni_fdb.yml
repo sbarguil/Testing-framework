@@ -11,7 +11,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L2VSI"
+                   type: "oc-ni-types:L2VSI"
                    mac_aging_time: "600"
 
 - testcase:
@@ -26,7 +26,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L2VSI"
+                   type: "oc-ni-types:L2VSI"
                    mac_learning: "true"
 
 - testcase:
@@ -41,5 +41,5 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L2VSI"
+                   type: "oc-ni-types:L2VSI"
                    maximum_entries: "16384"

@@ -11,7 +11,7 @@
             commit: true
             params:
                    interface_name: "test_300"
-                   type: "ieee8023adLag"
+                   type: "ianaift:ieee8023adLag"
                    enabled: "true"
                    lag_type:  "LACP"
 
@@ -27,6 +27,6 @@
             commit: true
             params:
                    interface_name: "test_300"
-                   type: "ieee8023adLag"
+                   type: "ianaift:ieee8023adLag"
                    enabled: "true"
                    min_links:  "5"

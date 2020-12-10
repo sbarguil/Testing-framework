@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
+                   interface_name: "test1"
                    index: "100"
                    description: "Testing1"
 

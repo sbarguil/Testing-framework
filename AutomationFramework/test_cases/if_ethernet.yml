@@ -53,7 +53,7 @@
             commit: true
             params:
                    interface_name: "400"
-                   type: "ieee8023adLag"
+                   type: "ianaift:ieee8023adLag"
                    enabled: "true"
 
           - template: if_ethernet_aggregate_id.xml
@@ -73,5 +73,5 @@
           - template: if_ethernet_port_speed_state.xml
             operation: get
             params:
-                   interface_name: "2"
+                   interface_name: "eth-0/0/0/1"
                    port_speed: ""

@@ -10,7 +10,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   identifier: "BGP"
+                   identifier: "oc-pol-types:BGP"
                    protocol_name: "BGP_65000"
                    address_family: "IPV4"
 
@@ -26,7 +26,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   identifier_dst_protocol: "BGP"
+                   identifier_dst_protocol: "oc-pol-types:BGP"
                    identifier_src_protocol: "OSPF"
                    address_family: "IPV4"
 
@@ -50,7 +50,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   identifier_dst_protocol: "BGP"
+                   identifier_dst_protocol: "oc-pol-types:BGP"
                    identifier_src_protocol: "OSPF"
                    address_family: "IPV4"
                    import_policy: "REDISTRIBUTION_POLICY"
@@ -68,7 +68,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   identifier_dst_protocol: "BGP"
+                   identifier_dst_protocol: "oc-pol-types:BGP"
                    identifier_src_protocol: "OSPF"
                    address_family: "IPV4"
                    default_import_policy: "REJECT_ROUTE"

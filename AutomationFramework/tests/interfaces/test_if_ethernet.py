@@ -43,3 +43,10 @@ class TestInterfacesEthernet(BaseTest):
     def test_if_ethernet_port_speed_state(self, create_page_object):
         create_page_object.execute_get_test_case_with_dispatch()
         assert create_page_object.validate_get_test_case(), create_page_object.get_test_case_description()
+
+    @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
+                                                         'test_case_name': 'if_ethernet_port_speed_state',
+                                                         'page_object_class': Interfaces}])
+    def test_if_ethernet_port_speed_state(self, create_page_object):
+        create_page_object.execute_get_test_case_with_dispatch()
+        assert create_page_object.validate_get_test_case(), create_page_object.get_test_case_description()        

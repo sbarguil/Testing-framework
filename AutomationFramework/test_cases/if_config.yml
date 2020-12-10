@@ -10,8 +10,8 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   type: "ethernet3Mbit"
+                   interface_name: "test1"
+                   type: "ianaift:ethernet3Mbit"
 
 - testcase:
       name: if_config_mtu
@@ -24,7 +24,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
+                   interface_name: "test1"
                    mtu: "1450"
 
 - testcase:
@@ -38,7 +38,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
+                   interface_name: "test1"
                    description: "Test if_config_description 2"
 
 - testcase:
@@ -52,7 +52,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
+                   interface_name: "test1"
                    enabled: "false"
 
 - testcase:
@@ -66,8 +66,8 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   tpid: "TPID_0X9200"
+                   interface_name: "test1"
+                   tpid: "oc-vlan-types:TPID_0X9200"
 
 - testcase:
       name: if_config_loopback_mode
@@ -82,5 +82,5 @@
             commit: true
             params:
                   interface_name: "Loopback0"
-                  type: "softwareLoopback"
+                  type: "ianaift:softwareLoopback"
                   loopback_mode: "true"

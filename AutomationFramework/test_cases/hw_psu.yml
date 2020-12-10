@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "CHASIS"
+                   name: "NEW_SUBCOMPONENT"
                    enabled: "false"
 
 - testcase:
@@ -22,7 +22,7 @@
           - template: hw_psu_capacity.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "NEW_SUBCOMPONENT"
                    capacity: ""
 
 - testcase:
@@ -34,7 +34,7 @@
           - template: hw_psu_enabled_state.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "NEW_SUBCOMPONENT"
                    enabled: ""
 
 - testcase:
@@ -46,7 +46,7 @@
           - template: hw_psu_input_voltage.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "NEW_SUBCOMPONENT"
                    input_voltage: ""
 
 - testcase:
@@ -58,7 +58,7 @@
           - template: hw_psu_output_current.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "NEW_SUBCOMPONENT"
                    output_current: ""
 
 - testcase:
@@ -70,7 +70,7 @@
           - template: hw_psu_output_power.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "NEW_SUBCOMPONENT"
                    output_power: ""
 
 - testcase:
@@ -82,7 +82,7 @@
           - template: hw_psu_output_voltage.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "NEW_SUBCOMPONENT"
                    output_voltage: ""
 
 - testcase:
@@ -94,5 +94,5 @@
           - template: hw_psu_input_current.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "NEW_SUBCOMPONENT"
                    input_current: ""
