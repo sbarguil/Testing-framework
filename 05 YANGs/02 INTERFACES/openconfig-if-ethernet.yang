@@ -366,6 +366,46 @@ module openconfig-if-ethernet {
         bits within the block";
     }
 
+    leaf in-carrier-errors {
+      type oc-yang:counter64;
+      description
+        "The number of received errored frames due to a carrier issue";
+    }
+
+    leaf in-interrupted-tx {
+      type oc-yang:counter64;
+      description
+        "The number of received errored frames due to interrupted
+        transmission issue";
+    }
+
+    leaf in-late-collision {
+      type oc-yang:counter64;
+      description
+        "The number of received errored frames due to late collision
+         issue";
+    }
+
+    leaf in-mac-errors-rx {
+      type oc-yang:counter64;
+      description
+        "The number of received errored frames due to MAC errors
+         received";
+    }
+
+    leaf in-single-collision {
+      type oc-yang:counter64;
+      description
+        "The number of received errored frames due to single collision
+         issue";
+    }
+
+    leaf in-symbol-error {
+      type oc-yang:counter64;
+      description
+        "The number of received errored frames due to symbol error";
+    }
+
     // egress counters
 
     leaf out-mac-control-frames {
@@ -384,6 +424,13 @@ module openconfig-if-ethernet {
       type oc-yang:counter64;
       description
         "Number of 802.1q tagged frames sent on the interface";
+    }
+
+    leaf out-mac-errors-tx {
+      type oc-yang:counter64;
+      description
+        "The number of sent errored frames due to MAC errors
+         transmitted";
     }
   }
 
