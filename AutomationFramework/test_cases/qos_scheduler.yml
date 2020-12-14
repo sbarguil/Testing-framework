@@ -124,4 +124,3 @@
             params:
                   name: "scheduler_policy_AF1"
                   sequence: "1"
-                  max_queue_depth_bytes: "512"

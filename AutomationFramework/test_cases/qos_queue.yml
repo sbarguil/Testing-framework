@@ -40,4 +40,3 @@
             params:
                    name: "queue_AF1"
                    maxth: "2048" 
-                   queue_type: "RED"

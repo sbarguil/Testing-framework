@@ -24,4 +24,3 @@
             operation: edit-config
             commit: true
             params:
-                   ext_community_set_name: "IMPORT_EXAMPLE"

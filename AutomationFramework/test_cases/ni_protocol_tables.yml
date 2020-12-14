@@ -71,4 +71,3 @@
                    identifier_dst_protocol: "BGP"
                    identifier_src_protocol: "OSPF"
                    address_family: "IPV4"
-                   default_import_policy: "REJECT_ROUTE"

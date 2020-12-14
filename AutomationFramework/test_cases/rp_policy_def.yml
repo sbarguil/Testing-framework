@@ -64,4 +64,3 @@
                    name: "ROUTING_POLICY_EXPORT"
                    statement_name: "1"
                    match_set_options: "ANY"
-                   ext_community_set: "RT_IMPORT_POLICY"

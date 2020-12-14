@@ -73,4 +73,3 @@
             params:
                    interface_name: "system"
                    type: "tunnel"
-                   mtu: "1500"

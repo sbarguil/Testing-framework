@@ -8,7 +8,7 @@
           - template: hw_transceiver_slot_id.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "chassis 1"
                    slot_id: ""
 
 - testcase:
@@ -34,6 +34,5 @@
           - template: hw_transceiver_enabled_state.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "chassis 1"
                    enabled: ""
-

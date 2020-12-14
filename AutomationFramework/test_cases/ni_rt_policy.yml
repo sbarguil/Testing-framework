@@ -39,4 +39,3 @@
             commit: true
             params:
                    name: "Base"
-                   export_policy: "Policy_1"

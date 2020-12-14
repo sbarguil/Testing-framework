@@ -27,4 +27,3 @@
             params:
                    name: "Base"
                    type: "L3VRF"
-                   label_allocation_mode: "PER_PREFIX"           

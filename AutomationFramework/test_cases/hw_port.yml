@@ -66,4 +66,3 @@
             operation: get
             params:
                    name: "Eth1/1"
-                   num_channels: ""

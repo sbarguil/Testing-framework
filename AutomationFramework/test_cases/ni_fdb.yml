@@ -42,4 +42,3 @@
             params:
                    name: "Base"
                    type: "L2VSI"
-                   maximum_entries: "16384"

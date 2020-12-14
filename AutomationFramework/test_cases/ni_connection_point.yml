@@ -115,4 +115,3 @@
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
                    cp_type: "REMOTE"
-                   virtual_circuit_identifier: "1001001"

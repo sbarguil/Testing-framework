@@ -83,4 +83,3 @@
             params:
                   interface_name: "loopback"
                   type: "softwareLoopback"
-                  loopback_mode: "true"

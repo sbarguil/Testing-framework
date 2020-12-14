@@ -22,5 +22,4 @@
           - template: hw_linecard_power_admin_state.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   power_admin_state: ""
+                   name: "chassis 1"

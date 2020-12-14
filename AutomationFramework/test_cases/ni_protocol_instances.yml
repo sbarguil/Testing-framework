@@ -28,4 +28,3 @@
                    name: "Base"
                    identifier: "BGP"
                    protocol_name: "0"
-                   enabled: "true"    

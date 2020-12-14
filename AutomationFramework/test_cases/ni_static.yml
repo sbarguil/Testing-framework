@@ -48,4 +48,3 @@
                    protocol_name: "0"
                    prefix: "192.168.100.0/24"
                    index: "10"
-                   metric: "150"

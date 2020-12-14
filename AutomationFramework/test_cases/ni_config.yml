@@ -110,4 +110,3 @@
             params:
                    name: "Base"
                    type: "L2VSI"
-                   mtu: "1450"

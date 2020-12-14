@@ -74,4 +74,3 @@
             operation: get
             params:
                    interface_name: "1/1/1"
-                   port_speed: ""
