@@ -672,6 +672,16 @@ module openconfig-interfaces {
                      ifHCInMulticastPkts";
       }
 
+
+      leaf in-align-errors {
+        type oc-yang:counter64;
+        description
+          "Prueba de nuvo contador";
+        reference
+          "Mi referencia";
+      }
+
+
       leaf in-discards {
         type oc-yang:counter64;
         description
