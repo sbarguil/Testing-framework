@@ -558,7 +558,7 @@ submodule openconfig-bgp-neighbor {
       }
 
       leaf rejected {
-        type uint32;
+        type oc-yang:counter64;
         description
           "This counter is incremented when a route prefix, which
           belongs to an address family, received on this 
@@ -569,7 +569,7 @@ submodule openconfig-bgp-neighbor {
       }
 
       leaf supressed {
-        type uint32;
+        type oc-yang:counter64;
         description
           "This counter is incremented when a route prefix, which 
 		  belongs to an address family is suppressed from being 
@@ -580,7 +580,7 @@ submodule openconfig-bgp-neighbor {
       }
 
       leaf withdrawn {
-        type uint32;
+        type oc-yang:counter64;
         description
           "This counter is incremented when a route prefix, 
 		  which belongs to an address family, is withdrawn on 
