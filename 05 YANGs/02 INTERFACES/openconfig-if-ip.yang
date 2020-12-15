@@ -260,6 +260,60 @@ module openconfig-if-ip {
           Internet Protocol (IP)";
       }
 
+      leaf in-ip-frag-fail {
+        type oc-yang:counter64;
+        description
+          "The number of IP datagrams that have been discarded 
+		  because they needed to be fragmented at this entity but 
+		  could not be, e.g., because their Don't Fragment flag was 
+		  set.";
+      }
+
+      leaf in-icmp-echo-resp {
+        type oc-yang:counter64;
+        description
+          "The number of ICMP Echo (request) messages received.";
+      }
+
+      leaf in-icmp-msg {
+        type oc-yang:counter64;
+        description
+          "The total number of ICMP messages which the entity 
+		  received. Note that this counter includes all those 
+		  counted by in-add-pkt-error.";
+      }
+
+      leaf in-add-pkt-error {
+        type oc-yang:counter64;
+        description
+          "The number of input datagrams discarded because the IP 
+		  address in their IP header's destination field was not a 
+		  valid address to be received at this entity. This count 
+		  includes invalid addresses (e.g., 0.0.0.0) and addresses of
+		  unsupported Classes (e.g., Class E). For entities which 
+		  are not IP Gateways and therefore do not forward datagrams,
+		  this counter includes datagrams discarded because the 
+		  destination address was not a local address.";
+      }
+
+      leaf in-snmp-pkt {
+        type oc-yang:counter64;
+        description
+          "The total number of Messages delivered to the SNMP entity 
+		  from the transport service.";
+      }
+
+      leaf in-pkt-fail-install {
+        type oc-yang:counter64;
+        description
+          "The number of failures detected by the IP re-assembly 
+		  algorithm (for whatever reason: timed out, errors, etc). 
+		  Note that this is not necessarily a count of discarded IP 
+		  fragments since some algorithms (notably the algorithm in 
+		  RFC 815) can lose track of the number of fragments by 
+		  combining them as they are received.";
+      }
+
       leaf out-pkts {
         type oc-yang:counter64;
         description
@@ -332,6 +386,56 @@ module openconfig-if-ip {
         reference
           "RFC 4293 - Management Information Base for the
           Internet Protocol (IP)";
+      }
+
+      leaf out-icmp-echo-resp {
+        type oc-yang:counter64;
+        description
+          "The number of ICMP Echo Reply messages sent.";
+      }
+
+      leaf out-icmp-msg {
+        type oc-yang:counter64;
+        description
+          "The total number of ICMP messages which this entity 
+		  attempted to send.";
+      }
+
+      leaf out-icmp-timeout {
+        type oc-yang:counter64;
+        description
+          "The number of ICMP Time Exceeded messages sent.";
+      }
+
+      leaf out-icmp-unreachable {
+        type oc-yang:counter64;
+        description
+          "The number of ICMP Destination Unreachable messages 
+		  sent.";
+      }
+
+      leaf out-pkt-req {
+        type oc-yang:counter64;
+        description
+          "The total number of IP datagrams which local IP 
+		  user-protocols (including ICMP) supplied to IP in requests 
+		  for transmission.";
+      }
+
+      leaf out-snmp-pkt {
+        type oc-yang:counter64;
+        description
+          "The total number of SNMP Messages which were passed from 
+		  the SNMP protocol entity to the transport service.";
+      }
+
+      leaf out-pkt-wo-route-discard {
+        type oc-yang:counter64;
+        description
+          "The number of IP datagrams discarded because no route 
+		  could be found to transmit them to their destination. 
+		  Note that this includes any datagrams which a host cannot 
+		  route because all of its default gateways are down.";
       }
     }
 
