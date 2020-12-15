@@ -369,41 +369,69 @@ module openconfig-if-ethernet {
     leaf in-carrier-errors {
       type oc-yang:counter64;
       description
-        "The number of received errored frames due to a carrier issue";
+        "The number of times that the carrier sense condition was 
+		lost or never asserted when attempting to transmit a frame 
+		on a particular interface. The count represented by an 
+		instance of this object is incremented at most once per 
+		transmission attempt, even if the carrier sense condition 
+		fluctuates during a transmission attempt";
     }
 
     leaf in-interrupted-tx {
       type oc-yang:counter64;
       description
-        "The number of received errored frames due to interrupted
-        transmission issue";
+        "A count of frames for which the first transmission attempt
+		on a particular interface is delayed because the medium is 
+		busy. The count represented by an instance of this object 
+		does not include frames involved in collisions";
     }
 
     leaf in-late-collision {
       type oc-yang:counter64;
       description
-        "The number of received errored frames due to late collision
-         issue";
+        "The number of times that a collision is detected on a 
+		particular interface later than 512 bit-times into the 
+		transmission of a packet.
+		
+		Five hundred and twelve bit-times corresponds to 51.2 
+		microseconds on a 10 Mbit/s system. A (late) collision 
+		included in a count represented by an instance of this 
+		object is also considered as a (generic) collision for 
+		purposes of other collision-related statistics";
     }
 
     leaf in-mac-errors-rx {
       type oc-yang:counter64;
       description
-        "The number of received errored frames due to MAC errors
-         received";
+        "A count of frames for which reception on a particular 
+		interface fails due to an internal MAC sublayer receive 
+		error. A frame is only counted by an instance of this object 
+		if it is not counted by the corresponding instance of either 
+		the in-oversize-frames object, the in-crc-errors object, or 
+		the in-fcs-errors object.
+		
+		The precise meaning of the count represented by an instance 
+		of this object is implementation-specific. In particular, 
+		an instance of this object may represent a count of receive 
+		errors on a particular interface that are not otherwise 
+		counted";
     }
 
     leaf in-single-collision {
       type oc-yang:counter64;
       description
-        "The number of received errored frames due to single collision
-         issue";
+        "A count of successfully transmitted frames on a particular 
+		interface for which transmission is inhibited by exactly one 
+		collision";
     }
 
     leaf in-symbol-error {
       type oc-yang:counter64;
       description
-        "The number of received errored frames due to symbol error";
+        "The count represented by an instance of this object is 
+		incremented at most once per carrier event, even if multiple 
+		symbol errors occur during the carrier event. This count does
+		not increment if a collision is present.";
     }
 
     // egress counters
@@ -429,8 +457,17 @@ module openconfig-if-ethernet {
     leaf out-mac-errors-tx {
       type oc-yang:counter64;
       description
-        "The number of sent errored frames due to MAC errors
-         transmitted";
+        "A count of frames for which transmission on a particular 
+		interface fails due to an internal MAC sublayer transmit 
+		error. A frame is only counted by an instance of this object 
+		if it is not counted by the corresponding instance of either 
+		the in-late-collision object or the in-carrier-errors object.
+		
+		The precise meaning of the count represented by an instance 
+		of this object is implementation-specific. In particular, an 
+		instance of this object may represent a count of transmission
+		errors on a particular interface that are not otherwise 
+		counted";
     }
   }
 
