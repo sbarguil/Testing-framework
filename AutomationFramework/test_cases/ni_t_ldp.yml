@@ -12,7 +12,7 @@
             params:
                    name: "Prueba_LxVPN"
                    afi_name: "IPV4"
-                   type: "DEFAULT_INSTANCE"
+                   type: "oc-ni-types:DEFAULT_INSTANCE"
 
 - testcase:
       name: ni_t_ldp_remote_address
@@ -27,7 +27,7 @@
             params:
                    name: "Prueba_LxVPN"
                    afi_name: "IPV4"
-                   type: "DEFAULT_INSTANCE"
+                   type: "oc-ni-types:DEFAULT_INSTANCE"
                    remote_address: "172.16.200.2"
 
 - testcase:
@@ -43,7 +43,7 @@
             params:
                    name: "Prueba_LxVPN"
                    afi_name: "IPV4"
-                   type: "DEFAULT_INSTANCE"
+                   type: "oc-ni-types:DEFAULT_INSTANCE"
                    remote_address: "172.16.200.2"
                    local_address: "172.16.100.1"
 
@@ -61,5 +61,5 @@
                    name: "Prueba_LxVPN"
                    afi_name: "IPV4"
                    remote_address: "172.16.200.2"
-                   type: "DEFAULT_INSTANCE"
+                   type: "oc-ni-types:DEFAULT_INSTANCE"
                    enabled: "true"

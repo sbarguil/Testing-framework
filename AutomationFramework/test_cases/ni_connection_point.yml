@@ -10,7 +10,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L2P2P"
+                   type: "oc-ni-types:L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
 
 - testcase:
@@ -25,7 +25,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L2P2P"
+                   type: "oc-ni-types:L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
 
@@ -41,7 +41,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L2P2P"
+                   type: "oc-ni-types:L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
                    precedence: "100"
@@ -58,10 +58,10 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L2P2P"
+                   type: "oc-ni-types:L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
-                   cp_type: "REMOTE"
+                   cp_type: "oc-ni-types:REMOTE"
 
 - testcase:
       name: ni_connection_point_remote_system
@@ -75,10 +75,10 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L2P2P"
+                   type: "oc-ni-types:L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
-                   cp_type: "REMOTE"
+                   cp_type: "oc-ni-types:REMOTE"
                    remote_system: "172.16.200.2"
 
 - testcase:
@@ -93,10 +93,10 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L2P2P"
+                   type: "oc-ni-types:L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
-                   cp_type: "REMOTE"
+                   cp_type: "oc-ni-types:REMOTE"
                    site_id: "1001"
 
 - testcase:
@@ -111,8 +111,8 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L2P2P"
+                   type: "oc-ni-types:L2P2P"
                    connection_point_id: "PW_Redundancy_A/S"
                    endpoint_id: "PW_Active"
-                   cp_type: "REMOTE"
+                   cp_type: "oc-ni-types:REMOTE"
                    virtual_circuit_identifier: "1001001"

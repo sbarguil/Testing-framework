@@ -1,0 +1,410 @@
+module openconfig-evpn {
+
+  // namespace
+  namespace "http://openconfig.net/yang/evpn";
+
+  prefix "oc-evpn";
+
+  import openconfig-network-instance {prefix ni;}
+  import openconfig-yang-types { prefix oc-yang; }
+  import openconfig-extensions { prefix oc-ext; }
+  import openconfig-network-instance-types { prefix oc-ni-types; }
+  import openconfig-bgp-types { prefix oc-bgp-types; }
+  
+  // meta
+  organization
+    "OpenConfig working group";
+
+  contact
+    "OpenConfig working group
+    netopenconfig@googlegroups.com";
+
+     description   "evpn";
+
+     oc-ext:openconfig-version "0.0.1";
+
+     revision "2020-11-24" {
+       description "Initial revision";
+       reference   "0.0.1";
+     }
+
+      /* Features */
+
+     feature evpn-pbb-params {
+       description "EVPN's PBB parameters";
+     }
+
+     /* Identities */
+
+    identity L2VLAN {
+      base "oc-ni-types:NETWORK_INSTANCE_TYPE";
+      description "Reference to an EVPN instance";
+    }
+
+     /* Typedef */
+
+  typedef evi-id {
+    description 
+      "The supported range of EVPN Instances.";
+    type uint32 {
+      range "1..65535";
+    }
+  }
+
+     /* Groupings */
+
+grouping bgp-evpn-list-config {
+
+    leaf bgp-instance-id {
+      type uint8;
+      description
+        "The index of the bgp-vpn instance";
+    }
+    container route-distinguisher {
+      description 
+        "Route Distinguisher (RD) of the bgp-vpn instance.";
+      leaf rd {
+        type oc-ni-types:route-distinguisher;
+        description 
+        "Route Distinguisher (RD) configured in the bgp-vpn instance. 
+         When used for evpn and if not configured, the RD is 
+         auto-derived with the format <ip-address>:<evi> where 
+         'ip-address' is the ipv4 address associated to the 
+         system loopback sub-interface.";
+      }
+    }
+    container route-target {
+      description 
+        "Route Target (RT) of the bgp-vpn instance.";
+      leaf export-rt {
+        type oc-bgp-types:bgp-ext-community-type;
+        description
+          "Export Route Target (RT) in the bgp-vpn instance. 
+           When used for evpn and if not configured, the RT is auto-derived 
+           with the format <asn>:<evi> where 'asn' is the autonomous-system 
+           configured in the network-instance default.";
+      }
+      leaf import-rt {   // import works, too keep inline with export-rt 
+        type oc-bgp-types:bgp-ext-community-type;
+        description 
+          "Import Route Target (RT) in the bgp-vpn instance. 
+           When used for evpn and if not configured, the RT is 
+           auto-derived with the format <asn>:<evi> where 'asn' is the 
+           autonomous-system configured in the network-instance default.";
+      }
+    }
+  }
+
+
+  grouping bgp-evpn-evi-config {
+    leaf evi {
+      type evi-id;
+        description 
+          "EVPN Instance identifier associated to the bgp-evpn instance. 
+           Used for auto-derivation of: 
+           - the bgp-instance route distinguisher in the format <ip-address>:evi 
+             (where 'ip-address' is loopback address.
+           - the bgp-instance route target in the format <asn>:<evi>, where 'asn' 
+             is the autonomous-system configured in the network-instance default.
+           In addition, the evi value is used for the EVPN Multi-Homing Designated 
+           Forwarder (DF) Election.";
+    }
+    
+    leaf ecmp {
+      type uint8 {
+        range "1..8";
+      }
+      default 1;
+      description 
+        "The supported range of ECMP values for layer-2 aliasing (in mac-vrf 
+         instances) or layer-3 ecmp (in routed instances).";
+    }
+
+    description
+    "";
+  }
+
+  grouping bgp-evpn-list-state {
+    leaf oper-status {
+      type enumeration {
+        enum UP {
+          description
+            "evpn bgp-instance is operationally up";
+        }
+        enum DOWN {
+          description
+            "evpn bgp-instance is operationally down";
+        }
+      }
+      description
+        "Operational state of the evpn bgp-instance";
+    }
+  }
+
+
+grouping bgp-vpn-list-state {
+    leaf route-distinguisher-origin {
+      type enumeration {
+        enum "auto-derived-from-evi";
+        enum "auto-derived-from-system-ip:0";
+        enum "manual";
+        enum "none";
+      }
+      description
+        "Origin of the operational Route Distinguisher (RD) of the bgp-vpn instance.
+         'Auto-derived-from-evi' refers to an RD that is automatically allocated with the 
+         format <ip-address>:<evi> where 'ip-address' is the ipv4 address associated to 
+         the system loopback.
+         'Manual' refers to an RD that is configured.
+         'None' indicates that the RD is neither configured nor auto-derived.";
+    }
+    leaf export-route-target-origin {
+      type enumeration {
+        enum "auto-derived-from-evi";
+        enum "manual";
+        enum "none";
+      }
+      description
+        "Origin of the operational export Route Target (RT) of the bgp-vpn instance.
+         'Auto-derived-from-evi' refers to an RT that is automatically allocated with the format <asn>:<evi>
+         where 'asn' is the autonomous-system-number configured in the network-instance default.
+         'Manual' refers to an export RT that is configured.
+         'None' indicates that the export RT is neither configured nor auto-derived.";
+    }
+    leaf import-route-target-origin {
+      type enumeration {
+        enum "auto-derived-from-evi";
+        enum "manual";
+        enum "none";
+      }
+      description
+        "Origin of the operational import Route Target (RT) of the bgp-vpn instance.
+         'Auto-derived-from-evi' refers to an RT that is automatically allocated with the format <asn>:<evi>
+         where 'asn' is the autonomous-system-number configured in the network-instance default.
+         'Manual' refers to an import RT that is configured.
+         'None' indicates that the import RT is neither configured nor auto-derived.";
+    }
+  }
+
+  grouping evpn-overlay-parameters-grp {
+      leaf anycast-gateway-mac {
+        type oc-yang:mac-address;
+        description "ingress-replication";
+      }
+      list overlay-endpoints {
+        key name;
+        leaf name {
+          type string;
+          description "ingress-replication";
+        }
+        leaf type {
+          type string;
+          description "ingress-replication";
+        }
+        leaf ingress-replication {
+            type boolean;
+            description "ingress-replication";
+        }
+        leaf p2mp-replication {
+            type boolean;
+            description "p2mp-replication";
+        }
+        leaf underlay-multicast {
+          type boolean;
+          default false;
+          description "Enable (TRUE) or disable (FALSE) " +
+                      "underlay multicast";
+        }
+        leaf flood-unknown-unicast-supression {
+          type boolean;
+          default false;
+          description "Enable (TRUE) or disable (FALSE) " +
+                      "flood unknown unicast suppression";
+        }
+        leaf vpws-vlan-aware {
+          type boolean;
+          default false;
+          description "Enable (TRUE) or disable (FALSE) " +
+                      "VPWS VLAN aware";
+        }
+      }
+    }
+
+
+  grouping evpn-parameters-pbb-config {
+     description "PBB parameters grouping";
+     reference "IEEE 802.1ah Provider Backbone Bridge";
+     list b-component {
+       key "b-component-name";
+       description 
+         "list of b-components";
+       leaf b-component-name {
+         type string;
+         description "Type of the associated b-component";
+       }
+       leaf b-mac-neighbour {
+         type oc-yang:hex-string;
+         description "source backbone mac";
+         }
+       list i-component {
+         key "i-sid";
+         description 
+           "list of i-components";
+         leaf i-sid {
+           type uint32 {
+             range "0..16777216";
+           }
+           description "I-SID type that is 24-bits.";
+         }
+         leaf backbone-src-mac {
+              type oc-yang:mac-address;
+              description "backbone-src-mac";
+         }
+       }
+     }    
+   }
+
+  grouping fdb-params {
+    leaf mac-mobility {
+      type boolean;
+      description 
+      "It is possible for a given host or end-station (as defined by its MAC
+      address) to move from one Ethernet segment to another; this is referred 
+      to as 'MAC Mobility' or 'MAC move";
+    }
+    leaf mac-mobility-window {
+      type string;
+      description "";
+    }
+    leaf mac-mobility-sequence {
+      type string;
+      description "";
+    }
+    leaf mac-pinning{
+      type boolean;
+      description 
+      "If you configure MAC pinning on a CE interface, 
+      that MAC address cannot be moved to any other CE interface";
+    }
+    leaf arp-proxy {
+      type boolean;
+      default false;
+      description 
+      "Enable (TRUE) or disable (FALSE) ARP proxy";
+    }
+    leaf arp-suppression {
+      type boolean;
+      default false;
+      description "Enable (TRUE) or disable (FALSE) " +
+                  "ARP suppression";
+    }
+    leaf nd-proxy {
+      type boolean;
+      default false;
+      description "Enable (TRUE) or disable (FALSE) Neighbor Discovery proxy";
+    }
+    leaf nd-suppression {
+      type boolean;
+      default false;
+      description "Enable (TRUE) or disable (FALSE) Neighbor Discovery" +
+                  "ND suppression";
+    }
+  } 
+
+
+     /* EVPN YANG Model */
+
+  grouping bgp-evpn-list-top {
+      list bgp-instances {
+        key "bgp-instance";
+        description
+          "List of bgp-vpn instances used by evpn";
+        leaf bgp-instance {
+          type leafref {
+            path "../config/bgp-instance-id";
+          }
+        }
+        container config {
+          uses bgp-evpn-list-config;
+          container evpn {
+            uses bgp-evpn-evi-top;
+            description "";
+            }
+          description "";
+        }
+
+        container state {
+          config false;
+          uses bgp-evpn-list-config;
+          uses bgp-evpn-list-state;
+          container evpn {
+            uses bgp-evpn-evi-top;
+            description "";  
+            }
+          description "";
+        }
+      }
+  }
+
+
+  grouping bgp-evpn-evi-top {
+    container config {
+      uses bgp-evpn-evi-config;
+      description "";
+    }
+    container state {
+      config false;
+      uses bgp-evpn-evi-config;
+      description "";
+    }
+  }
+
+  grouping bgp-evpn-pbb-top {
+        container config {
+          uses evpn-parameters-pbb-config;
+          description "";
+        }
+        container state {
+          config false;
+          uses evpn-parameters-pbb-config;
+          description "";
+        }
+  }
+
+  grouping bgp-evpn-overlay-top {
+        container config {
+          uses evpn-overlay-parameters-grp;
+          description "";
+        }
+        container state {
+          config false;
+          uses evpn-overlay-parameters-grp;
+          description "";
+        }
+  }
+
+     /* Augments */
+
+     augment "/ni:network-instances/ni:network-instance/ni:fdb" {
+       description "Augment for an L2VPN instance to add EVPN PBB";
+          uses fdb-params;  
+       }
+
+     augment "/ni:network-instances/ni:network-instance" {
+       description "Augment for an L2VPN instance to add EVPN PBB";
+         container pbb {
+           description "EVPN pseudowire";
+          uses bgp-evpn-pbb-top;  
+         }
+       }
+     
+      augment "/ni:network-instances/ni:network-instance/ni:protocols" {
+       description "Augment for an L2VPN instance to add EVPN PBB";
+          uses bgp-evpn-list-top;  
+         container overlays {
+           description "EVPN pseudowire";
+          uses bgp-evpn-overlay-top;  
+         }
+       }
+
+   }

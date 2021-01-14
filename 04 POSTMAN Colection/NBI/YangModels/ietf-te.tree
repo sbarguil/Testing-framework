@@ -1,0 +1,375 @@
+module: ietf-te
+  +--rw te!
+     +--rw globals
+     |  +--rw named-admin-groups
+     |  |  +--rw named-admin-group* [name] {te-types:extended-admin-groups,te-types:named-extended-admin-groups}?
+     |  |     +--rw name            string
+     |  |     +--rw bit-position?   uint32
+     |  +--rw named-srlgs
+     |  |  +--rw named-srlg* [name] {te-types:named-srlg-groups}?
+     |  |     +--rw name     string
+     |  |     +--rw group?   te-types:srlg
+     |  |     +--rw cost?    uint32
+     |  +--rw named-path-constraints
+     |     +--rw named-path-constraint* [name] {te-types:named-path-constraints}?
+     |        +--rw name                        string
+     |        +--rw shared-resources-tunnels
+     |        |  +--rw lsp-shared-resources-tunnel*   tunnel-ref
+     |        +--rw path-in-segment!
+     |        +--rw path-out-segment!
+     +--rw tunnels
+     |  +--rw tunnel* [name]
+     |  |  +--ro operational-state?              identityref
+     |  |  +--rw name                            string
+     |  |  +--rw identifier?                     uint16
+     |  |  +--rw description?                    string
+     |  |  +--rw encoding?                       identityref
+     |  |  +--rw switching-type?                 identityref
+     |  |  +--rw provisioning-state?             identityref
+     |  |  +--rw preference?                     uint8
+     |  |  +--rw reoptimize-timer?               uint16
+     |  |  +--rw source?                         te-types:te-node-id
+     |  |  +--rw destination?                    te-types:te-node-id
+     |  |  +--rw src-tp-id?                      yang:hex-string
+     |  |  +--rw dst-tp-id?                      yang:hex-string
+     |  |  +--rw bidirectional?                  boolean
+     |  |  +--rw association-objects
+     |  |  |  +--rw association-object* [type ID source global-source]
+     |  |  |  |  +--rw type             identityref
+     |  |  |  |  +--rw ID               uint16
+     |  |  |  |  +--rw source           te-types:te-node-id
+     |  |  |  |  +--rw global-source    te-types:te-node-id
+     |  |  |  +--rw association-object-extended* [type ID source global-source extended-ID]
+     |  |  |     +--rw type             identityref
+     |  |  |     +--rw ID               uint16
+     |  |  |     +--rw source           te-types:te-node-id
+     |  |  |     +--rw global-source    te-types:te-node-id
+     |  |  |     +--rw extended-ID      yang:hex-string
+     |  |  +--rw protection
+     |  |  |  +--rw enable?                         boolean
+     |  |  |  +--rw protection-type?                identityref
+     |  |  |  +--rw protection-reversion-disable?   boolean
+     |  |  |  +--rw hold-off-time?                  uint32
+     |  |  |  +--rw wait-to-revert?                 uint16
+     |  |  |  +--rw aps-signal-id?                  uint8
+     |  |  +--rw restoration
+     |  |  |  +--rw enable?                          boolean
+     |  |  |  +--rw restoration-type?                identityref
+     |  |  |  +--rw restoration-scheme?              identityref
+     |  |  |  +--rw restoration-reversion-disable?   boolean
+     |  |  |  +--rw hold-off-time?                   uint32
+     |  |  |  +--rw wait-to-restore?                 uint16
+     |  |  |  +--rw wait-to-revert?                  uint16
+     |  |  +--rw dependency-tunnels
+     |  |  |  +--rw dependency-tunnel* [name]
+     |  |  |     +--rw name              -> ../../../../../tunnels/tunnel/name
+     |  |  |     +--rw encoding?         identityref
+     |  |  |     +--rw switching-type?   identityref
+     |  |  +--rw hierarchical-link
+     |  |  |  +--rw local-te-node-id?      te-types:te-node-id
+     |  |  |  +--rw local-te-link-tp-id?   te-types:te-tp-id
+     |  |  |  +--rw remote-te-node-id?     te-types:te-node-id
+     |  |  +--rw p2p-primary-paths
+     |  |  |  +--rw p2p-primary-path* [name]
+     |  |  |     +--rw name                             string
+     |  |  |     +--rw path-setup-protocol?             identityref
+     |  |  |     +--rw path-computation-method?         identityref
+     |  |  |     +--rw path-computation-server?         inet:ip-address
+     |  |  |     +--rw compute-only?                    empty
+     |  |  |     +--rw use-path-computation?            boolean
+     |  |  |     +--rw lockdown?                        empty
+     |  |  |     +--ro path-scope?                      identityref
+     |  |  |     +--rw preference?                      uint8
+     |  |  |     +--rw k-requested-paths?               uint8
+     |  |  |     +--rw named-path-constraint?           -> ../../../../../globals/named-path-constraints/named-path-constraint/name {te-types:named-path-constraints}?
+     |  |  |     +--rw shared-resources-tunnels
+     |  |  |     |  +--rw lsp-shared-resources-tunnel*   tunnel-ref
+     |  |  |     +--rw path-in-segment!
+     |  |  |     +--rw path-out-segment!
+     |  |  |     +--ro computed-paths-properties
+     |  |  |     |  +--ro computed-path-properties* [k-index]
+     |  |  |     |     +--ro k-index            uint8
+     |  |  |     |     +--ro path-properties
+     |  |  |     |        +--ro path-metric* [metric-type]
+     |  |  |     |        |  +--ro metric-type           identityref
+     |  |  |     |        |  +--ro accumulative-value?   uint64
+     |  |  |     |        +--ro path-route-objects
+     |  |  |     |        |  +--ro path-route-object* [index]
+     |  |  |     |        |     +--ro index    uint32
+     |  |  |     |        +--ro shared-resources-tunnels
+     |  |  |     |           +--ro lsp-shared-resources-tunnel*   tunnel-ref
+     |  |  |     +--ro computed-path-error-infos
+     |  |  |     |  +--ro computed-path-error-info* []
+     |  |  |     |     +--ro error-description?   string
+     |  |  |     |     +--ro error-timestamp?     yang:date-and-time
+     |  |  |     |     +--ro error-reason?        identityref
+     |  |  |     +--ro lsp-provisioning-error-infos
+     |  |  |     |  +--ro lsp-provisioning-error-info* []
+     |  |  |     |     +--ro error-description?   string
+     |  |  |     |     +--ro error-timestamp?     yang:date-and-time
+     |  |  |     |     +--ro error-node-id?       te-types:te-node-id
+     |  |  |     |     +--ro error-link-id?       te-types:te-tp-id
+     |  |  |     |     +--ro lsp-id?              uint16
+     |  |  |     +--ro lsps
+     |  |  |     |  +--ro lsp* [lsp-id]
+     |  |  |     |     +--ro lsp-provisioning-error-infos
+     |  |  |     |     |  +--ro lsp-provisioning-error-info* []
+     |  |  |     |     |     +--ro error-description?   string
+     |  |  |     |     |     +--ro error-timestamp?     yang:date-and-time
+     |  |  |     |     |     +--ro error-node-id?       te-types:te-node-id
+     |  |  |     |     |     +--ro error-link-id?       te-types:te-tp-id
+     |  |  |     |     +--ro source?                             te-types:te-node-id
+     |  |  |     |     +--ro destination?                        te-types:te-node-id
+     |  |  |     |     +--ro tunnel-id?                          uint16
+     |  |  |     |     +--ro lsp-id                              uint16
+     |  |  |     |     +--ro extended-tunnel-id?                 yang:dotted-quad
+     |  |  |     |     +--ro operational-state?                  identityref
+     |  |  |     |     +--ro path-setup-protocol?                identityref
+     |  |  |     |     +--ro origin-type?                        enumeration
+     |  |  |     |     +--ro lsp-resource-status?                enumeration
+     |  |  |     |     +--ro lockout-of-normal?                  boolean
+     |  |  |     |     +--ro freeze?                             boolean
+     |  |  |     |     +--ro lsp-protection-role?                enumeration
+     |  |  |     |     +--ro lsp-protection-state?               identityref
+     |  |  |     |     +--ro protection-group-ingress-node-id?   te-types:te-node-id
+     |  |  |     |     +--ro protection-group-egress-node-id?    te-types:te-node-id
+     |  |  |     |     +--ro lsp-shared-resources-tunnel?        tunnel-ref
+     |  |  |     |     +--ro lsp-record-route-information
+     |  |  |     |     |  +--ro lsp-record-route-information* [index]
+     |  |  |     |     +--ro path-properties
+     |  |  |     |        +--ro path-metric* [metric-type]
+     |  |  |     |        |  +--ro metric-type           identityref
+     |  |  |     |        |  +--ro accumulative-value?   uint64
+     |  |  |     |        +--ro path-route-objects
+     |  |  |     |        |  +--ro path-route-object* [index]
+     |  |  |     |        |     +--ro index    uint32
+     |  |  |     |        +--ro shared-resources-tunnels
+     |  |  |     |           +--ro lsp-shared-resources-tunnel*   tunnel-ref
+     |  |  |     +--rw p2p-primary-reverse-path
+     |  |  |     |  +--rw name?                           string
+     |  |  |     |  +--rw path-setup-protocol?            identityref
+     |  |  |     |  +--rw path-computation-method?        identityref
+     |  |  |     |  +--rw path-computation-server?        inet:ip-address
+     |  |  |     |  +--rw compute-only?                   empty
+     |  |  |     |  +--rw use-path-computation?           boolean
+     |  |  |     |  +--rw lockdown?                       empty
+     |  |  |     |  +--ro path-scope?                     identityref
+     |  |  |     |  +--rw named-path-constraint?          -> ../../../../../../globals/named-path-constraints/named-path-constraint/name {te-types:named-path-constraints}?
+     |  |  |     |  +--rw shared-resources-tunnels
+     |  |  |     |  |  +--rw lsp-shared-resources-tunnel*   tunnel-ref
+     |  |  |     |  +--rw path-in-segment!
+     |  |  |     |  +--rw path-out-segment!
+     |  |  |     |  +--ro computed-paths-properties
+     |  |  |     |  |  +--ro computed-path-properties* [k-index]
+     |  |  |     |  |     +--ro k-index            uint8
+     |  |  |     |  |     +--ro path-properties
+     |  |  |     |  |        +--ro path-metric* [metric-type]
+     |  |  |     |  |        |  +--ro metric-type           identityref
+     |  |  |     |  |        |  +--ro accumulative-value?   uint64
+     |  |  |     |  |        +--ro path-route-objects
+     |  |  |     |  |        |  +--ro path-route-object* [index]
+     |  |  |     |  |        |     +--ro index    uint32
+     |  |  |     |  |        +--ro shared-resources-tunnels
+     |  |  |     |  |           +--ro lsp-shared-resources-tunnel*   tunnel-ref
+     |  |  |     |  +--ro computed-path-error-infos
+     |  |  |     |  |  +--ro computed-path-error-info* []
+     |  |  |     |  |     +--ro error-description?   string
+     |  |  |     |  |     +--ro error-timestamp?     yang:date-and-time
+     |  |  |     |  |     +--ro error-reason?        identityref
+     |  |  |     |  +--ro lsp-provisioning-error-infos
+     |  |  |     |  |  +--ro lsp-provisioning-error-info* []
+     |  |  |     |  |     +--ro error-description?   string
+     |  |  |     |  |     +--ro error-timestamp?     yang:date-and-time
+     |  |  |     |  |     +--ro error-node-id?       te-types:te-node-id
+     |  |  |     |  |     +--ro error-link-id?       te-types:te-tp-id
+     |  |  |     |  |     +--ro lsp-id?              uint16
+     |  |  |     |  +--ro lsps
+     |  |  |     |  |  +--ro lsp* [lsp-id]
+     |  |  |     |  |     +--ro lsp-provisioning-error-infos
+     |  |  |     |  |     |  +--ro lsp-provisioning-error-info* []
+     |  |  |     |  |     |     +--ro error-description?   string
+     |  |  |     |  |     |     +--ro error-timestamp?     yang:date-and-time
+     |  |  |     |  |     |     +--ro error-node-id?       te-types:te-node-id
+     |  |  |     |  |     |     +--ro error-link-id?       te-types:te-tp-id
+     |  |  |     |  |     +--ro source?                             te-types:te-node-id
+     |  |  |     |  |     +--ro destination?                        te-types:te-node-id
+     |  |  |     |  |     +--ro tunnel-id?                          uint16
+     |  |  |     |  |     +--ro lsp-id                              uint16
+     |  |  |     |  |     +--ro extended-tunnel-id?                 yang:dotted-quad
+     |  |  |     |  |     +--ro operational-state?                  identityref
+     |  |  |     |  |     +--ro path-setup-protocol?                identityref
+     |  |  |     |  |     +--ro origin-type?                        enumeration
+     |  |  |     |  |     +--ro lsp-resource-status?                enumeration
+     |  |  |     |  |     +--ro lockout-of-normal?                  boolean
+     |  |  |     |  |     +--ro freeze?                             boolean
+     |  |  |     |  |     +--ro lsp-protection-role?                enumeration
+     |  |  |     |  |     +--ro lsp-protection-state?               identityref
+     |  |  |     |  |     +--ro protection-group-ingress-node-id?   te-types:te-node-id
+     |  |  |     |  |     +--ro protection-group-egress-node-id?    te-types:te-node-id
+     |  |  |     |  |     +--ro lsp-shared-resources-tunnel?        tunnel-ref
+     |  |  |     |  |     +--ro lsp-record-route-information
+     |  |  |     |  |     |  +--ro lsp-record-route-information* [index]
+     |  |  |     |  |     +--ro path-properties
+     |  |  |     |  |        +--ro path-metric* [metric-type]
+     |  |  |     |  |        |  +--ro metric-type           identityref
+     |  |  |     |  |        |  +--ro accumulative-value?   uint64
+     |  |  |     |  |        +--ro path-route-objects
+     |  |  |     |  |        |  +--ro path-route-object* [index]
+     |  |  |     |  |        |     +--ro index    uint32
+     |  |  |     |  |        +--ro shared-resources-tunnels
+     |  |  |     |  |           +--ro lsp-shared-resources-tunnel*   tunnel-ref
+     |  |  |     |  +--rw p2p-secondary-reverse-path
+     |  |  |     |     +--rw secondary-path?        -> ../../../../../p2p-secondary-paths/p2p-secondary-path/name
+     |  |  |     |     +--rw path-setup-protocol?   identityref
+     |  |  |     +--rw candidate-p2p-secondary-paths
+     |  |  |        +--rw candidate-p2p-secondary-path* [secondary-path]
+     |  |  |           +--rw secondary-path         -> ../../../../../p2p-secondary-paths/p2p-secondary-path/name
+     |  |  |           +--rw path-setup-protocol?   identityref
+     |  |  |           +--ro active?                boolean
+     |  |  +--rw p2p-secondary-paths
+     |  |  |  +--rw p2p-secondary-path* [name]
+     |  |  |     +--rw name                            string
+     |  |  |     +--rw path-setup-protocol?            identityref
+     |  |  |     +--rw path-computation-method?        identityref
+     |  |  |     +--rw path-computation-server?        inet:ip-address
+     |  |  |     +--rw compute-only?                   empty
+     |  |  |     +--rw use-path-computation?           boolean
+     |  |  |     +--rw lockdown?                       empty
+     |  |  |     +--ro path-scope?                     identityref
+     |  |  |     +--rw preference?                     uint8
+     |  |  |     +--rw k-requested-paths?              uint8
+     |  |  |     +--rw named-path-constraint?          -> ../../../../../globals/named-path-constraints/named-path-constraint/name {te-types:named-path-constraints}?
+     |  |  |     +--rw shared-resources-tunnels
+     |  |  |     |  +--rw lsp-shared-resources-tunnel*   tunnel-ref
+     |  |  |     +--rw path-in-segment!
+     |  |  |     +--rw path-out-segment!
+     |  |  |     +--rw protection
+     |  |  |     |  +--rw enable?                         boolean
+     |  |  |     |  +--rw protection-type?                identityref
+     |  |  |     |  +--rw protection-reversion-disable?   boolean
+     |  |  |     |  +--rw hold-off-time?                  uint32
+     |  |  |     |  +--rw wait-to-revert?                 uint16
+     |  |  |     |  +--rw aps-signal-id?                  uint8
+     |  |  |     +--rw restoration
+     |  |  |     |  +--rw enable?                          boolean
+     |  |  |     |  +--rw restoration-type?                identityref
+     |  |  |     |  +--rw restoration-scheme?              identityref
+     |  |  |     |  +--rw restoration-reversion-disable?   boolean
+     |  |  |     |  +--rw hold-off-time?                   uint32
+     |  |  |     |  +--rw wait-to-restore?                 uint16
+     |  |  |     |  +--rw wait-to-revert?                  uint16
+     |  |  |     +--ro computed-paths-properties
+     |  |  |     |  +--ro computed-path-properties* [k-index]
+     |  |  |     |     +--ro k-index            uint8
+     |  |  |     |     +--ro path-properties
+     |  |  |     |        +--ro path-metric* [metric-type]
+     |  |  |     |        |  +--ro metric-type           identityref
+     |  |  |     |        |  +--ro accumulative-value?   uint64
+     |  |  |     |        +--ro path-route-objects
+     |  |  |     |        |  +--ro path-route-object* [index]
+     |  |  |     |        |     +--ro index    uint32
+     |  |  |     |        +--ro shared-resources-tunnels
+     |  |  |     |           +--ro lsp-shared-resources-tunnel*   tunnel-ref
+     |  |  |     +--ro computed-path-error-infos
+     |  |  |     |  +--ro computed-path-error-info* []
+     |  |  |     |     +--ro error-description?   string
+     |  |  |     |     +--ro error-timestamp?     yang:date-and-time
+     |  |  |     |     +--ro error-reason?        identityref
+     |  |  |     +--ro lsp-provisioning-error-infos
+     |  |  |     |  +--ro lsp-provisioning-error-info* []
+     |  |  |     |     +--ro error-description?   string
+     |  |  |     |     +--ro error-timestamp?     yang:date-and-time
+     |  |  |     |     +--ro error-node-id?       te-types:te-node-id
+     |  |  |     |     +--ro error-link-id?       te-types:te-tp-id
+     |  |  |     |     +--ro lsp-id?              uint16
+     |  |  |     +--ro lsps
+     |  |  |        +--ro lsp* [lsp-id]
+     |  |  |           +--ro lsp-provisioning-error-infos
+     |  |  |           |  +--ro lsp-provisioning-error-info* []
+     |  |  |           |     +--ro error-description?   string
+     |  |  |           |     +--ro error-timestamp?     yang:date-and-time
+     |  |  |           |     +--ro error-node-id?       te-types:te-node-id
+     |  |  |           |     +--ro error-link-id?       te-types:te-tp-id
+     |  |  |           +--ro source?                             te-types:te-node-id
+     |  |  |           +--ro destination?                        te-types:te-node-id
+     |  |  |           +--ro tunnel-id?                          uint16
+     |  |  |           +--ro lsp-id                              uint16
+     |  |  |           +--ro extended-tunnel-id?                 yang:dotted-quad
+     |  |  |           +--ro operational-state?                  identityref
+     |  |  |           +--ro path-setup-protocol?                identityref
+     |  |  |           +--ro origin-type?                        enumeration
+     |  |  |           +--ro lsp-resource-status?                enumeration
+     |  |  |           +--ro lockout-of-normal?                  boolean
+     |  |  |           +--ro freeze?                             boolean
+     |  |  |           +--ro lsp-protection-role?                enumeration
+     |  |  |           +--ro lsp-protection-state?               identityref
+     |  |  |           +--ro protection-group-ingress-node-id?   te-types:te-node-id
+     |  |  |           +--ro protection-group-egress-node-id?    te-types:te-node-id
+     |  |  |           +--ro lsp-shared-resources-tunnel?        tunnel-ref
+     |  |  |           +--ro lsp-record-route-information
+     |  |  |           |  +--ro lsp-record-route-information* [index]
+     |  |  |           +--ro path-properties
+     |  |  |              +--ro path-metric* [metric-type]
+     |  |  |              |  +--ro metric-type           identityref
+     |  |  |              |  +--ro accumulative-value?   uint64
+     |  |  |              +--ro path-route-objects
+     |  |  |              |  +--ro path-route-object* [index]
+     |  |  |              |     +--ro index    uint32
+     |  |  |              +--ro shared-resources-tunnels
+     |  |  |                 +--ro lsp-shared-resources-tunnel*   tunnel-ref
+     |  |  +---x tunnel-action
+     |  |  |  +---w input
+     |  |  |  |  +---w action-type?   identityref
+     |  |  |  +--ro output
+     |  |  |     +--ro action-result?   identityref
+     |  |  +---x protection-external-commands
+     |  |     +---w input
+     |  |        +---w protection-external-command?        identityref
+     |  |        +---w protection-group-ingress-node-id?   te-types:te-node-id
+     |  |        +---w protection-group-egress-node-id?    te-types:te-node-id
+     |  |        +---w path-ref?                           path-ref
+     |  |        +---w traffic-type?                       enumeration
+     |  |        +---w extra-traffic-tunnel-ref?           tunnel-ref
+     |  +--rw tunnel-p2mp* [name]
+     |     +--rw name                 string
+     |     +--rw identifier?          uint16
+     |     +--rw description?         string
+     |     +--ro operational-state?   identityref
+     +--ro lsps-state
+        +--ro lsp* [source destination tunnel-id lsp-id extended-tunnel-id]
+           +--ro source                              te-types:te-node-id
+           +--ro destination                         te-types:te-node-id
+           +--ro tunnel-id                           uint16
+           +--ro lsp-id                              uint16
+           +--ro extended-tunnel-id                  yang:dotted-quad
+           +--ro operational-state?                  identityref
+           +--ro path-setup-protocol?                identityref
+           +--ro origin-type?                        enumeration
+           +--ro lsp-resource-status?                enumeration
+           +--ro lockout-of-normal?                  boolean
+           +--ro freeze?                             boolean
+           +--ro lsp-protection-role?                enumeration
+           +--ro lsp-protection-state?               identityref
+           +--ro protection-group-ingress-node-id?   te-types:te-node-id
+           +--ro protection-group-egress-node-id?    te-types:te-node-id
+           +--ro lsp-record-route-information
+              +--ro lsp-record-route-information* [index]
+
+  rpcs:
+    +---x globals-rpc
+    +---x interfaces-rpc
+    +---x tunnels-rpc
+       +---w input
+       |  +---w tunnel-info
+       |     +---w (type)?
+       |        +--:(tunnel-p2p)
+       |        |  +---w p2p-id?    tunnel-ref
+       |        +--:(tunnel-p2mp)
+       |           +---w p2mp-id?   tunnel-p2mp-ref
+       +--ro output
+          +--ro result
+             +--ro result?   enumeration
+
+  notifications:
+    +---n globals-notif
+    +---n tunnels-notif

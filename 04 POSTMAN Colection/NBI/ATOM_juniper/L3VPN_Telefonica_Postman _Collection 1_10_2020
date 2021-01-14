@@ -1,0 +1,2624 @@
+{
+	"info": {
+		"_postman_id": "64d338cd-296e-4066-88f2-a0f109ad33e1",
+		"name": "L3VPN_Telefonica Postman Collection 1-10-2020",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Begin Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a564f03f-ca34-45af-af5a-e74e7156719c",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "saveHelperData",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/operations/tasks:begin-task.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"operations",
+						"tasks:begin-task.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Commit Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e2e03573-a50e-4146-afac-3e51ee129ebf",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "saveHelperData",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"value": "{{session}}"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/operations/tasks:commit-task.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"operations",
+						"tasks:commit-task.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vpn Service -3G/4G Fusion Services",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "50bbf625-13bc-4687-af8d-88ed247c74d0",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    <vpn-service>\n        <cloud-accesses/>\n        <extranet-vpns/>\n        <ie-profiles>\n            <ie-profile>\n                <vpn-targets>\n                    <vpn-target>\n                        <route-target>0:65010:17400</route-target>\n                        <route-target-type>both</route-target-type>\n                    </vpn-target>\n                </vpn-targets>\n                <rd>0:65100:87400023</rd>\n                <ie-profile-id>ie_00</ie-profile-id>\n            </ie-profile>\n        </ie-profiles>\n        <vpn-nodes>\n            <vpn-node>\n                <vpn-node-id>550087400_10.226.0.23</vpn-node-id>\n                <description>4G _Movistar</description>\n                <ne-id>172.16.5.89</ne-id>\n                <router-id>10.226.0.23</router-id>\n                <autonomous-system>65001</autonomous-system>\n                <node-role>spoke-role</node-role>\n                <node-ie-profile>ie_00</node-ie-profile>\n            </vpn-node>\n        </vpn-nodes>\n        <carrierscarrier>false</carrierscarrier>\n        <customer-name>4G _Movistar</customer-name>\n        <description>4G _Movistar</description>\n        <vpn-id>550087400</vpn-id>\n        <vpn-service-topology>any-to-any</vpn-service-topology>\n    </vpn-service>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/vpn-services.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"vpn-services.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vpn Service -Enterprise-1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "45f98357-d40c-41dd-9b33-5bda1ab9cb5c",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   <vpn-service>\n        <cloud-accesses/>\n        <extranet-vpns/>\n        <ie-profiles>\n            <ie-profile>\n                <vpn-targets>\n                    <vpn-target>\n                        <route-target>0:3816:100090000</route-target>\n                        <route-target-type>both</route-target-type>\n                    </vpn-target>\n                </vpn-targets>\n                <rd>0:3816:100090690</rd>\n                <ie-profile-id>Ie_01</ie-profile-id>\n            </ie-profile>\n        </ie-profiles>\n        <vpn-nodes>\n            <vpn-node>\n                <vpn-node-id>500100090_10.250.3.38</vpn-node-id>\n                <description>BANCO_XX</description>\n                <ne-id>172.16.5.89</ne-id>\n                <router-id>10.226.0.23</router-id>\n                <autonomous-system>3816</autonomous-system>\n                <node-role>spoke-role</node-role>\n                <node-ie-profile>Ie_01</node-ie-profile>\n            </vpn-node>\n            <vpn-node>\n                <vpn-node-id>500100090_10.250.3.39</vpn-node-id>\n                <ne-id>172.16.4.154</ne-id>\n                <router-id>10.226.0.24</router-id>\n                <autonomous-system>3816</autonomous-system>\n                <node-role>any-to-any-role</node-role>\n                <node-ie-profile>Ie_01</node-ie-profile>\n            </vpn-node>\n        </vpn-nodes>\n        <carrierscarrier>false</carrierscarrier>\n        <customer-name>10009</customer-name>\n        <description>BANCO_XX</description>\n        <vpn-id>500100090</vpn-id>\n        <vpn-service-topology>hub-spoke</vpn-service-topology>\n    </vpn-service>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/vpn-services.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"vpn-services.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vpn Service -Enterprise-2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1a26cc31-318b-4654-bf65-962def541b76",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " <vpn-service>\n        <cloud-accesses/>\n        <extranet-vpns/>\n        <ie-profiles>\n            <ie-profile>\n                <vpn-targets>\n                    <vpn-target>\n                        <route-target>0:3816:101320003</route-target>\n                        <route-target-type>both</route-target-type>\n                    </vpn-target>\n                </vpn-targets>\n                <rd>0:3816:101322013</rd>\n                <ie-profile-id>Ie_02</ie-profile-id>\n            </ie-profile>\n        </ie-profiles>\n        <vpn-nodes>\n            <vpn-node>\n                <vpn-node-id>500101323_10.250.3.20</vpn-node-id>\n                <description>BANCO_02</description>\n                <ne-id>172.16.5.89</ne-id>\n                <router-id>10.250.3.20</router-id>\n                <autonomous-system>3816</autonomous-system>\n                <node-role>spoke-role</node-role>\n                <node-ie-profile>Ie_02</node-ie-profile>\n            </vpn-node>\n            <vpn-node>\n                <vpn-node-id>500101323_10.250.3.21</vpn-node-id>\n                <description>BANCO_02</description>\n                <ne-id>172.16.4.154</ne-id>\n                <router-id>10.250.3.21</router-id>\n                <autonomous-system>3816</autonomous-system>\n                <node-role>any-to-any-role</node-role>\n                <node-ie-profile>Ie_02</node-ie-profile>\n            </vpn-node>\n        </vpn-nodes>\n        <carrierscarrier>false</carrierscarrier>\n        <customer-name>10132</customer-name>\n        <description>BANCO_XX_02</description>\n        <vpn-id>500101323</vpn-id>\n        <vpn-service-topology>hub-spoke</vpn-service-topology>\n    </vpn-service>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/vpn-services.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"vpn-services.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vpn Service -Enterprise-3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "caa9564a-7d12-4e16-a73e-266c9ec38b51",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " <vpn-service>\n        <cloud-accesses/>\n        <extranet-vpns/>\n        <ie-profiles/>\n        <vpn-nodes>\n            <vpn-node>\n                <rd>0:3816:134</rd>\n                <vpn-node-id>134_10.250.3.38</vpn-node-id>\n                <description>TEST</description>\n                <ne-id>172.16.5.89</ne-id>\n                <router-id>10.250.3.38</router-id>\n                <autonomous-system>3816</autonomous-system>\n                <node-role>spoke-role</node-role>\n            </vpn-node>\n        </vpn-nodes>\n        <carrierscarrier>false</carrierscarrier>\n        <customer-name>134</customer-name>\n        <description>TEST</description>\n        <vpn-id>134</vpn-id>\n        <vpn-service-topology>hub-spoke</vpn-service-topology>\n    </vpn-service>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/vpn-services.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"vpn-services.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vpn Service -Enterprise-4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "932416e8-92ff-4438-917c-e6dc72d8d1be",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<vpn-service xmlns=\"urn:ietf:params:xml:ns:yang:ietf_l3vpn_ntw_oc\">\n    <cloud-accesses/>\n    <extranet-vpns/>\n    <ie-profiles>\n        <ie-profile>\n            <vpn-targets>\n                <vpn-target>\n                    <route-target>0:3816:100090000</route-target>\n                    <route-target-type>both</route-target-type>\n                </vpn-target>\n            </vpn-targets>\n            <rd>0:3816:100090690</rd>\n            <ie-profile-id>IE_03</ie-profile-id>\n        </ie-profile>\n    </ie-profiles>\n    <vpn-nodes>\n        <vpn-node>\n            <vpn-node-id>500100090_10.250.3.38</vpn-node-id>\n            <description>BANCO_RIOHACHA</description>\n            <ne-id>172.16.5.89</ne-id>\n            <router-id>10.250.3.38</router-id>\n            <autonomous-system>3816</autonomous-system>\n            <node-role>spoke-role</node-role>\n            <node-ie-profile>IE_03</node-ie-profile>\n        </vpn-node>\n        <vpn-node>\n            <vpn-node-id>500100090_172.16.4.154</vpn-node-id>\n            <description>BANCO_RIOHACHA</description>\n            <ne-id>172.16.4.154</ne-id>\n            <router-id>172.16.4.154</router-id>\n            <autonomous-system>3816</autonomous-system>\n            <node-role>any-to-any-role</node-role>\n            <node-ie-profile>IE_03</node-ie-profile>\n        </vpn-node>\n    </vpn-nodes>\n    <carrierscarrier>false</carrierscarrier>\n    <customer-name>10009</customer-name>\n    <description>BANCO_RIOHACHA</description>\n    <vpn-id>500100090</vpn-id>\n    <vpn-service-topology>hub-spoke</vpn-service-topology>\n</vpn-service>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/vpn-services.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"vpn-services.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vpn Service -Enterprise-5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc51bd84-e02e-4ebe-8f97-4326a4752ab7",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   <vpn-service>\n        <cloud-accesses/>\n        <extranet-vpns/>\n        <ie-profiles>\n            <ie-profile>\n                <vpn-targets>\n                    <vpn-target>\n                        <route-target>0:3816:100160000</route-target>\n                        <route-target-type>both</route-target-type>\n                    </vpn-target>\n                </vpn-targets>\n                <rd>0:3816:100160380</rd>\n                <ie-profile-id>IE_05</ie-profile-id>\n            </ie-profile>\n        </ie-profiles>\n        <vpn-nodes>\n            <vpn-node>\n                <vpn-node-id>500100160_10.250.3.38</vpn-node-id>\n                <description>IE_FONSECA</description>\n                <ne-id>172.16.5.89</ne-id>\n                <router-id>10.250.3.38</router-id>\n                <autonomous-system>3816</autonomous-system>\n                <node-role>spoke-role</node-role>\n                <node-ie-profile>IE_05</node-ie-profile>\n            </vpn-node>\n            <vpn-node>\n                <vpn-node-id>500100160_10.250.3.39</vpn-node-id>\n                <description>IE_FONSECA</description>\n                <ne-id>172.16.4.154</ne-id>\n                <router-id>10.250.3.39</router-id>\n                <autonomous-system>3816</autonomous-system>\n                <node-role>any-to-any-role</node-role>\n                <node-ie-profile>IE_05</node-ie-profile>\n            </vpn-node>\n        </vpn-nodes>\n        <carrierscarrier>false</carrierscarrier>\n        <customer-name>10016</customer-name>\n        <description>IE_FONSECA</description>\n        <vpn-id>500100160</vpn-id>\n        <vpn-service-topology>any-to-any</vpn-service-topology>\n    </vpn-service>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/vpn-services.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"vpn-services.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vpn Service -Enterprise-6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d5ab0d2a-eb4e-4ca5-bd33-18497eac25a1",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<vpn-service>\n        <cloud-accesses/>\n        <extranet-vpns/>\n        <ie-profiles>\n            <ie-profile>\n                <vpn-targets>\n                    <vpn-target>\n                        <route-target>0:3816:150000000</route-target>\n                        <route-target-type>both</route-target-type>\n                    </vpn-target>\n                </vpn-targets>\n                <rd>0:3816:150000520</rd>\n                <ie-profile-id>IE_06</ie-profile-id>\n            </ie-profile>\n        </ie-profiles>\n        <vpn-nodes>\n            <vpn-node>\n                <vpn-node-id>500100160_10.250.3.40</vpn-node-id>\n                <description>ETICOS_VALLEDUPAR</description>\n                <ne-id>172.16.5.89</ne-id>\n                <router-id>10.250.3.40</router-id>\n                <autonomous-system>3816</autonomous-system>\n                <node-role>spoke-role</node-role>\n                <node-ie-profile>IE_06</node-ie-profile>\n            </vpn-node>\n            <vpn-node>\n                <vpn-node-id>500100160_10.250.3.41</vpn-node-id>\n                <description>ETICOS_VALLEDUPAR</description>\n                <ne-id>172.16.4.154</ne-id>\n                <router-id>10.250.3.41</router-id>\n                <autonomous-system>3816</autonomous-system>\n                <node-role>any-to-any-role</node-role>\n                <node-ie-profile>IE_06</node-ie-profile>\n            </vpn-node>\n        </vpn-nodes>\n        <carrierscarrier>false</carrierscarrier>\n        <customer-name>150000</customer-name>\n        <description>ETICOS_VALLEDUPAR</description>\n        <vpn-id>500150000</vpn-id>\n        <vpn-service-topology>any-to-any</vpn-service-topology>\n    </vpn-service>\n"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/vpn-services.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"vpn-services.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vpn Service -Enterprise-7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "38f5e166-c2b8-47ee-88a2-2db6e913bca3",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<vpn-service>\n        <cloud-accesses/>\n        <extranet-vpns/>\n        <ie-profiles>\n            <ie-profile>\n                <vpn-targets>\n                    <vpn-target>\n                        <route-target>0:3816:6000001</route-target>\n                        <route-target-type>import</route-target-type>\n                    </vpn-target>\n                </vpn-targets>\n                <rd>0:3816:60000147</rd>\n                <ie-profile-id>IE_07</ie-profile-id>\n            </ie-profile>\n        </ie-profiles>\n        <vpn-nodes>\n            <vpn-node>\n                <vpn-node-id>500006000_10.250.3.51</vpn-node-id>\n                <description>GESTION</description>\n                <ne-id>172.16.5.89</ne-id>\n                <router-id>10.250.3.38</router-id>\n                <autonomous-system>3816</autonomous-system>\n                <node-role>spoke-role</node-role>\n                <node-ie-profile>IE_07</node-ie-profile>\n            </vpn-node>\n            <vpn-node>\n                <vpn-node-id>500006000_172.16.4.154</vpn-node-id>\n                <description>GESTION</description>\n                <ne-id>172.16.4.154</ne-id>\n                <router-id>172.16.4.154</router-id>\n                <autonomous-system>3816</autonomous-system>\n                <node-role>spoke-role</node-role>\n                <node-ie-profile>IE_07</node-ie-profile>\n            </vpn-node>\n        </vpn-nodes>\n        <carrierscarrier>false</carrierscarrier>\n        <customer-name>500006000</customer-name>\n        <description>SAN-CEN</description>\n        <vpn-id>500006000</vpn-id>\n        <vpn-service-topology>hub-spoke</vpn-service-topology>\n    </vpn-service>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/vpn-services.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"vpn-services.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vpn Service -Enterprise-8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2b8686ac-7cf6-4510-8ec4-51d370ea5e93",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<vpn-service>\n        <cloud-accesses/>\n        <extranet-vpns/>\n        <ie-profiles>\n            <ie-profile>\n                <vpn-targets>\n                    <vpn-target>\n                        <route-target>0:3817:100090001</route-target>\n                        <route-target-type>both</route-target-type>\n                    </vpn-target>\n                </vpn-targets>\n                <rd>0:3817:100090691</rd>\n                <ie-profile-id>IE_03</ie-profile-id>\n            </ie-profile>\n        </ie-profiles>\n        <vpn-nodes>\n            <vpn-node>\n                <vpn-node-id>500100090_10.250.3.42</vpn-node-id>\n                <description>BANCO_RIOHACHA</description>\n                <ne-id>172.16.5.89</ne-id>\n                <router-id>10.250.3.42</router-id>\n                <autonomous-system>3816</autonomous-system>\n                <node-role>spoke-role</node-role>\n                <node-ie-profile>IE_03</node-ie-profile>\n            </vpn-node>\n            <vpn-node>\n                <vpn-node-id>500100090_10.250.3.43</vpn-node-id>\n                <description>BANCO_RIOHACHA</description>\n                <ne-id>172.16.4.154</ne-id>\n                <router-id>10.250.3.43</router-id>\n                <autonomous-system>3816</autonomous-system>\n                <node-role>any-to-any-role</node-role>\n                <node-ie-profile>IE_03</node-ie-profile>\n            </vpn-node>\n        </vpn-nodes>\n        <carrierscarrier>false</carrierscarrier>\n        <customer-name>10009</customer-name>\n        <description>BANCO_RIOHACHA</description>\n        <vpn-id>500100090_E8</vpn-id>\n        <vpn-service-topology>any-to-any</vpn-service-topology>\n    </vpn-service>\n"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/vpn-services.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"vpn-services.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vpn_profiles enterprise_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3b493da1-ef89-43ac-a191-99c381f0dcf3",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "        <routing-profile-identifier>\n            <id>500100090_import_policy</id>\n        </routing-profile-identifier>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/vpn-profiles/valid-provider-identifiers.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"vpn-profiles",
+						"valid-provider-identifiers.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vpn_profiles enterprise_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "17bad067-92ee-45ad-8d01-2e5cc54bb74a",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "        <routing-profile-identifier>\n            <id>500101323_import_policy</id>\n        </routing-profile-identifier>\n   "
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/vpn-profiles/valid-provider-identifiers.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"vpn-profiles",
+						"valid-provider-identifiers.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site with device&location for 3G/4G Fusion Services",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "37ab12f4-46b3-445f-a177-b02013398491",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    <site>\n        <devices>\n            <device>\n                <device-id>172.16.5.89</device-id>\n                <location>GUATEQUE-CENTRO</location>\n            </device>\n        </devices>\n        <locations>\n            <location>\n                <location-id>GUATEQUE-CENTRO</location-id>\n            </location>\n        </locations>\n        <management>\n            <type>provider-managed</type>\n        </management>\n        <maximum-routes/>\n        <routing-protocols/>\n        <site-bearers/>\n        <site-network-accesses/>\n        <site-id>MLB0832-GUATEQUE-CENTRO</site-id>\n        <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n    </site>\n"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site with device&location Enterprise-1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c0c9456a-3b6f-4549-bf42-2c036a7f8298",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site xmlns=\"urn:ietf:params:xml:ns:yang:ietf_l3vpn_ntw_oc\">\n    <devices>\n        <device>\n            <device-id>172.16.5.89</device-id>\n            <location>S8137</location>\n        </device>\n    </devices>\n    <locations>\n        <location>\n            <location-id>S8137</location-id>\n        </location>\n    </locations>\n    <management>\n        <type>provider-managed</type>\n    </management>\n    <maximum-routes/>\n    <routing-protocols/>\n    <site-bearers/>\n    <site-network-accesses/>\n    <site-id>BCO_01_S8137</site-id>\n    <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n</site>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site with device&location Enterprise-2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc01f984-f9d0-4ab7-a845-1bb8f3ba0526",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site xmlns=\"urn:ietf:params:xml:ns:yang:ietf_l3vpn_ntw_oc\">\n    <devices>\n        <device>\n            <device-id>172.16.5.89</device-id>\n            <location>S8137</location>\n        </device>\n    </devices>\n    <locations>\n        <location>\n            <location-id>S8137</location-id>\n        </location>\n    </locations>\n    <management>\n        <type>provider-managed</type>\n    </management>\n    <maximum-routes/>\n    <routing-protocols/>\n    <site-bearers/>\n    <site-network-accesses/>\n    <site-id>BCO_02_S8137</site-id>\n    <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n</site>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site with device&location Enterprise-3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3a5f5259-83be-46bb-94d6-36414383f5b1",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site>\n        <devices>\n            <device>\n                <device-id>172.16.5.89</device-id>\n                <location>04_S8137</location>\n            </device>\n        </devices>\n        <locations>\n            <location>\n                <location-id>04_S8137</location-id>\n            </location>\n        </locations>\n        <management>\n            <type>provider-managed</type>\n        </management>\n        <maximum-routes/>\n        <routing-protocols/>\n        <site-bearers/>\n        <site-network-accesses/>\n        <site-id>TEST_04_S8137</site-id>\n        <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n    </site>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site with device&location Enterprise-4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d003e73d-dc55-4d66-98fb-a1ede6a316f0",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site xmlns=\"urn:ietf:params:xml:ns:yang:ietf_l3vpn_ntw_oc\">\n    <devices>\n        <device>\n            <device-id>172.16.5.89</device-id>\n            <location>03_S8137</location>\n        </device>\n    </devices>\n    <locations>\n        <location>\n            <location-id>03_S8137</location-id>\n        </location>\n    </locations>\n    <management>\n        <type>provider-managed</type>\n    </management>\n    <maximum-routes/>\n    <routing-protocols/>\n    <site-bearers/>\n    <site-network-accesses/>\n    <site-id>BCO_03_S8137</site-id>\n    <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n</site>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site with device&location Enterprise-5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f00ee34d-432a-4189-8d92-8db59ad01bc9",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site>\n        <devices>\n            <device>\n                <device-id>172.16.5.89</device-id>\n                <location>S8139</location>\n            </device>\n        </devices>\n        <locations>\n            <location>\n                <location-id>S8139</location-id>\n            </location>\n        </locations>\n        <management>\n            <type>provider-managed</type>\n        </management>\n        <maximum-routes/>\n        <routing-protocols/>\n        <site-bearers/>\n        <site-network-accesses/>\n        <site-id>IE_01_S8137</site-id>\n        <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n    </site>\n"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site with device&location Enterprise-6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0c4f87b-61d1-44d7-9968-a82ea1a77720",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site>\n        <devices>\n            <device>\n                <device-id>172.16.5.89</device-id>\n                <location>S8140</location>\n            </device>\n        </devices>\n        <locations>\n            <location>\n                <location-id>S8140</location-id>\n            </location>\n        </locations>\n        <management>\n            <type>provider-managed</type>\n        </management>\n        <maximum-routes/>\n        <routing-protocols/>\n        <site-bearers/>\n        <site-network-accesses/>\n        <site-id>WH_01_S8137</site-id>\n        <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n    </site>\n"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site with device&location Enterprise-7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c0c5116e-7b12-4cbf-9ef9-f87b8d5ad3fb",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    <site>\n        <devices>\n            <device>\n                <device-id>172.16.5.89</device-id>\n                <location>S211</location>\n            </device>\n        </devices>\n        <locations>\n            <location>\n                <location-id>S211</location-id>\n            </location>\n        </locations>\n        <management>\n            <type>provider-managed</type>\n        </management>\n        <maximum-routes/>\n        <routing-protocols/>\n        <site-bearers/>\n        <site-network-accesses/>\n        <site-id>MG_01_S211</site-id>\n        <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n    </site>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site with device&location Enterprise-8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a00d5b4b-d713-4186-8aba-08b628551047",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site>\n        <devices>\n            <device>\n                <device-id>172.16.5.89</device-id>\n                <location>S8137</location>\n            </device>\n        </devices>\n        <locations>\n            <location>\n                <location-id>S8137</location-id>\n            </location>\n        </locations>\n        <management>\n            <type>provider-managed</type>\n        </management>\n        <maximum-routes/>\n        <routing-protocols/>\n        <site-bearers/>\n        <site-network-accesses/>\n        <site-id>BCO_03_S8137_E8</site-id>\n        <site-vpn-flavor>site-vpn-flavor-single</site-vpn-flavor>\n    </site>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site bearer-3G/4G Fusion Services",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0cd095f-1b6b-40e1-94fe-9c36f8ab4f4c",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    <bearer>\n        <BearerType>port-id</BearerType>\n        <bearer-id>S1-MLB0832-GUATEQUE-CENTRO</bearer-id>\n        <ne-id>172.16.5.89</ne-id>\n        <port-id>xe-0/1/12</port-id>\n    </bearer>\n"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=MLB0832-GUATEQUE-CENTRO/site-bearers.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=MLB0832-GUATEQUE-CENTRO",
+						"site-bearers.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site bearer-Enterprise-1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "20b023c6-cd71-4449-9882-d383ffc61bb0",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<bearer xmlns=\"urn:ietf:params:xml:ns:yang:ietf_l3vpn_ntw_oc\">\n    <BearerType>port-id</BearerType>\n    <bearer-id>BCO_01_S8137_01</bearer-id>\n    <ne-id>172.16.5.89</ne-id>\n    <port-id>xe-0/1/3</port-id>\n</bearer>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=BCO_01_S8137/site-bearers.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=BCO_01_S8137",
+						"site-bearers.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site bearer-Enterprise-2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40b2892e-6361-439a-8be5-5260782e69b9",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<bearer xmlns=\"urn:ietf:params:xml:ns:yang:ietf_l3vpn_ntw_oc\">\n    <BearerType>port-id</BearerType>\n    <bearer-id>BCO_02_S8137_01</bearer-id>\n    <ne-id>172.16.5.89</ne-id>\n    <port-id>xe-0/1/12</port-id>\n</bearer>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=BCO_02_S8137/site-bearers.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=BCO_02_S8137",
+						"site-bearers.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site bearer-Enterprise-3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fc7efce1-838b-4154-81a4-4c3d06be6746",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " <bearer>\n        <BearerType>port-id</BearerType>\n        <bearer-id>BCO_04_S8137_01</bearer-id>\n        <ne-id>172.16.5.89</ne-id>\n        <port-id>loopback0</port-id>\n    </bearer>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=TEST_04_S8137/site-bearers.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=TEST_04_S8137",
+						"site-bearers.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site bearer-Enterprise-4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "06e88e20-7209-4b39-b09c-18e2f4155458",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<bearer xmlns=\"urn:ietf:params:xml:ns:yang:ietf_l3vpn_ntw_oc\">\n    <BearerType>port-id</BearerType>\n    <bearer-id>BCO_03_S8137_01</bearer-id>\n    <ne-id>172.16.5.89</ne-id>\n    <port-id>xe-1/3/1</port-id>\n</bearer>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=BCO_03_S8137/site-bearers.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=BCO_03_S8137",
+						"site-bearers.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site bearer-Enterprise-5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "978e8d29-537a-4f0f-b371-dd1d66635d92",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<bearer>\n        <BearerType>port-id</BearerType>\n        <bearer-id>IE_01_S8137_01</bearer-id>\n        <ne-id>172.16.5.89</ne-id>\n        <port-id>xe-0/1/13</port-id>\n    </bearer>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=IE_01_S8137/site-bearers.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=IE_01_S8137",
+						"site-bearers.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site bearer-Enterprise-6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0f13d6f8-a9eb-44d0-b54b-74814401789e",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<bearer>\n        <BearerType>port-id</BearerType>\n        <bearer-id>WH_01_S8137_01</bearer-id>\n        <ne-id>172.16.5.89</ne-id>\n        <port-id>xe-0/1/13</port-id>\n    </bearer>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=WH_01_S8137/site-bearers.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=WH_01_S8137",
+						"site-bearers.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site bearer-Enterprise-7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b4a65d40-0c40-413c-a0a1-4030addd0092",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<bearer xmlns=\"urn:ietf:params:xml:ns:yang:ietf_l3vpn_ntw_oc\">\n    <BearerType>port-id</BearerType>\n    <bearer-id>MG_01_ S211_01</bearer-id>\n    <ne-id>172.16.5.89</ne-id>\n    <port-id>loopback1</port-id>\n</bearer>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=MG_01_S211/site-bearers.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=MG_01_S211",
+						"site-bearers.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site bearer-Enterprise-8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b78f4bb6-3c8b-4207-8da1-e4e4770ab2ce",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<bearer>\n        <BearerType>port-id</BearerType>\n        <bearer-id>BCO_03_S8137_01</bearer-id>\n        <ne-id>172.16.5.89</ne-id>\n        <port-id>xe-0/1/13</port-id>\n    </bearer>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=BCO_03_S8137_E8/site-bearers.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=BCO_03_S8137_E8",
+						"site-bearers.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site network access-3G/4G Fusion Services",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "875e756d-379d-473a-8a3b-9159d90e7b48",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    <site-network-access>\n        <bearer>\n            <connection>\n                <tagged-interface>\n                    <dot1q-vlan-tagged>\n                        <tag-type>c-vlan</tag-type>\n                        <cvlan-id>1017</cvlan-id>\n                    </dot1q-vlan-tagged>\n                    <type>dot1q</type>\n                </tagged-interface>\n                <encapsulation-type>tagged-int</encapsulation-type>\n            </connection>\n            <always-on>true</always-on>\n            <bearer-reference>S1-MLB0832-GUATEQUE-CENTRO</bearer-reference>\n        </bearer>\n        <ip-connection>\n            <ipv4>\n                <address-allocation-type>static-address</address-allocation-type>\n                <addresses>\n                    <provider-address>10.91.237.225</provider-address>\n                    <prefix-length>30</prefix-length>\n                </addresses>\n            </ipv4>\n        </ip-connection>\n        <routing-protocols/>\n        <ne-id>172.16.5.89</ne-id>\n        <node-id>550087400_10.226.0.23</node-id>\n        <service-id>550087400</service-id>\n        <site-network-access-id>PKI-MLB0832-550087400</site-network-access-id>\n        <site-network-access-type>point-to-point</site-network-access-type>\n    </site-network-access>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=MLB0832-GUATEQUE-CENTRO/site-network-accesses.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=MLB0832-GUATEQUE-CENTRO",
+						"site-network-accesses.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site network access-Enterprise-1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "92636f0b-363b-4eec-90cf-132af8c9d907",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site-network-access>\n        <bearer>\n            <connection>\n                <tagged-interface>\n                    <qinq>\n                        <tag-type>c-s-vlan</tag-type>\n                        <svlan-id>2100</svlan-id>\n                        <cvlan-id>1514</cvlan-id>\n                    </qinq>\n                    <type>qinq</type>\n                </tagged-interface>\n                <encapsulation-type>tagged-int</encapsulation-type>\n            </connection>\n            <always-on>true</always-on>\n            <bearer-reference>BCO_01_S8137_01</bearer-reference>\n        </bearer>\n        <ip-connection>\n            <ipv4>\n                <address-allocation-type>static-address</address-allocation-type>\n                <addresses>\n                    <provider-address>10.91.243.65</provider-address>\n                    <prefix-length>30</prefix-length>\n                </addresses>\n            </ipv4>\n        </ip-connection>\n        <routing-protocols>\n            <routing-protocol>\n                <bgp>\n                    <autonomous-system>65009</autonomous-system>\n                    <address-family>ipv4</address-family>\n                    <neighbor>10.91.243.66</neighbor>\n                </bgp>\n                <routing-profiles>\n                    <id>500100090_import_policy</id>\n                    <type>both</type>\n                </routing-profiles>\n                <type>bgp</type>\n            </routing-protocol>\n        </routing-protocols>\n        <ne-id>172.16.5.89</ne-id>\n        <node-id>500100090_10.250.3.38</node-id>\n        <service-id>500100090</service-id>\n        <site-network-access-id>SNA_500100090_01</site-network-access-id>\n        <site-network-access-type>point-to-point</site-network-access-type>\n    </site-network-access>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=BCO_01_S8137/site-network-accesses.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=BCO_01_S8137",
+						"site-network-accesses.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site network access-Enterprise-2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9d7b2b64-498e-4366-9309-44a22787d232",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site-network-access>\n        <bearer>\n            <connection>\n                <tagged-interface>\n                    <dot1q-vlan-tagged>\n                        <tag-type>c-vlan</tag-type>\n                        <cvlan-id>2100</cvlan-id>\n                    </dot1q-vlan-tagged>\n                    <type>dot1q</type>\n                </tagged-interface>\n                <encapsulation-type>tagged-int</encapsulation-type>\n            </connection>\n            <always-on>true</always-on>\n            <bearer-reference>BCO_02_S8137_01</bearer-reference>\n        </bearer>\n        <ip-connection>\n            <ipv4>\n                <address-allocation-type>static-address</address-allocation-type>\n                <addresses>\n                    <provider-address>10.250.2.141</provider-address>\n                    <prefix-length>30</prefix-length>\n                </addresses>\n            </ipv4>\n        </ip-connection>\n        <routing-protocols>\n            <routing-protocol>\n                <bgp>\n                    <autonomous-system>65000</autonomous-system>\n                    <address-family>ipv4</address-family>\n                    <neighbor>10.4.101.186</neighbor>\n                    <multihop>5</multihop>\n                </bgp>\n                <routing-profiles>\n                    <id>500101323_import_policy</id>\n                    <type>both</type>\n                </routing-profiles>\n                <type>bgp</type>\n            </routing-protocol>\n            <routing-protocol>\n                <type>static</type>\n            </routing-protocol>\n        </routing-protocols>\n        <description>BANCO_BELEN</description>\n        <ne-id>172.16.5.89</ne-id>\n        <node-id>500101323_10.250.3.20</node-id>\n        <service-id>500101323</service-id>\n        <site-network-access-id>SNA_500101323_01</site-network-access-id>\n        <site-network-access-type>point-to-point</site-network-access-type>\n    </site-network-access>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=BCO_02_S8137/site-network-accesses.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=BCO_02_S8137",
+						"site-network-accesses.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site network access-Enterprise-3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c95e6c0-a7a2-4c26-8dbd-0be5dc289884",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site-network-access>\n        <bearer>\n            <always-on>true</always-on>\n            <bearer-reference>BCO_04_S8137_01</bearer-reference>\n        </bearer>\n        <ip-connection>\n            <ipv4>\n                <address-allocation-type>static-address</address-allocation-type>\n                <addresses>\n                    <provider-address>70.1.1.8</provider-address>\n                    <prefix-length>24</prefix-length>\n                </addresses>\n            </ipv4>\n        </ip-connection>\n        <routing-protocols/>\n        <status>\n            <admin-enabled>true</admin-enabled>\n        </status>\n        <ne-id>172.16.5.89</ne-id>\n        <node-id>134_10.250.3.38</node-id>\n        <service-id>134</service-id>\n        <site-network-access-id>SNA_134_10.250.3.38_01</site-network-access-id>\n        <site-network-access-type>point-to-point</site-network-access-type>\n    </site-network-access>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=TEST_04_S8137/site-network-accesses.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=TEST_04_S8137",
+						"site-network-accesses.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site network access-Enterprise-4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "01e1d8f6-396e-4a0d-bf2b-07fc7a243558",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site-network-access xmlns=\"urn:ietf:params:xml:ns:yang:ietf_l3vpn_ntw_oc\">\n    <bearer>\n        <connection>\n            <tagged-interface>\n                <dot1q-vlan-tagged>\n                    <tag-type>c-vlan</tag-type>\n                    <cvlan-id>16</cvlan-id>\n                </dot1q-vlan-tagged>\n                <type>dot1q</type>\n            </tagged-interface>\n            <encapsulation-type>untagged-int</encapsulation-type>\n        </connection>\n        <pseudowire>\n            <vcid>300300501</vcid>\n        </pseudowire>\n        <always-on>true</always-on>\n        <bearer-reference>BCO_03_S8137_01</bearer-reference>\n    </bearer>\n    <ip-connection>\n        <ipv4>\n            <address-allocation-type>static-address</address-allocation-type>\n            <addresses>\n                <provider-address>10.91.237.225</provider-address>\n                <prefix-length>30</prefix-length>\n            </addresses>\n        </ipv4>\n    </ip-connection>\n    <routing-protocols>\n        <routing-protocol>\n            <bgp>\n                <autonomous-system>65009</autonomous-system>\n                <address-family>ipv4</address-family>\n                <neighbor>10.91.237.226</neighbor>\n            </bgp>\n            <type>bgp</type>\n        </routing-protocol>\n    </routing-protocols>\n    <service>\n        <svc-input-bandwidth>2048</svc-input-bandwidth>\n        <svc-output-bandwidth>2048</svc-output-bandwidth>\n        <svc-mtu>1500</svc-mtu>\n    </service>\n    <status>\n        <admin-enabled>true</admin-enabled>\n    </status>\n    <ne-id>172.16.5.89</ne-id>\n    <node-id>500100090_10.250.3.38</node-id>\n    <service-id>500100090</service-id>\n    <site-network-access-id>SNA_500100090_10.250.3.38_01</site-network-access-id>\n    <site-network-access-type>pseudowire</site-network-access-type>\n</site-network-access>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=BCO_03_S8137/site-network-accesses.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=BCO_03_S8137",
+						"site-network-accesses.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site network access-Enterprise-5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "72299462-db8c-4b2f-9aae-620c1f489321",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site-network-access>\n        <bearer>\n            <connection>\n                <tagged-interface>\n                    <dot1q-vlan-tagged>\n                        <tag-type>c-vlan</tag-type>\n                        <cvlan-id>1100</cvlan-id>\n                    </dot1q-vlan-tagged>\n                    <type>dot1q</type>\n                </tagged-interface>\n                <encapsulation-type>tagged-int</encapsulation-type>\n            </connection>\n            <always-on>true</always-on>\n            <bearer-reference>IE_01_S8137_01</bearer-reference>\n        </bearer>\n        <ip-connection>\n            <ipv4>\n                <address-allocation-type>static-address</address-allocation-type>\n                <addresses>\n                    <provider-address>192.168.10.190</provider-address>\n                    <prefix-length>30</prefix-length>\n                </addresses>\n            </ipv4>\n        </ip-connection>\n        <routing-protocols>\n            <routing-protocol>\n                <type>bgp</type>\n            </routing-protocol>\n            <routing-protocol>\n                <ospf>\n                    <address-family>ipv4</address-family>\n                    <area-address>0.0.0.1</area-address>\n                    <metric>1</metric>\n                </ospf>\n                <type>ospf</type>\n            </routing-protocol>\n        </routing-protocols>\n        <service>\n            <svc-input-bandwidth>4000</svc-input-bandwidth>\n            <svc-output-bandwidth>4000</svc-output-bandwidth>\n            <svc-mtu>1600</svc-mtu>\n        </service>\n        <status>\n            <admin-enabled>true</admin-enabled>\n        </status>\n        <device-reference>172.16.5.89</device-reference>\n        <ne-id>172.16.5.89</ne-id>\n        <node-id>500100160_10.250.3.38</node-id>\n        <service-id>500100160</service-id>\n        <site-network-access-id>SNA_500100160_01</site-network-access-id>\n        <site-network-access-type>point-to-point</site-network-access-type>\n    </site-network-access>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=IE_01_S8137/site-network-accesses.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=IE_01_S8137",
+						"site-network-accesses.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site network access-Enterprise-6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d7a6916-47b4-4d34-8238-ed2f85c96a3a",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site-network-access>\n        <bearer>\n            <connection>\n                <tagged-interface>\n                    <dot1q-vlan-tagged>\n                        <tag-type>c-vlan</tag-type>\n                        <cvlan-id>3696</cvlan-id>\n                    </dot1q-vlan-tagged>\n                    <type>dot1q</type>\n                </tagged-interface>\n                <encapsulation-type>tagged-int</encapsulation-type>\n            </connection>\n            <always-on>true</always-on>\n            <bearer-reference>WH_01_S8137_01</bearer-reference>\n        </bearer>\n        <ip-connection>\n            <ipv4>\n                <address-allocation-type>static-address</address-allocation-type>\n                <addresses>\n                    <provider-address>192.168.0.9</provider-address>\n                    <prefix-length>30</prefix-length>\n                </addresses>\n            </ipv4>\n        </ip-connection>\n        <routing-protocols/>\n        <service>\n            <svc-input-bandwidth>507</svc-input-bandwidth>\n            <svc-output-bandwidth>507</svc-output-bandwidth>\n            <svc-mtu>1600</svc-mtu>\n        </service>\n        <status>\n            <admin-enabled>true</admin-enabled>\n        </status>\n        <device-reference>172.16.5.89</device-reference>\n        <ne-id>172.16.5.89</ne-id>\n        <node-id>500100160_10.250.3.40</node-id>\n        <service-id>500150000</service-id>\n        <site-network-access-id>SNA_500100160_01</site-network-access-id>\n        <site-network-access-type>point-to-point</site-network-access-type>\n    </site-network-access>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=WH_01_S8137/site-network-accesses.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=WH_01_S8137",
+						"site-network-accesses.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site network access-Enterprise-7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2d363958-6ea9-42a9-b7f8-595082e27cb5",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site-network-access>\n        <bearer>\n            <always-on>true</always-on>\n            <bearer-reference>MG_01_ S211_01</bearer-reference>\n        </bearer>\n        <ip-connection>\n            <ipv4>\n                <address-allocation-type>static-address</address-allocation-type>\n                <addresses>\n                    <provider-address>10.34.6.217</provider-address>\n                    <prefix-length>30</prefix-length>\n                </addresses>\n            </ipv4>\n        </ip-connection>\n        <routing-protocols/>\n        <status>\n            <admin-enabled>true</admin-enabled>\n        </status>\n        <ne-id>172.16.5.89</ne-id>\n        <node-id>500006000_10.250.3.51</node-id>\n        <service-id>500006000</service-id>\n        <site-network-access-id>SNA_500006000_01</site-network-access-id>\n        <site-network-access-type>pseudowire</site-network-access-type>\n    </site-network-access>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=MG_01_S211/site-network-accesses.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=MG_01_S211",
+						"site-network-accesses.xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Site network access-Enterprise-8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bb2dca53-eafc-4744-b917-7ef2d34c1d03",
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"postman.setEnvironmentVariable(\"session\", jsonObject.taskId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/xml"
+					},
+					{
+						"key": "X-TASK-ID",
+						"type": "text",
+						"value": "{{session}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<site-network-access>\n        <bearer>\n            <connection>\n                <tagged-interface>\n                    <dot1q-vlan-tagged>\n                        <tag-type>c-vlan</tag-type>\n                        <cvlan-id>16</cvlan-id>\n                    </dot1q-vlan-tagged>\n                    <type>dot1q</type>\n                </tagged-interface>\n                <encapsulation-type>tagged-int</encapsulation-type>\n            </connection>\n            <always-on>true</always-on>\n            <bearer-reference>BCO_03_S8137_01</bearer-reference>\n        </bearer>\n        <ip-connection>\n            <ipv4>\n                <address-allocation-type>static-address</address-allocation-type>\n                <addresses>\n                    <provider-address>10.91.237.226</provider-address>\n                    <prefix-length>30</prefix-length>\n                </addresses>\n            </ipv4>\n        </ip-connection>\n        <routing-protocols>\n            <routing-protocol>\n                <bgp>\n                <autonomous-system>65009</autonomous-system>\n                <address-family>ipv4</address-family>\n                <neighbor>10.91.237.227</neighbor>\n                </bgp>\n                <type>bgp</type>\n            </routing-protocol>\n        </routing-protocols>\n        <service>\n            <svc-input-bandwidth>2048</svc-input-bandwidth>\n            <svc-output-bandwidth>2048</svc-output-bandwidth>\n            <svc-mtu>1600</svc-mtu>\n        </service>\n        <status>\n            <admin-enabled>true</admin-enabled>\n        </status>\n        <ne-id>172.16.5.89</ne-id>\n        <node-id>500100090_10.250.3.42</node-id>\n        <service-id>500100090_E8</service-id>\n        <site-network-access-id>SNA_500100090_10.250.3.38_01</site-network-access-id>\n        <site-network-access-type>pseudowire</site-network-access-type>\n    </site-network-access>"
+				},
+				"url": {
+					"raw": "{{base_url}}/restconf/data/controller:services/ietf_l3vpn_ntw_oc:l3vpn-ntw/sites/site=BCO_03_S8137_E8/site-network-accesses.xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"restconf",
+						"data",
+						"controller:services",
+						"ietf_l3vpn_ntw_oc:l3vpn-ntw",
+						"sites",
+						"site=BCO_03_S8137_E8",
+						"site-network-accesses.xml"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

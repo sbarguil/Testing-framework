@@ -1,8 +1,8 @@
 HOSTS = [
     {
-        'host': '10.95.86.216',
-        'port': '12022',
+        'host': '10.95.241.77',
+        'port': '830',
         'username': 'admin',
-        'password': 'admin',
+        'password': 'volta',
     },
 ]

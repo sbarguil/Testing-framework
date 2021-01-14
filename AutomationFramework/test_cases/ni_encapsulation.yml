@@ -11,7 +11,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L3VRF"
+                   type: "oc-ni-types:L2L3"
                    encapsulation_type: "MPLS"
 
 - testcase:
@@ -26,5 +26,5 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L3VRF"
+                   type: "oc-ni-types:L3VRF"
                    label_allocation_mode: "PER_PREFIX"           

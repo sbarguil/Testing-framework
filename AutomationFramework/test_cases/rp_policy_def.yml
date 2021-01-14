@@ -55,7 +55,7 @@
             params:
                    name: "ROUTING_POLICY_EXPORT"
                    statement_name: "1"
-                   install_protocol_eq: "BGP"
+                   install_protocol_eq: "oc-pol-types:BGP"
 
 - testcase:
       name: rp_policy_def_match_set_options
@@ -68,8 +68,8 @@
             operation: edit-config
             commit: true
             params:
-                   ext_community_set_name: "RT_IMPORT_POLICY"
-                   ext_community_member: "65000:103"
+                   ext_community_set_name: "RT_IMPORT_POLICY_NEW"
+                   ext_community_member: "650001:105"
 
           - template: rp_policy_def_match_set_options.xml
             target: candidate
@@ -79,4 +79,4 @@
                    name: "ROUTING_POLICY_EXPORT"
                    statement_name: "1"
                    match_set_options: "ANY"
-                   ext_community_set: "RT_IMPORT_POLICY"
+                   ext_community_set: "RT_IMPORT_POLICY_NEW"

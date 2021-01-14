@@ -11,7 +11,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   identifier: "BGP"
+                   identifier: "oc-pol-types:BGP"
                    protocol_name: "BGP_65000"
 
 - testcase:
@@ -26,6 +26,6 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   identifier: "BGP"
+                   identifier: "oc-pol-types:BGP"
                    protocol_name: "BGP_65000"
                    enabled: "true"    

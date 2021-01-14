@@ -24,7 +24,7 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L3VRF"
+                   type: "oc-ni-types:L3VRF"
 
 - testcase:
       name: ni_config_enabled
@@ -94,8 +94,8 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L3VRF"
-                   enabled_address_families: "IPV4"
+                   type: "oc-ni-types:L3VRF"
+                   enabled_address_families: "oc-types:IPV4"
 
 - testcase:
       name: ni_config_mtu
@@ -109,5 +109,5 @@
             commit: true
             params:
                    name: "Prueba_LxVPN"
-                   type: "L2VSI"
+                   type: "oc-ni-types:L2VSI"
                    mtu: "1450"
