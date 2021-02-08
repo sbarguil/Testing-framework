@@ -9,4 +9,4 @@
             operation: get
             params:
                    name: "CHASIS"
-                   description: ""
+                   description: "The test case is to obtain the ACL configuration."
