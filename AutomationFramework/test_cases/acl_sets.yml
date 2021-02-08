@@ -1,0 +1,12 @@
+
+- testcase:
+      name: acl_sets_description
+      id: 1
+      description: >
+
+      rpcs:
+          - template: hw_component_description.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   description: "The test case is to obtain the ACL configuration."
