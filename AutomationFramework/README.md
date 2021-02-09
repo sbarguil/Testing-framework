@@ -23,7 +23,7 @@
 ### 1. Installation
 You must use an environment tool for this project, we recommend using conda since all the below commands are intended for it.
 It is expected as a prerequisite that you have installed conda.
-1. Create a new environment from `environment.yml` with `conda env create --prefix .conda-env --file environment.yml`
+1. Create a new environment from `environment.yml` with `conda env create --prefix .conda-env --file environment.yml`. Probably this only will work on Linux OS. On Windows you must install the specific packages manually (equal or upper versions) since the execution will be ending with PackagesNotFound.
 2. Activate the environment with `conda activate .conda-env/` 
 - Every time make a change in the environment you must update the `environment.yml`
 1. Export your current environment with `conda env export --prefix .conda-env > environment.yml`
@@ -39,7 +39,8 @@ Next is a explanation of how the framework is built and how does it works:
 #### 2.1. Pytest tests
 The framework executes a pytest test that specifies a YAML file (line 7 in the next image) where a set of test cases are described and identifies 
 the name of the actual test to run from that YML set (line 10 in the next image)
-![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/pytest_test_example.png)
+AutomationFramework/img/pytest_test_example.png
+![alt text](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/pytest_test_example.png)
 
 <a name="yaml-test-cases-ref"/>
 
@@ -50,7 +51,7 @@ also defines the rpcs to execute in the test. There may be as many rpcs as neede
 (only if operation == edit-config), operation (edit-config or get), commit (only if operation == edit-config) and a 
 list of params with them specific values. These params are variables that later will be replaced in its specific templates  
 
-![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/yaml_example.png)
+![alt text](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/yaml_example.png)
 
 <a name="xml-templates-ref"/>
 
@@ -60,13 +61,13 @@ The next picture was taken from `AutomationFramework/test_cases/templates/if_con
 all the test cases defined in the YAML files. The templates are written in XML but the framework uses the `jinja2` 
 library to insert variables within the XML notation, those variables are declared like `{{interface_name}}`.
 
-![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/xml_example.png)
+![alt text](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/xml_example.png)
 
 In the test execution, the framework will fill the templates with the values specified in the YAML files for the
 variables. In our example, we can see the the rpc sent in the next picture, where the values of lines 3, 8, 10, 11 
 and 12 where replaced.
  
-![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/filled_xml_example.png)
+![alt text](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/filled_xml_example.png)
  
 <a name="operations-workflow-ref"/>
  
@@ -95,7 +96,7 @@ branch for each vendor since each one may need individual adjustments in order o
 same logic, there may be differences between the same vendor software versions so we create too a branch for each 
 individual version.
 
-![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/branching_strategy_diagram.png)
+![alt text](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/branching_strategy_diagram.png)
 
 <a name="specify-credentials-ref"/>
 
@@ -212,11 +213,11 @@ The vendor's manual can be useful to see which is the correct way to send the co
 This is due to the fact that the deletion process is not carried out correctly (tear down) and when reconfiguring what 
 has already been configured, an error occurs. An example is shown in the following figure
 
-![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/teardown_error_example.png)
+![alt text](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/teardown_error_example.png)
 
 ##### - Why does a skipped sometimes occur in a test?
 Sometimes skipped occurs because the current configuration of the parameter is already the same as it is already 
 configured, so you must change the parameter to another value or check that it is not the same as the one that will run 
 the test. An example is shown in the following figure
 
-![alt text](https://raw.githubusercontent.com/sbarguil/Testing-framework/automation_framework/AutomationFramework/img/skipped_test_example.png)
+![alt text](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/skipped_test_example.png)
