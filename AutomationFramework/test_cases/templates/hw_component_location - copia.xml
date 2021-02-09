@@ -1,0 +1,12 @@
+<get-conf>
+  <filter>
+    <components xmlns="http://openconfig.net/yang/platform">
+      <component>
+        <name>{{name}}</name>
+        <state>
+          <location>{{location}}</location>
+        </state>
+      </component>
+    </components>
+  </filter>
+</get-conf>

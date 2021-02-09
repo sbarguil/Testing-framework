@@ -1,0 +1,12 @@
+
+- testcase:
+      name: hw_fan_speed
+      id: 999
+      description: >
+          que os parece esta descripcion.
+      rpcs:
+          - template: hw_fan_speed.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   speed: ""
