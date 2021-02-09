@@ -24,7 +24,7 @@
                    hardware_version: ""
 
 - testcase:
-      name: hw_component_id
+      name: hw_component_identifier
       id: 3
       description: >
           This test is to get the component id.
