@@ -1,4 +1,4 @@
-<get>
+<get-conf>
   <filter>
     <components xmlns="http://openconfig.net/yang/platform">
       <component>
@@ -9,4 +9,4 @@
       </component>
     </components>
   </filter>
-</get>
+</get-conf>
