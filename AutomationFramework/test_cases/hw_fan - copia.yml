@@ -3,7 +3,7 @@
       name: hw_fan_speed
       id: 999
       description: >
-          This test is to get the fan speed.
+          que os parece esta descripcion.
       rpcs:
           - template: hw_fan_speed.xml
             operation: get
