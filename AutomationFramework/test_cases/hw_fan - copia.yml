@@ -1,7 +1,7 @@
 
 - testcase:
       name: hw_fan_speed
-      id: 1
+      id: 999
       description: >
           This test is to get the fan speed.
       rpcs:
