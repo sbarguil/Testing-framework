@@ -1,0 +1,190 @@
+
+
+- testcase:
+      name: acl_sets_forwarding_action
+      id: 1
+      description: >
+          This test is to set type of the interface.
+      rpcs:
+          - template: acl_sets_forwarding_action.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   type: "ethernet3Mbit"
+
+
+
+- testcase:
+      name: acl_sets_log_action
+      id: 2
+      description: >
+          This test is to define the mtu parameter.
+      rpcs:
+          - template: acl_sets_log_action.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   mtu: "1450"
+
+- testcase:
+      name: acl_sets_sequence_id
+      id: 3
+      description: >
+          This test is to set description on the interface.
+      rpcs:
+          - template: acl_sets_sequence_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   description: "Test if_config_description 2"
+
+- testcase:
+      name: acl_sets_destination_address
+      id: 4
+      description: >
+          This test is to enabled the interface.
+      rpcs:
+          - template: iacl_sets_destination_address.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   enabled: "false"
+
+- testcase:
+      name: acl_sets_dscp
+      id: 5
+      description: >
+          This test is to define the tag protocol on the VLAN.
+      rpcs:
+          - template: acl_sets_dscp.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   tpid: "TPID_0X9200"
+
+- testcase:
+      name: acl_sets_protocol
+      id: 6
+      description: >
+          This test is defined to enable an interface
+          loopback mode.
+      rpcs:
+          - template: acl_sets_protocol.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  interface_name: "Loopback0"
+                  type: "softwareLoopback"
+                  loopback_mode: "true"
+
+
+- testcase:
+      name: acl_sets_source_address
+      id: 7
+      description: >
+          This test is to set description on the interface.
+      rpcs:
+          - template: acl_sets_source_address
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   description: "Test if_config_description 2"
+
+- testcase:
+      name: acl_sets_destination_port
+      id: 8
+      description: >
+          This test is to enabled the interface.
+      rpcs:
+          - template: acl_sets_destination_port.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   enabled: "false"
+
+- testcase:
+      name: acl_sets_source_port
+      id: 9
+      description: >
+          This test is to set description on the interface.
+      rpcs:
+          - template: aacl_sets_source_port.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   description: "Test if_config_description 2"
+
+- testcase:
+      name: acl_sets_description
+      id: 10
+      description: >
+          This test is to enabled the interface.
+      rpcs:
+          - template: iacl_sets_description.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   enabled: "false"
+
+- testcase:
+      name: acl_sets_name
+      id: 11
+      description: >
+          This test is to define the tag protocol on the VLAN.
+      rpcs:
+          - template: acl_sets_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   tpid: "TPID_0X9200"
+
+- testcase:
+      name: acl_sets_type
+      id: 12
+      description: >
+          This test is defined to enable an interface
+          loopback mode.
+      rpcs:
+          - template: acl_sets_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  interface_name: "Loopback0"
+                  type: "softwareLoopback"
+                  loopback_mode: "true"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
