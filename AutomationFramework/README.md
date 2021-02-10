@@ -375,7 +375,7 @@ In Pull Request edition the following actions are necessary:
 
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pullrequest_1.png)
 
-Below you can see a summary of the changes made in the branch with respect to the base branch (automation framework)
+Below you can see a summary of the changes made in the branch regarding  the base branch (automation framework)
 
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pullrequest_2.png)
 
