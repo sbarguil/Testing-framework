@@ -318,8 +318,9 @@ the test. An example is shown in the following figure
 
 ### 10. ADDING YML AND XML WITH GITHUB DESKTOP
 ##### - NAME OF STANDARD OPERATIONS:
-For Branch
-	1.-[branch]_ ymlfilename.YML        ejm.    [branch]_acl_sets.YML
+
+For Branch:
+	1.-branch_ ymlfilename.YML        ejm.    branch_acl_sets.YML
 	
 For commits:
 	1.-[commit]_ ymlfilename.YML     ejm.  [commit]_acl_sets.YML     
