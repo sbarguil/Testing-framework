@@ -1,0 +1,26 @@
+
+- testcase:
+      name: ni_mpls_p2p_tunnel_destination
+      id: 1
+      description: >
+          This test is to set type of the interface.
+      rpcs:
+          - template: ni_mpls_p2p_tunnel_destination.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   type: "ethernet3Mbit"
+
+- testcase:
+      name: ni_mpls_p2p_tunnel_destination
+      id: 1
+      description: >
+          This test is to get the admin status of the interface.
+      rpcs:
+          - template: ni_mpls_p2p_tunnel_destination.xml
+            operation: get
+            params:
+                   interface_name: "1"
+                   admin_status: "
