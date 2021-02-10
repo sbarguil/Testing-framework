@@ -316,10 +316,11 @@ the test. An example is shown in the following figure
 
 <a name="adding-ref"/>
 
-### 9. ADDING YML AND XML WITH GITHUB DESKTOP
+### 10. ADDING YML AND XML WITH GITHUB DESKTOP
 ##### - NAME OF STANDARD OPERATIONS:
 For Branch
 	1.-[branch]_ ymlfilename.YML        ejm.    [branch]_acl_sets.YML
+	
 For commits:
 	1.-[commit]_ ymlfilename.YML     ejm.  [commit]_acl_sets.YML     
 	2.-In the description includes the changes made
