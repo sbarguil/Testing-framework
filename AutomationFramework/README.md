@@ -17,7 +17,7 @@
 [7. Vendor specific findings](#vendor-findings-ref)  
 [8. Vendor specific findings](#other-commands-ref)  
 [9. FAQs](#faqs-ref)  
-[10. ADDING YML AND XML WITH GITHUB DESKTOP](#adding-ref)  
+[10. Adding YML and XML](#adding-ref)  
 
   
 
@@ -316,17 +316,20 @@ the test. An example is shown in the following figure
 
 <a name="adding-ref"/>
 
-### 10. ADDING YML AND XML WITH GITHUB DESKTOP
+### 10. Adding YML and XML
 ##### - NAME OF STANDARD OPERATIONS:
 
 For Branch:
+
 	1.-branch_ ymlfilename.YML        ejm.    branch_acl_sets.YML
 	
 For commits:
+
 	1.-[commit]_ ymlfilename.YML     ejm.  [commit]_acl_sets.YML     
 	2.-In the description includes the changes made
 
 For pull request:
+
 	-[PR]_ymlfilename.YML          ejm    [PR]_acl_sets.YML
 
 
