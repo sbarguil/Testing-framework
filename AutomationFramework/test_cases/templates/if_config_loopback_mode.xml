@@ -1,4 +1,4 @@
-<edit-config>
+  <edit-config>
     <target>
       <{{target}}/>
     </target>
@@ -7,7 +7,9 @@
         <interface>
           <name>{{interface_name}}</name>
           <config>
-           <loopback-mode>{{loopback_mode}}</loopback-mode>
+            <name>{{interface_name}}</name>
+            <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">{{type}}</type>
+            <loopback-mode>{{loopback_mode}}</loopback-mode>
           </config>
         </interface>
       </interfaces>

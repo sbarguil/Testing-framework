@@ -6,7 +6,6 @@ class NetworkInstance(BasePageObject):
         'ni_config_name': [
             {
                 'name': 'network-instances/network-instance/name',
-                'instance_name': 'network-instances/network-instance/config/name'
             }
         ],
         'ni_config_type': [
@@ -154,12 +153,14 @@ class NetworkInstance(BasePageObject):
         'ni_t_ldp_afi_name': [
             {
                 'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
                 'afi_name': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/afi-name',
             }
         ],
         'ni_t_ldp_remote_address': [
             {
                 'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
                 'afi_name': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/afi-name',
                 'remote_address': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/remote-address',
             }
@@ -167,6 +168,7 @@ class NetworkInstance(BasePageObject):
         'ni_t_ldp_local_address': [
             {
                 'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
                 'afi_name': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/afi-name',
                 'remote_address': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/remote-address',
                 'local_address': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/config/local-address',
@@ -175,6 +177,7 @@ class NetworkInstance(BasePageObject):
         'ni_t_ldp_enabled': [
             {
                 'name': 'network-instances/network-instance/name',
+                'type': 'network-instances/network-instance/config/type',
                 'afi_name': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/afi-name',
                 'remote_address': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/remote-address',
                 'enabled': 'network-instances/network-instance/mpls/signaling-protocols/ldp/targeted/address-families/address-family/targets/target/config/enabled',
@@ -193,6 +196,7 @@ class NetworkInstance(BasePageObject):
                 'name': 'network-instances/network-instance/name',
                 'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
                 'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
                 'router_id': 'network-instances/network-instance/protocols/protocol/bgp/global/config/router-id',
             }
         ],
@@ -201,6 +205,7 @@ class NetworkInstance(BasePageObject):
                 'name': 'network-instances/network-instance/name',
                 'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
                 'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
                 'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
             }
         ],
@@ -209,6 +214,7 @@ class NetworkInstance(BasePageObject):
                 'name': 'network-instances/network-instance/name',
                 'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
                 'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
                 'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
                 'peer_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/peer-as',
             }
@@ -218,7 +224,9 @@ class NetworkInstance(BasePageObject):
                 'name': 'network-instances/network-instance/name',
                 'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
                 'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
                 'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'peer_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/peer-as',
                 'local_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/local-as',
             }
         ],
@@ -227,6 +235,7 @@ class NetworkInstance(BasePageObject):
                 'name': 'network-instances/network-instance/name',
                 'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
                 'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
                 'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
                 'peer_type': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/peer-type',
             }
@@ -237,6 +246,7 @@ class NetworkInstance(BasePageObject):
                 'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
                 'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
                 'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
                 'remove_private_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/remove-private-as',
             }
         ],
@@ -247,6 +257,8 @@ class NetworkInstance(BasePageObject):
                 'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
                 'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
                 'description': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/description',
+                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
+                'peer_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/peer-as',
             }
         ],
         'ni_bgp_enabled': [
@@ -255,6 +267,7 @@ class NetworkInstance(BasePageObject):
                 'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
                 'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
                 'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
                 'enabled': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/ebgp-multihop/config/enabled',
             }
         ],
@@ -264,8 +277,34 @@ class NetworkInstance(BasePageObject):
                 'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
                 'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
                 'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'peer_as': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/config/peer-as',
+                'as': 'network-instances/network-instance/protocols/protocol/bgp/global/config/as',
                 'multihop_ttl': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/ebgp-multihop/config/multihop-ttl',
             }
+        ],
+        'ni_bgp_import_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'import_export_bgp_policy': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/apply-policy/config/import-policy',
+            },
+        ],
+        'ni_bgp_export_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'neighbor_address': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/neighbor-address',
+                'import_export_bgp_policy': 'network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/apply-policy/config/export-policy',
+            },
         ],
         'ni_protocol_instances_creation': [
             {
@@ -349,6 +388,10 @@ class NetworkInstance(BasePageObject):
         ],
         'ni_ospf_subinterface': [
             {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+            },
+            {
                 'name': 'network-instances/network-instance/name',
                 'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
                 'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
@@ -356,6 +399,24 @@ class NetworkInstance(BasePageObject):
                 'id': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/id',
                 'interface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/interface',
                 'subinterface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/subinterface',
+            }
+        ],
+        'ni_rt_policy_import_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'import_policy': 'network-instances/network-instance/inter-instance-policies/apply-policy/config/import-policy',
+            }
+        ],
+        'ni_rt_policy_export_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'export_policy': 'network-instances/network-instance/inter-instance-policies/apply-policy/config/export-policy',
             }
         ],
         'ni_static_prefix': [
@@ -411,6 +472,43 @@ class NetworkInstance(BasePageObject):
                 'default_import_policy': 'network-instances/network-instance/table-connections/table-connection/config/default-import-policy',
             }
         ],
+        'ni_interface_id': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'id': 'network-instances/network-instance/interfaces/interface/id',
+            }
+        ],
+        'ni_interface_interface': [
+            {
+                'name': 'network-instances/network-instance/name',
+                'id': 'network-instances/network-instance/interfaces/interface/id',
+                'interface': 'network-instances/network-instance/interfaces/interface/config/interface',
+            }
+        ],
+        'ni_interface_subinterface': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'id': 'network-instances/network-instance/interfaces/interface/id',
+                'interface': 'network-instances/network-instance/interfaces/interface/config/interface',
+                'subinterface': 'network-instances/network-instance/interfaces/interface/config/subinterface',
+            }
+        ],
+        'ni_protocol_tables_connection_import_policy': [
+            {
+                'name': 'routing-policy/policy-definitions/policy-definition/name',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier_src_protocol': 'network-instances/network-instance/table-connections/table-connection/src-protocol',
+                'identifier_dst_protocol': 'network-instances/network-instance/table-connections/table-connection/dst-protocol',
+                'address_family': 'network-instances/network-instance/table-connections/table-connection/address-family',
+                'import_policy': 'network-instances/network-instance/table-connections/table-connection/config/import-policy',
+            }
+        ]
     }
 
     def execute_network_instance_edit_config_test_case(self):
@@ -423,6 +521,14 @@ class NetworkInstance(BasePageObject):
                         </network-instances>
                     </filter>
                     """
-        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='name')
+        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=self.rpc_idx_in_test_case,
+                                                                      variable='name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()
+
+    def execute_rpc(self):
+        if self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'edit-config':
+            self.execute_network_instance_edit_config_test_case()
+        elif self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'get':
+            self.execute_get_test_case_with_dispatch()
+

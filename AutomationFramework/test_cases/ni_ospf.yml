@@ -44,7 +44,7 @@
                    name: "Prueba_LxVPN38"
                    identifier: "OSPF"
                    protocol_name: "OSPF_1"
-                   area_identifier: "0.0.0.0" 
+                   area_identifier: "0.0.0.0"
                    id: "1"
 
 - testcase:
@@ -61,7 +61,7 @@
                    name: "Prueba_LxVPN39"
                    identifier: "OSPF"
                    protocol_name: "OSPF_1"
-                   area_identifier: "0.0.0.0" 
+                   area_identifier: "0.0.0.0"
                    id: "1"
                    network_type: "BROADCAST_NETWORK"
 
@@ -79,7 +79,7 @@
                    name: "Prueba_LxVPN40"
                    identifier: "OSPF"
                    protocol_name: "OSPF_1"
-                   area_identifier: "0.0.0.0" 
+                   area_identifier: "0.0.0.0"
                    id: "1"
                    authentication_type: "MD5"
 
@@ -97,7 +97,7 @@
                    name: "Prueba_LxVPN41"
                    identifier: "OSPF"
                    protocol_name: "OSPF_1"
-                   area_identifier: "0.0.0.0" 
+                   area_identifier: "0.0.0.0"
                    id: "1"
                    passive: "true"
 
@@ -115,7 +115,7 @@
                    name: "Prueba_LxVPN42"
                    identifier: "OSPF"
                    protocol_name: "OSPF_1"
-                   area_identifier: "0.0.0.0" 
+                   area_identifier: "0.0.0.0"
                    id: "1"
                    interface: "1"
 
@@ -125,6 +125,14 @@
       description: >
           This test is to set a reference to an subinterface for a OSPF instance within a L3 network-instance.
       rpcs:
+          - template: ni_ospf_subinterface_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   index: "600"
+
           - template: ni_ospf_subinterface.xml
             target: candidate
             operation: edit-config
@@ -133,7 +141,7 @@
                    name: "Prueba_LxVPN43"
                    identifier: "OSPF"
                    protocol_name: "OSPF_1"
-                   area_identifier: "0.0.0.0" 
+                   area_identifier: "0.0.0.0"
                    id: "1"
                    interface: "1"
-                   subinterface: "100"
+                   subinterface: "600"

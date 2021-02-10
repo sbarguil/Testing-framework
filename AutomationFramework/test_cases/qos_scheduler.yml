@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "scheduler_policy_AF11"
+                   name: "scheduler_policy_AF1"
 
 - testcase:
       name: qos_scheduler_sequence
@@ -23,7 +23,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "scheduler_policy_AF12"
+                   name: "scheduler_policy_AF1"
                    sequence: "1"
 
 - testcase:
@@ -37,8 +37,8 @@
             operation: edit-config
             commit: true
             params:
-                   name: "scheduler_policy_AF13"
-                   sequence: "1" 
+                   name: "scheduler_policy_AF1"
+                   sequence: "1"
                    id: "scheduler_AF1"
 
 - testcase:
@@ -47,15 +47,23 @@
       description: >
           This test is to assign a queue to the input of a scheduler.
       rpcs:
-          - template: qos_scheduler_queue.xml
+          - template: qos_queue_name.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
                    name: "queue_AF1"
-                   scheduler_name: "scheduler_policy_AF14"
-                   sequence: "1" 
+
+          - template: qos_scheduler_queue.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "scheduler_policy_AF1"
+                   sequence: "1"
                    id: "scheduler_AF1"
+                   input_type: "QUEUE"
+                   queue_name: "queue_AF1"
 
 - testcase:
       name: qos_scheduler_weight
@@ -68,9 +76,9 @@
             operation: edit-config
             commit: true
             params:
-                   name: "scheduler_policy_AF15"
-                   sequence: "1" 
-                   id: "scheduler_AF1" 
+                   name: "scheduler_policy_AF1"
+                   sequence: "1"
+                   id: "scheduler_AF1"
                    weight: "5"
 
 - testcase:
@@ -84,8 +92,8 @@
             operation: edit-config
             commit: true
             params:
-                   name: "scheduler_policy_AF16"
-                   sequence: "1" 
+                   name: "scheduler_policy_AF1"
+                   sequence: "1"
                    cir: "4096"
 
 - testcase:
@@ -99,7 +107,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "scheduler_policy_AF17"
+                   name: "scheduler_policy_AF1"
                    sequence: "1"
                    bc: "256"
 
@@ -114,6 +122,6 @@
             operation: edit-config
             commit: true
             params:
-                  name: "scheduler_policy_AF18"
-                  sequence: "1"   
+                  name: "scheduler_policy_AF1"
+                  sequence: "1"
                   max_queue_depth_bytes: "512"

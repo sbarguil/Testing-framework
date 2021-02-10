@@ -1,3 +1,5 @@
+import os
+from pathlib import Path
 import xmltodict
 from ncclient import manager
 import yaml
@@ -44,9 +46,15 @@ class RPCAutomator2:
 
         return jinja_template.render(jinja_variables_dict)
 
-    # TODO
     def get_occurrences_of_variable_in_not_rendered_template(self, test_case, rpc_index, variable_in_test_case):
-        return 2
+        template_file_name = test_case['testcase']['rpcs'][rpc_index]['template']
+        not_windows_path = os.path.dirname(os.path.realpath(__file__)).replace('\\', '/')
+        template_file_path = Path(not_windows_path.replace('/utils', '')) / 'test_cases/templates' / template_file_name
+        file = open(template_file_path, 'r')
+        data = file.read()
+        text_to_search = '{{' + variable_in_test_case + '}}'
+        occurrences = data.count(text_to_search)
+        return occurrences
 
     def generate_filter_from_test_case(self, test_case, rpc_index=0):
         template_file_name = test_case['testcase']['rpcs'][rpc_index]['template']
@@ -71,12 +79,30 @@ class RPCAutomator2:
 
     def safe_dispatch(self, template):
         try:
+            full_response = '- Response of edit-config: '
             print('- Response of edit-config')
-            print(self.manager.dispatch(et.fromstring(template)))
+            response_edit_config = str(self.manager.dispatch(et.fromstring(template)))
+            print(response_edit_config)
+            full_response = full_response + response_edit_config + ' \n\n - Response of commit: '
             print('- Response of commit')
-            print(self.manager.dispatch(et.fromstring("<commit/>")))
+            response_commit = str(self.manager.dispatch(et.fromstring("<commit/>")))
+            print(response_commit)
+            full_response = full_response + response_commit
+            return full_response
         except Exception as e:
             print("An exception has occurred when performing the edit_config operation.")
+            raise e
+
+    def safe_discard_changes(self):
+        try:
+            full_response = '- Response of discard-changes: '
+            print(full_response)
+            response_discard_changes = str(self.manager.dispatch(et.fromstring("<discard-changes/>")))
+            print(response_discard_changes)
+            full_response = full_response + response_discard_changes
+            return full_response
+        except Exception as e:
+            print("An exception has occurred when performing the discard-changes operation.")
             raise e
 
     def safe_dispatch_no_commit(self, template):
@@ -96,8 +122,8 @@ class RPCAutomator2:
             print("An exception has occurred when performing the get operation.")
             raise e
 
-    def safe_get_config(self, netconf_filter, test_case):
-        target = self.get_rpc_target_from_test_case(test_case=test_case, rpc_index=0)
+    def safe_get_config(self, netconf_filter, test_case, rpc_index=0):
+        target = self.get_rpc_target_from_test_case(test_case=test_case, rpc_index=rpc_index)
         try:
             return self.manager.get_config(source=target, filter=netconf_filter)
         except Exception as e:

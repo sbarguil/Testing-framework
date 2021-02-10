@@ -10,8 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN13"
-                   instance_name: "Prueba_LxVPN13"
+                   name: "Prueba_LxVPN"
 
 - testcase:
       name: ni_config_type
@@ -24,7 +23,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN14"
+                   name: "Prueba_LxVPN"
                    type: "L3VRF"
 
 - testcase:
@@ -38,7 +37,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN15"
+                   name: "Prueba_LxVPN"
                    enabled: "true"
 
 - testcase:
@@ -52,7 +51,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN16"
+                   name: "Prueba_LxVPN"
                    description: "VPN de prueba para L3 y L2"
 
 - testcase:
@@ -66,7 +65,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN17"
+                   name: "Prueba_LxVPN"
                    router_id: "172.16.1.2"
 
 - testcase:
@@ -80,7 +79,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN18"
+                   name: "Prueba_LxVPN"
                    route_distinguisher: "65000:100"
 
 - testcase:
@@ -94,7 +93,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN19"
+                   name: "Prueba_LxVPN"
                    type: "L3VRF"
                    enabled_address_families: "IPV4"
 
@@ -109,6 +108,6 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN20"
+                   name: "Prueba_LxVPN"
                    type: "L2VSI"
                    mtu: "1450"

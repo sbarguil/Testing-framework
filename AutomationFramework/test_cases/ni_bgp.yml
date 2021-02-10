@@ -30,6 +30,7 @@
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
                    router_id: "172.16.1.2"
+                   as: "65000"
 
 - testcase:
       name: ni_bgp_neighbor_address
@@ -44,8 +45,9 @@
             params:
                    name: "Prueba_LxVPN3B"
                    identifier: "BGP"
-                   protocol_name: "BGP_65000"
+                   protocol_name: "BGP_65100"
                    neighbor_address: "192.168.1.2"
+                   as: "65100"
 
 - testcase:
       name: ni_bgp_peer_as
@@ -61,8 +63,9 @@
                    name: "Prueba_LxVPN4B"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2" 
+                   neighbor_address: "192.168.1.2"
                    peer_as: "65123"
+                   as: "65000"
 
 - testcase:
       name: ni_bgp_local_as
@@ -78,8 +81,10 @@
                    name: "Prueba_LxVPN5B"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2" 
-                   local_as: "65000"
+                   neighbor_address: "192.168.1.2"
+                   local_as: "65001"
+                   peer_as: "65123"
+                   as: "65000"
 
 - testcase:
       name: ni_bgp_peer_type
@@ -95,8 +100,9 @@
                    name: "Prueba_LxVPN6B"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2" 
+                   neighbor_address: "192.168.1.2"
                    peer_type: "EXTERNAL"
+                   as: "65000"
 
 - testcase:
       name: ni_bgp_remove_private_as
@@ -112,7 +118,8 @@
                    name: "Prueba_LxVPN7B"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2" 
+                   neighbor_address: "192.168.1.2"
+                   as: "65000"
                    remove_private_as: "PRIVATE_AS_REMOVE_ALL"
 
 - testcase:
@@ -129,8 +136,10 @@
                    name: "Prueba_LxVPN8B"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2" 
+                   neighbor_address: "192.168.1.2"
                    description: "BGP Neighbor 65123 Description"
+                   peer_as: "65123"
+                   as: "65000"
 
 - testcase:
       name: ni_bgp_import_policy
@@ -138,6 +147,14 @@
       description: >
           This test is to set a neighbor import-policy for a BGP instance within a L3 network-instance.
       rpcs:
+
+          - template: rp_policy_def_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "BGP_Policy_Import_Export"
+
           - template: ni_bgp_import_policy.xml
             target: candidate
             operation: edit-config
@@ -146,7 +163,7 @@
                    name: "Prueba_LxVPN9B"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2" 
+                   neighbor_address: "192.168.1.2"
                    import_export_bgp_policy: "BGP_Policy_Import_Export"
 
 - testcase:
@@ -155,6 +172,13 @@
       description: >
           This test is to set a neighbor export-policy for a BGP instance within a L3 network-instance.
       rpcs:
+          - template: rp_policy_def_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "BGP_Policy_Export_Export"
+
           - template: ni_bgp_export_policy.xml
             target: candidate
             operation: edit-config
@@ -163,7 +187,7 @@
                    name: "Prueba_LxVPN10B"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2" 
+                   neighbor_address: "192.168.1.2"
                    import_export_bgp_policy: "BGP_Policy_Export_Export"
 
 - testcase:
@@ -180,7 +204,8 @@
                    name: "Prueba_LxVPN11B"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2" 
+                   neighbor_address: "192.168.1.2"
+                   as: "65000"
                    enabled: "true"
 
 - testcase:
@@ -197,5 +222,7 @@
                    name: "Prueba_LxVPN12B"
                    identifier: "BGP"
                    protocol_name: "BGP_65000"
-                   neighbor_address: "192.168.1.2" 
+                   neighbor_address: "192.168.1.2"
                    multihop_ttl: "3"
+                   as: "65000"
+                   peer_as: "65123"

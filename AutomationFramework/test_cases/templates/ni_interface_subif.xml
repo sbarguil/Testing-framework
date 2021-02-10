@@ -1,3 +1,4 @@
+
   <edit-config>
     <target>
       <{{target}}/>
@@ -6,9 +7,14 @@
       <interfaces xmlns="http://openconfig.net/yang/interfaces">
         <interface>
           <name>{{interface_name}}</name>
-          <config>
-            <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">{{type}}</type>
-          </config>
+          <subinterfaces>
+            <subinterface>
+              <index>{{index}}</index>
+              <config>
+                <index>{{index}}</index>
+              </config>
+            </subinterface>
+          </subinterfaces>
         </interface>
       </interfaces>
     </config>

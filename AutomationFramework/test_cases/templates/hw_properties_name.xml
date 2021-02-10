@@ -5,6 +5,7 @@
         <name>{{name}}</name>
         <properties>
           <property>
+            <name>{{property_name}}</name>
             <state>
               <name>{{empty_name}}</name>
             </state>

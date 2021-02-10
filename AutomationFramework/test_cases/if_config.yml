@@ -10,8 +10,8 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "GigabitEthernet0/0/0/4"
-                   type: "ethernetCsmacd"
+                   interface_name: "1"
+                   type: "ethernet3Mbit"
 
 - testcase:
       name: if_config_mtu
@@ -24,7 +24,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "GigabitEthernet0/0/0/4"
+                   interface_name: "1"
                    mtu: "1450"
 
 - testcase:
@@ -38,8 +38,8 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "GigabitEthernet0/0/0/4"
-                   description: "Test if_config_description"
+                   interface_name: "1"
+                   description: "Test if_config_description 2"
 
 - testcase:
       name: if_config_enabled
@@ -52,7 +52,7 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "GigabitEthernet0/0/0/4"
+                   interface_name: "1"
                    enabled: "false"
 
 - testcase:
@@ -66,8 +66,8 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "GigabitEthernet0/0/0/4"
-                   tpid: "TPID_0X8100"
+                   interface_name: "1"
+                   tpid: "TPID_0X9200"
 
 - testcase:
       name: if_config_loopback_mode
@@ -81,5 +81,6 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "GigabitEthernet0/0/0/4"
+                  interface_name: "Loopback0"
+                  type: "softwareLoopback"
                   loopback_mode: "true"

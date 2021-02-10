@@ -1,28 +1,42 @@
 
--- testcase:
-      name: ni_rt_policy_import-policy
+- testcase:
+      name: ni_rt_policy_import_policy
       id: 1
       description: >
           This test is to set an existing import-policy (created during the test) to be applied to L3 network-instance.
       rpcs:
-          - template: ni_rt_policy_import-policy.xml
+          - template: ni_rt_policy_name.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN50"
-                   import_policy: "route_target_import"
+                   name: "Policy_1"
+
+          - template: ni_rt_policy_import_policy.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   import_policy: "Policy_1"
+
 - testcase:
-      name: ni_rt_policy_export-policy
+      name: ni_rt_policy_export_policy
       id: 2
       description: >
           This test is to set an existing export-policy (created during the test) to be applied to L3 network-instance.
       rpcs:
-          - template: ni_rt_policy_export-policy.xml
+          - template: ni_rt_policy_name.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   instance_name: "Prueba_LxVPN51"
-                   export_policy: "route_target_export"
-        
+                   name: "Policy_1"
+
+          - template: ni_rt_policy_export_policy.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   export_policy: "Policy_1"

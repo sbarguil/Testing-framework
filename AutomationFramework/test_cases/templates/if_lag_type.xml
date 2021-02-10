@@ -5,9 +5,9 @@
     <config>
       <interfaces xmlns="http://openconfig.net/yang/interfaces">
         <interface>
-          <name>{{name}}</name>
+          <name>{{interface_name}}</name>
           <config>
-            <name>{{name}}</name>
+            <name>{{interface_name}}</name>
             <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">{{type}}</type>
             <enabled>{{enabled}}</enabled>
           </config>

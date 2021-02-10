@@ -51,11 +51,22 @@
       description: >
           This test is to get the state IP of a subinterface.
       rpcs:
+          - template: if_subif_ip_prefix_length.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   index: "100"
+                   ip: "192.168.30.1"
+                   prefix_length: "24"
+
           - template: if_subif_ip_state.xml
             operation: get
             params:
                    interface_name: "GigabitEthernet0/0/0/4"
                    index: "100"
+                   ip: ""
 
 - testcase:
       name: if_subif_origin
@@ -63,11 +74,22 @@
       description: >
           This this is to get the origin of the address.
       rpcs:
+          - template: if_subif_ip_prefix_length.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   index: "100"
+                   ip: "192.168.30.1"
+                   prefix_length: "24"
+
           - template: if_subif_origin.xml
             operation: get
             params:
                    interface_name: "GigabitEthernet0/0/0/4"
                    index: "100"
+                   origin: ""
 
 - testcase:
       name: if_subif_dhcp_client
@@ -83,6 +105,7 @@
                    interface_name: "GigabitEthernet0/0/0/4"
                    index: "100"
                    dhcp_client: "true"
+
 - testcase:
       name: if_subif_mtu
       id: 8

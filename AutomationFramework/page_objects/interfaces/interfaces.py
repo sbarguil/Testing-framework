@@ -4,12 +4,6 @@ from AutomationFramework.page_objects.base.base_page_object import BasePageObjec
 
 class Interfaces(BasePageObject):
     variables_paths = {
-        'if_subif_type': [
-            {
-                'interface_name': 'interfaces/interface/name',
-                'type': 'interfaces/interface/config/type'
-            }
-        ],
         'if_subif_description': [
             {
                 'interface_name': 'interfaces/interface/name',
@@ -30,6 +24,32 @@ class Interfaces(BasePageObject):
                 'index': 'interfaces/interface/subinterfaces/subinterface/index',
                 'ip': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/ip',
                 'prefix_length': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/prefix-length',
+            }
+        ],
+        'if_subif_ip_state': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'ip': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/ip',
+                'prefix_length': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/prefix-length',
+            },
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'ip': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/state/ip',
+            }
+        ],
+        'if_subif_origin': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'ip': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/ip',
+                'prefix_length': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/prefix-length',
+            },
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+                'origin': 'interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/state/origin',
             }
         ],
         'if_subif_dhcp_client': [
@@ -94,7 +114,7 @@ class Interfaces(BasePageObject):
         ],
         'if_lag_type': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'type': 'interfaces/interface/config/type',
                 'enabled': 'interfaces/interface/config/enabled',
                 'lag_type': 'interfaces/interface/aggregation/config/lag-type',
@@ -102,10 +122,151 @@ class Interfaces(BasePageObject):
         ],
         'if_lag_min_links': [
             {
-                'name': 'interfaces/interface/name',
+                'interface_name': 'interfaces/interface/name',
                 'type': 'interfaces/interface/config/type',
                 'enabled': 'interfaces/interface/config/enabled',
                 'min_links': 'interfaces/interface/aggregation/config/min-links',
+            }
+        ],
+        'if_ethernet_auto_negotiate': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'auto_negotiate': 'interfaces/interface/ethernet/config/auto-negotiate',
+            }
+        ],
+        'if_ethernet_port_speed': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'port_speed': 'interfaces/interface/ethernet/config/port-speed',
+            }
+        ],
+        'if_ethernet_duplex_mode': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'duplex_mode': 'interfaces/interface/ethernet/config/duplex-mode',
+            }
+        ],
+        'if_ethernet_port_speed_state': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'port_speed': 'interfaces/interface/ethernet/state/port-speed',
+            }
+        ],
+        'if_ethernet_aggregate_id': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'enabled': 'interfaces/interface/config/enabled',
+            },
+            {
+                'interface_name': 'interfaces/interface/name',
+                'aggregate_id': 'interfaces/interface/ethernet/config/aggregate-id',
+            }
+        ],
+        'if_gre_dst': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'dst': 'interfaces/interface/tunnel/config/dst',
+            }
+        ],
+        'if_gre_src': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'src': 'interfaces/interface/tunnel/config/src',
+            }
+        ],
+        'if_gre_ttl': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'ttl': 'interfaces/interface/tunnel/config/ttl',
+            }
+        ],
+        'if_gre_ip_prefix_length': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'ip': 'interfaces/interface/tunnel/ipv4/addresses/address/ip',
+                'prefix_length': 'interfaces/interface/tunnel/ipv4/addresses/address/config/prefix-length',
+            }
+        ],
+        'if_gre_mtu': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'mtu': 'interfaces/interface/tunnel/ipv4/config/mtu',
+            }
+        ],
+        'if_config_loopback_mode': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+                'loopback_mode': 'interfaces/interface/config/loopback-mode',
+            }
+        ],
+        'if_config_tpid': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'tpid': 'interfaces/interface/config/tpid',
+            }
+        ],
+        'if_config_type': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/config/type',
+            }
+        ],
+        'if_config_description': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'description': 'interfaces/interface/config/description',
+            }
+        ],
+        'if_config_enabled': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'enabled': 'interfaces/interface/config/enabled',
+            }
+        ],
+        'if_config_mtu': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'mtu': 'interfaces/interface/config/mtu',
+            }
+        ],
+        'ni_ospf_subinterface': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'identifier': 'network-instances/network-instance/protocols/protocol/identifier',
+                'protocol_name': 'network-instances/network-instance/protocols/protocol/name',
+                'area_identifier': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/identifier',
+                'id': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/id',
+                'interface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/interface',
+                'subinterface': 'network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/interface-ref/config/subinterface',
+            }
+        ],
+        'ni_interface_subinterface': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'index': 'interfaces/interface/subinterfaces/subinterface/index',
+            },
+            {
+                'name': 'network-instances/network-instance/name',
+                'id': 'network-instances/network-instance/interfaces/interface/id',
+                'interface': 'network-instances/network-instance/interfaces/interface/config/interface',
+                'subinterface': 'network-instances/network-instance/interfaces/interface/config/subinterface',
+            }
+        ],
+        'if_status_type': [
+            {
+                'interface_name': 'interfaces/interface/name',
+                'type': 'interfaces/interface/state/type',
             }
         ],
     }
@@ -167,9 +328,19 @@ class Interfaces(BasePageObject):
                         </interfaces>
                     </filter>
                     """
-        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=0, variable='interface_name')
+        interface_name = self.get_variable_value_for_rpc_in_test_case(rpc_index=self.rpc_idx_in_test_case,
+                                                                      variable='interface_name')
         self.set_filter(filter_to_use.format(interface_name))
         self.execute_generic_edit_config_test_case()
+
+    def execute_rpc(self):
+        self.execute_interface_rpc()
+
+    def execute_interface_rpc(self):
+        if self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'edit-config':
+            self.execute_generic_interfaces_edit_config_test_case()
+        elif self.rpcs_list[self.rpc_idx_in_test_case]['operation'] == 'get':
+            self.execute_get_test_case_with_dispatch()
 
     def set_values_before_commit_dict(self):
         rpc_reply_key = self.get_rpc_reply_key_from_get_config()

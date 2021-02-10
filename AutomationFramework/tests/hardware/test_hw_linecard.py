@@ -6,12 +6,11 @@ from AutomationFramework.tests.base_test import BaseTest
 class TestHardwareLinecard(BaseTest):
     test_case_file = 'hw_linecard.yml'
 
-    @pytest.mark.skip(reason="ROC error. ncclient.operations.rpc.RPCError: /components/component[name='0/0/4']/oc-linecard:linecard: the 'when' expression current()/oc-platform:state/oc-platform:type = 'LINECARD' failed")
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
                                                          'test_case_name': 'hw_linecard_power_admin',
                                                          'page_object_class': Hardware}])
     def test_hw_linecard_power_admin(self, create_page_object):
-        create_page_object.execute_generic_edit_config_test_case()
+        create_page_object.execute_hardware_component_edit_config_test_case()
         assert create_page_object.generic_validate_test_case_params(), create_page_object.get_test_case_description()
 
     @pytest.mark.parametrize('create_page_object_arg', [{'test_case_file': test_case_file,
