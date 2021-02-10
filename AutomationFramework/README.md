@@ -339,7 +339,7 @@ Clone remote repository or update it using a pull origin to automation framework
 	
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/clone_githubdesk_2.png)
 
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pullorigin.png)
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pullorigin.PNG)
 
 
 Create a Branch from automation_framework
