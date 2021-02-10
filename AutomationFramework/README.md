@@ -12,7 +12,7 @@
 [3.3. YAML set up](#yaml-setup-ref)  
 [4. Tests execution workflow](#execution-ref)  
 [5. Excel reporting](#excel-reporting-ref) 
-[5.1 Final Output report](#final-output-report) 
+[5.1 Final Output report](#final-output-report-ref) 
 [6. Workflow for contribution in this project](#contribution-workflow-ref)  
 [7. Vendor specific findings](#vendor-findings-ref)  
 [8. Vendor specific findings](#other-commands-ref)  
