@@ -194,7 +194,7 @@ The sheet (Results) has information of each Test parameter that was tested and c
 Then we have to see deeper about the sheet (Results) composite and the meaning of each column.
 
 
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/Sheet_results_report_example.png)
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/Sheet_results_report_%20example.png)
 
 The sheet (Report) has a summary of all tests per status (Error, Failed and passed). 
 
