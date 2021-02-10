@@ -186,7 +186,7 @@ The final output file has three sheets the number one (Details) is specified inf
     • Is Virtual: Yes.
     • Date:  2020-10-09
 
-![alt text](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/vendor equipment information report.png)
+![alt text](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/vendor_equipment_information_report.png)
 
 
 <a name="contribution-workflow-ref"/>
