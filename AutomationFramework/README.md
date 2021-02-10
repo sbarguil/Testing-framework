@@ -321,16 +321,46 @@ the test. An example is shown in the following figure
 
 For Branch:
 
-	1.-branch_ ymlfilename.YML        ejm.    branch_acl_sets.YML
+	1.-ymlfilename.YML               ejm.  acl_sets.YML
 	
 For commits:
 
-	1.-[commit]_ ymlfilename.YML     ejm.  [commit]_acl_sets.YML     
+	1.-[commit]_ymlfilename.YML      ejm.  [commit]_acl_sets.YML     
 	2.-In the description includes the changes made
 
 For pull request:
 
-	-[PR]_ymlfilename.YML          ejm    [PR]_acl_sets.YML
+	-[PR]_ymlfilename.YML            ejm    [PR]_acl_sets.YML
+	
+	
+	
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/clone_githubdesk_1.png)	
+	
 
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/clone_githubdesk_1.png)
 
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/clone_githubdesk_2.png)
 
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/create_branch_1.png.png)
+
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/create_branch_2.png.png)
+
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/gotobranch.png)
+
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/adding_files.png)
+
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/viewchanges_commit.png)
+
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/publish_branch.png)
+
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/create_pullrequest.png)
+
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pullrequest_1.png)
+
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pullrequest_2.png)
+
+	
+	
+	
+	
+	
