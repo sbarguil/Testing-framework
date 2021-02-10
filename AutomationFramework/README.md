@@ -321,41 +321,60 @@ the test. An example is shown in the following figure
 
 For Branch:
 
-	1.-ymlfilename.YML               ejm.  acl_sets.YML
+	1.-ymlfilename.YML               e.g.  acl_sets.YML
 	
 For commits:
 
-	1.-[commit]_ymlfilename.YML      ejm.  [commit]_acl_sets.YML     
+	1.-[commit]_ymlfilename.YML      e.g.  [commit]_acl_sets.YML     
 	2.-In the description includes the changes made
 
 For pull request:
 
-	-[PR]_ymlfilename.YML            ejm    [PR]_acl_sets.YML
+	1-[PR]_ymlfilename.YML            e.g.    [PR]_acl_sets.YML
 	
-	
+
+Clone remote repository or update it using a pull origin to automation framework if it is already cloned:
 	
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/clone_githubdesk_1.png)	
 	
-
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/clone_githubdesk_1.png)
-
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/clone_githubdesk_2.png)
 
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/create_branch_1.png.png)
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pullorigin.png)
 
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/create_branch_2.png.png)
+
+Create a Branch from automation_framework
+
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/create_branch_1.png)
+
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/create_branch_2.png)
+
+Go to Branch  and adding de new YML and XML templates in the files
 
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/gotobranch.png)
 
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/adding_files.png)
 
+Before commit , you can review the new files and changes
+
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/viewchanges_commit.png)
+
+Publich branch with name according to our standard
 
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/publish_branch.png)
 
+Do pull Request
+
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/create_pullrequest.png)
 
+In Pull Request edition the following actions are necessary:
+	1.- Change base to automation_framework
+	2.- Add reviewers
+	3.-Add label
+
+
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pullrequest_1.png)
+
+Below you can see a summary of the changes made in the branch with respect to the base branch (automation framework)
 
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pullrequest_2.png)
 
