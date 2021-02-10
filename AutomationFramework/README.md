@@ -12,6 +12,7 @@
 [3.3. YAML set up](#yaml-setup-ref)  
 [4. Tests execution workflow](#execution-ref)  
 [5. Excel reporting](#excel-reporting-ref)  
+[5.1 Final Output report](#final-output-ref)  
 [6. Workflow for contribution in this project](#contribution-workflow-ref)  
 [7. Vendor specific findings](#vendor-findings-ref)  
 [8. Vendor specific findings](#other-commands-ref)  
@@ -168,6 +169,25 @@ a single test.
 (TODO)
 Generate the full report with `python generate_report.py REPORTS_FOLDER VENDOR_NAME` where `REPORTS_FOLDER` is the folder where the sub set reports generated in the previous step are located, usually `reports` and `VENDOR_NAME` is a string with the name of the vendor for the record.
 The final report will be generated and placed in `REPORTS_FOLDER` like `final_output.xlsx`
+
+
+<a name="final-output-ref"/>
+
+### 5.1 Final output report
+
+The final output file has three sheets the number one (Details) is specified information about the vendor and equipment that has been tested. bellow we mention an example of the data that should be fill up according to the vendor and equipment tested.
+
+
+    • Vendor: Cisco
+    • OS: Cisco IOS-XRv 9000 
+    • OS Version: 7.1.1
+    • Equipment: RTR 9000 
+    • Equipment Family: Xrv9000
+    • Is Virtual: Yes.
+    • Date:  2020-10-09
+
+![alt text](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/vendor equipment information report.png)
+
 
 <a name="contribution-workflow-ref"/>
   
