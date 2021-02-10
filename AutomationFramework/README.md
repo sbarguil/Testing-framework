@@ -17,6 +17,8 @@
 [7. Vendor specific findings](#vendor-findings-ref)  
 [8. Vendor specific findings](#other-commands-ref)  
 [9. FAQs](#faqs-ref)  
+[10. ADDING YML AND XML WITH GITHUB DESKTOP](#adding-ref)  
+
   
 
 <a name="installation-ref"/>
@@ -310,3 +312,20 @@ configured, so you must change the parameter to another value or check that it i
 the test. An example is shown in the following figure
 
 ![alt text](img/skipped_test_example.png)
+
+
+<a name="adding-ref"/>
+
+### 9. ADDING YML AND XML WITH GITHUB DESKTOP
+##### - NAME OF STANDARD OPERATIONS:
+For Branch
+	1.-[branch]_ ymlfilename.YML        ejm.    [branch]_acl_sets.YML
+For commits:
+	1.-[commit]_ ymlfilename.YML     ejm.  [commit]_acl_sets.YML     
+	2.-In the description includes the changes made
+
+For pull request:
+	-[PR]_ymlfilename.YML          ejm    [PR]_acl_sets.YML
+
+
+
