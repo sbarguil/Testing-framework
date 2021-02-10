@@ -367,9 +367,10 @@ Do pull Request
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/create_pullrequest.png)
 
 In Pull Request edition the following actions are necessary:
+
 	1.- Change base to automation_framework
 	2.- Add reviewers
-	3.-Add label
+	3.- Add label
 
 
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pullrequest_1.png)
