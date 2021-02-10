@@ -361,6 +361,17 @@ For pull request:
 
 	
 	
+It is possible to perform these operations using git commands by following the steps below
+
+	1. From automation framework: 
+		-update local Branch: git pull
+		-create new branck with yml name: git branch [name.yml]
+		
+	3. Go to yml branch: git checkout [name.yml]
 	
+	4.After adding yml and .xml , do: git add “test_cases/name.yml” 
+	
+	5. git commit -m “new branch name.yml
+
 	
 	
