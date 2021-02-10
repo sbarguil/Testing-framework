@@ -335,32 +335,6 @@ For pull request:
 	
 	
 
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/clone_githubdesk_1.png)	
-	
-
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/clone_githubdesk_1.png)
-
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/clone_githubdesk_2.png)
-
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/create_branch_1.png.png)
-
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/create_branch_2.png.png)
-
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/gotobranch.png)
-
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/adding_files.png)
-
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/viewchanges_commit.png)
-
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/publish_branch.png)
-
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/create_pullrequest.png)
-
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pullrequest_1.png)
-
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pullrequest_2.png)
-	
-	
 	
 	
 	
