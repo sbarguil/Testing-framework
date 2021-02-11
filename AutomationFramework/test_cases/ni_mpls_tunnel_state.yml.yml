@@ -6,12 +6,10 @@
           This test is to set type of the interface.
       rpcs:
           - template: ni_mpls_tunnel_state_admin_status.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+            operation: get
             params:
-                   interface_name: "1"
-                   type: "ethernet3Mbit"
+                   name: "CHASIS"
+                   description: ""
 
 
 - testcase:
@@ -21,12 +19,10 @@
           This test is to define the mtu parameter.
       rpcs:
           - template: ni_mpls_tunnel_state_auto_generated.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+            operation: get
             params:
-                   interface_name: "1"
-                   mtu: "1450"
+                   name: "CHASIS"
+                   description: ""
 
 - testcase:
       name: ni_mpls_tunnel_state_description
@@ -35,12 +31,10 @@
           This test is to set description on the interface.
       rpcs:
           - template: ni_mpls_tunnel_state_description.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+            operation: get
             params:
-                   interface_name: "1"
-                   description: "Test if_config_description 2"
+                   name: "CHASIS"
+                   description: ""
 
 - testcase:
       name: ni_mpls_tunnel_state_name
@@ -49,12 +43,10 @@
           This test is to enabled the interface.
       rpcs:
           - template: ni_mpls_tunnel_state_name.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+            operation: get
             params:
-                   interface_name: "1"
-                   enabled: "false"
+                   name: "CHASIS"
+                   description: ""
 
 - testcase:
       name: ni_mpls_tunnel_state_oper_status
@@ -63,12 +55,10 @@
           This test is to define the tag protocol on the VLAN.
       rpcs:
           - template: ni_mpls_tunnel_state_oper_status.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+            operation: get
             params:
-                   interface_name: "1"
-                   tpid: "TPID_0X9200"
+                   name: "CHASIS"
+                   description: ""
 
 - testcase:
       name: ni_mpls_tunnel_state_protection_style_requested
@@ -78,13 +68,10 @@
           loopback mode.
       rpcs:
           - template: ni_mpls_tunnel_state_protection_style_requested.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+            operation: get
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "CHASIS"
+                   description: ""
 
 - testcase:
       name: ni_mpls_tunnel_state_role
@@ -94,13 +81,10 @@
           loopback mode.
       rpcs:
           - template: ni_mpls_tunnel_state_role.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+            operation: get
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "CHASIS"
+                   description: ""
 
 - testcase:
       name: ni_mpls_tunnel_state_signaling_protocol
@@ -109,14 +93,11 @@
           This test is defined to enable an interface
           loopback mode.
       rpcs:
-          - template: ini_mpls_tunnel_state_signaling_protocol.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+          - template: ni_mpls_tunnel_state_signaling_protocol.xml
+            operation: get
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "CHASIS"
+                   description: ""
 
 - testcase:
       name: ni_mpls_tunnel_state_source
@@ -126,13 +107,10 @@
           loopback mode.
       rpcs:
           - template: ni_mpls_tunnel_state_source.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+            operation: get
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "CHASIS"
+                   description: ""
 
 - testcase:
       name: ni_mpls_tunnel_state_type
@@ -142,12 +120,9 @@
           loopback mode.
       rpcs:
           - template: ni_mpls_tunnel_state_type.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+            operation: get
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "CHASIS"
+                   description: ""
 
 
