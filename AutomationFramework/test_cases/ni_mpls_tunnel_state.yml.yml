@@ -1,0 +1,153 @@
+
+- testcase:
+      name: ni_mpls_tunnel_state_admin_status
+      id: 1
+      description: >
+          This test is to set type of the interface.
+      rpcs:
+          - template: ni_mpls_tunnel_state_admin_status.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   type: "ethernet3Mbit"
+
+
+- testcase:
+      name: ni_mpls_tunnel_state_auto_generated
+      id: 2
+      description: >
+          This test is to define the mtu parameter.
+      rpcs:
+          - template: ni_mpls_tunnel_state_auto_generated.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   mtu: "1450"
+
+- testcase:
+      name: ni_mpls_tunnel_state_description
+      id: 3
+      description: >
+          This test is to set description on the interface.
+      rpcs:
+          - template: ni_mpls_tunnel_state_description.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   description: "Test if_config_description 2"
+
+- testcase:
+      name: ni_mpls_tunnel_state_name
+      id: 4
+      description: >
+          This test is to enabled the interface.
+      rpcs:
+          - template: ni_mpls_tunnel_state_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   enabled: "false"
+
+- testcase:
+      name: ni_mpls_tunnel_state_oper_status
+      id: 5
+      description: >
+          This test is to define the tag protocol on the VLAN.
+      rpcs:
+          - template: ni_mpls_tunnel_state_oper_status.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   tpid: "TPID_0X9200"
+
+- testcase:
+      name: ni_mpls_tunnel_state_protection_style_requested
+      id: 6
+      description: >
+          This test is defined to enable an interface
+          loopback mode.
+      rpcs:
+          - template: ni_mpls_tunnel_state_protection_style_requested.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  interface_name: "Loopback0"
+                  type: "softwareLoopback"
+                  loopback_mode: "true"
+
+- testcase:
+      name: ni_mpls_tunnel_state_role
+      id: 7
+      description: >
+          This test is defined to enable an interface
+          loopback mode.
+      rpcs:
+          - template: ni_mpls_tunnel_state_role.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  interface_name: "Loopback0"
+                  type: "softwareLoopback"
+                  loopback_mode: "true"
+
+- testcase:
+      name: ni_mpls_tunnel_state_signaling_protocol
+      id: 8
+      description: >
+          This test is defined to enable an interface
+          loopback mode.
+      rpcs:
+          - template: ini_mpls_tunnel_state_signaling_protocol.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  interface_name: "Loopback0"
+                  type: "softwareLoopback"
+                  loopback_mode: "true"
+
+- testcase:
+      name: ni_mpls_tunnel_state_source
+      id: 9
+      description: >
+          This test is defined to enable an interface
+          loopback mode.
+      rpcs:
+          - template: ni_mpls_tunnel_state_source.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  interface_name: "Loopback0"
+                  type: "softwareLoopback"
+                  loopback_mode: "true"
+
+- testcase:
+      name: ni_mpls_tunnel_state_type
+      id: 10
+      description: >
+          This test is defined to enable an interface
+          loopback mode.
+      rpcs:
+          - template: ni_mpls_tunnel_state_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  interface_name: "Loopback0"
+                  type: "softwareLoopback"
+                  loopback_mode: "true"
+
+
