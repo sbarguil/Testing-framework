@@ -1,0 +1,123 @@
+
+- testcase:
+      name: ni_mpls_rsvp_sessions_index
+      id: 1
+      description: >
+          This test is to get description components.
+      rpcs:
+          - template: ni_mpls_rsvp_sessions_index.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   description: ""
+
+
+- testcase:
+      name: ni_mpls_rsvp_sessions_interface_id
+      id: 2
+      description: >
+          This test is to get the hardware version components.
+      rpcs:
+          - template: ni_mpls_rsvp_sessions_interface_id.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   hardware_version: ""
+
+- testcase:
+      name: ni_mpls_rsvp_sessions_ip_prefix
+      id: 3
+      description: >
+          This test is to get the component id.
+      rpcs:
+          - template: ni_mpls_rsvp_sessions_ip_prefix.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   id: ""
+
+- testcase:
+      name: ni_mpls_rsvp_sessions_loose
+      id: 4
+      description: >
+          This test is to get location components.
+      rpcs:
+          - template: ni_mpls_rsvp_sessions_loose.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   location: ""
+
+- testcase:
+      name: ni_mpls_rsvp_sessions_type
+      id: 5
+      description: >
+          This test is to get manufacturing date.
+      rpcs:
+          - template: ni_mpls_rsvp_sessions_type.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   mfg_date: ""
+
+- testcase:
+      name: ni_mpls_rsvp_sessions_address
+      id: 6
+      description: >
+          This test is to get operation status component.
+      rpcs:
+          - template: ni_mpls_rsvp_sessions_address.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   oper_status: ""
+
+- testcase:
+      name: ni_mpls_rsvp_sessions_index
+      id: 7
+      description: >
+          This test is to get name of the parent component.
+      rpcs:
+          - template: ni_mpls_rsvp_sessions_index.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   parent: ""
+
+- testcase:
+      name: ni_mpls_rsvp_sessions_local_index
+      id: 8
+      description: >
+          This test is to get serial number of the component.
+      rpcs:
+          - template: ni_mpls_rsvp_sessions_local_index.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   serial_no: ""
+
+- testcase:
+      name: ni_mpls_rsvp_sessions_lsp_id
+      id: 9
+      description: >
+          This test is to get type of component by the system.
+      rpcs:
+          - template: ni_mpls_rsvp_sessions_lsp_id.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   type: ""
+
+
+
+- testcase:
+      name: ni_mpls_rsvp_sessions_tunnel_id
+      id: 10
+      description: >
+          This test is to get type of component by the system.
+      rpcs:
+          - template: ni_mpls_rsvp_sessions_tunnel_id.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   type: ""
