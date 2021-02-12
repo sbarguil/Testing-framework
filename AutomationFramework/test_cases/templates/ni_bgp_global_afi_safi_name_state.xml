@@ -1,0 +1,27 @@
+<get>
+    <filter>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{ni_name}}</name>
+          <protocols>
+            <protocol>
+              <bgp>
+                <global>
+                  <config>
+                    <as>{{as}}</as>
+                  </config>
+                  <afi-safis>
+                    <afi-safi>
+                      <state>
+                        <afi-safi-name xmlns:oc-isis-types="http://openconfig.net/yang/isis-types">oc-isis-types:{{afi_safi_name}}</afi-safi-name>
+                      </state>
+                    </afi-safi>
+                  </afi-safis>
+                </global>
+              </bgp>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </filter>
+  </get>

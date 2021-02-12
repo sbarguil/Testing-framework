@@ -1,0 +1,27 @@
+<get>
+    <filter>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{ni_name}}</name>
+          <protocols>
+            <protocol>
+              <bgp>
+                <global>
+                  <config>
+                    <as>{{as}}</as>
+                  </config>
+                  <afi-safis>
+                    <afi-safi>
+                      <state>
+                        <enabled>{{enabled}}</enabled>
+                      </state>
+                    </afi-safi>
+                  </afi-safis>
+                </global>
+              </bgp>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </filter>
+  </get>
