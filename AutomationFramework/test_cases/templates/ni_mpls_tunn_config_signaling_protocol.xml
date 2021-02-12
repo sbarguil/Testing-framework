@@ -1,0 +1,26 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+  <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <mpls>
+            <lsps>
+              <constrained-path>
+                <tunnels>
+                  <tunnel>
+                    <name>{{tunnel_name}}</name>
+                    <config>
+                      <signaling-protocol xmlns:oc-mpls-types="http://openconfig.net/yang/mpls-types">{{sig_protocol}}</signaling-protocol>
+                    </config>
+                  </tunnel>
+                </tunnels>
+              </constrained-path>
+            </lsps>
+          </mpls>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>
