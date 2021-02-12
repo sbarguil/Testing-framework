@@ -1,0 +1,25 @@
+ <get>
+    <filter>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <mpls>
+            <lsps>
+              <constrained-path>
+                <tunnels>
+                  <tunnel>
+                    <name>{{tunnel_name}}</name>
+                    <bandwidth>
+                      <state>
+                        <signaled-bandwidth>{{signaled_bw}}<signaled-bandwidth>
+                      </state>
+                    </bandwidth>
+                  </tunnel>
+                </tunnels>
+              </constrained-path>
+            </lsps>
+          </mpls>
+        </network-instance>
+      </network-instances>
+    </filter>
+  </get>
