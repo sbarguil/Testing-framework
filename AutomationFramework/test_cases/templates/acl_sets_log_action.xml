@@ -2,14 +2,25 @@
   <target>
       <{{target}}/>
   </target>
-  <config>
-    <components xmlns="http://openconfig.net/yang/platform">
-      <component>
-        <name>{{name}}</name>
-        <config>
-          <name>{{name}}</name>
-        </config>
-      </component>
-    </components>
-  </config>
+ <config>
+      <acl xmlns="http://openconfig.net/yang/acl">
+        <acl-sets>
+          <acl-set>
+            <name>test_acl</name>
+            <type>ACL_IPV4</type>
+            <acl-entries>
+              <acl-entry>
+                <sequence-id>1</sequence-id>
+                <actions>
+                  <config>
+                    <forwarding-action>ACCEPT</forwarding-action>
+                    <log-action>LOG_SYSLOG</log-action>
+                  </config>
+                </actions>
+              </acl-entry>
+            </acl-entries>
+          </acl-set>
+        </acl-sets>
+      </acl>
+    </config>
 </edit-config>

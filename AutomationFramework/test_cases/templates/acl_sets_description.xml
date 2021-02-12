@@ -9,7 +9,7 @@
             <name>test_acl</name>
             <type>IPv4</type>
             <config>
-              <description>acl for ssh </description>
+              <description>acl for ssh</description>
             </config>
           </acl-set>
         </acl-sets>

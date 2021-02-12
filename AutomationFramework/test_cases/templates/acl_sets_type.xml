@@ -7,7 +7,7 @@
         <acl-sets>
           <acl-set>
             <name>test_acl</name>
-            <type>IPv4</type>
+            <type>ACL_IPV4</type>
             <config>
               <type>ACL_IPV4</type>
             </config>
