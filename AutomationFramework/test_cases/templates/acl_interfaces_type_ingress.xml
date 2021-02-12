@@ -1,0 +1,26 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+     <config>
+      <acl xmlns="http://openconfig.net/yang/acl">
+        <interfaces>
+          <interface>
+            <id>Eth1/2</id>
+            <ingress-acl-sets>
+              <ingress-acl-set>
+                <set-name>full_ipv4</set-name>
+                <type>ACL_IPV4</type>
+                <config>
+                  <set-name>full_ipv4</set-name>
+                  <type>ACL_IPV4</type>
+                </config>
+              </ingress-acl-set>
+            </ingress-acl-sets>
+          </interface>
+        </interfaces>
+      </acl>
+    </config>
+  </edit-config>
+
+
