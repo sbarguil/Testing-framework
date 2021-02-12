@@ -1,0 +1,18 @@
+  <edit-config>
+  <target>
+      <{{target}}/>
+  </target>
+ <config>
+      <acl xmlns="http://openconfig.net/yang/acl">
+        <acl-sets>
+          <acl-set>
+            <name>test_acl</name>
+            <type>IPv4</type>
+            <config>
+              <description>acl for ssh </description>
+            </config>
+          </acl-set>
+        </acl-sets>
+      </acl>
+    </config>
+</edit-config>
