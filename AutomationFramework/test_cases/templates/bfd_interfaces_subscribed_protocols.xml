@@ -1,0 +1,18 @@
+<get>
+  <filter>
+    <bfd xmlns="http://openconfig.net/yang/bfd">
+        <interfaces>
+          <interface>
+            <peers>
+              <peer>
+                <local-discriminator>{{local_discriminator}}</local-discriminator>
+                <state>
+                  <subscribed-protocols xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{subscribed_protocols}}</subscribed-protocols>
+                </state>
+              </peer>
+            </peers>
+          </interface>
+        </interfaces>
+      </bfd>
+  </filter>
+</get>

@@ -1,0 +1,184 @@
+
+      name: bfd_interfaces_id
+      id: 1
+      description: >
+          This test is to set an id unique identifier for interface to configure BFD (IMPORTANT!: It should be a valid interface available, check with CLI before test ).
+      rpcs:
+          - template: bfd_interfaces_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   id: "1"
+
+- testcase:
+      name: bfd_interfaces_interface
+      id: 2
+      description: >
+          This test is to reference a previously configured interface with OC interface module (IMPORTANT!: It should be a valid interface available, check with CLI before test ).
+      rpcs:
+          - template: bfd_interfaces_interface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   id: "1"
+                   interface: "ge-0/0/3"
+                   
+- testcase:
+      name: bfd_interfaces_subinterface
+      id: 3
+      description: >
+          This test is to reference a previously configured sub-interface with OC interface module (IMPORTANT!: It should be a valid interface available, check with CLI before test ).
+      rpcs:
+          - template: bfd_interfaces_subinterface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   id: "1"
+                   interface: "ge-0/0/3"
+                   subinterface: "100"
+                   
+- testcase:
+      name: bfd_interfaces_enabled
+      id: 4
+      description: >
+          This test is to enable BFD on the specified interface indentified by id (IMPORTANT!: It should be a valid interface available, check with CLI before test ).
+      rpcs:
+          - template: bfd_interfaces_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   id: "1"
+                   enabled: "true"
+
+- testcase:
+      name: bfd_interfaces_local_address
+      id: 5
+      description: >
+          This test is to set source IP address to be used for BFD sessions over this interface.
+      rpcs:
+          - template: bfd_interfaces_local_address.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   id: "1"
+                   local_address: "172.16.1.2"
+
+- testcase:
+      name: bfd_interfaces_desired_minimum_tx_interval
+      id: 6
+      description: >
+          This test is to set minimum interval between transmission of BFD control packets.
+      rpcs:
+          - template: bfd_interfaces_desired_minimum_tx_interval.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   id: "1"
+                   desired_minimum_tx_interval: "30"
+
+- testcase:
+      name: bfd_interfaces_required_minimum_receive
+      id: 7
+      description: >
+          This test is to set minimum interval between received BFD control packets that this system should support.
+      rpcs:
+          - template: bfd_interfaces_required_minimum_receive.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   id: "1"
+                   required_minimum_receive: "15"
+
+- testcase:
+      name: bfd_interfaces_detection_multiplier
+      id: 8
+      description: >
+          This test is to set number of packets that must be missed to declare BFD session as down.
+      rpcs:
+          - template: bfd_interfaces_detection_multiplier.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   id: "1"
+                   detection_multiplier: "5"
+
+- testcase:
+      name: bfd_interfaces_local_discriminator
+      id: 9
+      description: >
+          This test is to get the the local discriminator, which is unique for the session on the system.
+      rpcs:
+          - template: bfd_interfaces_local_discriminator.xml
+            operation: get
+            params:
+                   local_discriminator: ""
+                   
+
+- testcase:
+      name: bfd_interfaces_remote_address
+      id: 10
+      description: >
+          This test is to get the IP address used by the remote system for this BFD session.
+      rpcs:
+          - template: bfd_interfaces_remote_address.xml
+            operation: get
+            params:
+                   local_discriminator: ""
+                   remote_address: ""
+                   
+
+- testcase:
+      name: bfd_interfaces_remote_discriminator
+      id: 11
+      description: >
+          This test is to get the unique identified used by the remote system to identify this BFD session.
+      rpcs:
+          - template: bfd_interfaces_remote_discriminator.xml
+            operation: get
+            params:
+                   local_discriminator: ""
+                   remote_discriminator: ""
+
+- testcase:
+      name: bfd_interfaces_session_state
+      id: 12
+      description: >
+          This test is to get the state of the BFD session perceived by the local system..
+      rpcs:
+          - template: bfd_interfaces_session_state.xml
+            operation: get
+            params:
+                   local_discriminator: ""
+                   session_state: ""
+
+- testcase:
+      name: bfd_interfaces_remote_session_state
+      id: 13
+      description: >
+          This test is to get the reported state of the BFD session according to the remote system.
+      rpcs:
+          - template: bfd_interfaces_remote_session_state.xml
+            operation: get
+            params:
+                   local_discriminator: ""
+                   remote_session_state: ""
+        
+- testcase:
+      name: bfd_interfaces_subscribed_protocols
+      id: 14
+      description: >
+          This test is to get the set of protocols that currently use this BFD session for liveliness detection..
+      rpcs:
+          - template: bfd_interfaces_subscribed_protocols.xml
+            operation: get
+            params:
+                   local_discriminator: ""
+                   subscribed_protocols: ""

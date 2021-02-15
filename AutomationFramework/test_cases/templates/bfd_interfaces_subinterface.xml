@@ -1,0 +1,20 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <bfd xmlns="http://openconfig.net/yang/bfd">
+        <interfaces>
+          <interface>
+            <id>{{id}}</id>
+            <interface-ref>
+              <config>
+                <interface>{{interface}}</interface>
+                <subinterface>{{subinterface}}</subinterface>
+              </config>
+            </interface-ref>
+          </interface>
+        </interfaces>
+      </bfd>
+    </config>
+  </edit-config>

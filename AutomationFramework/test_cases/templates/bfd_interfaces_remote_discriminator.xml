@@ -1,0 +1,18 @@
+<get>
+  <filter>
+    <bfd xmlns="http://openconfig.net/yang/bfd">
+        <interfaces>
+          <interface>
+            <peers>
+              <peer>
+                <local-discriminator>{{local_discriminator}}</local-discriminator>
+                <state>
+                  <remote-discriminator>{{remote_discriminator}}</remote-discriminator>
+                </state>
+              </peer>
+            </peers>
+          </interface>
+        </interfaces>
+      </bfd>
+  </filter>
+</get>

@@ -1,0 +1,17 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <bfd xmlns="http://openconfig.net/yang/bfd">
+        <interfaces>
+          <interface>
+            <id>{{id}}</id>
+            <config>
+              <required-minimum-receive>{{required_minimum_receive}}</required-minimum-receive>
+            </config>
+          </interface>
+        </interfaces>
+      </bfd>
+    </config>
+  </edit-config>
