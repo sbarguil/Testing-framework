@@ -1,0 +1,26 @@
+ <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+     <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{ni_name}}</name>
+          <mpls>
+            <signaling-protocols>
+              <rsvp-te>
+                <interface-attributes>
+                  <interface>
+                    <interface-id>{{id}}</interface-id>
+                    <config>
+                      <interface-id>{{id}}</interface-id>
+                    </config>
+                  </interface>
+                </interface-attributes>
+              </rsvp-te>
+            </signaling-protocols>
+          </mpls>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>
