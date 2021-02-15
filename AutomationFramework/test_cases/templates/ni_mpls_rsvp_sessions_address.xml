@@ -1,0 +1,28 @@
+<get>
+    <filter>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{ni_name}}</name>
+          <mpls>
+            <signaling-protocols>
+              <rsvp-te>
+                <sessions>
+                  <session>
+                    <local-index>{{local_index}}</local-index>
+                    <record-route-objects>
+                      <record-route-object>
+                        <index>{{record_index}}</index>
+                        <state>
+                          <address>{{address}}</address>
+                        </state>
+                      </record-route-object>
+                    </record-route-objects>
+                  </session>
+                </sessions>
+              </rsvp-te>
+            </signaling-protocols>
+          </mpls>
+        </network-instance>
+      </network-instances>
+    </filter>
+  </get>
