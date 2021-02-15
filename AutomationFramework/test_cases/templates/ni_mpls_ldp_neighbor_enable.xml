@@ -1,0 +1,29 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+   <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{ni_name}}</name>
+          <mpls>
+            <signaling-protocols>
+              <ldp>
+                <neighbors>
+                  <neighbor>
+                    <lsr-id>{{lsr_id}}</lsr-id>
+                    <label-space-id>{{label_space_id}}</label-space-id>
+                    <authentication>
+                      <config>
+                        <enable>{{enable}}</enable>
+                      </config>
+                    </authentication>
+                  </neighbor>
+                </neighbors>
+              </ldp>
+            </signaling-protocols>
+          </mpls>
+        </network-instance>
+      </network-instances>
+    </config>
+</edit-config>
