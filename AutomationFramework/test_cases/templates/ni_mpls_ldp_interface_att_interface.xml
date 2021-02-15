@@ -16,7 +16,6 @@
                       <interface-ref>
                         <config>
                           <interface>{{interface}}</interface>
-                          <subinterface>{{subinterface}}</subinterface>
                         </config>
                       </interface-ref>
                     </interface>
