@@ -1,0 +1,30 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+      <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{ni_name}}</name>
+          <mpls>
+            <signaling-protocols>
+              <ldp>
+                <interface-attributes>
+                  <interfaces>
+                    <interface>
+                      <interface-id>{{id}}</interface-id>
+                      <address-families>
+                        <address-family>
+                          <afi-name>{{afi_name}}</afi-name>
+                        </address-family>
+                      </address-families>
+                    </interface>
+                  </interfaces>
+                </interface-attributes>
+              </ldp>
+            </signaling-protocols>
+          </mpls>
+        </network-instance>
+      </network-instances>
+    </config>
+</edit-config>
