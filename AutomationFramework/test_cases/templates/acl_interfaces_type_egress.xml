@@ -7,6 +7,9 @@
         <interfaces>
           <interface>
             <id>{{id}}</id>
+            <config>
+              <id>{{id}}</id>
+            </config>
             <egress-acl-sets>
               <egress-acl-set>
                 <set-name>{{name}}</set-name>
