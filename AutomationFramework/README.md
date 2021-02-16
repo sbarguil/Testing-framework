@@ -200,12 +200,24 @@ The sheet (Results) has information of each Test parameter that was tested and c
 Then we have to see deeper about the sheet (Results) composite and the meaning of each column.
 
 
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/Sheet_results_report_%20example.png)
+|       SUITE NAME      |         Test case name        |                 Test case description                |    TEST PARAM    |
+|:---------------------:|:-----------------------------:|:----------------------------------------------------:|:----------------:|
+| TestHardwareComponent | hw_component_description      | This test is to get description components.          | description      |
+| TestHardwareComponent | hw_component_hardware_version | This test is to get the hardware version components. | hardware-version |
+| TestHardwareComponent | hw_component_id               | This test is to get the component id.                | id               |
+| TestHardwareComponent | hw_component_location         | This test is to get location components.             | location         |
+
 
 The sheet (Report) has a summary of all tests per status (Error, Failed and passed). 
 
 
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/Sheet_summary_report.png)
+|            |   Test Sub-Block    |
+|:----------:|:---:|:--:|:---:|----|
+| Test Block | If  | ni | qos | rp |
+|              Results             |
+| Error      | 2   | 6  | 0   | 2  |
+| Failed     | 12  | 18 | 11  | 0  |
+| Passed     | 21  | 39 | 0   | 7  |
 
 
 
