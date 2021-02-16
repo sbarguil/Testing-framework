@@ -1,34 +1,32 @@
 
-
 - testcase:
-      name: acl_sets_forwarding_action
+      name: acl_sets_name
       id: 1
       description: >
-          This test is to set type of the interface.
+          This test is to define the tag protocol on the VLAN.
       rpcs:
-          - template: acl_sets_forwarding_action.xml
+          - template: acl_sets_name.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   type: "ethernet3Mbit"
-
-
+                   name: "test_acl"
 
 - testcase:
-      name: acl_sets_log_action
+      name: acl_sets_type
       id: 2
       description: >
-          This test is to define the mtu parameter.
+          This test is defined to enable an interface
+          loopback mode.
       rpcs:
-          - template: acl_sets_log_action.xml
+          - template: acl_sets_type.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   mtu: "1450"
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+
 
 - testcase:
       name: acl_sets_sequence_id
@@ -41,8 +39,9 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   description: "Test if_config_description 2"
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
 
 - testcase:
       name: acl_sets_destination_address
@@ -55,8 +54,10 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   enabled: "false"
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   ip_address: "123.32.24.25"
 
 - testcase:
       name: acl_sets_dscp
@@ -69,8 +70,10 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   tpid: "TPID_0X9200"
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   dscp: "20"
 
 - testcase:
       name: acl_sets_protocol
@@ -84,9 +87,10 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   protocol: "23"
 
 
 - testcase:
@@ -100,8 +104,10 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   description: "Test if_config_description 2"
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   source_address: "123.32.34.31"
 
 - testcase:
       name: acl_sets_destination_port
@@ -114,8 +120,10 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   enabled: "false"
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   dest_port: "20"
 
 - testcase:
       name: acl_sets_source_port
@@ -128,8 +136,10 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   description: "Test if_config_description 2"
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   source_port: "10"
 
 - testcase:
       name: acl_sets_description
@@ -142,38 +152,42 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   enabled: "false"
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   description: "acl for ssh"
 
 - testcase:
-      name: acl_sets_name
+      name: acl_sets_forwarding_action
       id: 11
       description: >
-          This test is to define the tag protocol on the VLAN.
+          This test is to set type of the interface.
       rpcs:
-          - template: acl_sets_name.xml
+          - template: acl_sets_forwarding_action.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   tpid: "TPID_0X9200"
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   forwarding_action: "ACCEPT"
 
 - testcase:
-      name: acl_sets_type
+      name: acl_sets_log_action
       id: 12
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to define the mtu parameter.
       rpcs:
-          - template: acl_sets_type.xml
+          - template: acl_sets_log_action.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   forwarding_action: "ACCEPT"
+                   log_action: "LOG_SYSLOG"
 
 
 

@@ -6,10 +6,10 @@
       <acl xmlns="http://openconfig.net/yang/acl">
         <acl-sets>
           <acl-set>
-            <name>test_acl</name>
-            <type>IPv4</type>
+            <name>{{name}}</name>
+            <type>{{type}}</type>
             <config>
-              <description>acl for ssh</description>
+              <description>{{description}}</description>
             </config>
           </acl-set>
         </acl-sets>

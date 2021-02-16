@@ -6,10 +6,9 @@
       <acl xmlns="http://openconfig.net/yang/acl">
         <acl-sets>
           <acl-set>
-            <name>test_acl</name>
-            <type>ACL_IPV4</type>
+            <name>{{name}}</name>
             <config>
-              <name>test_acl</name>
+              <name>{{name}}</name>
             </config>
           </acl-set>
         </acl-sets>

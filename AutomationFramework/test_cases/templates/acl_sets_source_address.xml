@@ -6,14 +6,14 @@
       <acl xmlns="http://openconfig.net/yang/acl">
         <acl-sets>
           <acl-set>
-            <name>test_acl</name>
-            <type>IPv4</type>
+            <name>{{name}}</name>
+            <type>{{type}}</type>
             <acl-entries>
               <acl-entry>
-                <sequence-id>1</sequence-id>
+                <sequence-id>{{sequence_id}}</sequence-id>
                 <ipv4>
                   <config>
-                    <source-address>123.32.34.31</source-address>
+                    <source-address>{{source_Address}}</source-address>
                   </config>
                 </ipv4>
               </acl-entry>

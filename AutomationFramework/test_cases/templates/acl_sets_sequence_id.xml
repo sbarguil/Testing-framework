@@ -9,8 +9,11 @@
             <name>test_acl</name>
             <type>ACL_IPV4</type>
             <acl-entries>
-              <acl-entry>
+             <acl-entry>
                 <sequence-id>1</sequence-id>
+                <config>
+                  <sequence-id>1</sequence-id>
+                </config>
               </acl-entry>
             </acl-entries>
           </acl-set>
