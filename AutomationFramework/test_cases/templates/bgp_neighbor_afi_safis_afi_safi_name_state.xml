@@ -1,0 +1,34 @@
+  <get>
+    <filter>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{ni_name}}</name>
+          <protocols>
+            <protocol>
+              <identifier>{{identifier}}</identifier>
+              <name>{{name_protocol}}</name>
+              <bgp>
+                <global>
+                  <config>
+                    <as>{{as}}</as>
+                  </config>
+                </global>
+                <neighbors>
+                  <neighbor>
+                    <neighbor-address>{{neighbor_address}}</neighbor-address>
+                    <afi-safis>
+                      <afi-safi>
+                        <state>
+                          <afi-safi-name xmlns:oc-bgp-types="http://openconfig.net/yang/bgp-types">{{afi_safi_name}}</afi-safi-name>
+                        </state>
+                      </afi-safi>
+                    </afi-safis>
+                  </neighbor>
+                </neighbors>
+              </bgp>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </filter>
+  </get>
