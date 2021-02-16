@@ -10,8 +10,12 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   type: "ethernet3Mbit"
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_admin_status"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   admin_status: "true"
 
 - testcase:
       name: ni_mpls_tunn_config_description
@@ -24,8 +28,12 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   mtu: "1450"
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_description"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   description: "Test tunnel description"
 
 - testcase:
       name: ni_mpls_tunn_config_hold_priority
@@ -38,8 +46,12 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   description: "Test if_config_description 2"
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_hold_priority"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   hold_priority: "3"
 
 - testcase:
       name: ni_mpls_tunn_config_metric
@@ -52,8 +64,12 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   enabled: "false"
+                  name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_metric"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   metric: "30"
 
 - testcase:
       name: ni_mpls_tunn_config_metric_type
@@ -66,8 +82,12 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   tpid: "TPID_0X9200"
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_metric_type"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   metric_type: "oc-mpls-types:LSP_METRIC_ABSOLUTE"
 
 - testcase:
       name: ni_mpls_tunn_config_name
@@ -81,9 +101,11 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_name"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
 
 - testcase:
       name: ni_mpls_tunn_config_preference
@@ -97,9 +119,12 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_preference"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   preference: "100"
 
 - testcase:
       name: ni_mpls_tunn_config_protection_style_requested
@@ -113,10 +138,12 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
-
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_protection_style_requested"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   protection_sty_req: "oc-mpls-types:UNPROTECTED"
 - testcase:
       name: ni_mpls_tunn_config_reoptimize_timer
       id: 9
@@ -129,9 +156,12 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_reoptimize_timer"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   reop_timer: "100"
 
 - testcase:
       name: ni_mpls_tunn_config_setup_priority
@@ -145,9 +175,12 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_setup_priority"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   setup_priority: "5"
 
 - testcase:
       name: ni_mpls_tunn_config_signaling_protocol
@@ -161,9 +194,12 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_signaling_protocol"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   sig_protocol: "oc-mpls-types:PATH_SETUP_LDP"
 
 - testcase:
       name: ni_mpls_tunn_config_soft_preemption
@@ -177,9 +213,12 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_soft_preemption"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   soft_preemption: "true"
 
 - testcase:
       name: ni_mpls_tunn_config_source
@@ -193,9 +232,12 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_source"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   ip_source: "10.43.33.55"
 
 - testcase:
       name: ni_mpls_tunn_config_type
@@ -209,6 +251,11 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"                 
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_admin_status"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"  
+                   type_tunnel: "oc-mpls-types:P2MP"         
+
+      

@@ -6,6 +6,12 @@
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
           <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+            <enabled>{{enable}}</enabled>
+            <description>{{description}}</description>
+          </config>
           <mpls>
             <lsps>
               <constrained-path>
@@ -13,6 +19,7 @@
                   <tunnel>
                     <name>{{tunnel_name}}</name>
                     <config>
+                      <name>{{tunnel_name}}</name>
                       <admin-status xmlns:oc-mpls-types="http://openconfig.net/yang/mpls-types">{{admin_status}}</admin-status>
                     </config>
                   </tunnel>
