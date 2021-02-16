@@ -8,9 +8,16 @@
           <acl-set>
             <name>{{name}}</name>
             <type>{{type}}</type>
+            <config>
+              <name>{{name}}</name>
+              <type>{{type}}</type>
+            </config>
             <acl-entries>
               <acl-entry>
-                <sequence-id>1</sequence-id>
+                <sequence-id>{{sequence_id}}</sequence-id>
+                <config>
+                  <sequence-id>{{sequence_id}}</sequence-id>
+                </config>
                 <actions>
                   <config>
                     <forwarding-action>{{forwarding_action}}</forwarding-action>

@@ -9,6 +9,7 @@
             <name>{{name}}</name>
             <type>{{type}}</type>
             <config>
+              <name>{{name}}</name>
               <type>{{type}}</type>
             </config>
           </acl-set>

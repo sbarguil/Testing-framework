@@ -5,12 +5,19 @@
     <config>
       <acl xmlns="http://openconfig.net/yang/acl">
         <acl-sets>
-          <acl-set>
+         <acl-set>
             <name>{{name}}</name>
             <type>{{type}}</type>
+            <config>
+              <name>{{name}}</name>
+              <type>{{type}}</type>
+            </config>
             <acl-entries>
               <acl-entry>
                 <sequence-id>{{sequence_id}}</sequence-id>
+                <config>
+                  <sequence-id>{{sequence_id}}</sequence-id>
+                </config>
                 <ipv4>
                   <config>
                     <protocol>{{protocol}}</protocol>

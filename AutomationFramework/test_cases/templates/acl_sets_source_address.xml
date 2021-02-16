@@ -8,9 +8,16 @@
           <acl-set>
             <name>{{name}}</name>
             <type>{{type}}</type>
+            <config>
+              <name>{{name}}</name>
+              <type>{{type}}</type>
+            </config>
             <acl-entries>
               <acl-entry>
                 <sequence-id>{{sequence_id}}</sequence-id>
+                <config>
+                  <sequence-id>{{sequence_id}}</sequence-id>
+                </config>
                 <ipv4>
                   <config>
                     <source-address>{{source_Address}}</source-address>

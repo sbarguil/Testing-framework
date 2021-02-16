@@ -1,9 +1,4 @@
   <edit-config>
-  <target>
-      <{{target}}/>
-  </target>
-   <rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
-  <edit-config>
     <target>
       <candidate/>
     </target>
@@ -13,9 +8,16 @@
           <acl-set>
             <name>{{name}}</name>
             <type>{{type}}</type>
+            <config>
+              <name>{{name}}</name>
+              <type>{{type}}</type>
+            </config>
             <acl-entries>
               <acl-entry>
                 <sequence-id>{{sequence_id}}</sequence-id>
+                <config>
+                  <sequence-id>{{sequence_id}}</sequence-id>
+                </config>
                 <transport>
                   <config>
                     <source-port>{{source_port}}</source-port>
