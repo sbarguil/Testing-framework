@@ -10,8 +10,12 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   type: "ethernet3Mbit"
+                   name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_adjust_interval"
+                   tunnel_name: "tunnel_A"
+                   adjust_interval: "1000"
 
 - testcase:
       name: ni_mpls_tunn_bw_adjust_threshold
@@ -24,11 +28,15 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   mtu: "1450"
+                   name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_adjust_threshold"
+                   tunnel_name: "tunnel_A"
+                   threshold_percent: "50"
 
 - testcase:
-      name: ini_mpls_tunn_bw_enabled
+      name: ni_mpls_tunn_bw_enabled
       id: 3
       description: >
           This test is to set description on the interface.
@@ -38,8 +46,11 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   description: "Test if_config_description 2"
+                   name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_enabled"
+                   tunnel_name: "tunnel_A"
 
 - testcase:
       name: ni_mpls_tunn_bw_max_bw
@@ -52,8 +63,12 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   enabled: "false"
+                   name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_max_bw"
+                   tunnel_name: "tunnel_A"
+                   max_bw: "50"
 
 - testcase:
       name: ni_mpls_tunn_bw_min_bw
@@ -66,8 +81,12 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   tpid: "TPID_0X9200"
+                   name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_min_bw"
+                   tunnel_name: "tunnel_A"
+                   min_bw: "30"
 
 - testcase:
       name: ni_mpls_tunn_bw_set_bandwidth
@@ -81,9 +100,12 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                  name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_set_bandwidth"
+                   tunnel_name: "tunnel_A"
+                   bw: "50"
 
 
 - testcase:
@@ -97,8 +119,12 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   tpid: "TPID_0X9200"
+                   name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_specification_type"
+                   tunnel_name: "tunnel_A"
+                   spec_type: "AUTO"
 
 - testcase:
       name: ni_mpls_tunn_bw_signaled_bandwidth
@@ -107,11 +133,26 @@
           This test is defined to enable an interface
           loopback mode.
       rpcs:
+        - template: ni_mpls_tunn_bw_set_bandwidth.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_set_bandwidth"
+                   tunnel_name: "tunnel_A"
+                   bw: "50"
+                   
           - template: ni_mpls_tunn_bw_signaled_bandwidth.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                  name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_signaled_bandwidth"
+                   tunnel_name: "tunnel_A"
+                   signaled_bw: ""
