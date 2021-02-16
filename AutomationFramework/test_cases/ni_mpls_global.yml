@@ -1,22 +1,7 @@
 
 - testcase:
-      name: ni_mpls_global_null_label
-      id: 1
-      description: >
-          This test is to set type of the interface.
-      rpcs:
-          - template: ni_mpls_global_null_label.xml
-            target: candidate
-            operation: edit-config
-            commit: true
-            params:
-                   interface_name: "1"
-                   type: "ethernet3Mbit"
-
-
-- testcase:
       name: ni_mpls_global_interface_id
-      id: 2
+      id: 1
       description: >
           This test is to define the mtu parameter.
       rpcs:
@@ -25,8 +10,29 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   mtu: "1450"
+                   id: "Interface_HL2_HL3"
+                   name: "test_ni_mpls"
+                   type: "oc-ni-types:L2P2P"
+                   enable: "true"
+                   description: "mpls_test"
+
+- testcase:
+      name: ni_mpls_global_null_label
+      id: 2
+      description: >
+          This test is to set type of the interface.
+      rpcs:
+          - template: ni_mpls_global_null_label.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls"
+                   null_label: "oc-mpls-types:EXPLICIT"
+                   type: "oc-ni-types:L2P2P"
+                   enable: "true"
+                   description: "mpls_test"
+
 
 - testcase:
       name: ni_mpls_global_mpls_enabled
@@ -39,9 +45,12 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   description: "Test if_config_description 2"
-
+                   id: "Interface_HL2_HL3"
+                   name: "test_ni_mpls"
+                   mpls_enabled: "true"
+                   type: "oc-ni-types:L2P2P"
+                   enable: "true"
+                   description: "mpls_test"
 - testcase:
       name: ni_mpls_global_interface
       id: 4
@@ -53,11 +62,15 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   enabled: "false"
+                   id: "Interface_HL2_HL3"
+                   name: "test_ni_mpls"
+                   interface: "1"
+                   type: "oc-ni-types:L2P2P"
+                   enable: "true"
+                   description: "mpls_test"
 
 - testcase:
-      name: i_mpls_global_subinterface
+      name: mpls_global_subinterface
       id: 5
       description: >
           This test is to define the tag protocol on the VLAN.
@@ -67,5 +80,10 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   tpid: "TPID_0X9200"
+                   id: "Interface_HL2_HL3"
+                   name: "test_ni_mpls"
+                   interface: "1 "
+                   subinterface: "20"
+                   type: "oc-ni-types:L2P2P"
+                   enable: "true"
+                   description: "mpls_test"

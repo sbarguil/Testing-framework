@@ -6,10 +6,16 @@
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
           <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+            <enabled>{{enable}}</enabled>
+            <description>{{description}}</description>
+          </config>
           <mpls>
             <global>
               <config>
-                <null-label xmlns:oc-mpls-types="http://openconfig.net/yang/mpls-types">oc-mpls-types:EXPLICIT</null-label>
+                <null-label xmlns:oc-mpls-types="http://openconfig.net/yang/mpls-types">{{null_label}}</null-label>
               </config>
             </global>
           </mpls>

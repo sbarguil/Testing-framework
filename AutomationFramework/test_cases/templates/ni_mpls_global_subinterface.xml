@@ -6,15 +6,24 @@
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
           <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+            <enabled>{{enable}}</enabled>
+            <description>{{description}}</description>
+          </config>
           <mpls>
             <global>
               <interface-attributes>
                 <interface>
-                  <interface-id>1</interface-id>
+                  <interface-id>{{id}}</interface-id>
+                   <config>
+                    <interface-id>{{id}}</interface-id>
+                  </config>
                   <interface-ref>
                     <config>
-                      <interface>{{interface_name}}</interface>
-                      <subinterface>{{sub_name}}</subinterface>
+                      <interface>{{interface}}</interface>
+                      <subinterface>{{subinterface}}</subinterface>
                     </config>
                   </interface-ref>
                 </interface>
