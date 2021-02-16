@@ -6,9 +6,9 @@
       <acl xmlns="http://openconfig.net/yang/acl">
         <interfaces>
           <interface>
-            <id>Eth1/2</id>
+            <id>{{id}}</id>
             <config>
-              <id>Eth1/2</id>
+              <id>{{id}}</id>
             </config>
           </interface>
         </interfaces>

@@ -1,7 +1,6 @@
-
 - testcase:
       name: acl_interfaces_id
-      id: 1
+      id: 2
       description: >
           This test is to set type of the interface.
       rpcs:
@@ -10,66 +9,68 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   type: "ethernet3Mbit"
-
-
+                   id: "Eth1/2"
+                   
 
 - testcase:
-      name: acl_interfaces_set_name
-      id: 2
+      name: acl_interfaces_set_name_ingress
+      id: 1
       description: >
           This test is to define the mtu parameter.
       rpcs:
-          - template: acl_interfaces_set_name.xml
+          - template: acl_interfaces_set_name_ingress.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   mtu: "1450"
-
+                   id: "Eth1/2"
+                   name: "full_ipv4"
+                   
 - testcase:
-      name: acl_interfaces_type
+      name: acl_interfaces_set_name_egress
       id: 3
-      description: >
-          This test is to set description on the interface.
-      rpcs:
-          - template: acl_interfaces_type.xml
-            target: candidate
-            operation: edit-config
-            commit: true
-            params:
-                   interface_name: "1"
-                   description: "Test if_config_description 2"
-
-- testcase:
-      name: acl_interfaces_set_name
-      id: 4
       description: >
           This test is to enabled the interface.
       rpcs:
-          - template: acl_interfaces_set_name.xml
+          - template: acl_interfaces_set_name_egress.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   enabled: "false"
+                   id: "Eth1/2"
+                   name: "full_ipv4"
 
 - testcase:
-      name: acl_interfaces_type
+      name: acl_interfaces_type_egress
+      id: 4
+      description: >
+          This test is to set description on the interface.
+      rpcs:
+          - template: acl_interfaces_type_egress.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   id: "Eth1/2"
+                   name: "full_ipv4"
+                   type: "ACL_IPV4"
+
+
+
+- testcase:
+      name: acl_interfaces_type_ingress
       id: 5
       description: >
           This test is to define the tag protocol on the VLAN.
       rpcs:
-          - template: acl_interfaces_type.xml
+          - template: acl_interfaces_type_ingress.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   tpid: "TPID_0X9200"
+                   id: "Eth1/2"
+                   name: "full_ipv4"
+                   type: "ACL_IPV4"
 
 - testcase:
       name: acl_interfaces_interface
@@ -83,9 +84,9 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                  interface: "Eth1/2"
+                  id: "Eth1/2"
+                  
 
 - testcase:
       name: acl_interfaces_subinterface
@@ -99,6 +100,6 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                  id: "Eth1/2"
+                  interface: "Eth1/2"
+                  subinterface: "21"

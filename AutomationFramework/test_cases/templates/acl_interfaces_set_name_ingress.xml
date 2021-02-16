@@ -6,14 +6,12 @@
       <acl xmlns="http://openconfig.net/yang/acl">
         <interfaces>
           <interface>
-            <id>Eth1/2</id>
+            <id>{{id}}</id>
             <ingress-acl-sets>
               <ingress-acl-set>
-                <set-name>full_ipv4</set-name>
-                <type>ACL_IPV4</type>
+                <set-name>{{name}}</set-name>
                 <config>
-                  <set-name>full_ipv4</set-name>
-                  <type>ACL_IPV4</type>
+                  <set-name>{{name}}</set-name>
                 </config>
               </ingress-acl-set>
             </ingress-acl-sets>
