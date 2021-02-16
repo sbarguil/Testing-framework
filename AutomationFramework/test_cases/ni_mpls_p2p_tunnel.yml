@@ -1,26 +1,32 @@
 
 - testcase:
-      name: ni_mpls_p2p_tunnel_destination
+       name: ni_mpls_p2p_tunnnel_destination
       id: 1
       description: >
-          This test is to set type of the interface.
+          This test is defined to enable an interface
+          loopback mode.
       rpcs:
-          - template: ni_mpls_p2p_tunnel_destination.xml
+          - template: ni_mpls_p2p_tunnnel_destination.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   type: "ethernet3Mbit"
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_admin_status"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"  
+                   ip_dest: "10.30.22.5"      
 
-- testcase:
-      name: ni_mpls_p2p_tunnel_destination
-      id: 1
-      description: >
-          This test is to get the admin status of the interface.
-      rpcs:
-          - template: ni_mpls_p2p_tunnel_destination.xml
-            operation: get
+
+          - template: ni_mpls_p2p_tunnnel_destination_state.xml
+            target: candidate
+            operation: edit-config
+            commit: true
             params:
-                   interface_name: "1"
-                   admin_status: "
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_admin_status"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"  
+                   ip_dest: ""   
