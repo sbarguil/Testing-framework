@@ -211,13 +211,13 @@ Then we have to see deeper about the sheet (Results) composite and the meaning o
 The sheet (Report) has a summary of all tests per status (Error, Failed and passed). 
 
 
-|            |   Test Sub-Block    |
-|:----------:|:---:|:--:|:---:|----|
-| Test Block | If  | ni | qos | rp |
-|              Results             |
-| Error      | 2   | 6  | 0   | 2  |
-| Failed     | 12  | 18 | 11  | 0  |
-| Passed     | 21  | 39 | 0   | 7  |
+|            |   Test Sub-Block      |
+|:----------:|:---:|:--:|:---:|:----:|
+| Test Block | If  | ni | qos |  rp  |
+|            |       Results         |
+| Error      | 2   | 6  | 0   | 2    |
+| Failed     | 12  | 18 | 11  | 0    |
+| Passed     | 21  | 39 | 0   | 7    |
 
 
 
