@@ -188,7 +188,11 @@ The final output file has three sheets the number one (Details) is specified inf
     • Is Virtual: Yes.
     • Date:  2020-10-09
 
-![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/vendor_equipment_information_report.png)
+
+| Vendor | OS                 | OS VERSION    | EQUIPMENT | EQUIPMENT FAMILY | IS VIRTUAL | DATE       |
+|--------|--------------------|---------------|-----------|------------------|------------|------------|
+| Cisco  | cisco IOS-Xrv 9000 | Versión 7.1.1 |  RTR 9000 |      Xrv9000     |     Yes    | 2020-09-05 |
+
 
 
 The sheet (Results) has information of each Test parameter that was tested and contains information like a its block and sub-block, results, Netconf logs (log Messages, error descriptions, rpc’s and rpc-reply’s), type of parameter, openconfig parameter path and the  test case description. 
