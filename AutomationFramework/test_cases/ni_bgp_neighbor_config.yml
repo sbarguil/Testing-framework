@@ -23,7 +23,7 @@
       description: >
           This test is to set the BGP peer enabled.
       rpcs:
-          - template: ni_bgp_neighbor_config_auth_password.xml
+          - template: ni_bgp_neighbor_config_enabled.xml
             target: candidate
             operation: edit-config
             commit: true
