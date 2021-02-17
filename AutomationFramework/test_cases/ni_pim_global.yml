@@ -1,0 +1,110 @@
+
+- testcase:
+      name: ni_pim_global_rp_address_config
+      id: 1
+      description: >
+          This test is to create IPv4 address of rendezvous point.
+      rpcs:
+          - template: ni_pim_global_rp_address_config.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "L3VPN_Test"
+                   rp_address: "172.16.1.2"
+
+- testcase:
+      name: ni_pim_global_rp_multicast_groups_config
+      id: 2
+      description: >
+          This test is to set multicast groups (multicast IP address ranges) for which this entry will be used as a rendezvous point.
+      rpcs:
+          - template: ni_pim_global_rp_multicast_groups_config.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "L3VPN_Test"
+                   rp_address: "172.16.1.2"
+                   rp_multicast_groups: "224.1.0.0,224.2.0.0"
+
+- testcase:
+      name: ni_pim_global_rp_address_state
+      id: 3
+      description: >
+          This test is to retrieve IPv4 address of rendezvous point.
+      rpcs:
+          - template: ni_pim_global_rp_address_state.xml
+            operation: get
+            params:
+                   rp_address: ""
+                  
+
+- testcase:
+      name: ni_pim_global_rp_multicast_groups_state
+      id: 4
+      description: >
+          This test is to retrieve multicast groups (multicast IP address ranges) for which this entry will be used as a rendezvous point.
+      rpcs:
+          - template: ni_pim_global_rp_multicast_groups_state.xml
+            operation: get
+            params:
+                   rp_multicast_groups: ""
+
+- testcase:
+      name: ni_pim_global_source_address
+      id: 5
+      description: >
+          This test is to retrieve source address of multicast group joined.
+      rpcs:
+          - template: ni_pim_global_source_address.xml
+            operation: get
+            params:
+                   source_address: ""
+
+- testcase:
+      name: ni_pim_global_source_group
+      id: 6
+      description: >
+          This test is to retrieve multicast group joined.
+      rpcs:
+          - template: ni_pim_global_source_group.xml
+            operation: get
+            params:
+                   source_group: ""
+
+- testcase:
+      name: ni_pim_global_source_upstream_interface_id
+      id: 7
+      description: >
+          This test is to retrieve the upstream interface for this multicast source.
+      rpcs:
+          - template: ni_pim_global_source_upstream_interface_id.xml
+            operation: get
+            params:
+                   source_upstream_interface_id: ""
+                   
+
+- testcase:
+      name: ni_pim_global_ssm_ranges_config
+      id: 8
+      description: >
+          This test is to set list of accepted source specific multicast (SSM) address ranges.
+      rpcs:
+          - template: ni_pim_global_ssm_ranges_config.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ssm_ranges: "ACL_SSM_IP_RANGES"
+
+- testcase:
+      name: ni_pim_global_ssm_ranges_state
+      id: 9
+      description: >
+          This test is to retrieve ist of accepted source specific multicast (SSM) address ranges.
+      rpcs:
+          - template: ni_pim_global_ssm_ranges_state.xml
+            operation: get
+            params:
+                   ssm_ranges: ""            

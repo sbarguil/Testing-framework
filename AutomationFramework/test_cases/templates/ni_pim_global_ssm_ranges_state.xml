@@ -1,0 +1,21 @@
+  <get>
+    <filter>
+       <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <protocols>
+            <protocol>
+              <pim>
+                <global>
+                  <ssm>
+                    <state>
+                      <ssm-ranges>{{ssm_ranges}}</ssm-ranges>
+                    </state>
+                  </ssm>
+                </global>
+              </pim>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </filter>
+  </get>
