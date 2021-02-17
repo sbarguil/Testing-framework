@@ -1,0 +1,122 @@
+               
+- testcase:
+      name: ni_pim_interfaces_interface_id_config
+      id: 1
+      description: >
+          This test is to set an id unique identifier for interface to configure PIM (IMPORTANT!: It should be a valid interface available, check with CLI before test ).
+      rpcs:
+          - template: ni_pim_interfaces_interface_id_config.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "L3VPN_Test"
+                   interface_id: "ge-0/0/0"
+
+- testcase:
+      name: ni_pim_interfaces_interface
+      id: 2
+      description: >
+          This test is to reference a previously configured interface with OC interface module (IMPORTANT!: It should be a valid interface available, check with CLI before test ).
+      rpcs:
+          - template: ni_pim_interfaces_interface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "L3VPN_Test"
+                   interface: "ge-0/0/0"       
+
+- testcase:
+      name: ni_pim_interfaces_subinterface
+      id: 3
+      description: >
+          This test is to reference a previously configured sub-interface with OC interface module (IMPORTANT!: It should be a valid interface available, check with CLI before test ).
+      rpcs:
+          - template: ni_pim_interfaces_subinterface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "L3VPN_Test"
+                   interface: "ge-0/0/0"
+                   subinterface: "100"
+
+- testcase:
+      name: ni_pim_interfaces_enabled_config
+      id: 4
+      description: >
+          This test is to set enabled on this PIM interface.
+      rpcs:
+          - template: ni_pim_interfaces_enabled_config.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "L3VPN_Test"
+                   interface_id: "ge-0/0/0"
+                   enabled: "true"
+
+- testcase:
+      name: ni_pim_interfaces_mode
+      id: 5
+      description: >
+          This test is to define PIM mode ( dense or sparse )to use when delivering multicast traffic via this interface.
+      rpcs:
+          - template: ni_pim_interfaces_mode.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "L3VPN_Test"
+                   interface_id: "ge-0/0/0"
+                   mode: "oc-pim-types:PIM_MODE_SPARSE"
+
+- testcase:
+      name: ni_pim_interfaces_bsr_border
+      id: 6
+      description: >
+          This test is to set if the device will send bootstrap router messages over this interface.
+      rpcs:
+          - template: ni_pim_interfaces_bsr_border.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "L3VPN_Test"
+                   interface_id: "ge-0/0/0"
+                   bsr_border: "true"
+
+- testcase:
+      name: ni_pim_interfaces_interface_id_state
+      id: 7
+      description: >
+          This test is to retrieve reference to an interface on which PIM is enabled..
+      rpcs:
+          - template: ni_pim_interfaces_interface_id_state.xml
+            operation: get
+            params:
+                   interface_id: ""
+                   
+
+- testcase:
+      name: ni_pim_interfaces_enabled_state
+      id: 8
+      description: >
+          This test is to retrieve enabled state of PIM interface
+      rpcs:
+          - template: ni_pim_interfaces_enabled_state.xml
+            operation: get
+            params:
+                   enabled: ""
+
+- testcase:
+      name: ni_pim_interfaces_neighbor_address
+      id: 9
+      description: >
+          This test is to retrieve the IPv4 address of PIM neighbor router.
+      rpcs:
+          - template: ni_pim_interfaces_neighbor_address.xml
+            operation: get
+            params:
+                   neighbor_address: ""            

@@ -1,0 +1,21 @@
+  <get>
+    <filter>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <protocols>
+            <protocol>
+              <pim>
+                <interfaces>
+                  <interface>
+                    <state>
+                      <interface-id>{{interface_id}}</interface-id>
+                    </state>
+                  </interface>
+                </interfaces>
+              </pim>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </filter>
+  </get>
