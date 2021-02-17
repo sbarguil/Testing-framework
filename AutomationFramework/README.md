@@ -92,15 +92,15 @@ other types of nuances particular to each vendor, this process can save us debug
 #### 3.1. Branching strategy
 In the following explanation we will explain the **workflow** about Git branches. This is a methodology based on the division of the
 the states of software into different branches of the repository:
-![alt text](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/gitflow.svg)
+![Git Flow](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/gitflow.png)
 
-#####Main branches: **master** & **develop**
+##### Main branches: **master** & **develop**
 - **master**: In master branch we can find stable releases. This is the branch that typically one user will download to use our
 software, so everything of this branch must be working without errors in execution. However, it is possible that lastest functionalities
 are not available in this branch yet.
 - **develop**: This branch must be created from the last version of **master**. In this branch new features will be added.
 
-#####Auxiliar branches: **feature**, **release** & **hotfix**
+##### Auxiliar branches: **feature**, **release** & **hotfix**
 This type of branches can be created so many times as need. 
 These branches have one start and one end, since they are merged into master and develop so in the end they must disappear.
 
