@@ -92,7 +92,7 @@ other types of nuances particular to each vendor, this process can save us debug
 #### 3.1. Branching strategy
 In the following explanation we will explain the **workflow** about Git branches. This is a methodology based on the division of the
 the states of software into different branches of the repository:
-![Git Flow](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/gitflow.png)
+![Git Flow](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/gitflow.PNG)
 
 ##### Main branches: **master** & **develop**
 - **master**: In master branch we can find stable releases. This is the branch that typically one user will download to use our
