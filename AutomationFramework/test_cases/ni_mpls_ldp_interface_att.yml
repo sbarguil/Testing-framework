@@ -10,8 +10,12 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   type: "ethernet3Mbit"
+                   name: "test_ni_mpls_ldp_interface_att"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_interface_att_afi_name"
+                   enable: "true"
+                   id: "Interface_HL2_HL3"
+                   afi_name: "IPV4"
 
 - testcase:
       name: ni_mpls_ldp_interface_att_enabled
@@ -24,8 +28,13 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   mtu: "1450"
+                   name: "test_ni_mpls_ldp_interface_att"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_interface_att_enabled"
+                   enable: "true"
+                   id: "Interface_HL2_HL3"
+                   afi_name: "IPV4"
+                   enabled: "true"
 
 - testcase:
       name: ni_mpls_ldp_interface_att_interface_id
@@ -38,8 +47,11 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   description: "Test if_config_description 2"
+                   name: "test_ni_mpls_ldp_interface_att"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_interface_att_interface_id"
+                   enable: "true"
+                   id: "Interface_HL2_HL3"
 
 - testcase:
       name: ni_mpls_ldp_interface_att_interface
@@ -52,8 +64,12 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   enabled: "false"
+                   name: "test_ni_mpls_ldp_interface_att"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_interface_att_interface"
+                   enable: "true"
+                   id: "Interface_HL2_HL3"
+                   interface: "Ge0/0/1"
 
 - testcase:
       name: ni_mpls_ldp_interface_att_subinterface
@@ -66,5 +82,10 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   tpid: "TPID_0X9200"
+                   name: "test_ni_mpls_ldp_interface_att"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_interface_att_subinterface"
+                   enable: "true"
+                   id: "Interface_HL2_HL3"
+                   interface: "Ge0/0/1"
+                   subinterface: "100"
