@@ -6,19 +6,28 @@
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
           <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+            <enabled>{{enable}}</enabled>
+            <description>{{description}}</description>
+          </config>    
           <mpls>
             <lsps>
               <constrained-path>
                 <tunnels>
                   <tunnel>
                     <name>{{tunnel_name}}</name>
+                     <config>
+                      <name>{{tunnel_name}}</name>
+                     </config>
                     <p2p-tunnel-attributes>
                       <p2p-secondary-paths>
                         <p2p-secondary-path>
                           <name>{{path_name}}</name>
                           <config>
                             <use-cspf>{{use_cspf}}</use-cspf>
-                            <explicit-path-name>{{explicit_path_name}}</explicit-path-name>
+                            <name>{{path_name}}</name>
                           </config>
                         </p2p-secondary-path>
                       </p2p-secondary-paths>

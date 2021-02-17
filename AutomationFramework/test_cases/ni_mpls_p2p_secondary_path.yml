@@ -10,8 +10,14 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   type: "ethernet3Mbit"
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_use_cspf"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   use_cspf: "true"
+
 
 - testcase:
       name: ni_mpls_p2p_secondary_path_explicit_path_name
@@ -24,9 +30,13 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   mtu: "1450"
-
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_explicit_path_name"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   explicit_path_name: "EXPLICIT_PATH_1_2_3"
 - testcase:
       name: ni_mpls_p2p_secondary_path_hold_priority
       id: 3
@@ -38,8 +48,13 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   description: "Test if_config_description 2"
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_hold_priority"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   hold_priority: "4"
 
 - testcase:
       name: ni_mpls_p2p_secondary_path_preference
@@ -52,8 +67,13 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   enabled: "false"
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_preference"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   preference: "128"
 
 - testcase:
       name: ni_mpls_p2p_secondary_path_retry_timer
@@ -66,8 +86,13 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   tpid: "TPID_0X9200"
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_retry_timer"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   retry_timer: "32"
 
 - testcase:
       name: ni_mpls_p2p_secondary_path_setup_priority
@@ -81,9 +106,13 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_setup_priority"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   setup_priority: "3"
 
 
 - testcase:
@@ -98,9 +127,13 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_path_computation_method"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   path_comp_method: "oc-mpls-types:EXPLICITLY_DEFINED"
 
 
 - testcase:
@@ -115,10 +148,12 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
-
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_name"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
 
 - testcase:
       name: ni_mpls_p2p_secondary_path_cspf_tiebreaker
@@ -132,9 +167,13 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_cspf_tiebreaker"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   cspf_tiebreaker: "RANDOM"
 
 
 - testcase:
@@ -149,12 +188,10 @@
             operation: edit-config
             commit: true
             params:
-                  interface_name: "Loopback0"
-                  type: "softwareLoopback"
-                  loopback_mode: "true"
-
-
-
-
-
-
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_path_computation_server"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   ip_server: "12.13.44.22"
