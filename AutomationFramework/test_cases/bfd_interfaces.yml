@@ -9,7 +9,7 @@
             operation: edit-config
             commit: true
             params:
-                   id: "1"
+                   id: "ge-0/0/3"
 
 - testcase:
       name: bfd_interfaces_interface
@@ -22,7 +22,7 @@
             operation: edit-config
             commit: true
             params:
-                   id: "1"
+                   id: "ge-0/0/3"
                    interface: "ge-0/0/3"
                    
 - testcase:
@@ -36,7 +36,7 @@
             operation: edit-config
             commit: true
             params:
-                   id: "1"
+                   id: "ge-0/0/3"
                    interface: "ge-0/0/3"
                    subinterface: "100"
                    
@@ -51,7 +51,7 @@
             operation: edit-config
             commit: true
             params:
-                   id: "1"
+                   id: "ge-0/0/3"
                    enabled: "true"
 
 - testcase:
@@ -65,7 +65,7 @@
             operation: edit-config
             commit: true
             params:
-                   id: "1"
+                   id: "ge-0/0/3"
                    local_address: "172.16.1.2"
 
 - testcase:
@@ -79,7 +79,7 @@
             operation: edit-config
             commit: true
             params:
-                   id: "1"
+                   id: "ge-0/0/3"
                    desired_minimum_tx_interval: "30"
 
 - testcase:
@@ -93,7 +93,7 @@
             operation: edit-config
             commit: true
             params:
-                   id: "1"
+                   id: "ge-0/0/3"
                    required_minimum_receive: "15"
 
 - testcase:
@@ -107,7 +107,7 @@
             operation: edit-config
             commit: true
             params:
-                   id: "1"
+                   id: "ge-0/0/3"
                    detection_multiplier: "5"
 
 - testcase:
