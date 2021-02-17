@@ -1,37 +1,46 @@
 
 - testcase:
-      name: ni_mpls_p2p_primary_path_priority
-      id: 2
+      name: ni_mpls_p2p_primary_path_cspf_tiebreaker 
+      id: 1
       description: >
           This test is to set description of the subinterface.
-      rpcs:
-          - template: ni_mpls_p2p_primary_path_priority.xml
-            target: candidate
-            operation: edit-config
-            commit: true
-            params:
-                   interface_name: "1"
-                   index: "100"
-                   description: "Testing1"
-
-- testcase:
-      name: ni_mpls_p2p_primary_path_cspf_tiebreaker
-      id: 3
-      description: >
-          This test is to set status of the subinterface.
       rpcs:
           - template: ni_mpls_p2p_primary_path_cspf_tiebreaker.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   index: "100"
-                   enabled: "false"
+                   name: "test_ni_mpls_p2p_primary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_primary_path_cspf_tiebreaker"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   p2p_prim_name: "LSP_AP_Primary"
+                   cspf_tiebreaker: "RANDOM"
+
+- testcase:
+      name: ni_mpls_p2p_primary_path_priority
+      id: 2
+      description: >
+          This test is to set status of the subinterface.
+      rpcs:
+          - template:  ni_mpls_p2p_primary_path_priority.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_p2p_primary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_primary_path_priority"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   p2p_prim_name: "LSP_AP_Primary"
+                   secondary_path: "“LSP_SECONDARY”"
+                   priority: "256"
 
 - testcase:
       name: ni_mpls_p2p_primary_path_explicit_path_name
-      id: 4
+      id: 3
       description: >
           This test is to set the ip address and mask of the subinterface.
       rpcs:
@@ -40,14 +49,17 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   index: "100"
-                   ip: "192.168.30.1"
-                   prefix_length: "24"
+                   name: "test_ni_mpls_p2p_primary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_primary_path_explicit_path_name"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   p2p_prim_name: "LSP_AP_Primary"
+                   explicit_path_name: "“EXPLICIT_PATH_1_2_3”"
 
 - testcase:
       name: ni_mpls_p2p_primary_path_hold_priority
-      id: 5
+      id: 4
       description: >
           This test is to get the state IP of a subinterface.
       rpcs:
@@ -56,21 +68,18 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   index: "100"
-                   ip: "192.168.30.1"
-                   prefix_length: "24"
+                  name: "test_ni_mpls_p2p_primary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_primary_path_hold_priority"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   p2p_prim_name: "LSP_AP_Primary"
+                   hold_priority: "3"
 
-          - template: if_subif_ip_state.xml
-            operation: get
-            params:
-                   interface_name: "1"
-                   index: "100"
-                   ip: ""
 
 - testcase:
       name: ni_mpls_p2p_primary_path_name
-      id: 6
+      id: 5
       description: >
           This this is to get the origin of the address.
       rpcs:
@@ -79,21 +88,26 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   index: "100"
-                   ip: "192.168.30.1"
-                   prefix_length: "24"
-
-          - template: if_subif_origin.xml
+                   name: "test_ni_mpls_p2p_primary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_primary_path_name"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   p2p_prim_name: "LSP_AP_Primary"
+          
+          - template: ni_mpls_p2p_primary_path_name_state.xml
             operation: get
             params:
-                   interface_name: "1"
-                   index: "100"
-                   origin: ""
+                   name: "test_ni_mpls_p2p_primary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_primary_path_name"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   p2p_prim_name: ""
 
 - testcase:
       name: ni_mpls_p2p_primary_path_path_computation_method
-      id: 7
+      id: 6
       description: >
           This test is to set dhcp client state.
       rpcs:
@@ -102,13 +116,17 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   index: "100"
-                   dhcp_client: "true"
+                   name: "test_ni_mpls_p2p_primary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_primary_path_path_computation_method"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   p2p_prim_name: "LSP_AP_Primary"
+                   path_computation_method: "LOCALLY_COMPUTED"
 
 - testcase:
       name: ni_mpls_p2p_primary_path_path_computation_server
-      id: 8
+      id: 7
       description: >
           This test is to set mtu value on subinterface.
       rpcs:
@@ -117,13 +135,17 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   index: "100"
-                   mtu: "1500"
+                   name: "test_ni_mpls_p2p_primary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_primary_path_path_computation_server"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   p2p_prim_name: "LSP_AP_Primary"
+                   ip_server: "197.89.34.21"
 
 - testcase:
       name: ni_mpls_p2p_primary_path_preference
-      id: 9
+      id: 8
       description: >
           This test is to set the vlan id for a subinterface.
       rpcs:
@@ -132,13 +154,17 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   index: "100"
-                   vlan_id: "100"
+                   name: "test_ni_mpls_p2p_primary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_primary_path_preference"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   p2p_prim_name: "LSP_AP_Primary"
+                   preference: "32"
 
 - testcase:
       name: ni_mpls_p2p_primary_path_retry_timer
-      id: 10
+      id: 9
       description: >
           This test is to set the inner and outer vlan id.
       rpcs:
@@ -147,17 +173,20 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   index: "1030"
-                   inner_vlan_id: "100"
-                   outer_vlan_id: "30"
+                   name: "test_ni_mpls_p2p_primary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_primary_path_retry_timer"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   p2p_prim_name: "LSP_AP_Primary"
+                   retry_timer: "100"
 
 
 
 
 - testcase:
       name: ni_mpls_p2p_primary_path_setup_priority
-      id: 11
+      id: 10
       description: >
           This test is to set the match single vlan id on subinterface.
       rpcs:
@@ -166,15 +195,19 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   index: "250"
-                   vlan_id: "250"
+                   name: "test_ni_mpls_p2p_primary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_primary_path_setup_priority"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   p2p_prim_name: "LSP_AP_Primary"
+                   setup_priority: "7"
 
 
 
 - testcase:
       name: ni_mpls_p2p_primary_path_use_cspf
-      id: 12
+      id: 11
       description: >
           This test is to set the match single vlan id on subinterface.
       rpcs:
@@ -183,44 +216,35 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   index: "250"
-                   vlan_id: "250"
+                  name: "test_ni_mpls_p2p_primary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_primary_path_use_cspf"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   p2p_prim_name: "LSP_AP_Primary"
+                   use_cspf: "true"
 
 - testcase:
-      name: ni_mpls_p2p_primary_path_associated_rsvp_sessions
-      id: 13
+      name: ni_mpls_p2p_primary_path_associated_rsvp_sessions_state
+      id: 12
       description: >
           This test is to set the match single vlan id on subinterface.
       rpcs:
-          - template: ni_mpls_p2p_primary_path_associated_rsvp_sessions.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+          - template: ni_mpls_p2p_primary_path_associated_rsvp_sessions_state.xml
+            operation: get
             params:
-                   interface_name: "1"
-                   index: "250"
-                   vlan_id: "250"
-
-- testcase:
-      name: ni_mpls_p2p_primary_path_name
-      id: 14
-      description: >
-          This test is to set the match single vlan id on subinterface.
-      rpcs:
-          - template: ni_mpls_p2p_primary_path_name.xml
-            target: candidate
-            operation: edit-config
-            commit: true
-            params:
-                   interface_name: "1"
-                   index: "250"
-                   vlan_id: "250"
+                   name: "test_ni_mpls_p2p_primary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_primary_path_associated_rsvp_sessions_state"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   p2p_prim_name: "LSP_AP_Primary"
+                   associated_rsvp_sessions: ""
 
 
 - testcase:
       name: ni_mpls_p2p_primary_path_secondary_path
-      id: 15
+      id: 13
       description: >
           This test is to set the match single vlan id on subinterface.
       rpcs:
@@ -229,6 +253,10 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   index: "250"
-                   vlan_id: "250"
+                   name: "test_ni_mpls_p2p_primary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_primary_path_secondary_path"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   p2p_prim_name: "LSP_AP_Primary"
+                    secondary_path: "LSP_SECONDARY"

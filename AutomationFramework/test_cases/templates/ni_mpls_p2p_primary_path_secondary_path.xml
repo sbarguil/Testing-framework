@@ -2,9 +2,9 @@
     <target>
       <{{target}}/>
     </target>
-     <config>
+   <config>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
-        <network-instance>
+         <network-instance>
           <name>{{name}}</name>
           <config>
             <name>{{name}}</name>
@@ -17,7 +17,7 @@
               <constrained-path>
                 <tunnels>
                   <tunnel>
-                     <name>{{tunnel_name}}</name>
+                   <name>{{tunnel_name}}</name>
                     <config>
                      <name>{{tunnel_name}}</name>
                     </config>
@@ -26,9 +26,15 @@
                         <p2p-primary-path>
                           <name>{{p2p_prim_name}}</name>
                           <config>
-                            <use-cspf>{{use_cspf}}</use-cspf>
-                             <name>{{p2p_prim_name}}</name>
+                            <name>{{p2p_prim_name}}</name>
                           </config>
+                          <candidate-secondary-paths>
+                            <candidate-secondary-path>
+                              <config>
+                                <secondary-path>{{secondary_path}}</secondary-path>
+                              </config>
+                            </candidate-secondary-path>
+                          </candidate-secondary-paths>
                         </p2p-primary-path>
                       </p2p-primary-path>
                     </p2p-tunnel-attributes>
