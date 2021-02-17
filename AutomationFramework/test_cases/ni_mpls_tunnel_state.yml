@@ -8,8 +8,9 @@
           - template: ni_mpls_tunnel_state_admin_status.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   description: ""
+                   ni_name: "test ni_mpls_tunnel_state"
+                   tunnel_name: ""
+                   admin_status: ""
 
 
 - testcase:
@@ -21,8 +22,9 @@
           - template: ni_mpls_tunnel_state_auto_generated.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   description: ""
+                   ni_name: "test ni_mpls_tunnel_state"
+                   tunnel_name: ""
+                   auto_generated: ""
 
 - testcase:
       name: ni_mpls_tunnel_state_description
@@ -33,7 +35,8 @@
           - template: ni_mpls_tunnel_state_description.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   ni_name: "test ni_mpls_tunnel_state"
+                   tunnel_name: ""
                    description: ""
 
 - testcase:
@@ -45,8 +48,8 @@
           - template: ni_mpls_tunnel_state_name.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   description: ""
+                   ni_name: "test ni_mpls_tunnel_state"
+                   tunnel_name: ""
 
 - testcase:
       name: ni_mpls_tunnel_state_oper_status
@@ -57,8 +60,9 @@
           - template: ni_mpls_tunnel_state_oper_status.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   description: ""
+                   ni_name: "test ni_mpls_tunnel_state"
+                   tunnel_name: ""
+                   oper_Status: ""
 
 - testcase:
       name: ni_mpls_tunnel_state_protection_style_requested
@@ -70,8 +74,9 @@
           - template: ni_mpls_tunnel_state_protection_style_requested.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   description: ""
+                   ni_name: "test ni_mpls_tunnel_state"
+                   tunnel_name: ""
+                   protection_style_requested: ""
 
 - testcase:
       name: ni_mpls_tunnel_state_role
@@ -83,8 +88,9 @@
           - template: ni_mpls_tunnel_state_role.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   description: ""
+                   ni_name: "test ni_mpls_tunnel_state"
+                   tunnel_name: ""
+                   role: ""
 
 - testcase:
       name: ni_mpls_tunnel_state_signaling_protocol
@@ -96,8 +102,9 @@
           - template: ni_mpls_tunnel_state_signaling_protocol.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   description: ""
+                   ni_name: "test ni_mpls_tunnel_state"
+                   tunnel_name: ""
+                   signaling_protocol: ""
 
 - testcase:
       name: ni_mpls_tunnel_state_source
@@ -109,8 +116,9 @@
           - template: ni_mpls_tunnel_state_source.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   description: ""
+                   ni_name: "test ni_mpls_tunnel_state"
+                   tunnel_name: ""
+                   ip_address:""
 
 - testcase:
       name: ni_mpls_tunnel_state_type
@@ -122,7 +130,8 @@
           - template: ni_mpls_tunnel_state_type.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   description: ""
+                   ni_name: "test ni_mpls_tunnel_state"
+                   tunnel_name: ""
+                   type: ""
 
 
