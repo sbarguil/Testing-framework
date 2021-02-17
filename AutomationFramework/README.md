@@ -90,14 +90,28 @@ other types of nuances particular to each vendor, this process can save us debug
 <a name="branching-strategy-ref"/>
 
 #### 3.1. Branching strategy
-In the following explanation we will use nokia as example. Anyway for any vendor all the steps apply the same way.
-The next branch diagram describes the testing set up for a vendor and the different versions from it. Knowing that 
-the base generic code of the testing framework is in the branch `automation-framework`, the idea is to have a separate
-branch for each vendor since each one may need individual adjustments in order of executing the tests. Following the 
-same logic, there may be differences between the same vendor software versions so we create too a branch for each 
-individual version.
+In the following explanation we will explain the **workflow** about Git branches. This is a methodology based on the division of the
+the states of software into different branches of the repository:
+![alt text](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/gitflow.svg)
 
-![alt text](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/branching_strategy_diagram.png)
+#####Main branches: **master** & **develop**
+- **master**: In master branch we can find stable releases. This is the branch that typically one user will download to use our
+software, so everything of this branch must be working without errors in execution. However, it is possible that lastest functionalities
+are not available in this branch yet.
+- **develop**: This branch must be created from the last version of **master**. In this branch new features will be added.
+
+#####Auxiliar branches: **feature**, **release** & **hotfix**
+This type of branches can be created so many times as need. 
+These branches have one start and one end, since they are merged into master and develop so in the end they must disappear.
+
+- **feature-x**: Each new enhancement or feature we are going to introduce in our software will have a branch with its development. Branches
+**feature-x** will be originated from **develop** branch and when the code is finished we merge it to the **develop**.
+- **release-x**: Each new software version should be captured in this type of branches before merging to **master**. This branch is 
+originated from **develop** branch. In these branches, the development of new features is frozen, and the work consists of fixing bugs
+and to generate documentation. Once ready to publish, we merge it into **master** and we add the specific tag with version number of software.
+In the end, these branches must be integrated into **develop** branch.
+- **hotfix-x**: If our code contains critical bugs that is necessary to patch urgently, it is possible to create a **hotfix** branch from **master**.
+This branch will contain only the specific changes that fix the bug. Once fixed, it must be integrated into **master** and **develop** (with tag version).
 
 <a name="specify-credentials-ref"/>
 
