@@ -10,24 +10,34 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   type: "ethernet3Mbit"
+                   name: "test_ni_mpls_ldp_neighbor"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_neighbor_authentication_key"
+                   enable: "true"
+                   lsr_id: "172.16.1.1"
+                   label_space_id: "8"
+                   auth_key: "“T3l3f0n1c4”"
 
 
 
 - testcase:
-      name: Ni_mpls_ldp_neighbor_enable
+      name: ni_mpls_ldp_neighbor_enable
       id: 2
       description: >
           This test is to define the mtu parameter.
       rpcs:
-          - template: Ni_mpls_ldp_neighbor_enable.xml
+          - template: ni_mpls_ldp_neighbor_enable.xml
             target: candidate
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   mtu: "1450"
+                   name: "test_ni_mpls_ldp_neighbor"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_neighbor_enable"
+                   enable: "true"
+                   lsr_id: "172.16.1.1"
+                   label_space_id: "8"
+                   enable: "true"
 
 - testcase:
       name: ni_mpls_ldp_neighbor_lsr_id
@@ -40,8 +50,12 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   description: "Test if_config_description 2"
+                   name: "test_ni_mpls_ldp_neighbor"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_neighbor_lsr_id"
+                   enable: "true"
+                   lsr_id: "172.16.1.1"
+                   label_space_id: "8"
 
 - testcase:
       name: ni_mpls_ldp_neighbor_hello_accept
@@ -54,5 +68,9 @@
             operation: edit-config
             commit: true
             params:
-                   interface_name: "1"
-                   enabled: "false"
+                   name: "test_ni_mpls_ldp_neighbor"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_neighbor_hello_accept"
+                   enable: "true"
+                   hello_accept: "true"
+                  

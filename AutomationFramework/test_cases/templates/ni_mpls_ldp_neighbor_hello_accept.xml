@@ -4,14 +4,20 @@
     </target>
    <config>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
-        <network-instance>
-          <name>{{ni_name}}</name>
+       <network-instance>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+            <enabled>{{enable}}</enabled>
+            <description>{{description}}</description>
+          </config>    
           <mpls>
             <signaling-protocols>
               <ldp>
                 <targeted>
                   <config>
-                    <hello-accept>true</hello-accept>
+                    <hello-accept>{{hello_accept}}</hello-accept>
                   </config>
                 </targeted>
               </ldp>
