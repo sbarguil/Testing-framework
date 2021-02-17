@@ -1,0 +1,48 @@
+
+- testcase:
+      name: ni_igmp_interface_id
+      id: 1
+      description: >
+          This test is to retrieve an interface on which IGMP is enabled.
+      rpcs:
+          - template: ni_igmp_interface_id.xml
+            operation: get
+            params:
+                   interface_id: ""
+
+- testcase:
+      name: ni_igmp_enabled
+      id: 2
+      description: >
+          This test is to retrieve IGMP enabled state on an interface.
+      rpcs:
+          - template: ni_igmp_enabled.xml
+            operation: get
+            params:
+                   enabled: ""
+
+- testcase:
+      name: ni_igmp_group
+      id: 3
+      description: >
+          This test is to retrieve a multicast group learnt through an interface.
+
+      rpcs:
+          - template: ni_igmp_group.xml
+            operation: get
+            params:
+                   group: ""
+
+- testcase:
+      name: ni_igmp_source
+      id: 4
+      description: >
+          This test is to retrieve source address of a multicast group learnt through an interface.
+
+      rpcs:
+          - template: ni_igmp_source.xml
+            operation: get
+            params:
+                   source: ""
+
+         

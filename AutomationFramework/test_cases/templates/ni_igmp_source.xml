@@ -1,0 +1,25 @@
+<get>
+  <filter>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <protocols>
+            <protocol>
+              <igmp>
+                <interfaces>
+                  <interface>
+                    <membership-groups>
+                      <group>
+                        <state>
+                          <source>{{source}}</source>
+                        </state>
+                      </group>
+                    </membership-groups>
+                  </interface>
+                </interfaces>
+              </igmp>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </filter>
+</get>
