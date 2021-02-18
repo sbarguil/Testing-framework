@@ -3,7 +3,7 @@
       name: ni_mpls_tunn_bw_adjust_interval
       id: 1
       description: >
-          This test is to set type of the interface.
+          This test is to set adjunt-interfval for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_bw_adjust_interval.xml
             target: candidate
@@ -21,7 +21,7 @@
       name: ni_mpls_tunn_bw_adjust_threshold
       id: 2
       description: >
-          This test is to define the mtu parameter.
+          This test is to set adjunt-threshold for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_bw_adjust_threshold.xml
             target: candidate
@@ -39,7 +39,7 @@
       name: ni_mpls_tunn_bw_enabled
       id: 3
       description: >
-          This test is to set description on the interface.
+          This test is to set bw-enabled for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_bw_enabled.xml
             target: candidate
@@ -56,7 +56,7 @@
       name: ni_mpls_tunn_bw_max_bw
       id: 4
       description: >
-          This test is to enabled the interface.
+          This test is to set max-bw for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_bw_max_bw.xml
             target: candidate
@@ -74,7 +74,7 @@
       name: ni_mpls_tunn_bw_min_bw
       id: 5
       description: >
-          This test is to define the tag protocol on the VLAN.
+          This test is to set min-bw for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_bw_min_bw.xml
             target: candidate
@@ -92,8 +92,7 @@
       name: ni_mpls_tunn_bw_set_bandwidth
       id: 6
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to set bandwidth for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_bw_set_bandwidth.xml
             target: candidate
@@ -112,7 +111,7 @@
       name: ni_mpls_tunn_bw_specification_type
       id: 5
       description: >
-          This test is to define the tag protocol on the VLAN.
+          This test is to set bw-specification-type for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_bw_specification_type.xml
             target: candidate
@@ -130,8 +129,7 @@
       name: ni_mpls_tunn_bw_signaled_bandwidth
       id: 6
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to set and get signaled-bw for a mpls tunnel instance within a L3 network-instance.
       rpcs:
         - template: ni_mpls_tunn_bw_set_bandwidth.xml
             target: candidate
