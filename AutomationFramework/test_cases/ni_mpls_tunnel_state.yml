@@ -3,7 +3,7 @@
       name: ni_mpls_tunn_state_admin_status
       id: 1
       description: >
-          This test is to set type of the interface.
+          This test is to get admin-status for mpls tunnel  within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_admin_status.xml
             target: candidate
@@ -28,7 +28,7 @@
       name: ni_mpls_tunn_state_description
       id: 2
       description: >
-          This test is to define the mtu parameter.
+         This test is to get description for mpls tunnel  within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_description.xml
             target: candidate
@@ -54,8 +54,7 @@
       name: ni_mpls_tunn_state_name
       id: 3
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to get name for mpls tunnel  within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_name.xml
             target: candidate
@@ -80,8 +79,7 @@
       name: ni_mpls_tunn_state_protection_style_requested
       id: 4
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to get protection style requested for mpls tunnel  within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_protection_style_requested.xml
             target: candidate
@@ -108,8 +106,7 @@
       name: ni_mpls_tunn_state_signaling_protocol
       id: 5
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to get signaling protocol for mpls tunnel  within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_signaling_protocol.xml
             target: candidate
@@ -136,8 +133,7 @@
       name: ni_mpls_tunn_state_source
       id: 6
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to get ip source for mpls tunnel  within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_source.xml
             target: candidate
@@ -162,8 +158,7 @@
       name: ni_mpls_tunn_state_type
       id: 7
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to get type for mpls tunnel  within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_type.xml
             target: candidate
@@ -189,8 +184,7 @@
       name: ni_mpls_tunn_state_role
       id: 8
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to get role for mpls tunnel  within a L3 network-instance.
       rpcs:  
 
           - template: ni_mpls_tunn_config_type.xml
@@ -217,8 +211,7 @@
       name: ni_mpls_tunn_state_oper_status
       id: 9
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to get oper-status for mpls tunnel  within a L3 network-instance.
       rpcs:  
           - template: ni_mpls_tunn_config_type.xml
             target: candidate
@@ -243,8 +236,7 @@
       name: ni_mpls_tunn_state_auto_generated
       id: 10
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to get auto-generated for mpls tunnel  within a L3 network-instance.
       rpcs:  
           - template: ni_mpls_tunn_config_type.xml
             target: candidate
