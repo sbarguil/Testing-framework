@@ -3,7 +3,7 @@
       name: ni_mpls_global_interface_id
       id: 1
       description: >
-          This test is to define the mtu parameter.
+          This test is to set interface-id for a MPLS global instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_global_interface_id.xml
             target: candidate
@@ -12,7 +12,7 @@
             params:
                    id: "Interface_HL2_HL3"
                    name: "test_ni_mpls"
-                   type: "oc-ni-types:L2P2P"
+                   type: "L3VRF"
                    enable: "true"
                    description: "mpls_test"
 
@@ -20,7 +20,7 @@
       name: ni_mpls_global_null_label
       id: 2
       description: >
-          This test is to set type of the interface.
+          This test is to set null-label for a MPLS global instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_global_null_label.xml
             target: candidate
@@ -28,17 +28,17 @@
             commit: true
             params:
                    name: "test_ni_mpls"
-                   null_label: "oc-mpls-types:EXPLICIT"
-                   type: "oc-ni-types:L2P2P"
+                   type: "L3VRF"
                    enable: "true"
                    description: "mpls_test"
+                   null_label: "oc-mpls-types:EXPLICIT"
 
 
 - testcase:
       name: ni_mpls_global_mpls_enabled
       id: 3
       description: >
-          This test is to set description on the interface.
+          TThis test is to set enabled for a MPLS global instance within a L3 network-instance.
       rpcs:
           - template: ini_mpls_global_mpls_enabled.xml
             target: candidate
@@ -48,14 +48,14 @@
                    id: "Interface_HL2_HL3"
                    name: "test_ni_mpls"
                    mpls_enabled: "true"
-                   type: "oc-ni-types:L2P2P"
+                   type: "L3VRF"
                    enable: "true"
                    description: "mpls_test"
 - testcase:
       name: ni_mpls_global_interface
       id: 4
       description: >
-          This test is to enabled the interface.
+          This test is to set interface for a MPLS global instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_global_interface.xml
             target: candidate
@@ -65,7 +65,7 @@
                    id: "Interface_HL2_HL3"
                    name: "test_ni_mpls"
                    interface: "1"
-                   type: "oc-ni-types:L2P2P"
+                   type: "L3VRF"
                    enable: "true"
                    description: "mpls_test"
 
@@ -73,7 +73,7 @@
       name: mpls_global_subinterface
       id: 5
       description: >
-          This test is to define the tag protocol on the VLAN.
+          This test is to set subinterface for a MPLS global instance within a L3 network-instance.
       rpcs:
           - template: i_mpls_global_subinterface.xml
             target: candidate
@@ -84,6 +84,6 @@
                    name: "test_ni_mpls"
                    interface: "1 "
                    subinterface: "20"
-                   type: "oc-ni-types:L2P2P"
+                   type: "L3VRF"
                    enable: "true"
                    description: "mpls_test"
