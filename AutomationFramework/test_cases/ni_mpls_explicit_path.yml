@@ -3,7 +3,7 @@
       name: ni_mpls_explicit_path_name
       id: 1
       description: >
-          This test is to set type of the interface.
+          This test is to set the name of explicit path.
       rpcs:
           - template: ni_mpls_explicit_path_name.xml
             target: candidate
@@ -20,7 +20,7 @@
       name: ni_mpls_explicit_path_address
       id: 2
       description: >
-          This test is to define the mtu parameter.
+          This test is to set the address of explicit path.
       rpcs:
           - template: ni_mpls_explicit_path_address.xml
             target: candidate
@@ -38,7 +38,7 @@
       name: ni_mpls_explicit_path_hop_type
       id: 3
       description: >
-          This test is to set description on the interface.
+          This test is to set the hop-type of explicit path.
       rpcs:
           - template: ni_mpls_explicit_path_hop_type.xml
             target: candidate
@@ -56,7 +56,7 @@
       name: ni_mpls_explicit_path_index
       id: 4
       description: >
-          This test is to enabled the interface.
+          This test is to set the index of explicit path.
       rpcs:
           - template: ni_mpls_explicit_path_index.xml
             target: candidate
