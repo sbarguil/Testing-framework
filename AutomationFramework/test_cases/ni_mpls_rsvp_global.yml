@@ -1,0 +1,16 @@
+
+- testcase:
+      name: ni_mpls_rsvp_global_enable
+      id: 1
+      description: >
+          This test is to set an id of an existing interface (IMPORTANT!: before test, see with CLI and select one available) to be bound to Lx network-instance.
+      rpcs:
+          - template: ni_interface_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_admin_status"
+                   enable: "true"

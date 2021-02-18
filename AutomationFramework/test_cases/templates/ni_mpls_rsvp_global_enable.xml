@@ -5,7 +5,13 @@
         <config>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
-          <name>{{ni_name}}</name>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+            <enabled>{{enable}}</enabled>
+            <description>{{description}}</description>
+          </config>    
           <mpls>
             <signaling-protocols>
               <rsvp-te>
