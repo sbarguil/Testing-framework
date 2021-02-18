@@ -395,6 +395,15 @@ Below you can see a summary of the changes made in the branch regarding  the bas
 
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pullrequest_2.png)
 
+in the files tab, it is possible to perform several actions in relation to the possible proposals or possible improvements of files. You can observe all the changes of the files regarding the base branch and put a general comment as shown in the picture below,  in addition to the options to approve the file, or request changes.
+
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pull_request_file_comments.png)
+
+You have the options, as indicated in the images below, to suggest and propose changes directly or through comments on specific file lines that will later be viewed and approved by other reviewers.
+
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pull_request_file_comments_suggest.png)
+
+![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/pull_request_file_specific_comment.png)
 	
 	
 It is possible to perform these operations using git commands by following the steps below
