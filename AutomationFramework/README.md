@@ -198,12 +198,12 @@ These branches have one start and one end, since they are merged into master and
 
 - **feature-x**: Each new enhancement or feature we are going to introduce in our software will have a branch with its development. Branches
 **feature-x** will be originated from **develop** branch and when the code is finished we merge it to the **develop**.
+- **hotfix-x**: If our code contains critical bugs that is necessary to patch urgently, it is possible to create a **hotfix** branch from **master**.
+This branch will contain only the specific changes that fix the bug. Once fixed, it must be integrated into **master** and **develop** (with tag version).
 - **release-x**: Each new software version should be captured in this type of branches before merging to **master**. This branch is 
 originated from **develop** branch. In these branches, the development of new features is frozen, and the work consists of fixing bugs
 and to generate documentation. Once ready to publish, we merge it into **master** and we add the specific tag with version number of software.
-In the end, these branches must be integrated into **develop** branch.
-- **hotfix-x**: If our code contains critical bugs that is necessary to patch urgently, it is possible to create a **hotfix** branch from **master**.
-This branch will contain only the specific changes that fix the bug. Once fixed, it must be integrated into **master** and **develop** (with tag version).
+In the end, these branches must be integrated into **develop** branch. This type of branch is used when too many changes in **develop** are ready to go to **master**.
 
 <a name="important-notes-ref"/>
 <a name="software-versioning-ref"/>
@@ -224,7 +224,7 @@ Why do we need a version anyway? Well, you need some way to uniquely identify th
 
 We will use semantic versioning, specifically three-part version number. Given **MAJOR.MINOR.PATCH**, increment the:
 
-- **MAJOR** version when you make incompatible changes (incompatible backwards) or when so many changes are just coded,
+- **MAJOR** version when you make incompatible changes (incompatible backwards), when there are big or enough changes
 - **MINOR** version when you add functionality in a backwards-compatible manner, that is when you add a feature, and
 - **PATCH** version when you make backwards-compatible bug fixes (hotfix).
 
@@ -238,6 +238,13 @@ For **feature** branches we propose this type of names: **feat_summaryFeature** 
 
 For **hotfix** branches we propose this type of names: **hotfix_bugName** e.g: **hotfix_handleJuniperIfsException**
 
+Typical procedure to improve software:
+1. Open Issue in GitHub
+2. Create a new **feature** or **hotfix** branch from **develop** using naming convention
+3. Publish branch
+4. Create pull request
+5. Request for validation -> who validates that a feature can be merged
+6. If no conflicts, automatic merge is produced, otherwise we must solve conflicts before merging
 
 <a name="vendor-findings-ref"/>
   
