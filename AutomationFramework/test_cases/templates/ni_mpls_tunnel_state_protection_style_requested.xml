@@ -1,0 +1,23 @@
+  <get>
+    <filter>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <mpls>
+            <lsps>
+              <constrained-path>
+                <tunnels>
+                  <tunnel>
+                    <name>{{tunnel_name}}</name>
+                    <state>
+                      <protection-style-requested xmlns:oc-mpls-types="http://openconfig.net/yang/mpls-types">{{protection_style_requested}}</protection-style-requested>
+                    </state>
+                  </tunnel>
+                </tunnels>
+              </constrained-path>
+            </lsps>
+          </mpls>
+        </network-instance>
+      </network-instances>
+    </filter>
+  </get>
