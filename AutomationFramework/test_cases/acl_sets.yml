@@ -3,7 +3,7 @@
       name: acl_sets_name
       id: 1
       description: >
-          This test is to define the tag protocol on the VLAN.
+          This test is to define the name on the ACL.
       rpcs:
           - template: acl_sets_name.xml
             target: candidate
@@ -16,8 +16,7 @@
       name: acl_sets_type
       id: 2
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to set type on the ACL.
       rpcs:
           - template: acl_sets_type.xml
             target: candidate
@@ -32,7 +31,7 @@
       name: acl_sets_sequence_id
       id: 3
       description: >
-          This test is to set description on the interface.
+          This test is to set sequence_id on the ACL.
       rpcs:
           - template: acl_sets_sequence_id.xml
             target: candidate
@@ -47,7 +46,7 @@
       name: acl_sets_destination_address
       id: 4
       description: >
-          This test is to enabled the interface.
+          This test is to set the destination address on the ACL.
       rpcs:
           - template: iacl_sets_destination_address.xml
             target: candidate
@@ -63,7 +62,7 @@
       name: acl_sets_dscp
       id: 5
       description: >
-          This test is to define the tag protocol on the VLAN.
+          This test is to set the dscp on the ACL.
       rpcs:
           - template: acl_sets_dscp.xml
             target: candidate
@@ -79,8 +78,7 @@
       name: acl_sets_protocol
       id: 6
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to set protocol on the ACL
       rpcs:
           - template: acl_sets_protocol.xml
             target: candidate
@@ -97,7 +95,7 @@
       name: acl_sets_source_address
       id: 7
       description: >
-          This test is to set description on the interface.
+          This test is to set the source address on the ACL
       rpcs:
           - template: acl_sets_source_address
             target: candidate
@@ -113,7 +111,7 @@
       name: acl_sets_destination_port
       id: 8
       description: >
-          This test is to enabled the interface.
+          This test is to set destination port on the ACL
       rpcs:
           - template: acl_sets_destination_port.xml
             target: candidate
@@ -129,7 +127,7 @@
       name: acl_sets_source_port
       id: 9
       description: >
-          This test is to set description on the interface.
+          This test is to set source  port on the ACL
       rpcs:
           - template: aacl_sets_source_port.xml
             target: candidate
@@ -145,7 +143,7 @@
       name: acl_sets_description
       id: 10
       description: >
-          This test is to enabled the interface.
+          This test is to set description on the ACL
       rpcs:
           - template: iacl_sets_description.xml
             target: candidate
@@ -160,7 +158,7 @@
       name: acl_sets_forwarding_action
       id: 11
       description: >
-          This test is to set type of the interface.
+          This test is to set the forwarding action on the ACL
       rpcs:
           - template: acl_sets_forwarding_action.xml
             target: candidate
@@ -176,7 +174,7 @@
       name: acl_sets_log_action
       id: 12
       description: >
-          This test is to define the mtu parameter.
+          This test is to set log action on the ACL
       rpcs:
           - template: acl_sets_log_action.xml
             target: candidate
