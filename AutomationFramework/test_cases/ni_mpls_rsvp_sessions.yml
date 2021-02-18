@@ -1,15 +1,16 @@
 
 - testcase:
-      name: ni_mpls_rsvp_sessions_index
+      name: ni_mpls_rsvp_sessions_index_record_route
       id: 1
       description: >
           This test is to get description components.
       rpcs:
-          - template: ni_mpls_rsvp_sessions_index.xml
+          - template: ni_mpls_rsvp_sessions_index_record_route.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   description: ""
+                   name: ""
+                   local_index: ""
+                   record_index: ""
 
 
 - testcase:
@@ -21,8 +22,10 @@
           - template: ni_mpls_rsvp_sessions_interface_id.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   hardware_version: ""
+                   name: ""
+                   local_index: ""
+                   exp_index: ""
+                   interface_id: ""
 
 - testcase:
       name: ni_mpls_rsvp_sessions_ip_prefix
@@ -33,8 +36,10 @@
           - template: ni_mpls_rsvp_sessions_ip_prefix.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   id: ""
+                   name: ""
+                   local_index: ""
+                   exp_index: ""
+                   ip_prefix: ""
 
 - testcase:
       name: ni_mpls_rsvp_sessions_loose
@@ -45,8 +50,10 @@
           - template: ni_mpls_rsvp_sessions_loose.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   location: ""
+                   name: ""
+                   local_index: ""
+                   exp_index: ""
+                   loose: ""
 
 - testcase:
       name: ni_mpls_rsvp_sessions_type
@@ -57,8 +64,10 @@
           - template: ni_mpls_rsvp_sessions_type.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   mfg_date: ""
+                   name: ""
+                   local_index: ""
+                   exp_index: ""
+                   type: ""
 
 - testcase:
       name: ni_mpls_rsvp_sessions_address
@@ -69,20 +78,23 @@
           - template: ni_mpls_rsvp_sessions_address.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   oper_status: ""
+                   name: ""
+                   local_index: ""
+                   record_index: ""
+                   address: ""
 
 - testcase:
-      name: ni_mpls_rsvp_sessions_index
+      name: ni_mpls_rsvp_sessions_index_expl_route
       id: 7
       description: >
           This test is to get name of the parent component.
       rpcs:
-          - template: ni_mpls_rsvp_sessions_index.xml
+          - template: ni_mpls_rsvp_sessions_index_expl_route.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   parent: ""
+                   name: ""
+                   local_index: ""
+                   exp_index: ""
 
 - testcase:
       name: ni_mpls_rsvp_sessions_local_index
@@ -93,8 +105,8 @@
           - template: ni_mpls_rsvp_sessions_local_index.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   serial_no: ""
+                   name: ""
+                   local_index: ""
 
 - testcase:
       name: ni_mpls_rsvp_sessions_lsp_id
@@ -105,8 +117,9 @@
           - template: ni_mpls_rsvp_sessions_lsp_id.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   type: ""
+                   name: ""
+                   local_index: ""
+                   lsp_id: ""
 
 
 
@@ -119,5 +132,6 @@
           - template: ni_mpls_rsvp_sessions_tunnel_id.xml
             operation: get
             params:
-                   name: "CHASIS"
-                   type: ""
+                   name: ""
+                   local_index: ""
+                   tunnel_id: ""

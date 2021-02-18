@@ -2,7 +2,7 @@
     <filter>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
         <network-instance>
-          <name>{{ni_name}}</name>
+          <name>{{name}}</name>
           <mpls>
             <signaling-protocols>
               <rsvp-te>
