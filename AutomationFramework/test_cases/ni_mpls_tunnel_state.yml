@@ -1,137 +1,266 @@
 
 - testcase:
-      name: ni_mpls_tunnel_state_admin_status
+      name: ni_mpls_tunn_state_admin_status
       id: 1
       description: >
           This test is to set type of the interface.
       rpcs:
+          - template: ni_mpls_tunn_config_admin_status.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_admin_status"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   admin_status: "true"
+
           - template: ni_mpls_tunnel_state_admin_status.xml
             operation: get
             params:
-                   ni_name: "test ni_mpls_tunnel_state"
-                   tunnel_name: ""
+                   name: "test_ni_mpls_tunnel_config"
+                   tunnel_name: "tunnel_A"
                    admin_status: ""
 
-
 - testcase:
-      name: ni_mpls_tunnel_state_auto_generated
+      name: ni_mpls_tunn_state_description
       id: 2
       description: >
           This test is to define the mtu parameter.
       rpcs:
-          - template: ni_mpls_tunnel_state_auto_generated.xml
-            operation: get
+          - template: ni_mpls_tunn_config_description.xml
+            target: candidate
+            operation: edit-config
+            commit: true
             params:
-                   ni_name: "test ni_mpls_tunnel_state"
-                   tunnel_name: ""
-                   auto_generated: ""
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_description"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   description: "Test tunnel description"
 
-- testcase:
-      name: ni_mpls_tunnel_state_description
-      id: 3
-      description: >
-          This test is to set description on the interface.
-      rpcs:
           - template: ni_mpls_tunnel_state_description.xml
             operation: get
             params:
-                   ni_name: "test ni_mpls_tunnel_state"
-                   tunnel_name: ""
+                   name: "test_ni_mpls_tunnel_config"
+                   tunnel_name: "tunnel_A"
                    description: ""
 
+
 - testcase:
-      name: ni_mpls_tunnel_state_name
-      id: 4
+      name: ni_mpls_tunn_state_name
+      id: 3
       description: >
-          This test is to enabled the interface.
+          This test is defined to enable an interface
+          loopback mode.
       rpcs:
+          - template: ni_mpls_tunn_config_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_name"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+
           - template: ni_mpls_tunnel_state_name.xml
             operation: get
             params:
-                   ni_name: "test ni_mpls_tunnel_state"
+                   name: "test_ni_mpls_tunnel_config"
                    tunnel_name: ""
 
+
+
 - testcase:
-      name: ni_mpls_tunnel_state_oper_status
-      id: 5
+      name: ni_mpls_tunn_state_protection_style_requested
+      id: 4
       description: >
-          This test is to define the tag protocol on the VLAN.
+          This test is defined to enable an interface
+          loopback mode.
       rpcs:
-          - template: ni_mpls_tunnel_state_oper_status.xml
+          - template: ni_mpls_tunn_config_protection_style_requested.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_protection_style_requested"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   protection_sty_req: "oc-mpls-types:UNPROTECTED"
+
+          - template: ni_mpls_tunnel_state_protection_style_requested.xml
             operation: get
             params:
-                   ni_name: "test ni_mpls_tunnel_state"
-                   tunnel_name: ""
-                   oper_Status: ""
+                   name: "test_ni_mpls_tunnel_config"
+                   tunnel_name: "tunnel_A"
+                   protection_style_requested: ""
+
+
 
 - testcase:
-      name: ni_mpls_tunnel_state_protection_style_requested
+      name: ni_mpls_tunn_state_signaling_protocol
+      id: 5
+      description: >
+          This test is defined to enable an interface
+          loopback mode.
+      rpcs:
+          - template: ni_mpls_tunn_config_signaling_protocol.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_signaling_protocol"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   sig_protocol: "oc-mpls-types:PATH_SETUP_LDP"
+
+          - template: ni_mpls_tunnel_state_signaling_protocol.xml
+            operation: get
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   tunnel_name: "tunnel_A"
+                   signaling_protocol: ""
+
+
+
+- testcase:
+      name: ni_mpls_tunn_state_source
       id: 6
       description: >
           This test is defined to enable an interface
           loopback mode.
       rpcs:
-          - template: ni_mpls_tunnel_state_protection_style_requested.xml
+          - template: ni_mpls_tunn_config_source.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_source"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   ip_source: "10.43.33.55"
+
+          - template: ni_mpls_tunnel_state_ip_address.xml
             operation: get
             params:
-                   ni_name: "test ni_mpls_tunnel_state"
-                   tunnel_name: ""
-                   protection_style_requested: ""
+                   name: "test_ni_mpls_tunnel_config"
+                   tunnel_name: "tunnel_A"
+                   ip_address: ""
 
 - testcase:
-      name: ni_mpls_tunnel_state_role
+      name: ni_mpls_tunn_state_type
       id: 7
       description: >
           This test is defined to enable an interface
           loopback mode.
       rpcs:
-          - template: ni_mpls_tunnel_state_role.xml
+          - template: ni_mpls_tunn_config_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_admin_status"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"  
+                   type_tunnel: "oc-mpls-types:P2MP"       
+
+          - template: ni_mpls_tunnel_state_type.xml
             operation: get
             params:
-                   ni_name: "test ni_mpls_tunnel_state"
-                   tunnel_name: ""
-                   role: ""
+                   name: "test_ni_mpls_tunnel_config"
+                   tunnel_name: "tunnel_A"
+                   type: ""  
 
+      
 - testcase:
-      name: ni_mpls_tunnel_state_signaling_protocol
+      name: ni_mpls_tunn_state_role
       id: 8
       description: >
           This test is defined to enable an interface
           loopback mode.
-      rpcs:
-          - template: ni_mpls_tunnel_state_signaling_protocol.xml
+      rpcs:  
+
+          - template: ni_mpls_tunn_config_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_admin_status"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"  
+                   type_tunnel: "oc-mpls-types:P2MP"     
+
+
+          - template: ni_mpls_tunnel_state_role.xml
             operation: get
             params:
-                   ni_name: "test ni_mpls_tunnel_state"
-                   tunnel_name: ""
-                   signaling_protocol: ""
+                   name: "test_ni_mpls_tunnel_config"
+                   tunnel_name: "tunnel_A"
+                   role: ""  
 
 - testcase:
-      name: ni_mpls_tunnel_state_source
+      name: ni_mpls_tunn_state_oper_status
       id: 9
       description: >
           This test is defined to enable an interface
           loopback mode.
-      rpcs:
-          - template: ni_mpls_tunnel_state_source.xml
+      rpcs:  
+          - template: ni_mpls_tunn_config_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_admin_status"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"  
+                   type_tunnel: "oc-mpls-types:P2MP"     
+
+          - template: ni_mpls_tunnel_state_oper_status.xml
             operation: get
             params:
-                   ni_name: "test ni_mpls_tunnel_state"
-                   tunnel_name: ""
-                   ip_address:""
+                   name: "test_ni_mpls_tunnel_config"
+                   tunnel_name: "tunnel_A"
+                   oper_status: ""  
 
 - testcase:
-      name: ni_mpls_tunnel_state_type
+      name: ni_mpls_tunn_state_auto_generated
       id: 10
       description: >
           This test is defined to enable an interface
           loopback mode.
-      rpcs:
-          - template: ni_mpls_tunnel_state_type.xml
+      rpcs:  
+          - template: ni_mpls_tunn_config_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_admin_status"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"  
+                   type_tunnel: "oc-mpls-types:P2MP"     
+
+          - template: ni_mpls_tunnel_state_auto_generated.xml
             operation: get
             params:
-                   ni_name: "test ni_mpls_tunnel_state"
-                   tunnel_name: ""
-                   type: ""
-
-
+                   name: "test_ni_mpls_tunnel_config"
+                   tunnel_name: "tunnel_A"
+                   auto_generated: ""  
