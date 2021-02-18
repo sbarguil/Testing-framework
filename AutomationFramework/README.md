@@ -7,13 +7,15 @@
 [2.3. XML templates](#xml-templates-ref)  
 [2.4. RPC operations workflow](#operations-workflow-ref)  
 [3. Vendor setup](#vendor-setup-ref)  
-[3.1. Branching strategy](#branching-strategy-ref)  
-[3.2. Specify router and credentials](#specify-credentials-ref)  
-[3.3. YAML set up](#yaml-setup-ref)  
+[3.1. Specify router and credentials](#specify-credentials-ref)  
+[3.2. YAML set up](#yaml-setup-ref)  
 [4. Tests execution workflow](#execution-ref)  
 [5. Excel reporting](#excel-reporting-ref) 
-[5.1 Final Output report](#final-output-report-ref) 
+[5.1. Final Output report](#final-output-report-ref) 
 [6. Workflow for contribution in this project](#contribution-workflow-ref)  
+[6.1. Important notes](#important-notes-ref)
+[6.2. Software versioning](#software-versioning-ref)
+[6.3. Naming convention](#naming-convention-ref)
 [7. Vendor specific findings](#vendor-findings-ref)  
 [8. Vendor specific findings](#other-commands-ref)  
 [9. FAQs](#faqs-ref)  
@@ -87,40 +89,14 @@ Juniper work with two different configuration trees, one for its own configurati
 limitation when you want to configure the same parameter in one, you cannot in the other or have preference, in addition 
 other types of nuances particular to each vendor, this process can save us debugging time when executing the tests.
 
-<a name="branching-strategy-ref"/>
-
-#### 3.1. Branching strategy
-In the following explanation we will explain the **workflow** about Git branches. This is a methodology based on the division of the
-the states of software into different branches of the repository:
-![Git Flow](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/gitflow.PNG)
-
-##### Main branches: **master** & **develop**
-- **master**: In master branch we can find stable releases. This is the branch that typically one user will download to use our
-software, so everything of this branch must be working without errors in execution. However, it is possible that lastest functionalities
-are not available in this branch yet.
-- **develop**: This branch must be created from the last version of **master**. In this branch new features will be added.
-
-##### Auxiliar branches: **feature**, **release** & **hotfix**
-This type of branches can be created so many times as need. 
-These branches have one start and one end, since they are merged into master and develop so in the end they must disappear.
-
-- **feature-x**: Each new enhancement or feature we are going to introduce in our software will have a branch with its development. Branches
-**feature-x** will be originated from **develop** branch and when the code is finished we merge it to the **develop**.
-- **release-x**: Each new software version should be captured in this type of branches before merging to **master**. This branch is 
-originated from **develop** branch. In these branches, the development of new features is frozen, and the work consists of fixing bugs
-and to generate documentation. Once ready to publish, we merge it into **master** and we add the specific tag with version number of software.
-In the end, these branches must be integrated into **develop** branch.
-- **hotfix-x**: If our code contains critical bugs that is necessary to patch urgently, it is possible to create a **hotfix** branch from **master**.
-This branch will contain only the specific changes that fix the bug. Once fixed, it must be integrated into **master** and **develop** (with tag version).
-
 <a name="specify-credentials-ref"/>
 
-#### 3.2. Specify router and credentials
+#### 3.1. Specify router and credentials
 You can define this information overwriting the `AutomationFramework/capabilities.py` file. 
 
 <a name="yaml-setup-ref"/>
 
-#### 3.3. YAML set up
+#### 3.2. YAML set up
 The YAML set up refers to the adjustments of the YAML files where the actual values intended to be tested are defined. 
 Before getting in the set up process refer to the explanation on how the framework works in the section `TAutomation framework overview`.
 For each vendor we need to change the variable values to test, for example in Cisco the interface-name to test may be 
@@ -189,7 +165,7 @@ The final report will be generated and placed in `REPORTS_FOLDER` like `final_ou
 
 <a name="final-output-report-ref"/>
 
-### 5. Report structure final output.
+### 5.1. Report structure final output.
 
 The final output file has three sheets the number one (Details) is specified information about the vendor and equipment that has been tested. bellow we mention an example of the data that should be fill up according to the vendor and equipment tested.
 
@@ -206,7 +182,62 @@ The final output file has three sheets the number one (Details) is specified inf
 <a name="contribution-workflow-ref"/>
   
 ### 6. Workflow for contribution in this project 
-(TODO)
+In the following explanation we will explain the **workflow** about Git branches. This is a methodology based on the division of the
+the states of software into different branches of the repository:
+![Git Flow](https://github.com/sbarguil/Testing-framework/blob/master/AutomationFramework/img/gitflow.PNG)
+
+##### Main branches: **master** & **develop**
+- **master**: In **master** branch we can find stable releases. This is the branch that typically one user will download to use our
+software, so everything of this branch must be working without errors in execution. However, it is possible that lastest functionalities
+are not available in this branch yet.
+- **develop**: This branch must be created from the last version of **master**. In this branch new features will be added.
+
+##### Auxiliar branches: **feature**, **release** & **hotfix**
+This type of branches can be created so many times as need. 
+These branches have one start and one end, since they are merged into master and develop so in the end they must disappear.
+
+- **feature-x**: Each new enhancement or feature we are going to introduce in our software will have a branch with its development. Branches
+**feature-x** will be originated from **develop** branch and when the code is finished we merge it to the **develop**.
+- **release-x**: Each new software version should be captured in this type of branches before merging to **master**. This branch is 
+originated from **develop** branch. In these branches, the development of new features is frozen, and the work consists of fixing bugs
+and to generate documentation. Once ready to publish, we merge it into **master** and we add the specific tag with version number of software.
+In the end, these branches must be integrated into **develop** branch.
+- **hotfix-x**: If our code contains critical bugs that is necessary to patch urgently, it is possible to create a **hotfix** branch from **master**.
+This branch will contain only the specific changes that fix the bug. Once fixed, it must be integrated into **master** and **develop** (with tag version).
+
+<a name="important-notes-ref"/>
+<a name="software-versioning-ref"/>
+<a name="naming-convention-ref"/>
+
+### 6.1. Important notes
+
+- The pull request will not be directly merged in **master** branch. It must be done in **develop** branch.
+- Periodically, merged changes should be upstreamed from **develop** to **release_vx.y**. When **release_vx.y** is fine, a little of documentation would be needed
+to register the main changes occurred in each software version, moreover, developer must indicate the changes in **changelog.md** file (to follow changelog_example template)
+and also in release tags of Github documentation. When finished, we can merged in **master**.
+
+<a name="software-versioning-ref"/>
+
+### 6.2. Software versioning
+
+Why do we need a version anyway? Well, you need some way to uniquely identify the software you have delivered. You have, of course, the elaborate release notes containing all the features and bug fixes of your release/version, but it is easier to talk about a release when you give it a name or number. When you add extra information to it, it is also possible to give information about the state of your software. Think about Alpha, Beta, Release Candidate releases. Adding this information tells something about how mature the release is. Besides that, when one of your users is reporting a bug, it is necessary for the development team to know the version of the software the bug is being reported. This is even more important when you have multiple versions of your software running.
+
+We will use semantic versioning, specifically three-part version number. Given **MAJOR.MINOR.PATCH**, increment the:
+
+- **MAJOR** version when you make incompatible changes (incompatible backwards) or when so many changes are just coded,
+- **MINOR** version when you add functionality in a backwards-compatible manner, that is when you add a feature, and
+- **PATCH** version when you make backwards-compatible bug fixes (hotfix).
+
+<a name="naming-convention-ref"/>
+
+### 6.3. Naming convention in auxiliar branches
+
+For **release** branches our proposal is to follow software versioning: **release_vMAYOR.MINOR.PATH** e.g: **release_v1.2.1**
+
+For **feature** branches we propose this type of names: **feat_summaryFeature** e.g: **feat_pathEvaluation**
+
+For **hotfix** branches we propose this type of names: **hotfix_bugName** e.g: **hotfix_handleJuniperIfsException**
+
 
 <a name="vendor-findings-ref"/>
   
