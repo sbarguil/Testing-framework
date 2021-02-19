@@ -17,15 +17,9 @@
                    tunnel_name: "tunnel_A"  
                    ip_dest: "10.30.22.5"      
 
-
           - template: ni_mpls_p2p_tunnel_destination_state.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+            operation: get
             params:
                    name: "test_ni_mpls_p2p_tunnel"
-                   type: "oc-ni-types:L2L3"
-                   description: "for ni_mpls_p2p_tunnel_destination"
-                   enable: "true"
                    tunnel_name: "tunnel_A"  
                    ip_dest: ""   

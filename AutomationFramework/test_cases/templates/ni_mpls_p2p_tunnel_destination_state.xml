@@ -1,30 +1,19 @@
-  <edit-config>
-    <target>
-      <{{target}}/>
-    </target>
-        <config>
+  <get>
+    <filter>
       <network-instances xmlns="http://openconfig.net/yang/network-instance">
-         <network-instance>
+        <network-instance>
           <name>{{name}}</name>
-          <config>
-            <name>{{name}}</name>
-            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
-            <enabled>{{enable}}</enabled>
-            <description>{{description}}</description>
-          </config>    
           <mpls>
             <lsps>
               <constrained-path>
                 <tunnels>
                   <tunnel>
                     <name>{{tunnel_name}}</name>
-                    <config>
-                      <name>{{tunnel_name}}</name>
-                    </config>
-                   <p2p-tunnel-attributes>
+                    <p2p-tunnel-attributes>
                       <state>
                         <destination>{{ip_dest}}</destination>
                       </state>
+                    </p2p-tunnel-attributes>
                   </tunnel>
                 </tunnels>
               </constrained-path>
@@ -32,5 +21,5 @@
           </mpls>
         </network-instance>
       </network-instances>
-    </config>
-  </edit-config>
+    </filter>
+  </get>
