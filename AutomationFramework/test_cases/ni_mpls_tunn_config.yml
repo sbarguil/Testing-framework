@@ -3,7 +3,7 @@
       name: ni_mpls_tunn_config_admin_status
       id: 1
       description: >
-          This test is to set type of the interface.
+          This test is to set admin status for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_admin_status.xml
             target: candidate
@@ -22,7 +22,7 @@
       name: ni_mpls_tunn_config_description
       id: 2
       description: >
-          This test is to define the mtu parameter.
+          This test is to set description for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_description.xml
             target: candidate
@@ -41,7 +41,7 @@
       name: ni_mpls_tunn_config_hold_priority
       id: 3
       description: >
-          This test is to set description on the interface.
+          This test is to set hold-priority for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_hold_priority.xml
             target: candidate
@@ -59,7 +59,7 @@
       name: ni_mpls_tunn_config_metric
       id: 4
       description: >
-          This test is to enabled the interface.
+          This test is to set metric for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_metric.xml
             target: candidate
@@ -77,7 +77,7 @@
       name: ni_mpls_tunn_config_metric_type
       id: 5
       description: >
-          This test is to define the tag protocol on the VLAN.
+          This test is to set metric-type for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_metric_type.xml
             target: candidate
@@ -95,8 +95,7 @@
       name: ni_mpls_tunn_config_name
       id: 6
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to set name for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_name.xml
             target: candidate
@@ -114,8 +113,7 @@
       name: ni_mpls_tunn_config_preference
       id: 7
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to set preference for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_preference.xml
             target: candidate
@@ -133,8 +131,7 @@
       name: ni_mpls_tunn_config_protection_style_requested
       id: 8
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to set protection-style-requested for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_protection_style_requested.xml
             target: candidate
@@ -153,8 +150,7 @@
       name: ni_mpls_tunn_config_reoptimize_timer
       id: 9
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to set reoptimize-timer for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_reoptimize_timer.xml
             target: candidate
@@ -172,8 +168,7 @@
       name: ni_mpls_tunn_config_setup_priority
       id: 10
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to set setup-priority for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_setup_priority.xml
             target: candidate
@@ -191,8 +186,7 @@
       name: ni_mpls_tunn_config_signaling_protocol
       id: 11
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to set signaling-protocol for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_signaling_protocol.xml
             target: candidate
@@ -212,8 +206,7 @@
       name: ni_mpls_tunn_config_soft_preemption
       id: 12
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to set soft-preemption for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_soft_preemption.xml
             target: candidate
@@ -231,8 +224,7 @@
       name: ni_mpls_tunn_config_source
       id: 13
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to set ip-source for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_source.xml
             target: candidate
@@ -252,8 +244,7 @@
       name: ni_mpls_tunn_config_type
       id: 14
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+          This test is to set type for a mpls tunnel instance within a L3 network-instance.
       rpcs:
           - template: ni_mpls_tunn_config_type.xml
             target: candidate
@@ -262,7 +253,7 @@
             params:
                    name: "test_ni_mpls_tunnel_config"
                    type: "oc-ni-types:L2L3"
-                   description: "for ni_mpls_tunn_config_admin_status"
+                   description: "for ni_mpls_tunn_config_type"
                    enable: "true"
                    tunnel_name: "tunnel_A"  
                    type_tunnel: "oc-mpls-types:P2MP"       
