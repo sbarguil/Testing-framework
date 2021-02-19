@@ -370,7 +370,7 @@ Go to Branch  and adding de new YML and XML templates in the files
 
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/adding_files.png)
 
-Before commit , you can review the new files and changes
+Before commit , you can review the new files and changes.(It is important to save and close the created or modified files before changing the branch, otherwise the files will be moved to the new branch. )
 
 ![alt text](https://github.com/sbarguil/Testing-framework/blob/automation_framework/AutomationFramework/img/viewchanges_commit.png)
 
