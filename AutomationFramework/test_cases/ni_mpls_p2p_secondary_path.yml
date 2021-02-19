@@ -3,7 +3,7 @@
       name: ni_mpls_p2p_secondary_path_use_cspf
       id: 1
       description: >
-          This test is to set type of the interface.
+           This test is to set use-cspf for a mpls p2p secondary path within a L3 network-instance.
       rpcs:
           - template: ni_mpls_p2p_secondary_path_use_cspf.xml
             target: candidate
@@ -23,7 +23,7 @@
       name: ni_mpls_p2p_secondary_path_explicit_path_name
       id: 2
       description: >
-          This test is to define the mtu parameter.
+           This test is to set explicit-path-name for a mpls p2p secondary path within a L3 network-instance.
       rpcs:
           - template: ni_mpls_p2p_secondary_path_explicit_path_name.xml
             target: candidate
@@ -41,7 +41,7 @@
       name: ni_mpls_p2p_secondary_path_hold_priority
       id: 3
       description: >
-          This test is to set description on the interface.
+           This test is to set hold-priority for a mpls p2p secondary path within a L3 network-instance.
       rpcs:
           - template: ni_mpls_p2p_secondary_path_hold_priority.xml
             target: candidate
@@ -60,7 +60,7 @@
       name: ni_mpls_p2p_secondary_path_preference
       id: 4
       description: >
-          This test is to enabled the interface.
+           This test is to set path-preference for a mpls p2p secondary path within a L3 network-instance.
       rpcs:
           - template: ni_mpls_p2p_secondary_path_preference.xml
             target: candidate
@@ -79,7 +79,7 @@
       name: ni_mpls_p2p_secondary_path_retry_timer
       id: 5
       description: >
-          This test is to define the tag protocol on the VLAN.
+           This test is to set retry-timer for a mpls p2p secondary path within a L3 network-instance.
       rpcs:
           - template: ni_mpls_p2p_secondary_path_retry_timer.xml
             target: candidate
@@ -98,8 +98,7 @@
       name: ni_mpls_p2p_secondary_path_setup_priority
       id: 6
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+           This test is to set setup-priority for a mpls p2p secondary path within a L3 network-instance.
       rpcs:
           - template: ni_mpls_p2p_secondary_path_setup_priority.xml
             target: candidate
@@ -119,8 +118,7 @@
       name: ni_mpls_p2p_secondary_path_path_computation_method
       id: 7
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+           This test is to set path-computation-method for a mpls p2p secondary path within a L3 network-instance.
       rpcs:
           - template: ni_mpls_p2p_secondary_path_path_computation_method.xml
             target: candidate
@@ -140,8 +138,7 @@
       name: nni_mpls_p2p_secondary_path_name
       id: 8
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+           This test is to set path-name for a mpls p2p secondary path within a L3 network-instance.
       rpcs:
           - template: ni_mpls_p2p_secondary_path_name.xml
             target: candidate
@@ -159,8 +156,7 @@
       name: ni_mpls_p2p_secondary_path_cspf_tiebreaker
       id: 9
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+           This test is to set cspf-tiebreaker for a mpls p2p secondary path within a L3 network-instance.
       rpcs:
           - template: ni_mpls_p2p_secondary_path_cspf_tiebreaker.xml
             target: candidate
@@ -180,8 +176,7 @@
       name: ni_mpls_p2p_secondary_path_path_computation_server
       id: 10
       description: >
-          This test is defined to enable an interface
-          loopback mode.
+           This test is to set path-computation-server for a mpls p2p secondary path within a L3 network-instance.
       rpcs:
           - template: ni_mpls_p2p_secondary_path_path_computation_server.xml
             target: candidate
