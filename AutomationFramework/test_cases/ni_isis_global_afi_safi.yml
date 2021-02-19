@@ -1,0 +1,20 @@
+
+- testcase:
+      name: ni_isis_global_afi_safi_afi_name
+      id: 1
+      description: >
+          This test is to set the "Address family type - Subsequent address-family type - enabled the address family in protocol ISIS"
+      rpcs:
+          - template: ni_isis_global_afi_safi_afi_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "ISIS"
+                   identifier: "oc-pol-types:ISIS"
+                   afi_name: "oc-isis-types:IPV4"
+                   safi_name: "oc-isis-types:UNICAST"
+                   enabled: "true"
+
+

@@ -1,0 +1,40 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{ni_name}}</name>
+          <config>
+            <name>{{ni_name}}</name>
+          </config>
+          <protocols>
+            <protocol>
+              <identifier>{{identifier}}</identifier>
+              <name>{{name_protocol}}</name>
+              <config>
+                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier}}</identifier>
+                <name>{{name_protocol}}</name>
+              </config>
+              <isis>
+                <global>
+                  <afi-safi>
+                    <af>
+                      <afi-name>{{afi_name}}</afi-name>
+                      <safi-name>{{safi_name}}</safi-name>
+                      <config>
+                        <afi-name xmlns:oc-isis-types="http://openconfig.net/yang/isis-types">{{afi_name}}</afi-name>
+                        <safi-name xmlns:oc-isis-types="http://openconfig.net/yang/isis-types">{{safi_name}}</safi-name>
+                        <enabled>{{enabled}}</enabled>
+                      </config>
+                    </af>
+                  </afi-safi>
+                </global>
+              </isis>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>
