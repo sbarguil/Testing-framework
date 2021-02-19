@@ -1,0 +1,192 @@
+
+- testcase:
+      name: ni_mpls_p2p_secondary_path_use_cspf
+      id: 1
+      description: >
+           This test is to set use-cspf for a mpls p2p secondary path within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_p2p_secondary_path_use_cspf.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_use_cspf"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   use_cspf: "true"
+
+
+- testcase:
+      name: ni_mpls_p2p_secondary_path_explicit_path_name
+      id: 2
+      description: >
+           This test is to set explicit-path-name for a mpls p2p secondary path within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_p2p_secondary_path_explicit_path_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_explicit_path_name"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   explicit_path_name: "EXPLICIT_PATH_1_2_3"
+- testcase:
+      name: ni_mpls_p2p_secondary_path_hold_priority
+      id: 3
+      description: >
+           This test is to set hold-priority for a mpls p2p secondary path within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_p2p_secondary_path_hold_priority.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_hold_priority"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   hold_priority: "4"
+
+- testcase:
+      name: ni_mpls_p2p_secondary_path_preference
+      id: 4
+      description: >
+           This test is to set path-preference for a mpls p2p secondary path within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_p2p_secondary_path_preference.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_preference"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   preference: "128"
+
+- testcase:
+      name: ni_mpls_p2p_secondary_path_retry_timer
+      id: 5
+      description: >
+           This test is to set retry-timer for a mpls p2p secondary path within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_p2p_secondary_path_retry_timer.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_retry_timer"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   retry_timer: "32"
+
+- testcase:
+      name: ni_mpls_p2p_secondary_path_setup_priority
+      id: 6
+      description: >
+           This test is to set setup-priority for a mpls p2p secondary path within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_p2p_secondary_path_setup_priority.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_setup_priority"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   setup_priority: "3"
+
+
+- testcase:
+      name: ni_mpls_p2p_secondary_path_path_computation_method
+      id: 7
+      description: >
+           This test is to set path-computation-method for a mpls p2p secondary path within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_p2p_secondary_path_path_computation_method.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_path_computation_method"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   path_comp_method: "oc-mpls-types:EXPLICITLY_DEFINED"
+
+
+- testcase:
+      name: nni_mpls_p2p_secondary_path_name
+      id: 8
+      description: >
+           This test is to set path-name for a mpls p2p secondary path within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_p2p_secondary_path_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_name"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+
+- testcase:
+      name: ni_mpls_p2p_secondary_path_cspf_tiebreaker
+      id: 9
+      description: >
+           This test is to set cspf-tiebreaker for a mpls p2p secondary path within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_p2p_secondary_path_cspf_tiebreaker.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_cspf_tiebreaker"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   cspf_tiebreaker: "RANDOM"
+
+
+- testcase:
+      name: ni_mpls_p2p_secondary_path_path_computation_server
+      id: 10
+      description: >
+           This test is to set path-computation-server for a mpls p2p secondary path within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_p2p_secondary_path_path_computation_server.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_p2p_secondary_path"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_p2p_secondary_path_path_computation_server"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   path_name: "LSP_SECONDARY"
+                   ip_server: "12.13.44.22"
