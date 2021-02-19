@@ -28,6 +28,12 @@
                         <safi-name xmlns:oc-isis-types="http://openconfig.net/yang/isis-types">{{safi_name}}</safi-name>
                         <enabled>{{enabled}}</enabled>
                       </config>
+                      <multi-topology>
+                        <config>
+                          <afi-name xmlns:oc-isis-types="http://openconfig.net/yang/isis-types">{{afi_name}}</afi-name>
+                          <safi-name xmlns:oc-isis-types="http://openconfig.net/yang/isis-types">{{safi_name}}</safi-name>
+                        </config>
+                      </multi-topology>
                     </af>
                   </afi-safi>
                 </global>

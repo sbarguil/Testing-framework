@@ -3,7 +3,7 @@
       name: ni_isis_global_afi_safi_afi_name
       id: 1
       description: >
-          This test is to set the "Address family type - Subsequent address-family type - enabled the address family in protocol ISIS"
+          This test is to set the "Address family type - Subsequent address-family type - enabled the address family in protocol ISIS - amd afi - safi name multi-topology"
       rpcs:
           - template: ni_isis_global_afi_safi_afi_name.xml
             target: candidate
