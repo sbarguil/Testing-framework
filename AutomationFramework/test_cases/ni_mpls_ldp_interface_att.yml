@@ -1,0 +1,91 @@
+
+- testcase:
+      name: ni_mpls_ldp_interface_att_afi_name
+      id: 1
+      description: >
+           This test is to set afi_name for a mpls ldp interface att within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_ldp_interface_att_afi_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_interface_att"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_interface_att_afi_name"
+                   enable: "true"
+                   id: "Interface_HL2_HL3"
+                   afi_name: "IPV4"
+
+- testcase:
+      name: ni_mpls_ldp_interface_att_enabled
+      id: 2
+      description: >
+          This test is to set enabled for a mpls ldp interface att  within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_ldp_interface_att_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_interface_att"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_interface_att_enabled"
+                   enable: "true"
+                   id: "Interface_HL2_HL3"
+                   afi_name: "IPV4"
+                   enabled: "true"
+
+- testcase:
+      name: ni_mpls_ldp_interface_att_interface_id
+      id: 3
+      description: >
+          This test is to set interface-id for a mpls ldp interface att  within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_ldp_interface_att_interface_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_interface_att"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_interface_att_interface_id"
+                   enable: "true"
+                   id: "Interface_HL2_HL3"
+
+- testcase:
+      name: ni_mpls_ldp_interface_att_interface
+      id: 4
+      description: >
+          This test is to set interface for a mpls ldp interface att within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_ldp_interface_att_interface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_interface_att"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_interface_att_interface"
+                   enable: "true"
+                   id: "Interface_HL2_HL3"
+                   interface: "Ge0/0/1"
+
+- testcase:
+      name: ni_mpls_ldp_interface_att_subinterface
+      id: 5
+      description: >
+          This test is to set subinterface for a mpls ldp interface att  within a L3 network-instance..
+      rpcs:
+          - template: ni_mpls_ldp_interface_att_subinterface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_interface_att"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_interface_att_subinterface"
+                   enable: "true"
+                   id: "Interface_HL2_HL3"
+                   interface: "Ge0/0/1"
+                   subinterface: "100"
