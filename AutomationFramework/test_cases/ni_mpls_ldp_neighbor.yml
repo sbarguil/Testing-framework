@@ -3,7 +3,7 @@
       name: ni_mpls_ldp_neighbor_authentication_key
       id: 1
       description: >
-          This test is to set type of the interface.
+          This test is to set authentication-key for a mpls ldp neighbor within a L3 network-instance.
       rpcs:
           - template: ni_mpls_ldp_neighbor_authentication_key.xml
             target: candidate
@@ -24,7 +24,7 @@
       name: ni_mpls_ldp_neighbor_enable
       id: 2
       description: >
-          This test is to define the mtu parameter.
+          This test is to set enabled for a mpls ldp neighbor within a L3 network-instance.
       rpcs:
           - template: ni_mpls_ldp_neighbor_enable.xml
             target: candidate
@@ -43,7 +43,7 @@
       name: ni_mpls_ldp_neighbor_lsr_id
       id: 3
       description: >
-          This test is to set description on the interface.
+          This test is to set lsr-id for a mpls ldp neighbor within a L3 network-instance..
       rpcs:
           - template: ni_mpls_ldp_neighbor_lsr_id.xml
             target: candidate
@@ -61,7 +61,7 @@
       name: ni_mpls_ldp_neighbor_hello_accept
       id: 4
       description: >
-          This test is to enabled the interface.
+          This test is to set hello_accept for a mpls ldp neighbor within a L3 network-instance.
       rpcs:
           - template: ini_mpls_ldp_neighbor_hello_accept.xml
             target: candidate
