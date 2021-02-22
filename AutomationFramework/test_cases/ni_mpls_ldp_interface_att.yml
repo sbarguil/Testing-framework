@@ -3,7 +3,7 @@
       name: ni_mpls_ldp_interface_att_afi_name
       id: 1
       description: >
-          This test is to set type of the interface.
+           This test is to set afi_name for a mpls ldp interface att within a L3 network-instance.
       rpcs:
           - template: ni_mpls_ldp_interface_att_afi_name.xml
             target: candidate
@@ -21,7 +21,7 @@
       name: ni_mpls_ldp_interface_att_enabled
       id: 2
       description: >
-          This test is to define the mtu parameter.
+          This test is to set enabled for a mpls ldp interface att  within a L3 network-instance.
       rpcs:
           - template: ni_mpls_ldp_interface_att_enabled.xml
             target: candidate
@@ -40,7 +40,7 @@
       name: ni_mpls_ldp_interface_att_interface_id
       id: 3
       description: >
-          This test is to set description on the interface.
+          This test is to set interface-id for a mpls ldp interface att  within a L3 network-instance.
       rpcs:
           - template: ni_mpls_ldp_interface_att_interface_id.xml
             target: candidate
@@ -57,7 +57,7 @@
       name: ni_mpls_ldp_interface_att_interface
       id: 4
       description: >
-          This test is to enabled the interface.
+          This test is to set interface for a mpls ldp interface att within a L3 network-instance.
       rpcs:
           - template: ni_mpls_ldp_interface_att_interface.xml
             target: candidate
@@ -75,7 +75,7 @@
       name: ni_mpls_ldp_interface_att_subinterface
       id: 5
       description: >
-          This test is to define the tag protocol on the VLAN.
+          This test is to set subinterface for a mpls ldp interface att  within a L3 network-instance..
       rpcs:
           - template: ni_mpls_ldp_interface_att_subinterface.xml
             target: candidate
