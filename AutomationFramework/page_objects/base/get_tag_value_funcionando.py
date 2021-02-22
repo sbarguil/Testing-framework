@@ -1,6 +1,6 @@
 import collections
 
-parsed_dict = collections.OrderedDict([(u'components',
+parsed_dict0 = collections.OrderedDict([(u'components',
               [collections.OrderedDict([(u'component',
                              [collections.OrderedDict([(u'name', u'Chassis'),
                                            (u'state',
@@ -444,53 +444,119 @@ parsed_dict = collections.OrderedDict([(u'components',
                                                                                     (u'max-time',
                                                                                      u'1613723685674613655')]))]))]))]))])])])
 
+parsed_dict1 = {'components':[{'component':[{'name':'Browser'},{'name':'Mario'},{'name':'Luigi'}]},{'component':{'name':'Pikachu'}}]}
+parsed_dict2 = {'components':{'component':[{'name':'Browser'},{'name':'Mario'},{'name':'Luigi'}]}}
+parsed_dict3 = {'components':[{'component':[{'config':'Browser'},{'config':'Mario'},{'name':'Luigi'}]},{'component':{'config':'Pikachu'}}]}
+parsed_dict4 = {'components':[{'component':[{'config':'Browser'},{'config':'Mario'},{'config':'Luigi'}]},{'component':{'name':'Pikachu'}}]}
+parsed_dict5 = {'components':[{'component':{'name':'Pikachu'}},{'component':[{'config':'Bulbasur'},{'config':'Charmander'},{'name':'Squirtle'}]}]}
+
+
 path_str = 'components/component/name'
 path = path_str.split('/')
 
-def get_tag_value_in_given_dict_by_path(auxiliar_output_list,path, parsed_dict):
-    return_result = None
+def get_tag_value_in_given_dict_by_path(auxiliar_output_list, path, parsed_dict):
+    #auxiliar_output_list: variable to store results in a list
+
+    return_result = None    #Initialize the output variable
     if len(path) == 1:
         auxiliar_output_list.append(parsed_dict)
-        return_result = auxiliar_output_list
     else:
         try:
             if isinstance(parsed_dict, list):
                 path = path[1:]
                 for i in range(0, len(parsed_dict)):
                     subdict = parsed_dict[i]
-                    return_result = get_tag_value_in_given_dict_by_path(auxiliar_output_list,path=path, parsed_dict=subdict[path[0]])
+                    if path[0] in subdict:
+                        return_result = get_tag_value_in_given_dict_by_path(auxiliar_output_list,path=path, parsed_dict=subdict[path[0]])
             else:
                 if path[0] in parsed_dict:
                     sublist = parsed_dict[path[0]]  # diccionario_interno
-                    path = path[1:]
                     if isinstance(sublist, list):
+                        path = path[1:]
                         for j in range(0,len(sublist)):
                             subdict = sublist[j]
-                            #if j > 0:
-                            #    path = original_path[1:]
                             return_result = get_tag_value_in_given_dict_by_path(auxiliar_output_list,path=path,parsed_dict=subdict[path[0]])
                     else:
                         return_result = get_tag_value_in_given_dict_by_path(auxiliar_output_list,path=path[1:],parsed_dict=parsed_dict[path[0]])
-
                 elif path[1] in parsed_dict:    #In those specific cases where the content of parsed_dict is only one element,
                     # we could have directly the final result
 
                     # IMPORTANT! To test these particular cases when the current path is not the end
                     auxiliar_output_list.append(parsed_dict[path[1]])
-                    return_result = auxiliar_output_list
 
                 else:
                     raise Exception('The path specified for the param doesnt exists in the response')
-
         except:
             return_result = None
+
+    return_result = auxiliar_output_list
     return return_result
 
-#auxiliar_output_list = []
-#return_result = get_tag_value_in_given_dict_by_path(return_result_recursive,path,path,parsed_dict)
-return_result = get_tag_value_in_given_dict_by_path([],path,parsed_dict)
+# Test 0
+return_result = get_tag_value_in_given_dict_by_path([],path,parsed_dict0)
+#print('Return result recursive:')
+#print(return_result)
+result_valid0 = ['Chassis', 'Routing Engine0', 'CB0', 'FPC0', 'FPC0:CPU', 'FPC0:MIC0', 'FPC0:PIC0', 'CPU0:CORE0']
+if return_result == result_valid0:
+    print('Test 0 have done successfully!')
+else:
+    print('Some error in the produced result.')
+print('---------------------------------\n')
 
-print('Return result recursive:')
-print(return_result)
+# Test 1
+return_result = get_tag_value_in_given_dict_by_path([],path,parsed_dict1)
+#print('Return result recursive:')
+#print(return_result)
+result_valid1 = ['Browser', 'Mario', 'Luigi', 'Pikachu']
+if return_result == result_valid1:
+    print('Test 1 have done successfully!')
+else:
+    print('Some error in the produced result.')
+print('---------------------------------\n')
+
+# Test 2
+return_result = get_tag_value_in_given_dict_by_path([],path,parsed_dict2)
+#print('Return result recursive:')
+#print(return_result)
+result_valid2 = ['Browser', 'Mario', 'Luigi']
+if return_result == result_valid2:
+    print('Test 2 have done successfully!')
+else:
+    print('Some error in the produced result.')
+print('---------------------------------\n')
+
+# Test 3
+return_result = get_tag_value_in_given_dict_by_path([],path,parsed_dict3)
+#print('Return result recursive:')
+#print(return_result)
+result_valid3 = ['Luigi']
+if return_result == result_valid3:
+    print('Test 3 have done successfully!')
+else:
+    print('Some error in the produced result.')
+print('---------------------------------\n')
+
+# Test 4
+return_result = get_tag_value_in_given_dict_by_path([],path,parsed_dict4)
+#print('Return result recursive:')
+#print(return_result)
+result_valid4 = ['Pikachu']
+if return_result == result_valid4:
+    print('Test 4 have done successfully!')
+else:
+    print('Some error in the produced result.')
+print('---------------------------------\n')
+
+# Test 5
+return_result = get_tag_value_in_given_dict_by_path([],path,parsed_dict5)
+#print('Return result recursive:')
+#print(return_result)
+result_valid5 = ['Pikachu', 'Squirtle']
+if return_result == result_valid5:
+    print('Test 5 have done successfully!')
+else:
+    print('Some error in the produced result.')
+print('---------------------------------\n')
+
 
 print('Finished!')
