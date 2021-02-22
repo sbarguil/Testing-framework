@@ -1,0 +1,74 @@
+
+- testcase:
+      name: ni_mpls_rsvp_interface_att_interface_id
+      id: 1
+      description: >
+          This test is to set interface-id for a mpls rsvp interface att within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_rsvp_interface_att_interface_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_rsvp_interface_att"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_rsvp_interface_att_interface_id"
+                   enable: "true"
+                   id: "Ge0/0/0"
+                   
+
+
+- testcase:
+      name: ni_mpls_rsvp_interface_att_interface
+      id: 2
+      description: >
+          This test is to set interface for a mpls rsvp interface att within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_rsvp_interface_att_interface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_rsvp_interface_att"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_rsvp_interface_att_interface"
+                   enable: "true"
+                   id: "Ge0/0/0"
+                   interface: "Ge0/0/0"
+
+- testcase:
+      name: ni_mpls_rsvp_interface_att_subinterface
+      id: 3
+      description: >
+          This test is to set subinterface for a mpls rsvp interface att within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_rsvp_interface_att_subinterface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_rsvp_interface_att"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_rsvp_interface_att_subinterface"
+                   enable: "true"
+                   id: "Ge0/0/0"
+                   interface: "Ge0/0/0"
+                   subinterface: "200"
+
+- testcase:
+      name: ni_mpls_rsvp_interface_att_subscription
+      id: 4
+      description: >
+         This test is to set subscription for a mpls rsvp interface att within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_rsvp_interface_att_subscription.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_rsvp_interface_att"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_rsvp_interface_att_subscription"
+                   enable: "true"
+                   id: "Ge0/0/0"
+                   percent: "20"
