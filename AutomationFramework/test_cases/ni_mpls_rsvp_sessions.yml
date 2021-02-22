@@ -3,7 +3,7 @@
       name: ni_mpls_rsvp_sessions_index_record_route
       id: 1
       description: >
-          This test is to get description components.
+          This test is to get record-route from a mpls rsvp sessions within a L3 network-instance.
       rpcs:
           - template: ni_mpls_rsvp_sessions_index_record_route.xml
             operation: get
@@ -17,7 +17,7 @@
       name: ni_mpls_rsvp_sessions_interface_id
       id: 2
       description: >
-          This test is to get the hardware version components.
+          This test is to get interface-id from a mpls rsvp sessions within a L3 network-instance.
       rpcs:
           - template: ni_mpls_rsvp_sessions_interface_id.xml
             operation: get
@@ -31,7 +31,7 @@
       name: ni_mpls_rsvp_sessions_ip_prefix
       id: 3
       description: >
-          This test is to get the component id.
+          This test is to get ip-prefix from a mpls rsvp sessions within a L3 network-instance.
       rpcs:
           - template: ni_mpls_rsvp_sessions_ip_prefix.xml
             operation: get
@@ -45,7 +45,7 @@
       name: ni_mpls_rsvp_sessions_loose
       id: 4
       description: >
-          This test is to get location components.
+          This test is to get loose from a mpls rsvp sessions within a L3 network-instance.
       rpcs:
           - template: ni_mpls_rsvp_sessions_loose.xml
             operation: get
@@ -59,7 +59,7 @@
       name: ni_mpls_rsvp_sessions_type
       id: 5
       description: >
-          This test is to get manufacturing date.
+          This test is to get type from a mpls rsvp sessions within a L3 network-instance.
       rpcs:
           - template: ni_mpls_rsvp_sessions_type.xml
             operation: get
@@ -73,7 +73,7 @@
       name: ni_mpls_rsvp_sessions_address
       id: 6
       description: >
-          This test is to get operation status component.
+          This test is to get address from a mpls rsvp sessions within a L3 network-instance.
       rpcs:
           - template: ni_mpls_rsvp_sessions_address.xml
             operation: get
@@ -87,7 +87,7 @@
       name: ni_mpls_rsvp_sessions_index_expl_route
       id: 7
       description: >
-          This test is to get name of the parent component.
+          This test is to get index-expl-route from a mpls rsvp sessions within a L3 network-instance.
       rpcs:
           - template: ni_mpls_rsvp_sessions_index_expl_route.xml
             operation: get
@@ -100,7 +100,7 @@
       name: ni_mpls_rsvp_sessions_local_index
       id: 8
       description: >
-          This test is to get serial number of the component.
+          This test is to get local-index from a mpls rsvp sessions within a L3 network-instance.
       rpcs:
           - template: ni_mpls_rsvp_sessions_local_index.xml
             operation: get
@@ -112,7 +112,7 @@
       name: ni_mpls_rsvp_sessions_lsp_id
       id: 9
       description: >
-          This test is to get type of component by the system.
+          This test is to get lsp-id from a mpls rsvp sessions within a L3 network-instance.
       rpcs:
           - template: ni_mpls_rsvp_sessions_lsp_id.xml
             operation: get
@@ -127,7 +127,7 @@
       name: ni_mpls_rsvp_sessions_tunnel_id
       id: 10
       description: >
-          This test is to get type of component by the system.
+          This test is to get tunnel-id from a mpls rsvp sessions within a L3 network-instance.
       rpcs:
           - template: ni_mpls_rsvp_sessions_tunnel_id.xml
             operation: get
