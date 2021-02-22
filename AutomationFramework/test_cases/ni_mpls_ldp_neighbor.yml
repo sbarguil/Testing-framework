@@ -1,0 +1,76 @@
+
+- testcase:
+      name: ni_mpls_ldp_neighbor_authentication_key
+      id: 1
+      description: >
+          This test is to set authentication-key for a mpls ldp neighbor within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_ldp_neighbor_authentication_key.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_neighbor"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_neighbor_authentication_key"
+                   enable: "true"
+                   lsr_id: "172.16.1.1"
+                   label_space_id: "8"
+                   auth_key: "“T3l3f0n1c4”"
+
+
+
+- testcase:
+      name: ni_mpls_ldp_neighbor_enable
+      id: 2
+      description: >
+          This test is to set enabled for a mpls ldp neighbor within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_ldp_neighbor_enable.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_neighbor"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_neighbor_enable"
+                   enable: "true"
+                   lsr_id: "172.16.1.1"
+                   label_space_id: "8"
+                   enable: "true"
+
+- testcase:
+      name: ni_mpls_ldp_neighbor_lsr_id
+      id: 3
+      description: >
+          This test is to set lsr-id for a mpls ldp neighbor within a L3 network-instance..
+      rpcs:
+          - template: ni_mpls_ldp_neighbor_lsr_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_neighbor"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_neighbor_lsr_id"
+                   enable: "true"
+                   lsr_id: "172.16.1.1"
+                   label_space_id: "8"
+
+- testcase:
+      name: ni_mpls_ldp_neighbor_hello_accept
+      id: 4
+      description: >
+          This test is to set hello_accept for a mpls ldp neighbor within a L3 network-instance.
+      rpcs:
+          - template: ini_mpls_ldp_neighbor_hello_accept.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_neighbor"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_neighbor_hello_accept"
+                   enable: "true"
+                   hello_accept: "true"
+                  
