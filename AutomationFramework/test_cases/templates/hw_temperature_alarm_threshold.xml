@@ -1,0 +1,14 @@
+  <get>
+    <filter>
+      <components xmlns="http://openconfig.net/yang/platform">
+        <component>
+          <name>{{name}}</name>
+          <state>
+            <temperature>
+              <alarm-threshold>{{alarm_threshold}}</alarm-threshold>
+            </temperature>
+          </state>
+        </component>
+      </components>
+    </filter>
+  </get>
