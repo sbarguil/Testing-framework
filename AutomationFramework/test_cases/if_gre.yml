@@ -74,3 +74,18 @@
                    interface_name: "500"
                    type: "tunnel"
                    mtu: "1500"
+
+- testcase:
+      name: if_gre_enabled
+      id: 2
+      description: >
+          This test is to set the enabled for the tunnel.
+      rpcs:
+          - template: if_gre_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "500"
+                   type: "tunnel"
+                   enabled: "true"
