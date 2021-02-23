@@ -1,0 +1,26 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+          </config>
+          <policy-forwarding>
+            <interfaces>
+              <interface>
+                <interface-id>{{interface_id}}</interface-id>
+                <config>
+                  <interface-id>{{interface_id}}</interface-id>
+                  <apply-forwarding-policy>{{apply_forwarding_policy}}</apply-forwarding-policy>
+                </config>
+              </interface>
+            </interfaces>
+          </policy-forwarding>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>

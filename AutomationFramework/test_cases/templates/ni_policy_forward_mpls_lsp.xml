@@ -1,0 +1,26 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+       <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+          </config>
+          <policy-forwarding>
+            <path-selection-groups>
+              <path-selection-group>
+                <group-id>{{group_id}}</group-id>
+                <config>
+                  <group-id>{{group_id}}</group-id>
+                  <mpls-lsp>{{mpls_lsp}}</mpls-lsp>
+                </config>
+              </path-selection-group>
+            </path-selection-groups>
+          </policy-forwarding>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>

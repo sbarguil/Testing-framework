@@ -1,0 +1,281 @@
+
+- testcase:
+      name: ni_policy_forward_policy_id 
+      id: 1
+      description: >
+          This test is to create a unique name identifying the forwarding policy. This name is used when applying the policy to a particular interface.
+      rpcs:
+          - template: ni_policy_forward_policy_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   policy_id: "Service_Binding_Policy"
+
+- testcase:
+      name: ni_policy_forward_sequence_id
+      id: 2
+      description: >
+          This test is to set a unique sequence number for the policy rule.
+      rpcs:
+          - template: ni_policy_forward_sequence_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   policy_id: "Service_Binding_Policy"
+                   sequence_id: "10"
+
+- testcase:
+      name: ni_policy_forward_source_mac
+      id: 3
+      description: >
+          This test is to set a source IEEE 802 MAC address to match in Ethernet packets rule.
+      rpcs:
+          - template: ni_policy_forward_source_mac.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   policy_id: "Service_Binding_Policy"
+                   sequence_id: "10"
+                   source_mac: "00-FF-E3-01-C3-38"
+
+- testcase:
+      name: ni_policy_forward_destination_mac
+      id: 4
+      description: >
+          This test is to set a destination IEEE 802 MAC address to match in Ethernet packets rule.
+      rpcs:
+          - template: ni_policy_forward_destination_mac.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   policy_id: "Service_Binding_Policy"
+                   sequence_id: "10"
+                   destination_mac: "02-00-4C-4F-4F-50"
+
+- testcase:
+      name: ni_policy_forward_ethertype
+      id: 5
+      description: >
+          This test is to set ethertype field to match in Ethernet packets rule.
+      rpcs:
+          - template: ni_policy_forward_ethertype.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   policy_id: "Service_Binding_Policy"
+                   sequence_id: "10"
+                   ethertype: "oc-pkt-match-types:ETHERTYPE_IPV4"
+
+- testcase:
+      name: ni_policy_forward_source_address
+      id: 6
+      description: >
+          This test is to define source IPv4 address prefix to match in IPv4 packets rule.
+      rpcs:
+          - template: ni_policy_forward_source_address.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   policy_id: "Service_Binding_Policy"
+                   sequence_id: "10"
+                   source_address: "172.16.10.20"
+
+- testcase:
+      name: ni_policy_forward_destination_address
+      id: 7
+      description: >
+          This test is to define destination IPv4 address prefix to match in IPv4 packets rule.
+      rpcs:
+          - template: ni_policy_forward_destination_address.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   policy_id: "Service_Binding_Policy"
+                   sequence_id: "10"
+                   destination_address: "192.168.1.2"
+
+- testcase:
+      name: ni_policy_forward_dscp
+      id: 8
+      description: >
+          This test is to define dscp to match in IPv4 packets rule.
+      rpcs:
+          - template: ni_policy_forward_dscp.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   policy_id: "Service_Binding_Policy"
+                   sequence_id: "10"
+                   dscp: "5"
+        
+
+- testcase:
+      name: ni_policy_forward_protocol
+      id: 9
+      description: >
+          This test is to define protocol to match in IPv4 packets rule.
+      rpcs:
+          - template: ni_policy_forward_protocol.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   policy_id: "Service_Binding_Policy"
+                   sequence_id: "10"
+                   protocol: "oc-pkt-match-types:IP_TCP"
+                   
+
+- testcase:
+      name: ni_policy_forward_source_port
+      id: 10
+      description: >
+          This test is to define source port to match in transport packets rule.
+      rpcs:
+          - template: ni_policy_forward_source_port.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   policy_id: "Service_Binding_Policy"
+                   sequence_id: "10"
+                   source_port: "444"
+
+- testcase:
+      name: ni_policy_forward_destination_port
+      id: 11
+      description: >
+          This test is to define destinationsource port to match in transport packets rule.
+      rpcs:
+          - template: ni_policy_forward_destination_port.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   policy_id: "Service_Binding_Policy"
+                   sequence_id: "10"
+                   destination_port: "555"
+
+- testcase:
+      name: ni_policy_forward_path_selection_group
+      id: 12
+      description: >
+          This test is to set path-selection-group for packets matching the criteria for the forwarding rule.
+      rpcs:
+          - template: ni_policy_forward_path_selection_group.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   policy_id: "Service_Binding_Policy"
+                   sequence_id: "10"
+                   path_selection_group: "Tunnels_for_LxVPN_Test"
+
+- testcase:
+      name: ni_policy_forward_group_id
+      id: 13
+      description: >
+          This test is to define a unique name for the path-selection-group to be used in the action for the forwarding rule.
+      rpcs:
+          - template: ni_policy_forward_group_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   group_id: "Tunnels_for_LxVPN_Test"
+
+- testcase:
+      name: ni_policy_forward_mpls_lsp
+      id: 14
+      description: >
+          This test is to define the MPLS constrained-path LSPs which should be considered for the policy forwarding next-hop.
+      rpcs:
+          - template: ni_policy_forward_mpls_lsp.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   group_id: "Tunnels_for_LxVPN_Test"
+                   mpls_lsp: "LSP_Path_A_B_C"
+
+- testcase:
+      name: ni_policy_forward_interface_id.xml
+      id: 15
+      description: >
+          This test is to set an id unique identifier for interface to configure apply the forwarding policy (IMPORTANT!: It should be a valid interface available, check with CLI before test ).
+      rpcs:
+          - template: ni_policy_forward_interface_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   interface_id: "ge_0/0/0"     
+
+- testcase:
+      name: ni_policy_forward_interface
+      id: 16
+      description: >
+          This test is to reference a previously configured interface with OC interface module (IMPORTANT!: It should be a valid interface available, check with CLI before test ).
+      rpcs:
+          - template: ni_policy_forward_interface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   interface_id: "ge_0/0/0"
+                   interface: "ge_0/0/0"
+
+- testcase:
+      name: ni_policy_forward_subinterface
+      id: 17
+      description: >
+          This test is to reference a previously configured sub-interface with OC interface module (IMPORTANT!: It should be a valid interface available, check with CLI before test ).
+      rpcs:
+          - template: ni_policy_forward_subinterface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   interface_id: "ge_0/0/0"
+                   interface: "ge_0/0/0"
+                   subinterface: "100"
+
+
+- testcase:
+      name: ni_policy_forward_apply_forwarding_policy
+      id: 18
+      description: >
+          This test is to set the policy to be applied on the interface for packets ingress on the referenced interface compared to the match criteria.
+      rpcs:
+          - template: ni_policy_forward_apply_forwarding_policy.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "LxVPN_Test"
+                   interface_id: "ge_0/0/0"
+                   apply_forwarding_policy: "Service_Binding_Policy"
