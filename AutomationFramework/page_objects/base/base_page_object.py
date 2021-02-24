@@ -54,6 +54,8 @@ class BasePageObject:
     def init_generic_variables_to_commit(self):
         self.generic_variables_to_commit = []
         for variable, value in self.rpcs_list[self.rpc_idx_in_test_case]['params'].items():
+            #self.generic_variables_to_commit['test_case_key'] = variable
+            #self.generic_variables_to_commit['value_to_commit'] = value
             new_variable = {'test_case_key': variable, 'value_to_commit': value}
             self.generic_variables_to_commit.append(new_variable)
 
@@ -93,7 +95,7 @@ class BasePageObject:
             self.edit_config_second_get_config_response.xml)[rpc_reply_key][data_key]
         for variable in self.generic_variables_to_commit:
             new_variable = {'test_case_key': variable['test_case_key'],
-                            'value_after_commit': self.get_tag_value_in_given_dict_by_path(parsed_dict=parsed_dict,
+                            'value_after_commit': self.get_unique_tag_value_in_given_dict_by_path(parsed_dict=parsed_dict,
                                                                                            path=variable['path_list']),
                             'path_string': variable['path_string'],
                             'path_list': variable['path_list'],
@@ -109,27 +111,65 @@ class BasePageObject:
             self.edit_config_first_get_config_response.xml)[rpc_reply_key][data_key]
         for variable in self.generic_variables_to_commit:
             new_variable = {'test_case_key': variable['test_case_key'],
-                            'value_before_commit': self.get_tag_value_in_given_dict_by_path(parsed_dict=parsed_dict,
+                            'value_before_commit': self.get_unique_tag_value_in_given_dict_by_path(parsed_dict=parsed_dict,
                                                                                             path=variable['path_list']),
                             'path_string': variable['path_string'],
                             'path_list': variable['path_list'],
                             }
             self.generic_values_before_commit.append(new_variable)
 
-    def get_tag_value_in_given_dict_by_path(self, path, parsed_dict):
+    def get_unique_tag_value_in_given_dict_by_path(self, path, parsed_dict):
         recursive_return = None
         if len(path) == 1:
             return parsed_dict[path[0]]
         else:
             try:
                 if path[0] in parsed_dict:
-                    recursive_return = self.get_tag_value_in_given_dict_by_path(path=path[1:],
+                    recursive_return = self.get_unique_tag_value_in_given_dict_by_path(path=path[1:],
                                                                                 parsed_dict=parsed_dict[path[0]])
                 else:
                     raise Exception('The path specified for the param doesnt exists in the response')
             except:
                 recursive_return = None
         return recursive_return
+        
+    def get_tag_value_in_given_dict_by_path(self,auxiliar_output_list, path, parsed_dict):
+        #auxiliar_output_list: variable to store results in a list
+    
+        return_result = None    #Initialize the output variable
+        if len(path) == 1:
+            auxiliar_output_list.append(parsed_dict)
+        else:
+            try:
+                if isinstance(parsed_dict, list):
+                    path = path[1:]
+                    for i in range(0, len(parsed_dict)):
+                        subdict = parsed_dict[i]
+                        if path[0] in subdict:
+                            return_result = self.get_tag_value_in_given_dict_by_path(auxiliar_output_list,path=path, parsed_dict=subdict[path[0]])
+                else:
+                    if path[0] in parsed_dict:
+                        sublist = parsed_dict[path[0]]  # diccionario_interno
+                        if isinstance(sublist, list):
+                            path = path[1:]
+                            for j in range(0,len(sublist)):
+                                subdict = sublist[j]
+                                return_result = self.get_tag_value_in_given_dict_by_path(auxiliar_output_list,path=path,parsed_dict=subdict[path[0]])
+                        else:
+                            return_result = self.get_tag_value_in_given_dict_by_path(auxiliar_output_list,path=path[1:],parsed_dict=parsed_dict[path[0]])
+                    elif path[1] in parsed_dict:    #In those specific cases where the content of parsed_dict is only one element,
+                        # we could have directly the final result
+    
+                        # IMPORTANT! To test these particular cases when the current path is not the end
+                        auxiliar_output_list.append(parsed_dict[path[1]])
+    
+                    else:
+                        raise Exception('The path specified for the param doesnt exists in the response')
+            except:
+                return_result = None
+    
+        return_result = auxiliar_output_list
+        return return_result
 
     def set_generic_variables_to_commit(self):
         for variable in self.generic_variables_to_commit:
@@ -240,11 +280,15 @@ class BasePageObject:
         print(self.values_after_get)
         test_passes = True
         for key, value in self.values_after_get.items():
-            if not self.values_after_get[key]:
+            if not self.values_after_get[key]:  #Check if some of the elements of values_after_get[key] is zero, empty, False or None
                 test_passes = False
         return test_passes
 
     def get_test_case_description(self):
+        print('get_test_case_description:')
+        print(self.test_case)
+        print('boolean_get_test_case_description:')
+        print(self.test_case['testcase']['description'])
         return self.test_case['testcase']['description']
 
     def verify_test_and_skip(self):
@@ -420,14 +464,28 @@ class BasePageObject:
         rpc_reply_key = self.get_rpc_reply_key_from_get_response()
         data_key = self.get_data_key_from_get_response(rpc_reply_key=rpc_reply_key)
         parsed_dict = xmltodict.parse(self.get_response.xml)[rpc_reply_key][data_key]
-        variables_to_search = []
-        for variable in self.generic_variables_to_commit:
-            if not variable['value_to_commit']:
-                variables_to_search.append(variable)
-
-        for variable in variables_to_search:
-            self.values_after_get[variable['test_case_key']] = self.get_tag_value_in_given_dict_by_path(
-                path=variable['path_list'], parsed_dict=parsed_dict)
+        dict_variables_to_commit = self.generic_variables_to_commit[0]
+        dict_variables_to_commit.pop('value_to_commit')       
+        variables_to_search=dict_variables_to_commit
+        list_path_eval = self.get_tag_value_in_given_dict_by_path([],path=variables_to_search['path_list'], parsed_dict=parsed_dict)
+        self.values_after_get[variables_to_search['test_case_key']] = list_path_eval
+        print('variables_to_search')
+        print(variables_to_search)
+        print('self.values_after_get')
+        print(self.values_after_get)
+        #{'test_case_key': 'name', 'path_string': 'network-instances/network-instance/name', 'path_list': ['network-instances', 'network-instance', 'name']}
+        print('variables_to_search[test_case_key]')
+        print(variables_to_search['test_case_key'])
+        print('variables_to_search[path_list]')
+        print(variables_to_search['path_list'])
+        print('path:')
+        print(variables_to_search['path_list'])
+        print('parsed_dict')
+        print(parsed_dict)
+        print('list_path_eval')
+        print(list_path_eval)
+        print('values_after_get')
+        print(self.values_after_get)
 
     def set_values_after_get(self):
         rpc_reply_key = self.get_rpc_reply_key_from_get_response()

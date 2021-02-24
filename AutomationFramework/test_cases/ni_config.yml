@@ -10,7 +10,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Jose1"
 
 - testcase:
       name: ni_config_type
@@ -23,7 +23,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Jose2"
                    type: "L3VRF"
 
 - testcase:
@@ -37,7 +37,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Jose3"
                    enabled: "true"
 
 - testcase:
@@ -51,7 +51,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Jose4"
                    description: "VPN de prueba para L3 y L2"
 
 - testcase:
@@ -65,7 +65,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Jose5"
                    router_id: "172.16.1.2"
 
 - testcase:
@@ -79,7 +79,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Jose6"
                    route_distinguisher: "65000:100"
 
 - testcase:
@@ -93,7 +93,7 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Jose7"
                    type: "L3VRF"
                    enabled_address_families: "IPV4"
 
@@ -108,6 +108,18 @@
             operation: edit-config
             commit: true
             params:
-                   name: "Prueba_LxVPN"
+                   name: "Jose8"
                    type: "L2VSI"
                    mtu: "1450"
+
+- testcase:
+      name: ni_get_name
+      id: 9
+      description: >
+          This test is to get the name of network instances
+      rpcs:
+          - template: ni_get_name.xml
+            operation: get
+            params:
+                   name: "Prueba_Samier"
+
