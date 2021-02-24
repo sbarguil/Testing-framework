@@ -14,10 +14,12 @@ class RPCAutomator2:
         self.port = connection['port']
         self.username = connection['username']
         self.password = connection['password']
+        self.vendor = connection["vendor"]
+        print ("\n************ Running Test on {0} ************".format(self.vendor))
         self.manager = None
         self.set_connection()
         self.jinja_env = Environment(
-            loader=PackageLoader('AutomationFramework', 'test_cases/templates'),
+            loader=PackageLoader('AutomationFramework', 'test_cases/{0}_test_cases/templates'.format(self.vendor)),
             autoescape=select_autoescape(['xml'])
         )
 
@@ -31,6 +33,8 @@ class RPCAutomator2:
                                        allow_agent=False,
                                        device_params={'name': 'huawei'},
                                        )
+    def set_close_connection(self):
+        self.manager.close_session()
 
     def rpc_body_generator(self, test_case, rpc_index=0, variables_in_template=None):
         template_file_name = test_case['testcase']['rpcs'][rpc_index]['template']
@@ -49,7 +53,7 @@ class RPCAutomator2:
     def get_occurrences_of_variable_in_not_rendered_template(self, test_case, rpc_index, variable_in_test_case):
         template_file_name = test_case['testcase']['rpcs'][rpc_index]['template']
         not_windows_path = os.path.dirname(os.path.realpath(__file__)).replace('\\', '/')
-        template_file_path = Path(not_windows_path.replace('/utils', '')) / 'test_cases/templates' / template_file_name
+        template_file_path = Path(not_windows_path.replace('/utils', '')) / 'test_cases/{0}_test_cases/templates'.format(self.vendor) / template_file_name
         file = open(template_file_path, 'r')
         data = file.read()
         text_to_search = '{{' + variable_in_test_case + '}}'
@@ -133,7 +137,7 @@ class RPCAutomator2:
     def get_test_case_by_name_from_file(self, file, test_case_name):
         loaded_file = None
         specified_test_case = None
-        with open("test_cases/{}".format(file), 'r') as stream:
+        with open("test_cases/{0}_test_cases/{1}".format(self.vendor, file), 'r') as stream:
             try:
                 loaded_file = yaml.safe_load(stream)
             except yaml.YAMLError as exc:

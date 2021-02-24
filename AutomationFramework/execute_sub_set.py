@@ -1,7 +1,8 @@
 import argparse
 import os
-
+from capabilities import HOSTS
 if __name__ == '__main__':
+    vendor = HOSTS[0]['vendor']
     parser = argparse.ArgumentParser()
     parser.add_argument("tests_sub_set", help="The sub set of tests to execute. It can be a block or a sub-block. i.e. "
                                               "tests/hardware, tests/hardware/test_hw_component.py or "
@@ -11,8 +12,14 @@ if __name__ == '__main__':
     sub_set = args.tests_sub_set
     print(sub_set)
 
+    
+    if not os.path.exists('excel_logs/'+vendor):
+        os.makedirs('excel_logs/'+vendor)
+    if not os.path.exists('reports/'+vendor):
+        os.makedirs('reports/'+vendor)
+
     # Delete cumulative logs file
-    excel_logs_path = os.path.dirname(os.path.realpath(__file__)) + '/excel_logs/'
+    excel_logs_path = os.path.dirname(os.path.realpath(__file__)) + '/excel_logs/'+vendor+'/'
     cumulative_logs_path = excel_logs_path + 'cumulative_log.xlsx'
     print('Removing file: ' + cumulative_logs_path)
 
@@ -41,11 +48,12 @@ if __name__ == '__main__':
         raise Exception('Not allowed sub set. Expected notation: tests/hardware, tests/hardware/test_hw_component.py '
                         'or tests/hardware/test_hw_component.py::TestHardwareComponent::test_hw_component_description')
 
-    pytest_command = 'py.test ' + sub_set + ' --excelreport=reports/' + output_file_name + '_report.xls'
+    pytest_command = 'py.test ' + sub_set + ' --excelreport=reports/'+vendor+'/'+ output_file_name + '_report.xls'
 
     print('- Running ' + pytest_command)
     os.system(pytest_command)
 
     # Change the cumulative log file name to sub_set file log
     print('- Rename cummulative_logs.xlxs')
-    os.rename(cumulative_logs_path, excel_logs_path + output_file_name + '_logs.xlsx')
+    if  os.path.exists(cumulative_logs_path):
+        os.rename(cumulative_logs_path, excel_logs_path + output_file_name + '_logs.xlsx')
