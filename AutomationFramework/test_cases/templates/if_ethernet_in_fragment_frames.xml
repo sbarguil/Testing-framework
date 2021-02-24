@@ -1,0 +1,16 @@
+  <get>
+    <filter>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{interface_name}}</name>
+          <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+            <state>
+              <counters>
+                <in-fragment-frames>{{in_fragment_frames}}</in-fragment-frames>
+              </counters>
+            </state>
+          </ethernet>
+        </interface>
+      </interfaces>
+    </filter>
+  </get>

@@ -1,0 +1,14 @@
+ <get>
+    <filter>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{interface_name}}</name>
+          <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+            <state>
+              <negotiated-duplex-mode>{{negotiated_duplex_mode}}</negotiated-duplex-mode>
+            </state>
+          </ethernet>
+        </interface>
+      </interfaces>
+    </filter>
+  </get>

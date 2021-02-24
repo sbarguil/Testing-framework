@@ -1,0 +1,49 @@
+
+- testcase:
+      name: if_ethernet_in_crc_errors
+      id: 1
+      description: >
+          This test is to get the total number of frames received that had a length (excluding framing bits, but including FCS octets) of between 64 and 1518 octets, inclusive, but had either a bad Frame Check Sequence (FCS) with an integral number of octets (FCS Error) or a bad FCS with a non-integral number of octets (Alignment Error)of this interface.
+      rpcs:
+          - template: if_ethernet_in_crc_errors.xml
+            operation: get
+            params:
+                   interface_name: "2"
+                   in_crc_errors: ""
+
+- testcase:
+      name: if_ethernet_in_fragment_frames
+      id: 2
+      description: >
+          This test is to get the total number of frames received that were less than 64 octets in length  of this interface.
+      rpcs:
+          - template: if_ethernet_in_fragment_frames.xml
+            operation: get
+            params:
+                   interface_name: "2"
+                   in_fragment_frames: ""
+
+- testcase:
+      name: if_ethernet_in_jabber_frames
+      id: 3
+      description: >
+          This test is to get the number of jabber frames received on the interface.
+      rpcs:
+          - template: if_ethernet_in_jabber_frames.xml
+            operation: get
+            params:
+                   interface_name: "2"
+                   in_jabber_frames: ""
+
+- testcase:
+      name: if_ethernet_in_oversize_frames
+      id: 4
+      description: >
+          This test is to get the total number of frames received that were longer than 1518 octets (excluding framing bits, but including FCS octets) and were otherwise well formed of this interface.
+      rpcs:
+          - template: if_ethernet_in_oversize_frames.xml
+            operation: get
+            params:
+                   interface_name: "2"
+                   in_oversize_frames: ""
+

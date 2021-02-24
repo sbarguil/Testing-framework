@@ -27,6 +27,14 @@
                    interface_name: "2"
                    duplex_mode: "FULL"
 
+          - template: if_ethernet_negotiated_duplex_mode.xml
+            operation: get
+            params:
+                   interface_name: "2"
+                   negotiated_duplex_mode: ""
+
+
+
 - testcase:
       name: if_ethernet_port_speed
       id: 3
@@ -75,3 +83,6 @@
             params:
                    interface_name: "2"
                    port_speed: ""
+
+
+          
