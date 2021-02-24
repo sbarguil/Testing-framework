@@ -1,0 +1,14 @@
+<get>
+    <filter>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{interface_name}}</name>
+          <state>
+            <counters>
+              <out-unicast-pkts>{{out_unicast_pkts}}</out-unicast-pkts>
+            </counters>
+          </state>
+        </interface>
+      </interfaces>
+    </filter>
+  </get>
