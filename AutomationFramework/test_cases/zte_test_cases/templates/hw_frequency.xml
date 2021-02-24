@@ -1,0 +1,14 @@
+<get>
+    <filter type="subtree">
+      <components xmlns="http://openconfig.net/yang/platform">
+        <component>
+          <name>{{name}}</name>
+             <optical-channel xmlns="http://openconfig.net/yang/terminal-device">
+               <config>
+                 <frequency>{{frequency}}</frequency>
+               </config>
+             </optical-channel>
+        </component>
+      </components>
+    </filter>
+</get>

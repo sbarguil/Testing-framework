@@ -1,0 +1,23 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <qos xmlns="http://openconfig.net/yang/qos">
+        <queues>
+          <queue>
+            <name>{{name}}</name>
+            <config>
+              <name>{{name}}</name>
+              <queue-type>{{queue_type}}</queue-type>
+            </config>
+            <red>
+              <config>
+                <maxth>{{maxth}}</maxth>
+              </config>
+            </red>
+          </queue>
+        </queues>
+      </qos>
+    </config>
+  </edit-config>

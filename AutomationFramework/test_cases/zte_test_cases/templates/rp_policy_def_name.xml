@@ -1,0 +1,27 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <default-operation>merge</default-operation>
+    <error-option>rollback-on-error</error-option>
+    <config>
+      <routing-policy xmlns="http://openconfig.net/yang/routing-policy">
+        <policy-definitions>
+          <policy-definition>
+            <name>{{name}}</name>
+            <config>
+              <name>{{name}}</name>
+            </config>
+            <statements>
+                <statement>
+                    <name>10</name>
+                    <config>
+                      <name>10</name>
+                    </config>
+                </statement>
+            </statements>  
+        </policy-definition>
+        </policy-definitions>
+      </routing-policy>
+    </config>
+  </edit-config>

@@ -1,0 +1,16 @@
+  <get>
+    <filter>
+      <components xmlns="http://openconfig.net/yang/platform">
+        <component>
+          <name>{{name}}</name>
+          <port>
+            <breakout-mode xmlns="http://openconfig.net/yang/platform/port">
+              <state>
+                <channel-speed>{{channel_speed_state}}</channel-speed>
+              </state>
+            </breakout-mode>
+          </port>
+        </component>
+      </components>
+    </filter>
+  </get>

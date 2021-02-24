@@ -1,0 +1,85 @@
+
+- testcase:
+      name: if_config_type
+      id: 1
+      description: >
+          This test is to set type of the interface.
+      rpcs:
+          - template: if_config_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1/1/c11/2"
+                   type: "ieee8023adLag"
+
+- testcase:
+      name: if_config_mtu
+      id: 2
+      description: >
+          This test is to define the mtu parameter.
+      rpcs:
+          - template: if_config_mtu.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1/1/c11/2"
+                   mtu: "1450"
+
+- testcase:
+      name: if_config_description
+      id: 3
+      description: >
+          This test is to set description on the interface.
+      rpcs:
+          - template: if_config_description.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1/1/c11/2"
+                   description: "Test if_config_description"
+
+- testcase:
+      name: if_config_enabled
+      id: 4
+      description: >
+          This test is to enabled the interface.
+      rpcs:
+          - template: if_config_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1/1/c11/2"
+                   enabled: "false"
+
+- testcase:
+      name: if_config_tpid
+      id: 5
+      description: >
+          This test is to define the tag protocol on the VLAN.
+      rpcs:
+          - template: if_config_tpid.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1/1/c11/2"
+                   tpid: "TPID_0X9100"
+
+- testcase:
+      name: if_config_loopback_mode
+      id: 6
+      description: >
+          This test is defined to enable an interface
+          loopback mode.
+      rpcs:
+          - template: if_config_loopback_mode.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  interface_name: "loopback"
+                  type: "softwareLoopback"

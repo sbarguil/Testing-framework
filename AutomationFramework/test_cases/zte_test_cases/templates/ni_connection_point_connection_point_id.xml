@@ -1,0 +1,26 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+ <default-operation>merge</default-operation>
+    <error-option>rollback-on-error</error-option>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+          </config>
+          <connection-points>
+            <connection-point>
+              <connection-point-id>{{connection_point_id}}</connection-point-id>
+              <config>
+                <connection-point-id>{{connection_point_id}}</connection-point-id>
+              </config>
+            </connection-point>
+          </connection-points>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>

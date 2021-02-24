@@ -1,0 +1,54 @@
+
+- testcase:
+      name: ni_interface_id
+      id: 1
+      description: >
+          This test is to set an id of an existing interface (IMPORTANT!: before test, see with CLI and select one available) to be bound to Lx network-instance.
+      rpcs:
+          - template: ni_interface_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   id: "GigabitEthernet0/3/2"
+
+- testcase:
+      name: ni_interface_interface
+      id: 2
+      description: >
+          This test is to set a reference to an existing interface (IMPORTANT!: before test, see with CLI and select one available) to be bound to Lx network-instance.
+      rpcs:
+          - template: ni_interface_interface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   id: "GigabitEthernet0/3/2"
+                   interface: "GigabitEthernet0/3/2"
+
+- testcase:
+      name: ni_interface_subinterface
+      id: 3
+      description: >
+          This test is to set a reference to an existing subinterface (IMPORTANT!: create it before test by means of CLI) to be bound to Lx network-instance.
+
+      rpcs:
+          - template: ni_interface_subif.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "GigabitEthernet0/3/2"
+                   index: "122"
+
+          - template: ni_interface_subinterface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   id: "GigabitEthernet0/3/2.122"
+                   interface: "GigabitEthernet0/3/2"
+                   subinterface: "122"

@@ -1,0 +1,38 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+          </config>
+          <connection-points>
+            <connection-point>
+              <connection-point-id>{{connection_point_id}}</connection-point-id>
+              <config>
+                <connection-point-id>{{connection_point_id}}</connection-point-id>
+              </config>
+              <endpoints>
+                <endpoint>
+                  <endpoint-id>{{endpoint_id}}</endpoint-id>
+                  <config>
+                    <endpoint-id>{{endpoint_id}}</endpoint-id>
+                    <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{cp_type}}</type>
+                  </config>
+                  <remote>
+                    <config>
+                      <site-id>{{site_id}}</site-id>
+                    </config>
+                  </remote>
+                </endpoint>
+              </endpoints>
+            </connection-point>
+          </connection-points>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>

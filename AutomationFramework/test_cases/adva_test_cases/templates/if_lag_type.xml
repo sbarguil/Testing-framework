@@ -1,0 +1,22 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{interface_name}}</name>
+          <config>
+            <name>{{interface_name}}</name>
+            <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:{{type}}</type>
+            <enabled>{{enabled}}</enabled>
+          </config>
+          <aggregation xmlns="http://openconfig.net/yang/interfaces/aggregate">
+            <config>
+              <lag-type>{{lag_type}}</lag-type>
+            </config>
+          </aggregation>
+        </interface>
+      </interfaces>
+    </config>
+  </edit-config>

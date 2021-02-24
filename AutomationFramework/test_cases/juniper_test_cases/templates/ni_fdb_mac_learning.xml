@@ -1,0 +1,22 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+            <route-distinguisher>65000:123</route-distinguisher>
+          </config>
+            <fdb>
+              <config>
+                <mac-learning>{{mac_learning}}</mac-learning>
+            </config>
+          </fdb>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>

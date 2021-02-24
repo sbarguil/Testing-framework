@@ -1,0 +1,19 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+<default-operation>merge</default-operation>
+    <error-option>rollback-on-error</error-option> 
+   <config>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{interface_name}}</name>
+          <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+            <config>
+              <auto-negotiate>{{auto_negotiate}}</auto-negotiate>
+            </config>
+          </ethernet>
+        </interface>
+      </interfaces>
+    </config>
+  </edit-config>
