@@ -449,6 +449,9 @@ parsed_dict2 = {'components':{'component':[{'name':'Browser'},{'name':'Mario'},{
 parsed_dict3 = {'components':[{'component':[{'config':'Browser'},{'config':'Mario'},{'name':'Luigi'}]},{'component':{'config':'Pikachu'}}]}
 parsed_dict4 = {'components':[{'component':[{'config':'Browser'},{'config':'Mario'},{'config':'Luigi'}]},{'component':{'name':'Pikachu'}}]}
 parsed_dict5 = {'components':[{'component':{'name':'Pikachu'}},{'component':[{'config':'Bulbasur'},{'config':'Charmander'},{'name':'Squirtle'}]}]}
+parsed_dict6 = collections.OrderedDict([('network-instances', collections.OrderedDict([('@xmlns', 'http://openconfig.net/yang/network-instance'), ('network-instance', [collections.OrderedDict([('name', 'Prueba_Samier')]), collections.OrderedDict([('name', 'default')])])]))])
+
+path2 = ['network-instances', 'network-instance', 'name']
 
 
 path_str = 'components/component/name'
@@ -494,8 +497,8 @@ def get_tag_value_in_given_dict_by_path(auxiliar_output_list, path, parsed_dict)
 
 # Test 0
 return_result = get_tag_value_in_given_dict_by_path([],path,parsed_dict0)
-#print('Return result recursive:')
-#print(return_result)
+print('Return result recursive:')
+print(return_result)
 result_valid0 = ['Chassis', 'Routing Engine0', 'CB0', 'FPC0', 'FPC0:CPU', 'FPC0:MIC0', 'FPC0:PIC0', 'CPU0:CORE0']
 if return_result == result_valid0:
     print('Test 0 have done successfully!')
@@ -505,8 +508,8 @@ print('---------------------------------\n')
 
 # Test 1
 return_result = get_tag_value_in_given_dict_by_path([],path,parsed_dict1)
-#print('Return result recursive:')
-#print(return_result)
+print('Return result recursive:')
+print(return_result)
 result_valid1 = ['Browser', 'Mario', 'Luigi', 'Pikachu']
 if return_result == result_valid1:
     print('Test 1 have done successfully!')
@@ -516,8 +519,8 @@ print('---------------------------------\n')
 
 # Test 2
 return_result = get_tag_value_in_given_dict_by_path([],path,parsed_dict2)
-#print('Return result recursive:')
-#print(return_result)
+print('Return result recursive:')
+print(return_result)
 result_valid2 = ['Browser', 'Mario', 'Luigi']
 if return_result == result_valid2:
     print('Test 2 have done successfully!')
@@ -527,8 +530,8 @@ print('---------------------------------\n')
 
 # Test 3
 return_result = get_tag_value_in_given_dict_by_path([],path,parsed_dict3)
-#print('Return result recursive:')
-#print(return_result)
+print('Return result recursive:')
+print(return_result)
 result_valid3 = ['Luigi']
 if return_result == result_valid3:
     print('Test 3 have done successfully!')
@@ -538,8 +541,8 @@ print('---------------------------------\n')
 
 # Test 4
 return_result = get_tag_value_in_given_dict_by_path([],path,parsed_dict4)
-#print('Return result recursive:')
-#print(return_result)
+print('Return result recursive:')
+print(return_result)
 result_valid4 = ['Pikachu']
 if return_result == result_valid4:
     print('Test 4 have done successfully!')
@@ -549,14 +552,19 @@ print('---------------------------------\n')
 
 # Test 5
 return_result = get_tag_value_in_given_dict_by_path([],path,parsed_dict5)
-#print('Return result recursive:')
-#print(return_result)
+print('Return result recursive:')
+print(return_result)
 result_valid5 = ['Pikachu', 'Squirtle']
 if return_result == result_valid5:
     print('Test 5 have done successfully!')
 else:
     print('Some error in the produced result.')
 print('---------------------------------\n')
+
+# Test 6
+return_result = get_tag_value_in_given_dict_by_path([],path2,parsed_dict6)
+print('Return result recursive:')
+print(return_result)
 
 
 print('Finished!')
