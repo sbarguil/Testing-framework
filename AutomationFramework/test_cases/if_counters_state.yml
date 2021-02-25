@@ -1,69 +1,194 @@
 
 - testcase:
-      name: hw_port_channel_speed
+      name: if_state_in_broadcast_pkts
       id: 1
       description: >
-          This test is to set channel speed.
+          This test is to get The number of packets, delivered by this sub-layer to a higher (sub-)layer.
       rpcs:
-          - template: hw_port_channel_speed.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+          - template: if_state_in_broadcast_pkts.xml
+            operation: get
             params:
-                   name: "Eth1/1"
-                   channel_speed: "SPEED_40GB"
+                   interface_name: "eth1"
+                   out_broadcast_pkts: ""
 
 - testcase:
-      name: hw_port_num_channels
+      name: if_state_in_discards
       id: 2
       description: >
-          This test is to set channel numbers.
+          This test is to get The number of inbound packets that were chosen to be discarded
       rpcs:
-          - template: hw_port_num_channels.xml
-            target: candidate
-            operation: edit-config
-            commit: true
+          - template: if_state_in_discards.xml
+            operation: get
             params:
-                   name: "Eth1/1"
-                   num_channels: "4"
+                   interface_name: "eth1"
+                   in_discards: ""
 
 - testcase:
-      name: hw_port_channel_speed_state
+      name: if_state_in_errors
       id: 3
       description: >
-          This test is to get channel speed.
+          This test is to get the number of inbound packets that contained errors .
       rpcs:
-
-          - template: hw_port_channel_speed.xml
-            target: candidate
-            operation: edit-config
-            commit: true
-            params:
-                   name: "Eth1/1"
-                   channel_speed: "SPEED_40GB"
-
-          - template: hw_port_channel_speed_state.xml
+          - template: if_state_in_errors.xml
             operation: get
             params:
-                   name: "Eth1/1"
-                   channel_speed_state: ""
+                   interface_name: "eth1"
+                   in_errors: ""
 
 - testcase:
-      name: hw_port_num_channels_state
+      name: if_state_in_fcs_errors
       id: 4
       description: >
-          This test is to get number channels.
+          This test is to get the number of received packets which had errors in the frame check sequence (FCS), i.e., framing errors.
       rpcs:
-          - template: hw_port_num_channels.xml
-            target: candidate
-            operation: edit-config
-            commit: true
-            params:
-                   name: "Eth1/1"
-                   num_channels: "4"
-
-          - template: hw_port_num_channels_state.xml
+          - template: if_state_in_fcs_errors.xml
             operation: get
             params:
-                   name: "Eth1/1"
-                   num_channels: ""
+                   interface_name: "eth1"
+                   in_fcs_errors: ""
+
+- testcase:
+      name: if_state_in_multicast_pkts
+      id: 5
+      description: >
+          This test is to get The number of packets, delivered by this sub-layer to a higher (sub-)layer, that were addressed to a multicast address at this sub-layer
+      rpcs:
+          - template: if_state_in_multicast_pkts.xml
+            operation: get
+            params:
+                   interface_name: "eth1"
+                   in_multicast_pkts: ""
+
+- testcase:
+      name: if_state_in_octets
+      id: 6
+      description: >
+          This test is to get the total number of octets received on the interface, including framing characters.
+      rpcs:
+          - template: if_state_in_octets.xml
+            operation: get
+            params:
+                   interface_name: "eth1"
+                   in_octects: ""
+
+- testcase:
+      name: if_state_in_pkts
+      id: 7
+      description: >
+          This test is to get The total number of packets received on the interface, including all unicast, multicast, broadcast and bad packets etc.
+      rpcs:
+          - template: if_state_in_pkts.xml
+            operation: get
+            params:
+                   interface_name: "eth1"
+                   in_pkts: ""
+
+- testcase:
+      name: if_state_in_unicast_pkts
+      id: 8
+      description: >
+          This test is to get The number of packets, delivered by this sub-layer to a higher (sub-)layer, that were not addressed to a multicast or broadcast address at this sub-layer
+      rpcs:
+          - template: if_state_in_unicast_pkts.xml
+            operation: get
+            params:
+                   interface_name: "eth1"
+                   in_unicast_pkts: ""
+
+- testcase:
+      name: if_state_in_unknown_protos
+      id: 9
+      description: >
+          This test is to get the number of packets received via the interface that were discarded because of an unknown or unsupported protocol.(For packet-oriented interfaces)
+      rpcs:
+          - template: if_state_in_unknown_protos.xml
+            operation: get
+            params:
+                   interface_name: "eth1"
+                   in_unknown_protos: ""
+
+- testcase:
+      name: if_state_out_broadcast_pkts
+      id: 10
+      description: >
+          This test is to get type of component by the system.
+      rpcs:
+          - template: if_state_out_broadcast_pkts.xml
+            operation: get
+            params:
+                   interface_name: "eth1"
+                   out_broadcast_pkts: ""
+
+
+- testcase:
+      name: if_state_out_discards
+      id: 11
+      description: >
+          This test is to get type of component by the system.
+      rpcs:
+          - template: if_state_out_discards.xml
+            operation: get
+            params:
+                   interface_name: "eth1"
+                   out_discards: ""
+
+- testcase:
+      name: if_state_out_errors
+      id: 12
+      description: >
+          This test is to get type of component by the system.
+      rpcs:
+          - template: if_state_out_errors.xml
+            operation: get
+            params:
+                   interface_name: "eth1"
+                   out_errors: ""
+
+- testcase:
+      name: if_state_out_multicast_pkts
+      id: 13
+      description: >
+          This test is to get type of component by the system.
+      rpcs:
+          - template: if_state_out_multicast_pkts.xml
+            operation: get
+            params:
+                   interface_name: "eth1"
+                   out_multicast_pkts: ""
+
+- testcase:
+      name: if_state_out_octets
+      id: 14
+      description: >
+          This test is to get type of component by the system.
+      rpcs:
+          - template: if_state_out_octets.xml
+            operation: get
+            params:
+                   interface_name: "eth1"
+                   out_octets: ""
+
+- testcase:
+      name: if_state_out_pkts
+      id: 15
+      description: >
+          This test is to get type of component by the system.
+      rpcs:
+          - template: if_state_out_pkts.xml
+            operation: get
+            params:
+                   interface_name: "eth1"
+                   out_pkts: ""
+
+
+- testcase:
+      name: if_state_out_unicast_pkts
+      id: 16
+      description: >
+          This test is to get type of component by the system.
+      rpcs:
+          - template: if_state_out_unicast_pkts.xml
+            operation: get
+            params:
+                   interface_name: "eth1"
+                   out_unicast_pkts: ""

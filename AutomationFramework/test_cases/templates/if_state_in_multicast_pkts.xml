@@ -5,7 +5,7 @@
           <name>{{interface_name}}</name>
           <state>
             <counters>
-              <out-multicast-pkts>{{out_multicast_pkts}}</out-multicast-pkts>
+              <in-multicast-pkts>{{in_multicast_pkts}}</in-multicast-pkts>
             </counters>
           </state>
         </interface>

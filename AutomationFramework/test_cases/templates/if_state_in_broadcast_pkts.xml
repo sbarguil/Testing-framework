@@ -5,7 +5,7 @@
           <name>{{interface_name}}</name>
           <state>
             <counters>
-              <out-broadcast-pkts>{{out_broadcast_pkts}}</out-broadcast-pkts>
+              <in-broadcast-pkts>{{in_broadcast_pkts}}</in-broadcast-pkts>
             </counters>
           </state>
         </interface>

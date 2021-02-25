@@ -5,7 +5,7 @@
           <name>{{interface_name}}</name>
           <state>
             <counters>
-              <out-discards>{{out_discards}}</out-discards>
+              <in-discards>{{in_discards}}</in-discards>
             </counters>
           </state>
         </interface>
