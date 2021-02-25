@@ -8,7 +8,7 @@
           - template: if_subif_in_discarded_pkts.xml
             operation: get
             params:
-                   interface_name: "CHASIS"
+                   interface_name: "eth1"
                    subif_name: ""
                    in_discarded_pkts: ""
 
@@ -21,7 +21,7 @@
           - template: if_subif_in_error_pkts.xml
             operation: get
             params:
-                   interface_name: "CHASIS"
+                   interface_name: "eth1"
                    subif_name: ""
                    in_error_pkts: ""
 
@@ -34,7 +34,7 @@
             - template: if_subif_in_forwarded_pkts.xml
               operation: get
               params:
-                     interface_name: "CHASIS"
+                     interface_name: "eth1"
                      subif_name: ""
                      in_forwarded_pkts: ""
 
@@ -47,7 +47,7 @@
             - template: if_subif_in_octets.xml
               operation: get
               params:
-                     interface_name: "CHASIS"
+                     interface_name: "eth1"
                      subif_name: ""
                      in_octets: ""
 
@@ -60,7 +60,7 @@
             - template: if_subif_in_pkts.xml
               operation: get
               params:
-                     interface_name: "CHASIS"
+                     interface_name: "eth1"
                      subif_name: ""
                      in_pkts: ""
 
@@ -73,7 +73,7 @@
             - template: if_subif_out_discarded_pkts.xml
               operation: get
               params:
-                     interface_name: "CHASIS"
+                     interface_name: "eth1"
                      subif_name: ""
                      out_discarded_pkts: ""
 
@@ -86,7 +86,7 @@
             - template: if_subif_out_error_pkts.xml
               operation: get
               params:
-                     interface_name: "CHASIS"
+                     interface_name: "eth1"
                      subif_name: ""
                      out_error_pkts: ""
 
@@ -99,7 +99,7 @@
             - template: if_subif_out_forwarded_pkts.xml
               operation: get
               params:
-                     interface_name: "CHASIS"
+                     interface_name: "eth1"
                      subif_name: ""
                      out_forwarded_pkts: ""
 
@@ -113,6 +113,6 @@
             - template: if_subif_out_octets.xml
               operation: get
               params:
-                     interface_name: "CHASIS"
+                     interface_name: "eth1"
                      subif_name: ""
                      out_octets: ""
