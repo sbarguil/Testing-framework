@@ -9,13 +9,14 @@ from collections import OrderedDict
 
 
 class RPCAutomator2:
-    def __init__(self, connection):
+    def __init__(self, connection, logger):
+        self.logger = logger
         self.host = connection['host']
         self.port = connection['port']
         self.username = connection['username']
         self.password = connection['password']
         self.vendor = connection["vendor"]
-        print ("\n************ Running Test on {0} ************".format(self.vendor))
+        self.logger.info("\n************ Running Test on {0} ************".format(self.vendor))
         self.manager = None
         self.set_connection()
         self.jinja_env = Environment(
@@ -84,46 +85,46 @@ class RPCAutomator2:
     def safe_dispatch(self, template):
         try:
             full_response = '- Response of edit-config: '
-            print('- Response of edit-config')
+            self.logger.info('- Response of edit-config')
             response_edit_config = str(self.manager.dispatch(et.fromstring(template)))
-            print(response_edit_config)
+            self.logger.info(response_edit_config)
             full_response = full_response + response_edit_config + ' \n\n - Response of commit: '
-            print('- Response of commit')
+            self.logger.info('- Response of commit')
             response_commit = str(self.manager.dispatch(et.fromstring("<commit/>")))
-            print(response_commit)
+            self.logger.info(response_commit)
             full_response = full_response + response_commit
             return full_response
         except Exception as e:
-            print("An exception has occurred when performing the edit_config operation.")
+            self.logger.error("An exception has occurred when performing the edit_config operation.")
             raise e
 
     def safe_discard_changes(self):
         try:
             full_response = '- Response of discard-changes: '
-            print(full_response)
+            self.logger.info(full_response)
             response_discard_changes = str(self.manager.dispatch(et.fromstring("<discard-changes/>")))
-            print(response_discard_changes)
+            self.logger.info(response_discard_changes)
             full_response = full_response + response_discard_changes
             return full_response
         except Exception as e:
-            print("An exception has occurred when performing the discard-changes operation.")
+            self.logger.error("An exception has occurred when performing the discard-changes operation.")
             raise e
 
     def safe_dispatch_no_commit(self, template):
         try:
-            print('- Response of dispatch without commit')
+            self.logger.info('- Response of dispatch without commit')
             response = self.manager.dispatch(et.fromstring(template))
-            print(response)
+            self.logger.info(response)
             return response
         except Exception as e:
-            print("An exception has occurred when performing the edit_config operation.")
+            self.logger.error("An exception has occurred when performing the edit_config operation.")
             raise e
 
     def safe_get(self, template):
         try:
             return self.manager.get(("subtree", template))
         except Exception as e:
-            print("An exception has occurred when performing the get operation.")
+            self.logger.error("An exception has occurred when performing the get operation.")
             raise e
 
     def safe_get_config(self, netconf_filter, test_case, rpc_index=0):
@@ -131,7 +132,7 @@ class RPCAutomator2:
         try:
             return self.manager.get_config(source=target, filter=netconf_filter)
         except Exception as e:
-            print("An exception has occurred when performing the get_config operation.")
+            self.logger.error("An exception has occurred when performing the get_config operation.")
             raise e
 
     def get_test_case_by_name_from_file(self, file, test_case_name):
@@ -141,7 +142,7 @@ class RPCAutomator2:
             try:
                 loaded_file = yaml.safe_load(stream)
             except yaml.YAMLError as exc:
-                print(exc)
+                self.logger.error(exc)
 
         idx = 0
         while idx < len(loaded_file) and not specified_test_case:

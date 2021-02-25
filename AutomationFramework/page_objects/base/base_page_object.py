@@ -5,6 +5,7 @@ from pathlib import Path
 from AutomationFramework.utils.excel_logger import ExcelLogger
 from AutomationFramework.utils.rpc_automator_2 import RPCAutomator2
 from AutomationFramework.capabilities import HOSTS
+from AutomationFramework.utils import logger as log
 import xmltodict
 
 
@@ -33,9 +34,11 @@ class BasePageObject:
     variables_paths = {}
     rpc_idx_in_test_case = 0
     excel_logger = None
+    logger = None
 
     def __init__(self, test_case_file=None, test_case_name=None, rpc_idx=0):
-        self.rpc_automator = RPCAutomator2(HOSTS[0])
+        self.logger = log.setup_log(test_case_name, HOSTS)
+        self.rpc_automator = RPCAutomator2(HOSTS[0], self.logger)
         self.rpc_idx_in_test_case = rpc_idx
         self.test_case_file = test_case_file
         self.test_case_name = test_case_name
@@ -50,6 +53,8 @@ class BasePageObject:
                                         columns=['Test case description', 'RPC ID', 'POM instance', 'Test case name',
                                                  'Filter', 'First get config', 'RPC', 'Edit config and commit',
                                                  'Second get config', 'Get'])
+        self.logger.info("\n Running {} against the HOST :-{} ".format(self.test_case_name, HOSTS[0]['host']))
+
 
     def init_generic_variables_to_commit(self):
         self.generic_variables_to_commit = []
@@ -126,6 +131,7 @@ class BasePageObject:
                     recursive_return = self.get_tag_value_in_given_dict_by_path(path=path[1:],
                                                                                 parsed_dict=parsed_dict[path[0]])
                 else:
+                    self.logger.error('The path specified for the param doesnt exists in the response')
                     raise Exception('The path specified for the param doesnt exists in the response')
             except:
                 recursive_return = None
@@ -153,11 +159,11 @@ class BasePageObject:
         return self.get_config_response
 
     def get_rendered_template(self):
-        print('---------------------------------------------------------------------------------------')
-        print('Rendered template')
+        self.logger.info('---------------------------------------------------------------------------------------')
+        self.logger.info('Rendered template')
         self.rendered_template = self.rpc_automator.rpc_body_generator(test_case=self.test_case,
                                                                        rpc_index=self.rpc_idx_in_test_case)
-        print(self.rendered_template)
+        self.logger.info(self.rendered_template)
         self.excel_logger.add_value_to_log_column(value=str(self.rendered_template),
                                                   column='RPC')
         return self.rendered_template
@@ -169,21 +175,21 @@ class BasePageObject:
             return self.rpc_automator.safe_dispatch(template=self.rendered_template)
 
     def execute_edit_config_first_get_config_with_filter(self):
-        print('---------------------------------------------------------------------------------------')
-        print('First get_config response')
+        self.logger.info('---------------------------------------------------------------------------------------')
+        self.logger.info('First get_config response')
         self.edit_config_first_get_config_response = self.rpc_automator.safe_get_config(
             netconf_filter=self.netconf_filter, test_case=self.test_case, rpc_index=self.rpc_idx_in_test_case)
-        print(self.edit_config_first_get_config_response)
+        self.logger.info(self.edit_config_first_get_config_response)
         self.excel_logger.add_value_to_log_column(value=str(self.edit_config_first_get_config_response),
                                                   column='First get config')
         return self.edit_config_first_get_config_response
 
     def execute_edit_config_second_get_config_with_filter(self):
-        print('---------------------------------------------------------------------------------------')
-        print('Second get_config response')
+        self.logger.info('---------------------------------------------------------------------------------------')
+        self.logger.info('Second get_config response')
         self.edit_config_second_get_config_response = self.rpc_automator.safe_get_config(
             netconf_filter=self.netconf_filter, test_case=self.test_case, rpc_index=self.rpc_idx_in_test_case)
-        print(self.edit_config_second_get_config_response)
+        self.logger.info(self.edit_config_second_get_config_response)
         self.excel_logger.add_value_to_log_column(value=str(self.edit_config_second_get_config_response),
                                                   column='Second get config')
         return self.edit_config_second_get_config_response
@@ -192,14 +198,14 @@ class BasePageObject:
         return self.test_case['testcase']['rpcs'][rpc_index]['params'][variable]
 
     def validate_test_case_params(self):
-        print('---------------------------------------------------------------------------------------')
-        print('Validation')
-        print('- Values before edit-config')
-        print(self.values_before_commit)
-        print('- Values after edit-config')
-        print(self.values_after_commit)
-        print('- Values to validate')
-        print(self.variables_to_commit)
+        self.logger.info('---------------------------------------------------------------------------------------')
+        self.logger.info('Validation')
+        self.logger.info('- Values before edit-config')
+        self.logger.info(self.values_before_commit)
+        self.logger.info('- Values after edit-config')
+        self.logger.info(self.values_after_commit)
+        self.logger.info('- Values to validate')
+        self.logger.info(self.variables_to_commit)
         self.verify_test_and_skip()
         test_passes = True
         for key, value in self.variables_to_commit.items():
@@ -212,14 +218,14 @@ class BasePageObject:
         return test_passes
 
     def generic_validate_test_case_params(self):
-        print('---------------------------------------------------------------------------------------')
-        print('Validation')
-        print('- Values before edit-config')
-        print(self.generic_values_before_commit)
-        print('- Values after edit-config')
-        print(self.generic_values_after_commit)
-        print('- Values to validate')
-        print(self.generic_variables_to_commit)
+        self.logger.info('---------------------------------------------------------------------------------------')
+        self.logger.info('Validation')
+        self.logger.info('- Values before edit-config')
+        self.logger.info(self.generic_values_before_commit)
+        self.logger.info('- Values after edit-config')
+        self.logger.info(self.generic_values_after_commit)
+        self.logger.info('- Values to validate')
+        self.logger.info(self.generic_variables_to_commit)
         self.generic_verify_test_and_skip()
         test_passes = True
         for variable in self.generic_variables_to_commit:
@@ -234,10 +240,10 @@ class BasePageObject:
         return test_passes
 
     def validate_get_test_case(self):
-        print('---------------------------------------------------------------------------------------')
-        print('Validation')
-        print('- Values after get')
-        print(self.values_after_get)
+        self.logger.info('---------------------------------------------------------------------------------------')
+        self.logger.info('Validation')
+        self.logger.info('- Values after get')
+        self.logger.info(self.values_after_get)
         test_passes = True
         for key, value in self.values_after_get.items():
             if not self.values_after_get[key]:
@@ -259,6 +265,8 @@ class BasePageObject:
                     skip_test = False
         if skip_test:
             self.values_where_changed_after_test = False
+            self.logger.info('The actual value of the params tested is the same of the test´s expected value. ')
+            self.logger.info('For performing the test change either the actual value or the test´s expected value')
             pytest.skip('The actual value of the params tested is the same of the test´s expected value. '
                         'For performing the test change either the actual value or the test´s expected value')
 
@@ -276,6 +284,8 @@ class BasePageObject:
                             skip_test = False
         if skip_test:
             self.values_where_changed_after_test = False
+            self.logger.info('The actual value of the params tested is the same of the test´s expected value. ')
+            self.logger.info('For performing the test change either the actual value or the test´s expected value')
             pytest.skip('The actual value of the params tested is the same of the test´s expected value. '
                         'For performing the test change either the actual value or the test´s expected value')
 
@@ -306,8 +316,8 @@ class BasePageObject:
         return None
 
     def clean_after_test(self):
-        print('---------------------------------------------------------------------------------------')
-        print('- Clean after test')
+        self.logger.info('---------------------------------------------------------------------------------------')
+        self.logger.info('- Clean after test')
         if self.test_created_something():
             self.delete_creation()
         else:
@@ -332,8 +342,8 @@ class BasePageObject:
             return False
 
     def delete_creation(self):
-        print('- Deleting the items created in the test by deleting the parent container')
-        print(xmltodict.parse(self.rendered_template))
+        self.logger.info('- Deleting the items created in the test by deleting the parent container')
+        self.logger.info(xmltodict.parse(self.rendered_template))
         parsed_edit_config_template = xmltodict.parse(self.rendered_template)['edit-config']['config']
         parsed_edit_config_template_with_delete = {}
         for variable in self.generic_values_before_commit:
@@ -358,8 +368,8 @@ class BasePageObject:
 
         edit_config_template_with_delete = xmltodict.unparse(full_parsed_edit_config_template_with_delete,
                                                              full_document=False)
-        print('- Template with the delete operation for the root of the item created')
-        print(edit_config_template_with_delete)
+        self.logger.info('- Template with the delete operation for the root of the item created')
+        self.logger.info(edit_config_template_with_delete)
         if edit_config_template_with_delete:
             self.execute_edit_config_with_template(template=edit_config_template_with_delete)
 
@@ -378,15 +388,15 @@ class BasePageObject:
             return parsed_dict
 
     def soft_clean(self):
-        print('- Placing the same values from before the test')
+        self.logger.info('- Placing the same values from before the test')
         initial_values = self.get_initial_values_of_params_changed()
         initial_values_template = self.rpc_automator.rpc_body_generator(test_case=self.test_case, rpc_index=0,
                                                                         variables_in_template=initial_values)
-        print('- Template with initial values')
-        print(initial_values_template)
+        self.logger.info('- Template with initial values')
+        self.logger.info(initial_values_template)
         self.execute_edit_config_with_template(template=initial_values_template)
-        print('- Get-config after cleaning')
-        print(self.rpc_automator.safe_get_config(netconf_filter=self.netconf_filter, test_case=self.test_case,
+        self.logger.info('- Get-config after cleaning')
+        self.logger.info(self.rpc_automator.safe_get_config(netconf_filter=self.netconf_filter, test_case=self.test_case,
                                                  rpc_index=self.rpc_idx_in_test_case))
 
     def get_initial_values_of_params_changed(self):
@@ -477,9 +487,9 @@ class BasePageObject:
             self.get_response = self.rpc_automator.safe_get(template=template)
         else:
             self.get_response = self.rpc_automator.safe_get(template=self.rendered_template)
-        print('---------------------------------------------------------------------------------------')
-        print('- get response')
-        print(self.get_response)
+        self.logger.info('---------------------------------------------------------------------------------------')
+        self.logger.info('- get response')
+        self.logger.info(self.get_response)
         self.excel_logger.add_value_to_log_column(value=str(self.get_response), column='Get')
         return self.get_response
 
@@ -488,9 +498,9 @@ class BasePageObject:
             self.get_response = self.rpc_automator.safe_dispatch_no_commit(template=template)
         else:
             self.get_response = self.rpc_automator.safe_dispatch_no_commit(template=self.rendered_template)
-        print('---------------------------------------------------------------------------------------')
-        print('- Get response')
-        print(self.get_response)
+        self.logger.info('---------------------------------------------------------------------------------------')
+        self.logger.info('- Get response')
+        self.logger.info(self.get_response)
         self.excel_logger.add_value_to_log_column(value=str(self.get_response), column='Get')
         return self.get_response
 
