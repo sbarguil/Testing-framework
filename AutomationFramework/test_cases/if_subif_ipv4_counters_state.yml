@@ -1,0 +1,118 @@
+
+- testcase:
+      name: if_subif_in_discarded_pkts
+      id: 1
+      description: >
+          This test is to get the number of input IP packets for the specified address family, for which no problems were encountered to prevent their continued processing, but were discarded (e.g., for lack of buffer space).
+      rpcs:
+          - template: if_subif_in_discarded_pkts.xml
+            operation: get
+            params:
+                   interface_name: "eth1"
+                   subif_name: ""
+                   in_discarded_pkts: ""
+
+- testcase:
+      name: if_subif_in_error_pkts
+      id: 2
+      description: >
+          This test is to get the Number of IP packets discarded due to errors for the specified address family, including errors in the IP header, no route found to the IP destination, invalid address, unknown protocol, etc.
+      rpcs:
+          - template: if_subif_in_error_pkts.xml
+            operation: get
+            params:
+                   interface_name: "eth1"
+                   subif_name: ""
+                   in_error_pkts: ""
+
+- testcase:
+        name: if_subif_in_forwarded_pkts
+        id: 3
+        description: >
+            This test is to get the number of input packets for which the device was not their final IP destination and for which the device attempted to find a route to forward them to that final destination.
+        rpcs:
+            - template: if_subif_in_forwarded_pkts.xml
+              operation: get
+              params:
+                     interface_name: "eth1"
+                     subif_name: ""
+                     in_forwarded_pkts: ""
+
+- testcase:
+        name: if_subif_in_octets
+        id: 4
+        description: >
+            This test is to get the total number of octets received in input IP packets for the specified address family, including those received in error.
+        rpcs:
+            - template: if_subif_in_octets.xml
+              operation: get
+              params:
+                     interface_name: "eth1"
+                     subif_name: ""
+                     in_octets: ""
+
+- testcase:
+        name: if_subif_in_pkts
+        id: 5
+        description: >
+            This test is to get the total number of IP packets received for the specified address family, including those received in error
+        rpcs:
+            - template: if_subif_in_pkts.xml
+              operation: get
+              params:
+                     interface_name: "eth1"
+                     subif_name: ""
+                     in_pkts: ""
+
+- testcase:
+        name: if_subif_out_discarded_pkts
+        id: 6
+        description: >
+            This test is to get The number of output IP packets for the specified address family for which no problem was encountered to prevent their transmission to their destination, but were discarded (e.g., for lack of buffer space).
+        rpcs:
+            - template: if_subif_out_discarded_pkts.xml
+              operation: get
+              params:
+                     interface_name: "eth1"
+                     subif_name: ""
+                     out_discarded_pkts: ""
+
+- testcase:
+        name: if_subif_out_error_pkts
+        id: 7
+        description: >
+            This test is to get the number of IP packets for the specified address family locally generated and discarded due to errors, including no route found to the IP destination.
+        rpcs:
+            - template: if_subif_out_error_pkts.xml
+              operation: get
+              params:
+                     interface_name: "eth1"
+                     subif_name: ""
+                     out_error_pkts: ""
+
+- testcase:
+        name: if_subif_out_forwarded_pkts
+        id: 8
+        description: >
+            This test is to get the number of packets for which this entity was not their final IP destination and for which it was successful in finding a path to their final destination.
+        rpcs:
+            - template: if_subif_out_forwarded_pkts.xml
+              operation: get
+              params:
+                     interface_name: "eth1"
+                     subif_name: ""
+                     out_forwarded_pkts: ""
+
+
+- testcase:
+        name: if_subif_out_octets
+        id: 9
+        description: >
+            This test is to get the total number of octets in IP packets for the specified address family that the device supplied to the lower layers for transmission. This includes packets generated locally and those forwarded by the device.
+        rpcs:
+            - template: if_subif_out_octets.xml
+              operation: get
+              params:
+                     interface_name: "eth1"
+                     subif_name: ""
+                     out_octets: ""

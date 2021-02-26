@@ -1,0 +1,21 @@
+<get>
+    <filter>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{interface_name}}</name>
+          <subinterfaces>
+            <subinterface>
+              <index>{{subif_name}}</index>
+              <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip">
+                <state>
+                  <counters>
+                    <in-octets>{{in_octets}}</in-octets>
+                  </counters>
+                </state>
+              </ipv4>
+            </subinterface>
+          </subinterfaces>
+        </interface>
+      </interfaces>
+    </filter>
+  </get>
