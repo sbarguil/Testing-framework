@@ -8,6 +8,11 @@ class NetworkInstance(BasePageObject):
                 'name': 'network-instances/network-instance/name',
             }
         ],
+        'ni_get_name': [
+            {
+                'name': 'network-instances/network-instance/name',
+            }
+        ],
         'ni_config_type': [
             {
                 'name': 'network-instances/network-instance/name',
