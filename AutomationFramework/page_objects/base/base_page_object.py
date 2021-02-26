@@ -51,6 +51,11 @@ class BasePageObject:
                                                  'Filter', 'First get config', 'RPC', 'Edit config and commit',
                                                  'Second get config', 'Get'])
 
+
+    def close_session(self):
+        print("cerrando sesion")
+        self.rpc_automator.set_close_connection() 
+
     def init_generic_variables_to_commit(self):
         self.generic_variables_to_commit = []
         for variable, value in self.rpcs_list[self.rpc_idx_in_test_case]['params'].items():
