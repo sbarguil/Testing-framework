@@ -1,0 +1,27 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <lacp xmlns="http://openconfig.net/yang/lacp">
+        <interfaces>
+          <interface>
+            <name>{{interface_name}}</name>
+            <config>
+              <name>{{interface_name}}</name>
+              <system-priority>{{lacp_system_priority}}</system-priority>
+            </config>
+          </interface>
+        </interfaces>
+      </lacp>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{interface_name}}</name>
+          <config>
+            <name>{{interface_name}}</name>
+            <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">{{interface_type}}</type>
+          </config>
+        </interface>
+      </interfaces>
+    </config>
+  </edit-config>
