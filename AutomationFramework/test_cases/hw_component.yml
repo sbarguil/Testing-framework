@@ -106,3 +106,51 @@
             params:
                    name: "CHASIS"
                    type: ""
+
+- testcase:
+      name: hw_component_name_state
+      id: 10
+      description: >
+          This test is to get the name of the component.
+      rpcs:
+          - template: hw_component_name_state.xml
+            operation: get
+            params:
+                   name: ""
+                   
+
+- testcase:
+      name: hw_component_software_version
+      id: 11
+      description: >
+          This test is to get the software version of the component.
+      rpcs:
+          - template: hw_component_software_version.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   software_version: ""
+
+- testcase:
+      name: hw_component_equipment_failure
+      id: 12
+      description: >
+          This test is to get if true the hardware indicates that the component's physical equipment has failed.
+      rpcs:
+          - template: hw_component_equipment_failure.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   equipment_failure: ""
+
+- testcase:
+      name: hw_component_entity_id
+      id: 13
+      description: >
+          This test is to get unique numeric identifier assigned by the system to the component may be used as orresponding SNMP Entity MIB identifier.
+      rpcs:
+          - template: hw_component_entity_id.xml
+            operation: get
+            params:
+                   name: "CHASIS"
+                   entity_id: ""

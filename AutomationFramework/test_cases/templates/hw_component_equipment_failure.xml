@@ -1,0 +1,12 @@
+<get>
+  <filter>
+     <components xmlns="http://openconfig.net/yang/platform">
+        <component>
+          <name>{{name}}</name>
+          <state>
+            <equipment-failure xmlns="http://openconfig.net/yang/alarms">{{equipment_failure}}</equipment-failure>
+          </state>
+        </component>
+      </components>
+  </filter>
+</get>
