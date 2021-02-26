@@ -1,0 +1,14 @@
+ <get>
+    <filter>
+      <components xmlns="http://openconfig.net/yang/platform">
+        <component>
+          <name>{{name}}</name>
+          <transceiver xmlns="http://openconfig.net/yang/platform/transceiver">
+            <state>
+              <form-factor xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:{{form_factor}}</form-factor>
+            </state>
+          </transceiver>
+        </component>
+      </components>
+    </filter>
+  </get>

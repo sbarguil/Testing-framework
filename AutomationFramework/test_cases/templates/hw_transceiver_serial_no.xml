@@ -1,0 +1,14 @@
+ <get>
+    <filter>
+      <components xmlns="http://openconfig.net/yang/platform">
+        <component>
+          <name>{{name}}</name>
+          <transceiver xmlns="http://openconfig.net/yang/platform/transceiver">
+            <state>
+              <serial-no>{{serial_no}}</serial-no>
+            </state>
+          </transceiver>
+        </component>
+      </components>
+    </filter>
+  </get>
