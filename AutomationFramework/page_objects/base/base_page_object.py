@@ -54,8 +54,6 @@ class BasePageObject:
     def init_generic_variables_to_commit(self):
         self.generic_variables_to_commit = []
         for variable, value in self.rpcs_list[self.rpc_idx_in_test_case]['params'].items():
-            #self.generic_variables_to_commit['test_case_key'] = variable
-            #self.generic_variables_to_commit['value_to_commit'] = value
             new_variable = {'test_case_key': variable, 'value_to_commit': value}
             self.generic_variables_to_commit.append(new_variable)
 
@@ -132,42 +130,55 @@ class BasePageObject:
             except:
                 recursive_return = None
         return recursive_return
-        
-    def get_tag_value_in_given_dict_by_path(self,auxiliar_output_list, path, parsed_dict):
-        #auxiliar_output_list: variable to store results in a list
-    
-        return_result = None    #Initialize the output variable
+
+    def get_tag_value_in_given_dict_by_path(self, auxiliar_output_list, path, parsed_dict):
+        # auxiliar_output_list: variable to store results in a list
+
+        return_result = None  # Initialize the output variable
+
+        # When path length is 1 the workflow of the search is finished.
+        # Parsed_dict here is the match with the end of the path;
         if len(path) == 1:
             auxiliar_output_list.append(parsed_dict)
         else:
             try:
-                if isinstance(parsed_dict, list):
-                    path = path[1:]
-                    for i in range(0, len(parsed_dict)):
-                        subdict = parsed_dict[i]
-                        if path[0] in subdict:
-                            return_result = self.get_tag_value_in_given_dict_by_path(auxiliar_output_list,path=path, parsed_dict=subdict[path[0]])
-                else:
-                    if path[0] in parsed_dict:
-                        sublist = parsed_dict[path[0]]  # diccionario_interno
-                        if isinstance(sublist, list):
-                            path = path[1:]
-                            for j in range(0,len(sublist)):
-                                subdict = sublist[j]
-                                return_result = self.get_tag_value_in_given_dict_by_path(auxiliar_output_list,path=path,parsed_dict=subdict[path[0]])
-                        else:
-                            return_result = self.get_tag_value_in_given_dict_by_path(auxiliar_output_list,path=path[1:],parsed_dict=parsed_dict[path[0]])
-                    elif path[1] in parsed_dict:    #In those specific cases where the content of parsed_dict is only one element,
+                if isinstance(parsed_dict,
+                              list):  # Usually this will be the first step (list or dict?) since path usually has length >1
+                    path = path[1:]  # Delete first level/position of the path
+                    for i in range(0, len(parsed_dict)):  # Iterate the list of dictionaries (parsed_dict)
+                        subdict = parsed_dict[i]  # Store a dictionary from the list
+                        if path[
+                            0] in subdict:  # If a match is found with the path then we are going to the next level of the path:
+                            return_result = self.get_tag_value_in_given_dict_by_path(auxiliar_output_list, path=path,
+                                                                                     parsed_dict=subdict[path[0]])
+                else:  # Usually this will be a dictionary
+                    if path[0] in parsed_dict:  # Check if the dictionary has a match with one of the levels of the path
+                        sublist = parsed_dict[
+                            path[0]]  # Store a list of dictionaries in a variable sublist (it could be subdict too)
+                        if isinstance(sublist, list):  # Check if is a list or a dict (list if yes)
+                            path = path[1:]  # Delete first position of the path
+                            for j in range(0, len(sublist)):  # Iterate the list of dictionaries (sublist)
+                                subdict = sublist[j]  # Store a dictionary from the list
+                                # If a match is found with the path then we are going to the next level of the path:
+                                return_result = self.get_tag_value_in_given_dict_by_path(auxiliar_output_list,
+                                                                                         path=path,
+                                                                                         parsed_dict=subdict[path[0]])
+                        else:  # In this case the variable is a dict so we go to another loop:
+                            return_result = self.get_tag_value_in_given_dict_by_path(auxiliar_output_list,
+                                                                                     path=path[1:],
+                                                                                     parsed_dict=parsed_dict[path[0]])
+                    elif path[
+                        1] in parsed_dict:  # In those specific cases where the content of parsed_dict is only one element
                         # we could have directly the final result
-    
+
                         # IMPORTANT! To test these particular cases when the current path is not the end
                         auxiliar_output_list.append(parsed_dict[path[1]])
-    
+
                     else:
                         raise Exception('The path specified for the param doesnt exists in the response')
             except:
                 return_result = None
-    
+
         return_result = auxiliar_output_list
         return return_result
 

@@ -1,8 +1,8 @@
 HOSTS = [
     {
-        'host': '10.95.86.216',
-        'port': '12034',
-        'username': 'admin',
-        'password': 'admin',
+        'host': '10.95.86.212',
+        'port': '830',
+        'username': 'cisco',
+        'password': 'cisco2020',
     },
 ]
