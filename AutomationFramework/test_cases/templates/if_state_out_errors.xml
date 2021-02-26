@@ -1,0 +1,14 @@
+<get>
+    <filter>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{interface_name}}</name>
+          <state>
+            <counters>
+              <out-errors>{{out_errors}}</out-errors>
+            </counters>
+          </state>
+        </interface>
+      </interfaces>
+    </filter>
+  </get>
