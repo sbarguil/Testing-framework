@@ -1,0 +1,34 @@
+ <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">L3VRF</type>
+            <route-distinguisher>65000:123</route-distinguisher>
+          </config>
+          <protocols>
+            <protocol>
+              <identifier>{{identifier}}</identifier>
+              <name>{{protocol_name}}</name>
+              <config>
+                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier}}</identifier>
+                <name>{{protocol_name}}</name>
+              </config>
+              <bgp>
+                <global>
+                  <config>
+                    <as>{{as}}</as>
+                  </config>
+                </global>
+              </bgp>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>

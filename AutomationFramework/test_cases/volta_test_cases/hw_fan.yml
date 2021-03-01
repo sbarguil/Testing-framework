@@ -1,0 +1,12 @@
+
+- testcase:
+      name: hw_fan_speed
+      id: 1
+      description: >
+          This test is to get the fan speed.
+      rpcs:
+          - template: hw_fan_speed.xml
+            operation: get
+            params:
+                   name: "FAN"
+                   speed: ""

@@ -9,15 +9,18 @@ from collections import OrderedDict
 
 
 class RPCAutomator2:
-    def __init__(self, connection):
+    def __init__(self, connection, logger):
+        self.logger = logger
         self.host = connection['host']
         self.port = connection['port']
         self.username = connection['username']
         self.password = connection['password']
+        self.vendor = connection["vendor"]
+        self.logger.info("\n************ Running Test on {0} ************".format(self.vendor))
         self.manager = None
         self.set_connection()
         self.jinja_env = Environment(
-            loader=PackageLoader('AutomationFramework', 'test_cases/templates'),
+            loader=PackageLoader('AutomationFramework', 'test_cases/{0}_test_cases/templates'.format(self.vendor)),
             autoescape=select_autoescape(['xml'])
         )
 
@@ -31,6 +34,8 @@ class RPCAutomator2:
                                        allow_agent=False,
                                        device_params={'name': 'huawei'},
                                        )
+    def set_close_connection(self):
+        self.manager.close_session()
 
     def rpc_body_generator(self, test_case, rpc_index=0, variables_in_template=None):
         template_file_name = test_case['testcase']['rpcs'][rpc_index]['template']
@@ -49,7 +54,7 @@ class RPCAutomator2:
     def get_occurrences_of_variable_in_not_rendered_template(self, test_case, rpc_index, variable_in_test_case):
         template_file_name = test_case['testcase']['rpcs'][rpc_index]['template']
         not_windows_path = os.path.dirname(os.path.realpath(__file__)).replace('\\', '/')
-        template_file_path = Path(not_windows_path.replace('/utils', '')) / 'test_cases/templates' / template_file_name
+        template_file_path = Path(not_windows_path.replace('/utils', '')) / 'test_cases/{0}_test_cases/templates'.format(self.vendor) / template_file_name
         file = open(template_file_path, 'r')
         data = file.read()
         text_to_search = '{{' + variable_in_test_case + '}}'
@@ -80,46 +85,46 @@ class RPCAutomator2:
     def safe_dispatch(self, template):
         try:
             full_response = '- Response of edit-config: '
-            print('- Response of edit-config')
+            self.logger.info('- Response of edit-config')
             response_edit_config = str(self.manager.dispatch(et.fromstring(template)))
-            print(response_edit_config)
+            self.logger.info(response_edit_config)
             full_response = full_response + response_edit_config + ' \n\n - Response of commit: '
-            print('- Response of commit')
+            self.logger.info('- Response of commit')
             response_commit = str(self.manager.dispatch(et.fromstring("<commit/>")))
-            print(response_commit)
+            self.logger.info(response_commit)
             full_response = full_response + response_commit
             return full_response
         except Exception as e:
-            print("An exception has occurred when performing the edit_config operation.")
+            self.logger.error("An exception has occurred when performing the edit_config operation.")
             raise e
 
     def safe_discard_changes(self):
         try:
             full_response = '- Response of discard-changes: '
-            print(full_response)
+            self.logger.info(full_response)
             response_discard_changes = str(self.manager.dispatch(et.fromstring("<discard-changes/>")))
-            print(response_discard_changes)
+            self.logger.info(response_discard_changes)
             full_response = full_response + response_discard_changes
             return full_response
         except Exception as e:
-            print("An exception has occurred when performing the discard-changes operation.")
+            self.logger.error("An exception has occurred when performing the discard-changes operation.")
             raise e
 
     def safe_dispatch_no_commit(self, template):
         try:
-            print('- Response of dispatch without commit')
+            self.logger.info('- Response of dispatch without commit')
             response = self.manager.dispatch(et.fromstring(template))
-            print(response)
+            self.logger.info(response)
             return response
         except Exception as e:
-            print("An exception has occurred when performing the edit_config operation.")
+            self.logger.error("An exception has occurred when performing the edit_config operation.")
             raise e
 
     def safe_get(self, template):
         try:
             return self.manager.get(("subtree", template))
         except Exception as e:
-            print("An exception has occurred when performing the get operation.")
+            self.logger.error("An exception has occurred when performing the get operation.")
             raise e
 
     def safe_get_config(self, netconf_filter, test_case, rpc_index=0):
@@ -127,17 +132,17 @@ class RPCAutomator2:
         try:
             return self.manager.get_config(source=target, filter=netconf_filter)
         except Exception as e:
-            print("An exception has occurred when performing the get_config operation.")
+            self.logger.error("An exception has occurred when performing the get_config operation.")
             raise e
 
     def get_test_case_by_name_from_file(self, file, test_case_name):
         loaded_file = None
         specified_test_case = None
-        with open("test_cases/{}".format(file), 'r') as stream:
+        with open("test_cases/{0}_test_cases/{1}".format(self.vendor, file), 'r') as stream:
             try:
                 loaded_file = yaml.safe_load(stream)
             except yaml.YAMLError as exc:
-                print(exc)
+                self.logger.error(exc)
 
         idx = 0
         while idx < len(loaded_file) and not specified_test_case:

@@ -1,0 +1,69 @@
+
+- testcase:
+      name: hw_port_channel_speed
+      id: 1
+      description: >
+          This test is to set channel speed.
+      rpcs:
+          - template: hw_port_channel_speed.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "FPC0:PIC0:PORT0"
+                   channel_speed: "SPEED_50GB"
+
+- testcase:
+      name: hw_port_num_channels
+      id: 2
+      description: >
+          This test is to set channel numbers.
+      rpcs:
+          - template: hw_port_num_channels.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "FPC0:PIC0:PORT0"
+                   num_channels: "5"
+
+- testcase:
+      name: hw_port_channel_speed_state
+      id: 3
+      description: >
+          This test is to get channel speed.
+      rpcs:
+
+          - template: hw_port_channel_speed.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "FPC0:PIC0:PORT0"
+                   channel_speed: "SPEED_50GB"
+
+          - template: hw_port_channel_speed_state.xml
+            operation: get
+            params:
+                   name: "FPC0:PIC0:PORT0"
+                   channel_speed_state: ""
+
+- testcase:
+      name: hw_port_num_channels_state
+      id: 4
+      description: >
+          This test is to get number channels.
+      rpcs:
+          - template: hw_port_num_channels.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "FPC0:PIC0:PORT0"
+                   num_channels: "5"
+
+          - template: hw_port_num_channels_state.xml
+            operation: get
+            params:
+                   name: "FPC0:PIC0:PORT0"
+                   num_channels: ""

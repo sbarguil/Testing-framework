@@ -1,0 +1,29 @@
+<edit-config>
+  <target>
+    <{{target}}/>
+  </target>
+  <config>
+    <interfaces xmlns="http://openconfig.net/yang/interfaces">
+      <interface>
+        <name>{{interface_name}}</name>
+        <config>
+          <name>{{interface_name}}</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:{{type}}</type>
+        </config>
+        <tunnel xmlns="http://openconfig.net/yang/interfaces/tunnel">
+          <ipv4>
+            <addresses>
+              <address>
+                <ip>{{ip}}</ip>                
+                <config>
+                  <ip>{{ip}}</ip>
+                  <prefix-length>{{prefix_length}}</prefix-length>
+                </config>
+              </address>
+            </addresses>
+          </ipv4>
+        </tunnel>
+      </interface>
+    </interfaces>
+  </config>
+</edit-config>

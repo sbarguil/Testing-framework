@@ -1,0 +1,21 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <routing-policy xmlns="http://openconfig.net/yang/routing-policy">
+        <defined-sets>
+          <bgp-defined-sets xmlns="http://openconfig.net/yang/bgp-policy">
+            <ext-community-sets>
+              <ext-community-set>
+                <ext-community-set-name>{{ext_community_set_name}}</ext-community-set-name>
+                <config>
+                  <ext-community-set-name>{{ext_community_set_name}}</ext-community-set-name>
+                </config>
+              </ext-community-set>
+            </ext-community-sets>
+          </bgp-defined-sets>
+        </defined-sets>
+      </routing-policy>
+    </config>
+  </edit-config>

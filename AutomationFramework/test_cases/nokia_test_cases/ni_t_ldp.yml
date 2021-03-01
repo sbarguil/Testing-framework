@@ -1,0 +1,64 @@
+
+- testcase:
+      name: ni_t_ldp_afi_name
+      id: 1
+      description: >
+          This test is to set an afi-name for T-LDP protocol within a L2 network-instance.
+      rpcs:
+          - template: ni_t_ldp_afi_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Base"
+                   afi_name: "IPV4"
+                   type: "DEFAULT_INSTANCE"
+
+- testcase:
+      name: ni_t_ldp_remote_address
+      id: 2
+      description: >
+          This test is to set remote-address for T-LDP within a L2 network-instance.
+      rpcs:
+          - template: ni_t_ldp_remote_address.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Base"
+                   afi_name: "IPV4"
+                   type: "DEFAULT_INSTANCE"
+                   remote_address: "172.16.200.2"
+
+- testcase:
+      name: ni_t_ldp_local_address
+      id: 3
+      description: >
+          This test is to set local-address for T-LDP within a L2 network-instance.
+      rpcs:
+          - template: ni_t_ldp_local_address.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Base"
+                   afi_name: "IPV4"
+                   type: "DEFAULT_INSTANCE"
+                   remote_address: "172.16.200.2"
+                   local_address: "172.16.100.1"
+
+- testcase:
+      name: ni_t_ldp_enabled
+      id: 4
+      description: >
+          This test is to enable remote-address for T-LDP within a L2 network-instance.
+      rpcs:
+          - template: ni_t_ldp_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Base"
+                   afi_name: "IPV4"
+                   remote_address: "172.16.200.2"
+                   type: "DEFAULT_INSTANCE"

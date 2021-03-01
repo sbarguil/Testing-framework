@@ -1,0 +1,17 @@
+ <edit-config>
+   <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <components xmlns="http://openconfig.net/yang/platform">
+        <component>
+          <name>{{name}}</name>
+          <power-supply>
+            <config>
+              <enabled xmlns="http://openconfig.net/yang/platform/psu">{{enabled}}</enabled>
+            </config>
+          </power-supply>
+        </component>
+      </components>
+    </config>
+  </edit-config>

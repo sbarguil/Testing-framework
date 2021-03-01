@@ -1,0 +1,25 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>{{interface_name}}</name>
+          <subinterfaces>
+            <subinterface>
+              <index>{{index}}</index>
+              <config>
+                <index>{{index}}</index>
+              </config>
+              <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip">
+                <config>
+                  <dhcp-client>{{dhcp_client}}</dhcp-client>
+                </config>
+              </ipv4>
+            </subinterface>
+          </subinterfaces>
+        </interface>
+      </interfaces>
+    </config>
+  </edit-config>

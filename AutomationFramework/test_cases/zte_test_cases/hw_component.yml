@@ -1,0 +1,168 @@
+
+- testcase:
+      name: hw_component_description
+      id: 1
+      description: >
+          This test is to get description components.
+      rpcs:
+          - template: hw_component_description.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   description: ""
+
+- testcase:
+      name: hw_component_hardware_version
+      id: 2
+      description: >
+          This test is to get the hardware version components.
+      rpcs:
+          - template: hw_component_hardware_version.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   hardware_version: ""
+
+- testcase:
+      name: hw_component_id
+      id: 3
+      description: >
+          This test is to get the component id.
+      rpcs:
+          - template: hw_component_id.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   id: ""
+
+- testcase:
+      name: hw_component_location
+      id: 4
+      description: >
+          This test is to get location components.
+      rpcs:
+          - template: hw_component_location.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   location: ""
+
+- testcase:
+      name: hw_component_mfg_date
+      id: 5
+      description: >
+          This test is to get manufacturing date.
+      rpcs:
+          - template: hw_component_mfg_date.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   mfg_date: ""
+
+- testcase:
+      name: hw_component_oper_status
+      id: 6
+      description: >
+          This test is to get operation status component.
+      rpcs:
+          - template: hw_component_oper_status.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   oper_status: ""
+
+- testcase:
+      name: hw_component_parent
+      id: 7
+      description: >
+          This test is to get name of the parent component.
+      rpcs:
+          - template: hw_component_parent.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   parent: ""
+
+- testcase:
+      name: hw_component_serial_no
+      id: 8
+      description: >
+          This test is to get serial number of the component.
+      rpcs:
+          - template: hw_component_serial_no.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   serial_no: ""
+
+- testcase:
+      name: hw_component_type
+      id: 9
+      description: >
+          This test is to get type of component by the system.
+      rpcs:
+          - template: hw_component_type.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   type: ""
+
+- testcase:
+      name: hw_component_mfg_name
+      id: 10
+      description: >
+          This test is to get the manufacturer of component by the system.
+      rpcs:
+          - template: hw_component_mfg_name.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   mfg_name: ""
+
+- testcase:
+      name: hw_component_partnumber
+      id: 11
+      description: >
+          This test is to get the partnumber of component by the system.
+      rpcs:
+          - template: hw_component_partnumber.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   partnumber: ""
+
+- testcase:
+      name: hw_component_removable
+      id: 12
+      description: >
+          This test is to get if the component is removable.
+      rpcs:
+          - template: hw_component_removable.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   removable: ""
+
+- testcase:
+      name: hw_component_software_version
+      id: 13
+      description: >
+          This test is to get software version of component by the system.
+      rpcs:
+          - template: hw_component_software_version.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   software_version: ""
+
+- testcase:
+      name: hw_component_used_power
+      id: 14
+      description: >
+          This test is to get used_power of component by the system.
+      rpcs:
+          - template: hw_component_used_power.xml
+            operation: get
+            params:
+                   name: "Waveserver-Ai"
+                   used_power: ""

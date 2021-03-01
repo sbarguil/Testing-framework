@@ -1,0 +1,13 @@
+
+    <get>
+      <filter>
+        <interfaces xmlns="http://openconfig.net/yang/interfaces">
+          <interface>
+            <name>{{interface_name}}</name>
+            <state>
+              <enabled>{{enabled}}</enabled>
+            </state>
+          </interface>
+        </interfaces>
+      </filter>
+    </get>

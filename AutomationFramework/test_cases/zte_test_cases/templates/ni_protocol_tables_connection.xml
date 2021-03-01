@@ -1,0 +1,65 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+ <default-operation>merge</default-operation>
+    <error-option>rollback-on-error</error-option>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+          </config>
+          <table-connections>
+            <table-connection>
+              <src-protocol xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_src_protocol}}</src-protocol>
+              <dst-protocol xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_dst_protocol}}</dst-protocol>
+              <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">{{address_family}}</address-family>
+              <config>
+                <src-protocol xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_src_protocol}}</src-protocol>
+                <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">{{address_family}}</address-family>
+                <dst-protocol xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_dst_protocol}}</dst-protocol>
+               </config>
+            </table-connection>
+          </table-connections>
+          <tables>
+            <table>
+              <protocol xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_src_protocol}}</protocol>
+              <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">{{address_family}}</address-family>
+              <config>
+                <protocol xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_src_protocol}}</protocol>
+                <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">{{address_family}}</address-family>
+              </config>
+            </table>
+              <table>
+              <protocol xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_dst_protocol}}</protocol>
+              <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">{{address_family}}</address-family>
+              <config>
+                <protocol xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_dst_protocol}}</protocol>
+                <address-family xmlns:oc-types="http://openconfig.net/yang/openconfig-types">{{address_family}}</address-family>
+              </config>
+            </table>
+          </tables>
+          <protocols>
+            <protocol>
+              <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_src_protocol}}</identifier>
+              <name>OSPF_1</name>
+              <config>
+                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_src_protocol}}</identifier>
+                <name>OSPF_1</name>
+              </config>
+            </protocol>
+            <protocol>
+                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_dst_protocol}}</identifier>
+                <name>BGP_6500</name>
+              <config>
+              <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">{{identifier_dst_protocol}}</identifier>
+              <name>BGP_6500</name>
+              </config>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>

@@ -1,0 +1,98 @@
+
+- testcase:
+      name: hw_psu_enabled
+      id: 1
+      description: >
+          This test is to set power supply status.
+      rpcs:
+          - template: hw_psu_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Power-Supply#1"
+                   enabled: "false"
+
+- testcase:
+      name: hw_psu_capacity
+      id: 2
+      description: >
+          This test is to get the Power Supply capacity.
+      rpcs:
+          - template: hw_psu_capacity.xml
+            operation: get
+            params:
+                   name: "Power-Supply#1"
+                   capacity: ""
+
+- testcase:
+      name: hw_psu_enabled_state
+      id: 3
+      description: >
+          This test is to get the Power Supply state.
+      rpcs:
+          - template: hw_psu_enabled_state.xml
+            operation: get
+            params:
+                   name: "Power-Supply#1"
+                   enabled: ""
+
+- testcase:
+      name: hw_psu_input_voltage
+      id: 4
+      description: >
+          This test is to get the input voltage Power Supply.
+      rpcs:
+          - template: hw_psu_input_voltage.xml
+            operation: get
+            params:
+                   name: "Power-Supply#1"
+                   input_voltage: ""
+
+- testcase:
+      name: hw_psu_output_current
+      id: 5
+      description: >
+          This test is to get the output current Power Supply.
+      rpcs:
+          - template: hw_psu_output_current.xml
+            operation: get
+            params:
+                   name: "Power-Supply#1"
+                   output_current: ""
+
+- testcase:
+      name: hw_psu_output_power
+      id: 6
+      description: >
+          This test is to get the output Power Supply.
+      rpcs:
+          - template: hw_psu_output_power.xml
+            operation: get
+            params:
+                   name: "Power-Supply#1"
+                   output_power: ""
+
+- testcase:
+      name: hw_psu_output_voltage
+      id: 7
+      description: >
+          This test is to get the output voltage Power Supply.
+      rpcs:
+          - template: hw_psu_output_voltage.xml
+            operation: get
+            params:
+                   name: "Power-Supply#1"
+                   output_voltage: ""
+
+- testcase:
+      name: hw_psu_input_current
+      id: 8
+      description: >
+          This test is to get the input current Power Supply.
+      rpcs:
+          - template: hw_psu_input_current.xml
+            operation: get
+            params:
+                   name: "Power-Supply#1"
+                   input_current: ""
