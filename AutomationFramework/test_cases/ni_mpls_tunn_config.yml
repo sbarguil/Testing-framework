@@ -1,0 +1,260 @@
+
+- testcase:
+      name: ni_mpls_tunn_config_admin_status
+      id: 1
+      description: >
+          This test is to set admin status for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_config_admin_status.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_admin_status"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   admin_status: "true"
+
+
+- testcase:
+      name: ni_mpls_tunn_config_description
+      id: 2
+      description: >
+          This test is to set description for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_config_description.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_description"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   description: "Test tunnel description"
+
+
+- testcase:
+      name: ni_mpls_tunn_config_hold_priority
+      id: 3
+      description: >
+          This test is to set hold-priority for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_config_hold_priority.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_hold_priority"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   hold_priority: "3"
+
+- testcase:
+      name: ni_mpls_tunn_config_metric
+      id: 4
+      description: >
+          This test is to set metric for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_config_metric.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_metric"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   metric: "30"
+
+- testcase:
+      name: ni_mpls_tunn_config_metric_type
+      id: 5
+      description: >
+          This test is to set metric-type for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_config_metric_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_metric_type"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   metric_type: "oc-mpls-types:LSP_METRIC_ABSOLUTE"
+
+- testcase:
+      name: ni_mpls_tunn_config_name
+      id: 6
+      description: >
+          This test is to set name for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_config_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_name"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+
+
+- testcase:
+      name: ni_mpls_tunn_config_preference
+      id: 7
+      description: >
+          This test is to set preference for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_config_preference.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_preference"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   preference: "100"
+
+- testcase:
+      name: ni_mpls_tunn_config_protection_style_requested
+      id: 8
+      description: >
+          This test is to set protection-style-requested for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_config_protection_style_requested.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_protection_style_requested"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   protection_sty_req: "oc-mpls-types:UNPROTECTED"
+
+       
+- testcase:
+      name: ni_mpls_tunn_config_reoptimize_timer
+      id: 9
+      description: >
+          This test is to set reoptimize-timer for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_config_reoptimize_timer.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_reoptimize_timer"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   reop_timer: "100"
+
+- testcase:
+      name: ni_mpls_tunn_config_setup_priority
+      id: 10
+      description: >
+          This test is to set setup-priority for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_config_setup_priority.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_setup_priority"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   setup_priority: "5"
+
+- testcase:
+      name: ni_mpls_tunn_config_signaling_protocol
+      id: 11
+      description: >
+          This test is to set signaling-protocol for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_config_signaling_protocol.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_signaling_protocol"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   sig_protocol: "oc-mpls-types:PATH_SETUP_LDP"
+
+  
+
+- testcase:
+      name: ni_mpls_tunn_config_soft_preemption
+      id: 12
+      description: >
+          This test is to set soft-preemption for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_config_soft_preemption.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_soft_preemption"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   soft_preemption: "true"
+
+- testcase:
+      name: ni_mpls_tunn_config_source
+      id: 13
+      description: >
+          This test is to set ip-source for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_config_source.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_source"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"
+                   ip_source: "10.43.33.55"
+
+
+
+- testcase:
+      name: ni_mpls_tunn_config_type
+      id: 14
+      description: >
+          This test is to set type for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_config_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_tunnel_config"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_tunn_config_type"
+                   enable: "true"
+                   tunnel_name: "tunnel_A"  
+                   type_tunnel: "oc-mpls-types:P2MP"       
+
