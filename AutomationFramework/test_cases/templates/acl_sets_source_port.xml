@@ -1,0 +1,35 @@
+  <edit-config>
+    <target>
+      <candidate/>
+    </target>
+    <config>
+      <acl xmlns="http://openconfig.net/yang/acl">
+        <acl-sets>
+          <acl-set>
+            <name>{{name}}</name>
+            <type>{{type}}</type>
+            <config>
+              <name>{{name}}</name>
+              <type>{{type}}</type>
+            </config>
+            <acl-entries>
+              <acl-entry>
+                <sequence-id>{{sequence_id}}</sequence-id>
+                <config>
+                  <sequence-id>{{sequence_id}}</sequence-id>
+                </config>
+                <transport>
+                  <config>
+                    <source-port>{{source_port}}</source-port>
+                  </config>
+                </transport>
+              </acl-entry>
+            </acl-entries>
+          </acl-set>
+        </acl-sets>
+      </acl>
+    </config>
+  </edit-config>
+</rpc>
+
+</edit-config>

@@ -1,0 +1,202 @@
+
+- testcase:
+      name: acl_sets_name
+      id: 1
+      description: >
+          This test is to define the name on the ACL.
+      rpcs:
+          - template: acl_sets_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_acl"
+
+- testcase:
+      name: acl_sets_type
+      id: 2
+      description: >
+          This test is to set type on the ACL.
+      rpcs:
+          - template: acl_sets_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+
+
+- testcase:
+      name: acl_sets_sequence_id
+      id: 3
+      description: >
+          This test is to set sequence_id on the ACL.
+      rpcs:
+          - template: acl_sets_sequence_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+
+- testcase:
+      name: acl_sets_destination_address
+      id: 4
+      description: >
+          This test is to set the destination address on the ACL.
+      rpcs:
+          - template: iacl_sets_destination_address.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   ip_address: "123.32.24.25"
+
+- testcase:
+      name: acl_sets_dscp
+      id: 5
+      description: >
+          This test is to set the dscp on the ACL.
+      rpcs:
+          - template: acl_sets_dscp.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   dscp: "20"
+
+- testcase:
+      name: acl_sets_protocol
+      id: 6
+      description: >
+          This test is to set protocol on the ACL
+      rpcs:
+          - template: acl_sets_protocol.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   protocol: "23"
+
+
+- testcase:
+      name: acl_sets_source_address
+      id: 7
+      description: >
+          This test is to set the source address on the ACL
+      rpcs:
+          - template: acl_sets_source_address
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   source_address: "123.32.34.31"
+
+- testcase:
+      name: acl_sets_destination_port
+      id: 8
+      description: >
+          This test is to set destination port on the ACL
+      rpcs:
+          - template: acl_sets_destination_port.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   dest_port: "20"
+
+- testcase:
+      name: acl_sets_source_port
+      id: 9
+      description: >
+          This test is to set source  port on the ACL
+      rpcs:
+          - template: aacl_sets_source_port.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   source_port: "10"
+
+- testcase:
+      name: acl_sets_description
+      id: 10
+      description: >
+          This test is to set description on the ACL
+      rpcs:
+          - template: iacl_sets_description.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   description: "acl for ssh"
+
+- testcase:
+      name: acl_sets_forwarding_action
+      id: 11
+      description: >
+          This test is to set the forwarding action on the ACL
+      rpcs:
+          - template: acl_sets_forwarding_action.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   forwarding_action: "ACCEPT"
+
+- testcase:
+      name: acl_sets_log_action
+      id: 12
+      description: >
+          This test is to set log action on the ACL
+      rpcs:
+          - template: acl_sets_log_action.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_acl"
+                   type: "ACL_IPV4"
+                   sequence_id: "1"
+                   forwarding_action: "ACCEPT"
+                   log_action: "LOG_SYSLOG"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
