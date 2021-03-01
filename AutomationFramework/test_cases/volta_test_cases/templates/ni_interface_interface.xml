@@ -1,0 +1,24 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+          </config>
+          <interfaces>
+            <interface>
+              <id>{{id}}</id>
+              <config>
+                <id>{{id}}</id>
+                <interface>{{interface}}</interface>
+              </config>
+            </interface>
+          </interfaces>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>

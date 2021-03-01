@@ -2,24 +2,17 @@
 
 import os
 import sys
-from datetime import date
-
+from datetime import date, datetime
 import pandas as pd
+from capabilities import HOSTS
 
 today = date.today()
 
-directory = sys.argv[1]
-logs_directory = 'excel_logs'
+vendor = HOSTS[0]['vendor']
+directory = sys.argv[1]+'/'+vendor
+logs_directory = 'excel_logs/'+vendor
 out_log = pd.DataFrame()
 out = pd.DataFrame()
-
-if len(sys.argv) == 2:
-    vendor = ""
-    print("--------")
-    print("No VENDOR specified.")
-    print("--------")
-else:
-    vendor = sys.argv[2]
 
 print("\nStep #0: Concatenating logs:" + logs_directory)
 print("--------")
@@ -34,6 +27,8 @@ for file in os.listdir(logs_directory):
             out_log = pd.concat([out_log, pd.read_excel(url)], ignore_index=True)
 
 out_log["TEST-ID (XML_FILE_NAME)"] = out_log["Test case name"] + '.xml'
+
+
 
 with pd.ExcelWriter(directory + '/total_logs.xlsx') as writer:
     out_log.to_excel(writer, sheet_name='Logs')
@@ -87,14 +82,15 @@ out.loc[out['RESULT'] == 'FAILED', 'NUM RESULT'] = "-2"
 table = pd.pivot_table(out, index=['RESULT'],
                        columns=['TEST BLOCK'], aggfunc='count')
 #
-with pd.ExcelWriter(directory + '/final_output.xlsx') as writer:
+timestamp = str(datetime.now().strftime("%d_%b_%Y_%H_%M_%S"))
+with pd.ExcelWriter(directory + '/'+vendor+'_final_output_'+timestamp+'.xlsx') as writer:
     template.to_excel(writer, sheet_name='Details')
     out.to_excel(writer, sheet_name='Results')
     table.to_excel(writer, sheet_name='Report')
 
 print("\nStep #3: Removing aux files")
 print("--------")
-print('reports/total_logs.xlsx')
-os.remove('reports/total_logs.xlsx')
-print('reports/total_output.xlsx')
-os.remove('reports/total_output.xlsx')
+print('reports/'+vendor+'/total_logs.xlsx')
+os.remove('reports/'+vendor+'/total_logs.xlsx')
+print('reports/'+vendor+'/total_output.xlsx')
+os.remove('reports/'+vendor+'/total_output.xlsx')

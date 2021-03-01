@@ -1,0 +1,30 @@
+
+- testcase:
+      name: ni_encapsulation_encapsulation_type
+      id: 1
+      description: >
+          This test is to set MPLS enacpsulation to a Lx network-instance.
+      rpcs:
+          - template: ni_encapsulation_encapsulation_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "VPLS_10"
+                   type: "L3VRF"
+                   encapsulation_type: "MPLS"
+
+- testcase:
+      name: ni_encapsulation_label_allocation_mode
+      id: 2
+      description: >
+          This test is to set abel-allocation-mode to a L3 network-instance.
+      rpcs:
+          - template: ni_encapsulation_label_allocation_mode.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "VPLS_10"
+                   type: "L3VRF"
+                   label_allocation_mode: "PER_PREFIX"           

@@ -1,0 +1,84 @@
+
+- testcase:
+      name: hw_cpu_avg
+      id: 1
+      description: >
+          This test is to get the cpu avg of components.
+      rpcs:
+          - template: hw_cpu_avg.xml
+            operation: get
+            params:
+                   name: "cpu"
+                   avg: ""
+
+- testcase:
+      name: hw_cpu_instant
+      id: 2
+      description: >
+          This test is to get the cpu instant of components.
+      rpcs:
+          - template: hw_cpu_instant.xml
+            operation: get
+            params:
+                   name: "cpu"
+                   instant: ""
+
+- testcase:
+        name: hw_cpu_interval
+        id: 3
+        description: >
+            This test is to get the cpu interval of components.
+        rpcs:
+            - template: hw_cpu_interval.xml
+              operation: get
+              params:
+                     name: "cpu"
+                     interval: ""
+
+- testcase:
+        name: hw_cpu_max
+        id: 4
+        description: >
+            This test is to get the cpu max of components.
+        rpcs:
+            - template: hw_cpu_max.xml
+              operation: get
+              params:
+                     name: "cpu"
+                     max: ""
+
+- testcase:
+        name: hw_cpu_max_time
+        id: 5
+        description: >
+            This test is to get the cpu max on time of components.
+        rpcs:
+            - template: hw_cpu_max_time.xml
+              operation: get
+              params:
+                     name: "cpu"
+                     max_time: ""
+
+- testcase:
+        name: hw_cpu_min
+        id: 6
+        description: >
+            This test is to get the cpu min of components.
+        rpcs:
+            - template: hw_cpu_min.xml
+              operation: get
+              params:
+                     name: "cpu"
+                     min: ""
+
+- testcase:
+        name: hw_cpu_min_time
+        id: 7
+        description: >
+            This test is to get the cpu min on time of components.
+        rpcs:
+            - template: hw_cpu_min_time.xml
+              operation: get
+              params:
+                     name: "cpu"
+                     min_time: ""

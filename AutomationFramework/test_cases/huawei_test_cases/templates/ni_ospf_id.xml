@@ -1,0 +1,54 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">oc-ni-types:L3VRF</type>
+          </config>
+          <interfaces>
+            <interface>
+              <id>GigabitEthernet0/3/0</id>
+              <config>
+                <id>GigabitEthernet0/3/0</id>
+                <interface>GigabitEthernet0/3/0</interface>
+                <subinterface>0</subinterface>
+              </config>
+            </interface>
+          </interfaces>
+          <protocols>
+            <protocol>
+              <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier}}</identifier>
+              <name>{{protocol_name}}</name>
+              <config>
+                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:{{identifier}}</identifier>
+                <name>{{protocol_name}}</name>
+              </config>
+              <ospfv2>
+                <areas>
+                  <area>
+                    <identifier>{{area_identifier}}</identifier>
+                    <config>
+                      <identifier>{{area_identifier}}</identifier>
+                    </config>
+                    <interfaces>
+                      <interface>
+                        <id>{{id}}</id>
+                        <config>
+                          <id>{{id}}</id>
+                        </config>
+                      </interface>
+                    </interfaces>
+                  </area>
+                </areas>
+              </ospfv2>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </config>
+</edit-config>

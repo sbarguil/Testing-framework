@@ -1,0 +1,74 @@
+- testcase:
+      name: ni_protocols_tables_creation
+      id: 1
+      description: >
+          This test is to create a routing table for a protocol: BGP, OSPF or STATIC.
+      rpcs:
+          - template: ni_protocol_tables_creation.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier: "oc-pol-types:BGP"
+                   protocol_name: "BGP_65000"
+                   address_family: "IPV4"
+
+- testcase:
+      name: ni_protocol_tables_connection
+      id: 2
+      description: >
+          This test is to create connection of routing tables between protocols (BGP, OSPF or STATIC) to redistribute routes within a L3 network-instance.
+      rpcs:
+          - template: ni_protocol_tables_connection.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier_dst_protocol: "oc-pol-types:BGP"
+                   identifier_src_protocol: "OSPF"
+                   address_family: "IPV4"
+
+- testcase:
+      name: ni_protocol_tables_connection_import_policy
+      id: 3
+      description: >
+          This test is to set an import-policy to a table connection between protocols (BGP, OSPF or STATIC) to redistribute routes within a L3 network-instance.
+      rpcs:
+
+          - template: ni_protocol_policy_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "REDISTRIBUTION_POLICY"
+
+          - template: ni_protocol_tables_connection_import_policy.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier_dst_protocol: "oc-pol-types:BGP"
+                   identifier_src_protocol: "OSPF"
+                   address_family: "IPV4"
+                   import_policy: "REDISTRIBUTION_POLICY"
+
+
+- testcase:
+      name: ni_protocol_tables_connection_default_import_policy
+      id: 4
+      description: >
+          This test is to set a default-policy to a table connection between protocols (BGP, OSPF or STATIC) to redistribute routes within a L3 network-instance.
+      rpcs:
+          - template: ni_protocol_tables_connection_default_import_policy.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier_dst_protocol: "oc-pol-types:BGP"
+                   identifier_src_protocol: "OSPF"
+                   address_family: "IPV4"
+                   default_import_policy: "REJECT_ROUTE"
