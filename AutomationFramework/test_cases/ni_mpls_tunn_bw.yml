@@ -1,0 +1,156 @@
+
+- testcase:
+      name: ni_mpls_tunn_bw_adjust_interval
+      id: 1
+      description: >
+          This test is to set adjunt-interfval for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_bw_adjust_interval.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_adjust_interval"
+                   tunnel_name: "tunnel_A"
+                   adjust_interval: "1000"
+
+- testcase:
+      name: ni_mpls_tunn_bw_adjust_threshold
+      id: 2
+      description: >
+          This test is to set adjunt-threshold for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_bw_adjust_threshold.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_adjust_threshold"
+                   tunnel_name: "tunnel_A"
+                   threshold_percent: "50"
+
+- testcase:
+      name: ni_mpls_tunn_bw_enabled
+      id: 3
+      description: >
+          This test is to set bw-enabled for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_bw_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_enabled"
+                   tunnel_name: "tunnel_A"
+
+- testcase:
+      name: ni_mpls_tunn_bw_max_bw
+      id: 4
+      description: >
+          This test is to set max-bw for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_bw_max_bw.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_max_bw"
+                   tunnel_name: "tunnel_A"
+                   max_bw: "50"
+
+- testcase:
+      name: ni_mpls_tunn_bw_min_bw
+      id: 5
+      description: >
+          This test is to set min-bw for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_bw_min_bw.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_min_bw"
+                   tunnel_name: "tunnel_A"
+                   min_bw: "30"
+
+- testcase:
+      name: ni_mpls_tunn_bw_set_bandwidth
+      id: 6
+      description: >
+          This test is to set bandwidth for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_bw_set_bandwidth.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_set_bandwidth"
+                   tunnel_name: "tunnel_A"
+                   bw: "50"
+
+
+- testcase:
+      name: ni_mpls_tunn_bw_specification_type
+      id: 5
+      description: >
+          This test is to set bw-specification-type for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_tunn_bw_specification_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_specification_type"
+                   tunnel_name: "tunnel_A"
+                   spec_type: "AUTO"
+
+- testcase:
+      name: ni_mpls_tunn_bw_signaled_bandwidth
+      id: 6
+      description: >
+          This test is to set and get signaled-bw for a mpls tunnel instance within a L3 network-instance.
+      rpcs:
+        - template: ni_mpls_tunn_bw_set_bandwidth.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_set_bandwidth"
+                   tunnel_name: "tunnel_A"
+                   bw: "50"
+                   
+          - template: ni_mpls_tunn_bw_signaled_bandwidth.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  name: "test_ni_mpls"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_tunn_bw_signaled_bandwidth"
+                   tunnel_name: "tunnel_A"
+                   signaled_bw: ""

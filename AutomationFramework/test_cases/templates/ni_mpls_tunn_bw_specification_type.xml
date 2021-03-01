@@ -1,0 +1,37 @@
+  <edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+    <config>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+         <name>{{name}}</name>
+          <config>
+            <name>{{name}}</name>
+            <type xmlns:oc-ni-types="http://openconfig.net/yang/network-instance-types">{{type}}</type>
+            <enabled>{{enable}}</enabled>
+            <description>{{description}}</description>
+          </config>
+          <mpls>
+            <lsps>
+              <constrained-path>
+                <tunnels>
+                 <tunnel>
+                     <name>{{tunnel_name}}</name>
+                    <config>
+                      <name>{{tunnel_name}}</name>
+                    </config>
+                    <bandwidth>
+                      <config>
+                        <specification-type>{{spec_type}}</specification-type>
+                      </config>
+                    </bandwidth>
+                  </tunnel>
+                </tunnels>
+              </constrained-path>
+            </lsps>
+          </mpls>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>
