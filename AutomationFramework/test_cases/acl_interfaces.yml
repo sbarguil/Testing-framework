@@ -1,0 +1,103 @@
+- testcase:
+      name: acl_interfaces_id
+      id: 1
+      description: >
+          This test is to set ID of the interface.
+      rpcs:
+          - template: acl_interfaces_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   id: "Eth1/2"
+                   
+
+- testcase:
+      name: acl_interfaces_set_name_ingress
+      id: 2
+      description: >
+          This test is to set the acl name ingress of the interface.
+      rpcs:
+          - template: acl_interfaces_set_name_ingress.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   id: "Eth1/2"
+                   name: "full_ipv4"
+                   
+- testcase:
+      name: acl_interfaces_set_name_egress
+      id: 3
+      description: >
+          This test is to set the acl name egress of the interface.
+      rpcs:
+          - template: acl_interfaces_set_name_egress.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   id: "Eth1/2"
+                   name: "full_ipv4"
+
+- testcase:
+      name: acl_interfaces_type_egress
+      id: 4
+      description: >
+          This test is to set the acl type egress of the interface.
+      rpcs:
+          - template: acl_interfaces_type_egress.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   id: "Eth1/2"
+                   name: "full_ipv4"
+                   type: "ACL_IPV4"
+
+
+
+- testcase:
+      name: acl_interfaces_type_ingress
+      id: 5
+      description: >
+          This test is to set the acl type ingress of the interface.
+      rpcs:
+          - template: acl_interfaces_type_ingress.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   id: "Eth1/2"
+                   name: "full_ipv4"
+                   type: "ACL_IPV4"
+
+- testcase:
+      name: acl_interfaces_interface
+      id: 6
+      description: >
+          This test is to set the acl interface  of the id.
+      rpcs:
+          - template: acl_interfaces_interface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  interface: "Eth1/2"
+                  id: "Eth1/2"
+                  
+
+- testcase:
+      name: acl_interfaces_subinterface
+      id: 7
+      description: >
+          This test is to set the subinterface  of the interface.
+      rpcs:
+          - template: acl_interfaces_interface.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                  id: "Eth1/2"
+                  interface: "Eth1/2"
+                  subinterface: "21"

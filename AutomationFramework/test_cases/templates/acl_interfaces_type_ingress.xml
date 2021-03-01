@@ -1,0 +1,29 @@
+<edit-config>
+    <target>
+      <{{target}}/>
+    </target>
+     <config>
+      <acl xmlns="http://openconfig.net/yang/acl">
+        <interfaces>
+          <interface>
+            <id>{{id}}</id>
+            <config>
+              <id>{{id}}</id>
+            </config>
+            <ingress-acl-sets>
+              <ingress-acl-set>
+                <set-name>{{name}}</set-name>
+                <type>{{type}}</type>
+                <config>
+                  <set-name>{{name}}</set-name>
+                  <type>{{type}}</type>
+                </config>
+              </ingress-acl-set>
+            </ingress-acl-sets>
+          </interface>
+        </interfaces>
+      </acl>
+    </config>
+  </edit-config>
+
+
