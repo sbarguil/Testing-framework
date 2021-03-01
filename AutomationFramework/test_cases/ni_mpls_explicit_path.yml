@@ -1,0 +1,73 @@
+
+- testcase:
+      name: ni_mpls_explicit_path_name
+      id: 1
+      description: >
+          This test is to set the name of explicit path.
+      rpcs:
+          - template: ni_mpls_explicit_path_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_explicit_path"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_explicit_path_name"
+                   path_name: "“EXPLICIT_PATH_1_2_3"
+
+- testcase:
+      name: ni_mpls_explicit_path_address
+      id: 2
+      description: >
+          This test is to set the address of explicit path.
+      rpcs:
+          - template: ni_mpls_explicit_path_address.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   interface_name: "1"
+                   mtu: "1450"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   name: "test_explicit_path"
+                   description: "for ni_mpls_explicit_path_address"
+
+- testcase:
+      name: ni_mpls_explicit_path_hop_type
+      id: 3
+      description: >
+          This test is to set the hop-type of explicit path.
+      rpcs:
+          - template: ni_mpls_explicit_path_hop_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_explicit_path"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_explicit_path_hop_type"
+                   path_name: "“EXPLICIT_PATH_1_2_3"
+                   hot_type: "LOOSE"
+
+- testcase:
+      name: ni_mpls_explicit_path_index
+      id: 4
+      description: >
+          This test is to set the index of explicit path.
+      rpcs:
+          - template: ni_mpls_explicit_path_index.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_explicit_path"
+                   type: "oc-ni-types:L2L3"
+                   enable: "true"
+                   description: "for ni_mpls_explicit_path_index"
+                   path_name: "“EXPLICIT_PATH_1_2_3"
+                   hot_type: "LOOSE"
+                   index: "1"
+                   
