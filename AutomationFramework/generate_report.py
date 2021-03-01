@@ -14,14 +14,6 @@ logs_directory = 'excel_logs/'+vendor
 out_log = pd.DataFrame()
 out = pd.DataFrame()
 
-if len(sys.argv) == 2:
-    vendor1 = ""
-    print("--------")
-    print("No VENDOR specified.")
-    print("--------")
-else:
-    vendor1 = sys.argv[2]
-
 print("\nStep #0: Concatenating logs:" + logs_directory)
 print("--------")
 
@@ -56,7 +48,7 @@ for file in os.listdir(directory):
 
 out["TEST-ID (XML_FILE_NAME)"] = out["TEST NAME"].str.replace("test_", "").str.split("[").str[0] + '.xml'
 template = pd.DataFrame(
-    {'VENDOR': [vendor1], 'OS': [""], 'OS VERSION': [""], 'EQUIPMENT': [""], 'EQUIPMENT FAMILY': [""],
+    {'VENDOR': [vendor], 'OS': [""], 'OS VERSION': [""], 'EQUIPMENT': [""], 'EQUIPMENT FAMILY': [""],
      'IS VIRTUAL': [""], 'DATE': [today]})
 
 with pd.ExcelWriter(directory + '/total_output.xlsx') as writer:
