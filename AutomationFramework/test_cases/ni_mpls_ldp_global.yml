@@ -1,0 +1,100 @@
+
+- testcase:
+      name: ni_mpls_ldp_global_authentication_key
+      id: 1
+      description: >
+           This test is to set authentication-key for a mpls ldp global within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_ldp_global_authentication_key.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_global"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_global_authentication_key"
+                   enable: "true"
+                   routing_pass: "T3l3f0n1c4"
+
+
+- testcase:
+      name: ni_mpls_ldp_global_enable
+      id: 2
+      description: >
+          This test is to set enable  for a mpls ldp global authentication within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_ldp_global_enable.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_global"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_global_enable"
+                   enable: "true"
+
+- testcase:
+      name: ni_mpls_ldp_global_lsr_id
+      id: 3
+      description: >
+          This test is to set lsr-id for a mpls ldp global within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_ldp_global_lsr_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_global"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_global_lsr_id"
+                   enable: "true"
+                   ip_address: "10.55.32.11"
+
+- testcase:
+      name: ni_mpls_ldp_global_enabled
+      id: 4
+      description: >
+          This test is to set enabled for a mpls ldp global graceful-restart within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_ldp_global_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_global"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_global_enabled"
+                   enable: "true"
+
+- testcase:
+      name: ni_mpls_ldp_global_helper_enable
+      id: 5
+      description: >
+          This test is to set helper-enable for a mpls ldp global within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_ldp_global_helper_enable.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_global"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_global_helper_enable"
+                   enable: "true"
+
+- testcase:
+      name: ni_mpls_ldp_global_reconnect_time
+      id: 6
+      description: >
+          This test is to set reconnect-time for a mpls ldp global within a L3 network-instance.
+      rpcs:
+          - template: ni_mpls_ldp_global_reconnect_time.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "test_ni_mpls_ldp_global"
+                   type: "oc-ni-types:L2L3"
+                   description: "for ni_mpls_ldp_global_reconnect_time"
+                   enable: "true"
+                   reconnect_time: "120"
