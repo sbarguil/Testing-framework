@@ -1,0 +1,23 @@
+<get>
+    <filter>
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>{{name}}</name>
+          <protocols>
+            <protocol>
+              <identifier>{{identifier}}</identifier>
+              <name>{{protocol_name}}</name>
+              <bgp>
+                <global>
+                  <state>
+                    <as>{{as}}</as>
+                    <router-id>{{router_id}}</router-id>
+                  </state>
+                </global>
+              </bgp>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </filter>
+  </get>

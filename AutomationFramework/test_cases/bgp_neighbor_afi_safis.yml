@@ -1,0 +1,302 @@
+
+- testcase:
+      name: bgp_neighbor_afi_safis_receive
+      id: 1
+      description: >
+          This test is to set capability negotiation to receive multiple path advertisements from a BGP neighbor.
+      rpcs:
+          - template: bgp_neighbor_afi_safis_receive.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   receive: "true"
+                   neighbor_address: "172.17.2.2"
+
+
+- testcase:
+      name: bgp_neighbor_afi_safis_send
+      id: 2
+      description: >
+          This test is to set capability negotiation to send multiple path advertisements from a BGP neighbor.
+      rpcs:
+          - template: bgp_neighbor_afi_safis_send.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   send: "true"
+                   neighbor_address: "172.17.2.2"
+
+- testcase:
+      name: bgp_neighbor_afi_safis_send_max
+      id: 3
+      description: >
+          This test is to set the maximum total number of paths to advertise to neighbors.
+      rpcs:
+          - template: bgp_neighbor_afi_safis_send_max.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   send_max: "30"
+                   neighbor_address: "172.17.2.2"
+
+
+- testcase:
+      name: bgp_neighbor_afi_safis_afi_safi_name
+      id: 4
+      description: >
+          This test is to set the address family indicator name.
+      rpcs:
+          - template: bgp_neighbor_afi_safis_afi_safi_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   neighbor_address: "172.17.2.2"
+
+
+
+- testcase:
+      name: bgp_neighbor_afi_safis_export_policy
+      id: 5
+      description: >
+          This test is to set the policy name to be applied on sending a routing update.
+
+
+      rpcs:
+        - template: rp_policy_def_name.xml
+          target: candidate
+          operation: edit-config
+          commit: true
+          params:
+            export_policy: "ROUTING_POLICY_EXPORT"
+
+      rpcs:
+          - template: bgp_neighbor_afi_safis_export_policy.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   neighbor_address: "172.17.2.2"
+                   export_policy: "ROUTING_POLICY_EXPORT"
+
+
+- testcase:
+      name: bgp_neighbor_afi_safis_import_policy
+      id: 6
+      description: >
+          This test is to set the policy name to be applied on receiving a routing update.
+
+
+      rpcs:
+        - template: rp_policy_def_name.xml
+          target: candidate
+          operation: edit-config
+          commit: true
+          params:
+            import_policy: "ROUTING_POLICY_IMPORT"
+
+      rpcs:
+          - template: bgp_neighbor_afi_safis_import_policy.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   neighbor_address: "172.17.2.2"
+                   import_policy: "ROUTING_POLICY_IMPORT"
+
+
+
+- testcase:
+      name: bgp_neighbor_afi_safis_enabled
+      id: 7
+      description: >
+          This test is to set enabled the AFI-SAFI for the neighbour.
+      rpcs:
+          - template: bgp_neighbor_afi_safis_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   neighbor_address: "172.17.2.2"
+                   enabled: "true"
+
+- testcase:
+      name: bgp_neighbor_afi_safis_afi_safi_name_state
+      id: 8
+      description: >
+          This test is to retrieve the address family indicator name state.
+      rpcs:
+          - template: bgp_neighbor_afi_safis_afi_safi_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   neighbor_address: "172.17.2.2"
+
+          - template: bgp_neighbor_afi_safis_afi_safi_name_state.xml
+            operation: get
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: ""
+                   neighbor_address: "172.17.2.2"
+
+
+- testcase:
+      name: bgp_neighbor_afi_safis_enabled_state
+      id: 9
+      description: >
+          This test is to retrieve the address family indicator enabled state.
+      rpcs:
+          - template: bgp_neighbor_afi_safis_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   neighbor_address: "172.17.2.2"
+                   enabled: "true"
+
+          - template: bgp_neighbor_afi_safis_enabled_state.xml
+            operation: get
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   neighbor_address: "172.17.2.2"
+                   enabled: ""
+
+
+
+- testcase:
+      name: bgp_neighbor_afi_safis_prevent_teardown
+      id: 10
+      description: >
+          This test is to enable the prevent and do not teardown BGP session in cases when the maximum prefix limit is exceed.
+
+      rpcs:
+          - template: bgp_neighbor_afi_safis_prevent_teardown.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   neighbor_address: "172.17.2.2"
+                   prevent_teardown: "true"
+
+
+- testcase:
+      name: bgp_neighbor_afi_safis_restart_timer
+      id: 11
+      description: >
+          This test is to set the time interval in seconds after which the BGP Session is re-established.
+
+      rpcs:
+          - template: bgp_neighbor_afi_safis_restart_timer.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   neighbor_address: "172.17.2.2"
+                   restart_timer: "true"
+
+
+- testcase:
+      name: bgp_neighbor_afi_safis_warning_threshold_pct
+      id: 12
+      description: >
+          This test is to set the threshold (percentage) on number of prefixes that can be received from a neighbour.
+
+      rpcs:
+          - template: bgp_neighbor_afi_safis_warning_threshold_pct.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   neighbor_address: "172.17.2.2"
+                   warning_threshold_pct: "50"
+
+- testcase:
+      name: bgp_neighbor_afi_safis_max_prefixes
+      id: 13
+      description: >
+          This test is to set the maximum number of prefixes that will be accepted.
+
+      rpcs:
+          - template: bgp_neighbor_afi_safis_max_prefixes.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   neighbor_address: "172.17.2.2"
+                   max_prefixes: "30"

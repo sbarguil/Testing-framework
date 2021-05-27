@@ -1,0 +1,280 @@
+
+- testcase:
+      name: ni_bgp_global_receive
+      id: 1
+      description: >
+          This test is to set capability to receive multiple path advertisements from the neighbor.
+      rpcs:
+          - template: ni_bgp_global_receive.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   receive: "true"
+
+
+- testcase:
+      name: ni_bgp_global_send
+      id: 2
+      description: >
+          This test is to set capability to send multiple path advertisements from the neighbor.
+      rpcs:
+          - template: ni_bgp_global_send.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   send: "true"
+
+
+- testcase:
+      name: ni_bgp_global_send_max
+      id: 3
+      description: >
+          This test is to set the maximum number paths to advertise to neighbors.
+      rpcs:
+          - template: ni_bgp_global_send_max.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   send: "true"
+                   send_max: "30"
+
+
+- testcase:
+      name: ni_bgp_global_afi_safi_name
+      id: 4
+      description: >
+          This test is to set the afi safi name.
+      rpcs:
+          - template: ni_bgp_global_afi_safi_name.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+
+
+
+- testcase:
+      name: ni_bgp_global_enabled
+      id: 5
+      description: >
+          This test is to enable the AFI-SAFI for the neighbour or group.
+      rpcs:
+          - template: ni_bgp_global_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   enabled: "true"
+
+
+
+- testcase:
+      name: ni_bgp_global_afi_safi_name_state
+      id: 6
+      description: >
+          This test is to retrieve the AFI-SAFI name.
+
+      rpcs:
+        - template: ni_bgp_global_afi_safi_name.xml
+          target: candidate
+          operation: edit-config
+          commit: true
+          params:
+            ni_name: "testing"
+            name_protocol: "BGP"
+            identifier: "BGP"
+            as: "65000"
+            afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+
+          - template: ni_bgp_global_afi_safi_name_state.xml
+            target: candidate
+            operation: get
+            params:
+                   ni_name: "testing"
+                   as: "65000"
+                   afi_safi_name: ""
+
+
+
+- testcase:
+      name: ni_bgp_global_enabled_state
+      id: 7
+      description: >
+          This test is to retrieve the AFI-SAFI name.
+
+      rpcs:
+          - template: ni_bgp_global_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "BGP"
+                   as: "65000"
+                   afi_safi_name: "oc-bgp-types:L3VPN_IPV4_UNICAST"
+                   enabled: "true"
+
+
+          - template: ni_bgp_global_enabled_state.xml
+            target: candidate
+            operation: get
+            params:
+                   ni_name: "testing"
+                   as: "65000"
+                   enabled: ""
+
+
+
+- testcase:
+      name: ni_bgp_global_graceful_restart_enabled
+      id: 8
+      description: >
+          This test is to enable or disable the graceful-restart capability.
+      rpcs:
+          - template: ni_bgp_global_graceful_restart_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name_protocol: "BGP"
+                   identifier: "BGP"
+                   ni_name: "testing"
+                   as: "65000"
+                   graceful_restart_enabled: "true"
+
+
+
+- testcase:
+      name: ni_bgp_global_enable_aigp
+      id: 9
+      description: >
+          This test is to enable or disable sending and receiving accumulated IGP attribute in routing updates.
+      rpcs:
+          - template: ni_bgp_global_enable_aigp.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "BGP"
+                   as: "65000"
+                   enable_aigp: "true"
+
+
+
+- testcase:
+      name: ni_bgp_global_as_router_id_state
+      id: 10
+      description: >
+          This test is to retrieve the autonomous system and router id BGP.
+      rpcs:
+          - template: ni_bgp_router_id.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "testing"
+                   protocol_name: "BGP"
+                   identifier: "BGP"
+                   as: "65000"
+                   router_id: "172.16.10.1"
+
+
+          - template: ni_bgp_global_as_router_id_state.xml
+            target: candidate
+            operation: get
+            params:
+                   name: "testing"
+                   protocol_name: "BGP"
+                   identifier: "BGP"
+                   as: ""
+                   router_id: ""
+
+
+
+- testcase:
+      name: ni_bgp_global_use_multiple_paths_enabled
+      id: 11
+      description: >
+          This test is to enable multiple paths for the same NLRI
+      rpcs:
+          - template: ni_bgp_global_use_multiple_paths_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   protocol_name: "BGP"
+                   identifier: "BGP"
+                   as: "65000"
+                   use_multiple_paths_enabled: "true"
+
+
+
+- testcase:
+      name: ni_bgp_global_maximum_paths_ebgp
+      id: 12
+      description: >
+          This test is to set the maximum number of paths to consider when using multipath ebgp.
+      rpcs:
+          - template: ni_bgp_global_maximum_paths_ebgp.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   protocol_name: "BGP"
+                   identifier: "BGP"
+                   as: "65000"
+                   use_multiple_paths_enabled: "true"
+                   maximum_paths: "150"
+
+
+
+- testcase:
+      name: ni_bgp_global_maximum_paths_ibgp
+      id: 13
+      description: >
+          This test is to set the maximum number of paths to consider when using multipath ibgp
+      rpcs:
+          - template: ni_bgp_global_maximum_paths_ibgp.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   protocol_name: "BGP"
+                   identifier: "BGP"
+                   as: "65000"
+                   use_multiple_paths_enabled: "true"
+                   maximum_paths: "150"
