@@ -1,0 +1,170 @@
+
+- testcase:
+      name: ni_bgp_neighbor_state_description
+      id: 1
+      description: >
+          This test is to retrieve the description state configured.
+      rpcs:
+          - template: ni_bgp_neighbor_config_description.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   neighbor_address: "172.17.2.2"
+                   description: "testing_SDN"
+
+          - template: ni_bgp_neighbor_state_description.xml
+            operation: get
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   neighbor_address: "172.17.2.2"
+                   description: ""
+
+- testcase:
+      name: ni_bgp_neighbor_state_enabled
+      id: 2
+      description: >
+          This test is to retrieve the enabled state of neighbor bgp.
+      rpcs:
+          - template: ni_bgp_neighbor_config_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   neighbor_address: "172.17.2.2"
+                   enabled: "true"
+
+          - template: ni_bgp_neighbor_state_enabled.xml
+            operation: get
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   neighbor_address: "172.17.2.2"
+                   enabled: ""
+
+- testcase:
+      name: ni_bgp_neighbor_state_neighbor_address
+      id: 3
+      description: >
+          This test is to retrieve the neighbor address state.
+      rpcs:
+          - template: ni_bgp_neighbor_config_enabled.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   neighbor_address: "172.17.2.2"
+                   enabled: "true"
+
+          - template: ni_bgp_neighbor_state_neighbor_address.xml
+            operation: get
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   neighbor_address: ""
+
+
+- testcase:
+      name: ni_bgp_neighbor_state_peer_as
+      id: 4
+      description: >
+          This test is to retrieve the peer AS state of neighbor BGP.
+      rpcs:
+          - template: ni_bgp_peer_as.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier: "BGP"
+                   protocol_name: "BGP_65000"
+                   neighbor_address: "192.168.1.2"
+                   peer_as: "65123"
+                   as: "65000"
+
+          - template: ni_bgp_neighbor_state_peer_as.xml
+            operation: get
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier: "BGP"
+                   protocol_name: "BGP_65000"
+                   neighbor_address: "192.168.1.2"
+                   as: "65000"
+                   peer_as: ""
+
+
+- testcase:
+      name: ni_bgp_neighbor_state_peer_type
+      id: 5
+      description: >
+          This test is to retrieve the peer type state of neighbor BGP.
+      rpcs:
+          - template: ni_bgp_peer_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier: "BGP"
+                   protocol_name: "BGP_65000"
+                   neighbor_address: "192.168.1.2"
+                   peer_type: "EXTERNAL"
+                   as: "65000"
+
+          - template: ni_bgp_neighbor_state_peer_type.xml
+            operation: get
+            params:
+                   ni_name: "Prueba_LxVPN"
+                   identifier: "BGP"
+                   name_protocol: "BGP_65000"
+                   neighbor_address: "192.168.1.2"
+                   as: "65000"
+                   peer_type: ""
+
+
+- testcase:
+      name: ni_bgp_neighbor_state_session_state
+      id: 6
+      description: >
+          This test is to retrieve the BGP session state.
+      rpcs:
+          - template: ni_bgp_peer_type.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   name: "Prueba_LxVPN"
+                   identifier: "BGP"
+                   protocol_name: "BGP_65000"
+                   neighbor_address: "192.168.1.2"
+                   peer_type: "EXTERNAL"
+                   as: "65000"
+
+          - template: ni_bgp_neighbor_state_session_state.xml
+            operation: get
+            params:
+                   ni_name: "Prueba_LxVPN"
+                   identifier: "BGP"
+                   name_protocol: "BGP_65000"
+                   neighbor_address: "192.168.1.2"
+                   as: "65000"
+                   session_state: ""
