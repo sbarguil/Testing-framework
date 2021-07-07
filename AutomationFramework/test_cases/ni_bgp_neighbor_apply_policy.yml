@@ -1,0 +1,21 @@
+
+- testcase:
+      name: ni_bgp_neighbor_apply_policy_default_import_policy
+      id: 1
+      description: >
+          This test is to set capability negotiation to receive multiple path advertisements from a BGP neighbor.
+      rpcs:
+          - template: ni_bgp_neighbor_apply_policy_default_import_policy.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   neighbor_address: "172.17.2.2"
+                   default-import-policy: "ACCEPT_ROUTE"
+
+
+

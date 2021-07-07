@@ -1,0 +1,91 @@
+
+- testcase:
+      name: ni_bgp_neighbor_config_auth_password
+      id: 1
+      description: >
+          This test is to set capability negotiation to receive multiple path advertisements from a BGP neighbor.
+      rpcs:
+          - template: ni_bgp_neighbor_config_auth_password.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   neighbor_address: "172.17.2.2"
+                   auth_password: "$p4sswD"
+
+- testcase:
+      name: ni_bgp_neighbor_config_enabled
+      id: 2
+      description: >
+          This test is to set the BGP peer enabled.
+      rpcs:
+          - template: ni_bgp_neighbor_config_auth_password.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   neighbor_address: "172.17.2.2"
+                   enabled: "true"
+
+- testcase:
+      name: ni_bgp_neighbor_config_peer_group
+      id: 3
+      description: >
+          This test is to set the BGP peer-group with which this neighbor is associated.
+      rpcs:
+          - template: ni_bgp_neighbor_config_peer_group.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   neighbor_address: "172.17.2.2"
+                   peer_group: "primary_path"
+
+- testcase:
+      name: ni_bgp_neighbor_config_route_flap_damping
+      id: 4
+      description: >
+          This test is to set the route flap damping enable.
+      rpcs:
+          - template: ni_bgp_neighbor_config_route_flap_damping.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   neighbor_address: "172.17.2.2"
+                   route_flap_damping: "true"
+
+- testcase:
+      name: ni_bgp_neighbor_config_send_community
+      id: 5
+      description: >
+          This test is to set the types of community should be sent to the neighbor or group bgp.
+      rpcs:
+          - template: ni_bgp_neighbor_config_send_community.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "BGP"
+                   identifier: "oc-pol-types:BGP"
+                   as: "65000"
+                   neighbor_address: "172.17.2.2"
+                   send_community: "EXTENDED"
+
