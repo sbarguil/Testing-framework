@@ -1,0 +1,16 @@
+ <get>
+    <filter>
+      <components xmlns="http://openconfig.net/yang/platform">
+        <component>
+          <name>{{name}}</name>
+          <transceiver xmlns="http://openconfig.net/yang/platform/transceiver">
+            <state>
+              <laser-bias-current>
+                <min>{{min}}</min>
+              </laser-bias-current>
+            </state>
+          </transceiver>
+        </component>
+      </components>
+    </filter>
+  </get>

@@ -8,7 +8,7 @@
           - template: hw_transceiver_slot_id.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "0/0/5-SFP Socket"
                    slot_id: ""
 
 - testcase:
@@ -34,6 +34,226 @@
           - template: hw_transceiver_enabled_state.xml
             operation: get
             params:
-                   name: "CHASIS"
+                   name: "0/0/5-SFP Socket"
                    enabled: ""
 
+
+- testcase:
+      name: hw_transceiver_connector_type
+      id: 4
+      description: >
+          This test is to get the connector type used on this port.
+      rpcs:
+          - template: hw_transceiver_connector_type.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   connector_type: ""
+
+
+- testcase:
+      name: hw_transceiver_ethernet_pmd
+      id: 5
+      description: >
+          This test is to get the Ethernet physical medium dependent sublayer that the transceiver supports.
+      rpcs:
+          - template: hw_transceiver_ethernet_pmd.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   ethernet_pmd: ""
+
+
+- testcase:
+      name: hw_transceiver_fault_condition
+      id: 6
+      description: >
+          This test is to get the fault condition exists in the transceiver.
+      rpcs:
+          - template: hw_transceiver_fault_condition.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   fault_condition: ""
+
+
+- testcase:
+      name: hw_transceiver_form_factor
+      id: 7
+      description: >
+          This test is to get the type of optical transceiver used on this port.
+      rpcs:
+          - template: hw_transceiver_form_factor.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   form_factor: ""
+
+
+- testcase:
+      name: hw_transceiver_input_power_instant
+      id: 8
+      description: >
+          This test is to get the instantaneous value of the input power statistic.
+      rpcs:
+          - template: hw_transceiver_input_power_instant.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   instant: ""
+
+- testcase:
+      name: hw_transceiver_input_power_interval
+      id: 9
+      description: >
+          This test is to get the time interval over which the min/max/average statistics.
+      rpcs:
+          - template: hw_transceiver_input_power_interval.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   interval: ""
+
+- testcase:
+      name: hw_transceiver_input_power_max
+      id: 10
+      description: >
+          This test is to get the maximum value of the statistic over the time interval.
+      rpcs:
+          - template: hw_transceiver_input_power_max.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   max: ""
+
+- testcase:
+      name: hw_transceiver_input_power_min
+      id: 11
+      description: >
+          This test is to get the minimum value of the statistic over the time interval.
+      rpcs:
+          - template: hw_transceiver_input_power_min.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   min: ""
+
+- testcase:
+      name: hw_transceiver_laser_bias_current_instant
+      id: 12
+      description: >
+          This test is to get the instantaneous mA value of the transceiver statistics.
+      rpcs:
+          - template: hw_transceiver_laser_bias_current_instant.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   instant: ""
+
+- testcase:
+      name: hw_transceiver_laser_bias_current_max
+      id: 13
+      description: >
+          This test is to get the maximum value of the statistic over the time interval.
+      rpcs:
+          - template: hw_transceiver_laser_bias_current_max.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   max: ""
+
+- testcase:
+      name: hw_transceiver_laser_bias_current_min
+      id: 14
+      description: >
+          This test is to get the minimum value of the statistic over the time interval.
+      rpcs:
+          - template: hw_transceiver_laser_bias_current_min.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   min: ""
+
+- testcase:
+      name: hw_transceiver_output_power_instant
+      id: 15
+      description: >
+          This test is to get the instantaneous value of the output power statistics.
+      rpcs:
+          - template: hw_transceiver_output_power_instant.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   instant: ""
+
+- testcase:
+      name: hw_transceiver_output_power_interval
+      id: 16
+      description: >
+          This test is to get the time interval over which the min/max/average statistics.
+      rpcs:
+          - template: hw_transceiver_output_power_interval.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   interval: ""
+
+- testcase:
+      name: hw_transceiver_output_power_max
+      id: 17
+      description: >
+          This test is to get the maximum value of the statistic over the time interval.
+      rpcs:
+          - template: hw_transceiver_output_power_max.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   max: ""
+
+- testcase:
+      name: hw_transceiver_output_power_min
+      id: 18
+      description: >
+          This test is to get the minimum value of the statistic over the time interval.
+      rpcs:
+          - template: hw_transceiver_output_power_min.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   min: ""
+
+- testcase:
+      name: hw_transceiver_present
+      id: 19
+      description: >
+          This test is to indicate whether a transceiver is present in the specified client port.
+      rpcs:
+          - template: hw_transceiver_present.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   present: ""
+
+- testcase:
+      name: hw_transceiver_serial_no
+      id: 20
+      description: >
+          This test is to indicate the transceiver serial number.
+      rpcs:
+          - template: hw_transceiver_serial_no.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   serial_no: ""
+
+- testcase:
+      name: hw_transceiver_vendor
+      id: 21
+      description: >
+          This test is to indicate the full name of transceiver vendor.
+      rpcs:
+          - template: hw_transceiver_vendor.xml
+            operation: get
+            params:
+                   name: "0/0/5-SFP Socket"
+                   vendor: ""
