@@ -1,0 +1,63 @@
+- testcase:
+      name: ni_isis_global_config_instance
+      id: 1
+      description: >
+          This test is to set number ISIS instance.
+      rpcs:
+          - template: ni_isis_global_config_instance.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "ISIS"
+                   identifier: "oc-pol-types:ISIS"
+                   instance: "1"
+
+- testcase:
+      name: ni_isis_global_config_level_capability
+      id: 2
+      description: >
+          This test is to set the ISIS level capability.
+      rpcs:
+          - template: ni_isis_global_config_level_capability.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "ISIS"
+                   identifier: "oc-pol-types:ISIS"
+                   level_capability: "LEVEL_1"
+
+- testcase:
+      name: ni_isis_global_config_max_ecmp_paths
+      id: 3
+      description: >
+          This test is to set the max number of paths permitted in the ISIS ECMP.
+      rpcs:
+          - template: ni_isis_global_config_max_ecmp_paths.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "ISIS"
+                   identifier: "oc-pol-types:ISIS"
+                   max_ecmp_paths: "10"
+
+- testcase:
+      name: ni_isis_global_config_net
+      id: 4
+      description: >
+          This test is to set the Network Entity Tittle (NET) it is unique for the device.
+      rpcs:
+          - template: ni_isis_global_config_net.xml
+            target: candidate
+            operation: edit-config
+            commit: true
+            params:
+                   ni_name: "testing"
+                   name_protocol: "ISIS"
+                   identifier: "oc-pol-types:ISIS"
+                   net: "49.0001.1720.1600.1001.00"
